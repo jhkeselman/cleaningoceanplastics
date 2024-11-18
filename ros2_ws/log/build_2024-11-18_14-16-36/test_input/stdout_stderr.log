@@ -1,0 +1,36 @@
+running egg_info
+creating ../../build/test_input/test_input.egg-info
+writing ../../build/test_input/test_input.egg-info/PKG-INFO
+writing dependency_links to ../../build/test_input/test_input.egg-info/dependency_links.txt
+writing entry points to ../../build/test_input/test_input.egg-info/entry_points.txt
+writing requirements to ../../build/test_input/test_input.egg-info/requires.txt
+writing top-level names to ../../build/test_input/test_input.egg-info/top_level.txt
+writing manifest file '../../build/test_input/test_input.egg-info/SOURCES.txt'
+reading manifest file '../../build/test_input/test_input.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../../build/test_input/test_input.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build
+creating /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib
+creating /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input
+copying test_input/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input
+copying test_input/water_sensor.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input
+running install
+running install_lib
+creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input
+copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input
+copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/water_sensor.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input
+byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/water_sensor.py to water_sensor.cpython-312.pyc
+running install_data
+creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/ament_index
+creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/ament_index/resource_index
+creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/ament_index/resource_index/packages
+copying resource/test_input -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/ament_index/resource_index/packages
+copying package.xml -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/test_input
+running install_egg_info
+Copying ../../build/test_input/test_input.egg-info to /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input-0.0.0-py3.12.egg-info
+running install_scripts
+Installing water_sensor script to /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input
+writing list of installed files to '/home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/install.log'

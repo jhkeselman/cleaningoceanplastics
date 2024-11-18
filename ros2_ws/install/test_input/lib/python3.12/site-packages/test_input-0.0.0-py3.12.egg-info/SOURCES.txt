@@ -1,0 +1,17 @@
+LICENSE
+package.xml
+setup.cfg
+setup.py
+../../build/test_input/test_input.egg-info/PKG-INFO
+../../build/test_input/test_input.egg-info/SOURCES.txt
+../../build/test_input/test_input.egg-info/dependency_links.txt
+../../build/test_input/test_input.egg-info/entry_points.txt
+../../build/test_input/test_input.egg-info/requires.txt
+../../build/test_input/test_input.egg-info/top_level.txt
+../../build/test_input/test_input.egg-info/zip-safe
+resource/test_input
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py
+test_input/__init__.py
+test_input/water_sensor.py

@@ -1,0 +1,2 @@
+[console_scripts]
+water_sensor = test_input.water_sensor:main
