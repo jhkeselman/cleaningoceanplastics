@@ -17,10 +17,14 @@ setup(
     maintainer_email='pi2@todo.todo',
     description='TODO: Package description',
     license='Apache-2.0',
+    py_modules=[
+        'test_input.IMU',  # Path to IMU.py
+    ],
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'water_sensor = test_input.water_sensor:main'
+            'water_sensor = test_input.water_sensor:main',
+            'imu = test_input.imu_publisher:main'
         ],
     },
 )

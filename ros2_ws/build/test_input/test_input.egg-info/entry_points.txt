@@ -1,2 +1,3 @@
 [console_scripts]
+imu = test_input.imu_publisher:main
 water_sensor = test_input.water_sensor:main
