@@ -32,12 +32,12 @@ class ObjectDetector(Node):
         object_list.header.stamp = self.get_clock().now().to_msg()
 
         for box in results[0].boxes:
-            object = Object()
+            object = ObjectBox()
             object.name = str(box.cls)
             object.confidence = float(box.conf)
             object.x_center = float(box.xywh[0])
             object.y_center = float(box.xywh[1])
-            object_list.detections.append(object)
+            object_list.objects.append(object)
 
         self.detection_pub.publish(object_list)
         self.i += 1
