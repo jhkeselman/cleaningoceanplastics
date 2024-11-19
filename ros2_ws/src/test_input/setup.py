@@ -21,6 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'water_sensor = test_input.water_sensor:main'
+            'object_detector = test_input.object_detector:main'
         ],
     },
 )
