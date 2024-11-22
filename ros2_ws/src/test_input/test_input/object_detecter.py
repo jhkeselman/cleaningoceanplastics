@@ -1,6 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from ultralytics import YOLO
+from std_msgs.msg import String
 import cv2
 
 class ObjectDetector(Node):
@@ -14,7 +15,7 @@ class ObjectDetector(Node):
             self.destroy_node()
             return
         
-        self.detection_pub = self.create_publisher(ObjectList, 'object_detections', 10)
+        self.detection_pub = self.create_publisher(String, 'object_detected', 10)
         
         timer_period = 0.5  # seconds
         self.timer = self.create_timer(timer_period, self.process_image)
@@ -22,25 +23,24 @@ class ObjectDetector(Node):
 
     def process_image(self):
         ret, frame = self.cap.read()
-        if not ret:
-            self.get_logger().error("Error: Could not read from camera.")
-            return
+        if ret:
+            results = self.model(frame)
 
-        results = self.model(frame)
+            publishString = String()
+            objectStrings = ""
 
-        object_list = ObjectList()
-        object_list.header.stamp = self.get_clock().now().to_msg()
+            for box in results[0].boxes:
+                class_label = self.model.names[int(box.cls[0])]
+                raw_conf = box.conf[0]
+                conf = 100 * round(raw_conf.item(), 2)
+                x1, y1, x2, y2 = map(int, box.xyxy[0])
+                objectString = f"{class_label}, {conf}, {x1}, {y1}, {x2}, {y2}"
+                if objectStrings:
+                    objectStrings += " $ " + objectString
+                else:
+                    objectStrings = objectString
 
-        for box in results[0].boxes:
-            object = ObjectBox()
-            object.name = str(box.cls)
-            object.confidence = float(box.conf)
-            object.x_center = float(box.xywh[0])
-            object.y_center = float(box.xywh[1])
-            object_list.objects.append(object)
-
-        self.detection_pub.publish(object_list)
-        self.i += 1
+            publishString.data = objectStrings
 
     def destroy_node(self):
         if self.cap.isOpened():
