@@ -15,7 +15,7 @@ class ObjectDetector(Node):
             self.destroy_node()
             return
         
-        self.detection_pub = self.create_publisher(String, 'object_detected', 10)
+        self.detection_pub = self.create_publisher(String, 'object_detections', 10)
         
         timer_period = 0.5  # seconds
         self.timer = self.create_timer(timer_period, self.process_image)
@@ -40,7 +40,8 @@ class ObjectDetector(Node):
                 else:
                     objectStrings = objectString
 
-            publishString.data = objectStrings
+            if objectStrings != "":
+                publishString.data = objectStrings
 
     def destroy_node(self):
         if self.cap.isOpened():
