@@ -18,7 +18,6 @@ class ObjectSelector(Node):
         
         self.object_listener = self.create_subscription(String, 'object_detections', self.listener_callback, 10)
 
-        self.min_confidence = 50
         self.image_width = 640
         self.image_height = 480
         self.image_size = self.dist(self.image_width, self.image_height)
@@ -49,7 +48,7 @@ class ObjectSelector(Node):
 
     def rate_object(self, object_type, confidence, x1, y1, x2, y2):
         score = Waste[object_type.upper()]
-        score += min(0, confidence - self.min_confidence) / 10.0
+        score += ((x / 10)^2) / 10
         center_X = (x1 + x2) / 2.0
         center_Y = (y1 + y2) / 2.0
         dist_from_center = self.dist(self.image_width - center_X, self.image_height - center_Y)
