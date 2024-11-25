@@ -34,16 +34,16 @@ class ObjectSelector(Node):
         for object in objects:
             self.get_logger().info(f"{object}")
         # FUTURE CODE
-        if self.state == State.SEARCHING:
-            queue = PriorityQueue()
-            for object in objects:
-                object_info = object.split(",")
-                priority = self.rate_object(object_info[0], object_info[1], object_info[2], object_info[3], object_info[4], object_info[5])
-                queue.put(priority, object_info)
-            self.target = queue.get()
-        elif self.state == State.MOVING:
-            # genuinely very little idea how this one will work rn, probably need to dig more into results formatting
-            pass
+        # if self.state == State.SEARCHING:
+        #     queue = PriorityQueue()
+        #     for object in objects:
+        #         object_info = object.split(",")
+        #         priority = self.rate_object(object_info[0], object_info[1], object_info[2], object_info[3], object_info[4], object_info[5])
+        #         queue.put(priority, object_info)
+        #     self.target = queue.get()
+        # elif self.state == State.MOVING:
+        #     # genuinely very little idea how this one will work rn, probably need to dig more into results formatting
+        #     pass
                 
 
 
