@@ -25,6 +25,7 @@ setup(
         'console_scripts': [
             'water_sensor = test_input.water_sensor:main',
             'imu = test_input.imu_publisher:main'
+            'object_detector = test_input.object_detector:main'
         ],
     },
 )
