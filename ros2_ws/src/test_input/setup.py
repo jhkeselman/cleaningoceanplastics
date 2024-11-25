@@ -24,8 +24,9 @@ setup(
     entry_points={
         'console_scripts': [
             'water_sensor = test_input.water_sensor:main',
-            'imu = test_input.imu_publisher:main'
-            'object_detector = test_input.object_detector:main'
+            'imu = test_input.imu_publisher:main',
+            'object_detector = test_input.object_detector:main',
+            'object_selector = test_input.object_selector:main'
         ],
     },
 )
