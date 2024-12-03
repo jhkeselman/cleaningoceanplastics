@@ -1,0 +1,56 @@
+[1.111s] Invoking command in '/home/pi2/cleaningoceanplastics/ros2_ws/src/test_input': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/test_input build --build-base /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build install --record /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/install.log --single-version-externally-managed install_data
+[1.446s] running egg_info
+[1.447s] creating ../../build/test_input/test_input.egg-info
+[1.469s] writing ../../build/test_input/test_input.egg-info/PKG-INFO
+[1.470s] writing dependency_links to ../../build/test_input/test_input.egg-info/dependency_links.txt
+[1.470s] writing entry points to ../../build/test_input/test_input.egg-info/entry_points.txt
+[1.470s] writing requirements to ../../build/test_input/test_input.egg-info/requires.txt
+[1.470s] writing top-level names to ../../build/test_input/test_input.egg-info/top_level.txt
+[1.470s] writing manifest file '../../build/test_input/test_input.egg-info/SOURCES.txt'
+[1.517s] reading manifest file '../../build/test_input/test_input.egg-info/SOURCES.txt'
+[1.517s] adding license file 'LICENSE'
+[1.518s] writing manifest file '../../build/test_input/test_input.egg-info/SOURCES.txt'
+[1.518s] running build
+[1.518s] running build_py
+[1.519s] creating /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build
+[1.519s] creating /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib
+[1.519s] creating /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input
+[1.519s] copying test_input/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input
+[1.519s] copying test_input/IMU.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input
+[1.519s] copying test_input/LSM6DSL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input
+[1.519s] copying test_input/water_sensor.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input
+[1.520s] copying test_input/LIS3MDL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input
+[1.520s] copying test_input/imu_publisher.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input
+[1.520s] running install
+[1.529s] running install_lib
+[1.553s] creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input
+[1.553s] copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input
+[1.554s] copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/IMU.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input
+[1.554s] copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/LSM6DSL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input
+[1.554s] copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/water_sensor.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input
+[1.554s] copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/LIS3MDL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input
+[1.554s] copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/imu_publisher.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input
+[1.555s] byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/__init__.py to __init__.cpython-312.pyc
+[1.555s] byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/IMU.py to IMU.cpython-312.pyc
+[1.557s] byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/LSM6DSL.py to LSM6DSL.cpython-312.pyc
+[1.557s] byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/water_sensor.py to water_sensor.cpython-312.pyc
+[1.558s] byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/LIS3MDL.py to LIS3MDL.cpython-312.pyc
+[1.558s] byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/imu_publisher.py to imu_publisher.cpython-312.pyc
+[1.559s] Sorry: TabError: inconsistent use of tabs and spaces in indentation (imu_publisher.py, line 36)
+[1.559s] running install_data
+[1.559s] creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/ament_index
+[1.559s] creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/ament_index/resource_index
+[1.559s] creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/ament_index/resource_index/packages
+[1.559s] copying resource/test_input -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/ament_index/resource_index/packages
+[1.559s] copying package.xml -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/test_input
+[1.559s] creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input
+[1.560s] copying test_input/IMU.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input
+[1.560s] copying test_input/LSM6DSL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input
+[1.560s] copying test_input/LIS3MDL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input
+[1.560s] running install_egg_info
+[1.586s] Copying ../../build/test_input/test_input.egg-info to /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input-0.0.0-py3.12.egg-info
+[1.587s] running install_scripts
+[1.756s] Installing imu script to /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input
+[1.756s] Installing water_sensor script to /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input
+[1.756s] writing list of installed files to '/home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/install.log'
+[1.833s] Invoked command in '/home/pi2/cleaningoceanplastics/ros2_ws/src/test_input' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/test_input build --build-base /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build install --record /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/install.log --single-version-externally-managed install_data

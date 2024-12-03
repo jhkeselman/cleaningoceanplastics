@@ -1,0 +1,78 @@
+[0.000000] (-) TimerEvent: {}
+[0.000278] (test_input) JobQueued: {'identifier': 'test_input', 'dependencies': OrderedDict()}
+[0.000981] (test_input) JobStarted: {'identifier': 'test_input'}
+[0.099709] (-) TimerEvent: {}
+[0.200016] (-) TimerEvent: {}
+[0.300293] (-) TimerEvent: {}
+[0.400599] (-) TimerEvent: {}
+[0.500851] (-) TimerEvent: {}
+[0.601110] (-) TimerEvent: {}
+[0.701391] (-) TimerEvent: {}
+[0.801633] (-) TimerEvent: {}
+[0.901856] (-) TimerEvent: {}
+[1.002108] (-) TimerEvent: {}
+[1.102413] (-) TimerEvent: {}
+[1.117698] (test_input) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/test_input', 'build', '--build-base', '/home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build', 'install', '--record', '/home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/pi2/cleaningoceanplastics/ros2_ws/src/test_input', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pi2', 'SSH_CLIENT': '130.215.9.169 33500 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/pi2', 'OLDPWD': '/home/pi2/cleaningoceanplastics/ros2_ws/src', 'SSH_TTY': '/dev/pts/1', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1002/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'pi2', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '4', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1002', 'DISPLAY': 'localhost:11.0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/test_input:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/pi2/cleaningoceanplastics/ros2_ws/build/test_input', 'SSH_CONNECTION': '130.215.9.169 33500 130.215.170.104 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages:/home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[1.202495] (-) TimerEvent: {}
+[1.302759] (-) TimerEvent: {}
+[1.402993] (-) TimerEvent: {}
+[1.453801] (test_input) StdoutLine: {'line': b'running egg_info\n'}
+[1.454303] (test_input) StdoutLine: {'line': b'creating ../../build/test_input/test_input.egg-info\n'}
+[1.476731] (test_input) StdoutLine: {'line': b'writing ../../build/test_input/test_input.egg-info/PKG-INFO\n'}
+[1.477106] (test_input) StdoutLine: {'line': b'writing dependency_links to ../../build/test_input/test_input.egg-info/dependency_links.txt\n'}
+[1.477328] (test_input) StdoutLine: {'line': b'writing entry points to ../../build/test_input/test_input.egg-info/entry_points.txt\n'}
+[1.477473] (test_input) StdoutLine: {'line': b'writing requirements to ../../build/test_input/test_input.egg-info/requires.txt\n'}
+[1.477578] (test_input) StdoutLine: {'line': b'writing top-level names to ../../build/test_input/test_input.egg-info/top_level.txt\n'}
+[1.477731] (test_input) StdoutLine: {'line': b"writing manifest file '../../build/test_input/test_input.egg-info/SOURCES.txt'\n"}
+[1.503059] (-) TimerEvent: {}
+[1.524480] (test_input) StdoutLine: {'line': b"reading manifest file '../../build/test_input/test_input.egg-info/SOURCES.txt'\n"}
+[1.524718] (test_input) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[1.525455] (test_input) StdoutLine: {'line': b"writing manifest file '../../build/test_input/test_input.egg-info/SOURCES.txt'\n"}
+[1.525661] (test_input) StdoutLine: {'line': b'running build\n'}
+[1.525774] (test_input) StdoutLine: {'line': b'running build_py\n'}
+[1.525966] (test_input) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build\n'}
+[1.526078] (test_input) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib\n'}
+[1.526184] (test_input) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input\n'}
+[1.526281] (test_input) StdoutLine: {'line': b'copying test_input/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input\n'}
+[1.526422] (test_input) StdoutLine: {'line': b'copying test_input/IMU.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input\n'}
+[1.526596] (test_input) StdoutLine: {'line': b'copying test_input/LSM6DSL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input\n'}
+[1.526746] (test_input) StdoutLine: {'line': b'copying test_input/water_sensor.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input\n'}
+[1.526899] (test_input) StdoutLine: {'line': b'copying test_input/LIS3MDL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input\n'}
+[1.527045] (test_input) StdoutLine: {'line': b'copying test_input/imu_publisher.py -> /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input\n'}
+[1.527368] (test_input) StdoutLine: {'line': b'running install\n'}
+[1.536528] (test_input) StdoutLine: {'line': b'running install_lib\n'}
+[1.560787] (test_input) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input\n'}
+[1.561034] (test_input) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input\n'}
+[1.561189] (test_input) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/IMU.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input\n'}
+[1.561302] (test_input) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/LSM6DSL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input\n'}
+[1.561446] (test_input) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/water_sensor.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input\n'}
+[1.561594] (test_input) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/LIS3MDL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input\n'}
+[1.561736] (test_input) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/imu_publisher.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input\n'}
+[1.562532] (test_input) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/__init__.py to __init__.cpython-312.pyc\n'}
+[1.562876] (test_input) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/IMU.py to IMU.cpython-312.pyc\n'}
+[1.564390] (test_input) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/LSM6DSL.py to LSM6DSL.cpython-312.pyc\n'}
+[1.564856] (test_input) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/water_sensor.py to water_sensor.cpython-312.pyc\n'}
+[1.565559] (test_input) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/LIS3MDL.py to LIS3MDL.cpython-312.pyc\n'}
+[1.565923] (test_input) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/imu_publisher.py to imu_publisher.cpython-312.pyc\n'}
+[1.567269] (test_input) StdoutLine: {'line': b'running install_data\n'}
+[1.567405] (test_input) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/ament_index\n'}
+[1.567511] (test_input) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/ament_index/resource_index\n'}
+[1.567617] (test_input) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/ament_index/resource_index/packages\n'}
+[1.567723] (test_input) StdoutLine: {'line': b'copying resource/test_input -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/ament_index/resource_index/packages\n'}
+[1.567826] (test_input) StdoutLine: {'line': b'copying package.xml -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/share/test_input\n'}
+[1.567985] (test_input) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input\n'}
+[1.568089] (test_input) StdoutLine: {'line': b'copying test_input/IMU.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input\n'}
+[1.568248] (test_input) StdoutLine: {'line': b'copying test_input/LSM6DSL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input\n'}
+[1.568396] (test_input) StdoutLine: {'line': b'copying test_input/LIS3MDL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input\n'}
+[1.568514] (test_input) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.593866] (test_input) StdoutLine: {'line': b'Copying ../../build/test_input/test_input.egg-info to /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input-0.0.0-py3.12.egg-info\n'}
+[1.595056] (test_input) StdoutLine: {'line': b'running install_scripts\n'}
+[1.603128] (-) TimerEvent: {}
+[1.703361] (-) TimerEvent: {}
+[1.764255] (test_input) StdoutLine: {'line': b'Installing imu script to /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input\n'}
+[1.764511] (test_input) StdoutLine: {'line': b'Installing water_sensor script to /home/pi2/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input\n'}
+[1.764975] (test_input) StdoutLine: {'line': b"writing list of installed files to '/home/pi2/cleaningoceanplastics/ros2_ws/build/test_input/install.log'\n"}
+[1.803446] (-) TimerEvent: {}
+[1.842326] (test_input) CommandEnded: {'returncode': 0}
+[1.853944] (test_input) JobEnded: {'identifier': 'test_input', 'rc': 0}
+[1.854821] (-) EventReactorShutdown: {}
