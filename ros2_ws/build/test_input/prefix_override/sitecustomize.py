@@ -1,4 +1,4 @@
 import sys
 if sys.prefix == '/usr':
     sys.real_prefix = sys.prefix
-    sys.prefix = sys.exec_prefix = '/home/pi2/cleaningoceanplastics/ros2_ws/install/test_input'
+    sys.prefix = sys.exec_prefix = '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/install/test_input'
