@@ -39,6 +39,8 @@ class IMU(Node):
         self.a = datetime.datetime.now()
 
         self.get_logger().info("IMU initialized...")
+
+        self.prev_gyr_heading = 0
    
     def get_data(self):
         #Read the accelerometer,gyroscope and magnetometer values
@@ -114,18 +116,30 @@ class IMU(Node):
 
         ##################### END Tilt Compensation ########################
 
+        '''
+        Fusing gyroscope and magnetometer data
+        '''
+
+        gyr_heading = self.prev_gyr_heading + rate_gyr_z*LP
+        K = 0.9
+        CF_heading = K*gyr_heading + (1-K)*tiltCompensatedHeading
+        self.prev_gyr_heading = gyr_heading #should this update to the CF heading? or just always keep the gyro heading?
+
 
         if 0:                       #Change to '0' to stop showing the angles from the accelerometer
             outputString += "#  ACCX Angle %5.2f ACCY Angle %5.2f  #  " % (AccXangle, AccYangle)
 
         if 0:                       #Change to '0' to stop  showing the angles from the gyro
-            outputString +="\t# GRYX Angle %5.2f  GYRY Angle %5.2f  GYRZ Angle %5.2f # " % (gyroXangle,gyroYangle,gyroZangle)
+            outputString +="\t# GRYX Angle %5.2f  GYRY Angle %5.2f  GYRZ Angle %5.2f # " % (self.gyroXangle,self.gyroYangle,self.gyroZangle)
 
         if 1:                       #Change to '0' to stop  showing the angles from the complementary filter
             outputString +="\t#  CFangleX Angle %5.2f   CFangleY Angle %5.2f  #" % (self.CFangleX,self.CFangleY)
 
         if 1:                       #Change to '0' to stop  showing the heading
             outputString +="\t# HEADING %5.2f  tiltCompensatedHeading %5.2f #" % (heading,tiltCompensatedHeading)
+
+        if 1:                       #Change to '0' to stop  showing the heading
+            outputString +="\t# CFHeading %5.2f #" % (CF_heading)
 
         return outputString
 
