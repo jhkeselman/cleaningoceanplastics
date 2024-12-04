@@ -1,0 +1,75 @@
+[0.812s] Invoking command in '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/nmea_navsat_driver-ros2': PYTHONPATH=/home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../build/nmea_navsat_driver build --build-base /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build install --record /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/install.log --single-version-externally-managed install_data
+[0.962s] running egg_info
+[0.963s] creating ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info
+[0.963s] writing ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/PKG-INFO
+[0.963s] writing dependency_links to ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/dependency_links.txt
+[0.963s] writing entry points to ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/entry_points.txt
+[0.964s] writing requirements to ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/requires.txt
+[0.964s] writing top-level names to ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/top_level.txt
+[0.964s] writing manifest file '../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/SOURCES.txt'
+[0.965s] reading manifest file '../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/SOURCES.txt'
+[0.965s] writing manifest file '../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/SOURCES.txt'
+[0.965s] running build
+[0.965s] running build_py
+[0.966s] creating /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build
+[0.966s] creating /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib
+[0.966s] creating /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver
+[0.966s] copying src/libnmea_navsat_driver/parser.py -> /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver
+[0.967s] copying src/libnmea_navsat_driver/checksum_utils.py -> /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver
+[0.967s] copying src/libnmea_navsat_driver/__init__.py -> /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver
+[0.967s] copying src/libnmea_navsat_driver/driver.py -> /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver
+[0.967s] creating /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[0.967s] copying src/libnmea_navsat_driver/nodes/nmea_topic_driver.py -> /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[0.967s] copying src/libnmea_navsat_driver/nodes/nmea_socket_driver.py -> /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[0.967s] copying src/libnmea_navsat_driver/nodes/nmea_serial_driver.py -> /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[0.967s] copying src/libnmea_navsat_driver/nodes/nmea_topic_serial_reader.py -> /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[0.967s] copying src/libnmea_navsat_driver/nodes/__init__.py -> /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[0.967s] copying src/libnmea_navsat_driver/nodes/nmea_tcpclient_driver.py -> /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[0.967s] running install
+[0.968s] running install_lib
+[0.968s] creating /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver
+[0.968s] copying /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/parser.py -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver
+[0.968s] copying /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/checksum_utils.py -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver
+[0.968s] copying /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/__init__.py -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver
+[0.968s] creating /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes
+[0.968s] copying /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_topic_driver.py -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes
+[0.968s] copying /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_socket_driver.py -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes
+[0.968s] copying /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_serial_driver.py -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes
+[0.968s] copying /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_topic_serial_reader.py -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes
+[0.968s] copying /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/__init__.py -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes
+[0.969s] copying /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_tcpclient_driver.py -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes
+[0.969s] copying /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/driver.py -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver
+[0.969s] byte-compiling /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/parser.py to parser.cpython-310.pyc
+[0.970s] byte-compiling /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/checksum_utils.py to checksum_utils.cpython-310.pyc
+[0.970s] byte-compiling /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/__init__.py to __init__.cpython-310.pyc
+[0.970s] byte-compiling /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes/nmea_topic_driver.py to nmea_topic_driver.cpython-310.pyc
+[0.972s] byte-compiling /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes/nmea_socket_driver.py to nmea_socket_driver.cpython-310.pyc
+[0.972s] byte-compiling /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes/nmea_serial_driver.py to nmea_serial_driver.cpython-310.pyc
+[0.972s] byte-compiling /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes/nmea_topic_serial_reader.py to nmea_topic_serial_reader.cpython-310.pyc
+[0.973s] byte-compiling /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes/__init__.py to __init__.cpython-310.pyc
+[0.973s] byte-compiling /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes/nmea_tcpclient_driver.py to nmea_tcpclient_driver.cpython-310.pyc
+[0.973s] byte-compiling /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/driver.py to driver.cpython-310.pyc
+[0.975s] running install_data
+[0.975s] creating /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/ament_index
+[0.975s] creating /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/ament_index/resource_index
+[0.975s] creating /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/ament_index/resource_index/packages
+[0.975s] copying resource/nmea_navsat_driver -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/ament_index/resource_index/packages
+[0.975s] copying package.xml -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver
+[0.975s] creating /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/launch
+[0.975s] copying launch/nmea_serial_driver.launch.py -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/launch
+[0.975s] copying launch/nmea_socket_driver.launch.py -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/launch
+[0.975s] copying launch/nmea_tcpclient_driver.launch.py -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/launch
+[0.975s] creating /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/config
+[0.975s] copying config/nmea_socket_driver.yaml -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/config
+[0.976s] copying config/nmea_serial_driver.yaml -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/config
+[0.976s] copying config/nmea_tcpclient_driver.yaml -> /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/config
+[0.976s] running install_egg_info
+[0.978s] Copying ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info to /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages/nmea_navsat_driver-2.0.1-py3.10.egg-info
+[0.978s] running install_scripts
+[0.995s] Installing nmea_serial_driver script to /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[0.995s] Installing nmea_socket_driver script to /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[0.995s] Installing nmea_tcpclient_driver script to /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[0.995s] Installing nmea_topic_driver script to /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[0.995s] Installing nmea_topic_serial_reader script to /home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[0.996s] writing list of installed files to '/home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/install.log'
+[1.015s] Invoked command in '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/nmea_navsat_driver-ros2' returned '0': PYTHONPATH=/home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../build/nmea_navsat_driver build --build-base /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build install --record /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/install.log --single-version-externally-managed install_data

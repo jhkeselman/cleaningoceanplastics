@@ -18,7 +18,7 @@ setup(
     description='TODO: Package description',
     license='Apache-2.0',
     py_modules=[
-        'test_input.IMU',  # Path to IMU.py
+        'test_input.IMU_lib',  # Path to IMU_lib.py
     ],
     tests_require=['pytest'],
     entry_points={

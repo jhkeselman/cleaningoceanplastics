@@ -1,0 +1,227 @@
+[0.103s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.103s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=16, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x764c09828e50>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x764c09919a80>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x764c09919a80>>)
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.199s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/cooper530/MQP/cleaningoceanplastics'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extensions ['ignore', 'ignore_ament_install']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extension 'ignore'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extension 'ignore_ament_install'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extensions ['colcon_pkg']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extension 'colcon_pkg'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extensions ['colcon_meta']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extension 'colcon_meta'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extensions ['ros']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extension 'ros'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extensions ['cmake', 'python']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extension 'cmake'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extension 'python'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extensions ['python_setup_py']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD) by extension 'python_setup_py'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extension 'ignore'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extension 'ignore_ament_install'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extensions ['colcon_pkg']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extension 'colcon_pkg'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extensions ['colcon_meta']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extension 'colcon_meta'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extensions ['ros']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extension 'ros'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extensions ['cmake', 'python']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extension 'cmake'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extension 'python'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extensions ['python_setup_py']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(CAD/Test Board) by extension 'python_setup_py'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extension 'ignore'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extension 'ignore_ament_install'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extensions ['colcon_pkg']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extension 'colcon_pkg'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extensions ['colcon_meta']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extension 'colcon_meta'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extensions ['ros']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extension 'ros'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extensions ['cmake', 'python']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extension 'cmake'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extension 'python'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extensions ['python_setup_py']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws) by extension 'python_setup_py'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/build) by extensions ['ignore', 'ignore_ament_install']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/build) by extension 'ignore'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/build) ignored
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/install) by extensions ['ignore', 'ignore_ament_install']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/install) by extension 'ignore'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/install) ignored
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/log) by extensions ['ignore', 'ignore_ament_install']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/log) by extension 'ignore'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/log) ignored
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extensions ['ignore', 'ignore_ament_install']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extension 'ignore'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extension 'ignore_ament_install'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extensions ['colcon_pkg']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extension 'colcon_pkg'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extensions ['colcon_meta']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extension 'colcon_meta'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extensions ['ros']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extension 'ros'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extensions ['cmake', 'python']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extension 'cmake'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extension 'python'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extensions ['python_setup_py']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src) by extension 'python_setup_py'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/nmea_navsat_driver-ros2) by extensions ['ignore', 'ignore_ament_install']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/nmea_navsat_driver-ros2) by extension 'ignore'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/nmea_navsat_driver-ros2) by extension 'ignore_ament_install'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/nmea_navsat_driver-ros2) by extensions ['colcon_pkg']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/nmea_navsat_driver-ros2) by extension 'colcon_pkg'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/nmea_navsat_driver-ros2) by extensions ['colcon_meta']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/nmea_navsat_driver-ros2) by extension 'colcon_meta'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/nmea_navsat_driver-ros2) by extensions ['ros']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/nmea_navsat_driver-ros2) by extension 'ros'
+[0.219s] DEBUG:colcon.colcon_core.package_identification:Package 'ros2_ws/src/nmea_navsat_driver-ros2' with type 'ros.ament_python' and name 'nmea_navsat_driver'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/test_input) by extensions ['ignore', 'ignore_ament_install']
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/test_input) by extension 'ignore'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/test_input) by extension 'ignore_ament_install'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/test_input) by extensions ['colcon_pkg']
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/test_input) by extension 'colcon_pkg'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/test_input) by extensions ['colcon_meta']
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/test_input) by extension 'colcon_meta'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/test_input) by extensions ['ros']
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ws/src/test_input) by extension 'ros'
+[0.220s] DEBUG:colcon.colcon_core.package_identification:Package 'ros2_ws/src/test_input' with type 'ros.ament_python' and name 'test_input'
+[0.220s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.220s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.220s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.220s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.220s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.234s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.234s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.236s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 301 installed packages in /opt/ros/humble
+[0.242s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'nmea_navsat_driver' build argument 'cmake_args' from command line to 'None'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'nmea_navsat_driver' build argument 'cmake_target' from command line to 'None'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'nmea_navsat_driver' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'nmea_navsat_driver' build argument 'cmake_clean_cache' from command line to 'False'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'nmea_navsat_driver' build argument 'cmake_clean_first' from command line to 'False'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'nmea_navsat_driver' build argument 'cmake_force_configure' from command line to 'False'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'nmea_navsat_driver' build argument 'ament_cmake_args' from command line to 'None'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'nmea_navsat_driver' build argument 'catkin_cmake_args' from command line to 'None'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'nmea_navsat_driver' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.264s] DEBUG:colcon.colcon_core.verb:Building package 'nmea_navsat_driver' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver', 'merge_install': False, 'path': '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/nmea_navsat_driver-ros2', 'symlink_install': False, 'test_result_base': None}
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'test_input' build argument 'cmake_args' from command line to 'None'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'test_input' build argument 'cmake_target' from command line to 'None'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'test_input' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'test_input' build argument 'cmake_clean_cache' from command line to 'False'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'test_input' build argument 'cmake_clean_first' from command line to 'False'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'test_input' build argument 'cmake_force_configure' from command line to 'False'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'test_input' build argument 'ament_cmake_args' from command line to 'None'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'test_input' build argument 'catkin_cmake_args' from command line to 'None'
+[0.264s] Level 5:colcon.colcon_core.verb:set package 'test_input' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.264s] DEBUG:colcon.colcon_core.verb:Building package 'test_input' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/cooper530/MQP/cleaningoceanplastics/build/test_input', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/cooper530/MQP/cleaningoceanplastics/install/test_input', 'merge_install': False, 'path': '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/test_input', 'symlink_install': False, 'test_result_base': None}
+[0.264s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.265s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.265s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/nmea_navsat_driver-ros2' with build type 'ament_python'
+[0.265s] Level 1:colcon.colcon_core.shell:create_environment_hook('nmea_navsat_driver', 'ament_prefix_path')
+[0.266s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.266s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/hook/ament_prefix_path.ps1'
+[0.267s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/hook/ament_prefix_path.dsv'
+[0.267s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/hook/ament_prefix_path.sh'
+[0.268s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.268s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.270s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/test_input' with build type 'ament_python'
+[0.270s] Level 1:colcon.colcon_core.shell:create_environment_hook('test_input', 'ament_prefix_path')
+[0.270s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/share/test_input/hook/ament_prefix_path.ps1'
+[0.270s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/share/test_input/hook/ament_prefix_path.dsv'
+[0.271s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/share/test_input/hook/ament_prefix_path.sh'
+[0.271s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.271s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.533s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/nmea_navsat_driver-ros2'
+[0.534s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.534s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.811s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/test_input'
+[0.811s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.811s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.077s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/nmea_navsat_driver-ros2': PYTHONPATH=/home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../build/nmea_navsat_driver build --build-base /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build install --record /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/install.log --single-version-externally-managed install_data
+[1.079s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/test_input': PYTHONPATH=/home/cooper530/MQP/cleaningoceanplastics/build/test_input/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../build/test_input build --build-base /home/cooper530/MQP/cleaningoceanplastics/build/test_input/build install --record /home/cooper530/MQP/cleaningoceanplastics/build/test_input/install.log --single-version-externally-managed install_data
+[1.280s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/nmea_navsat_driver-ros2' returned '0': PYTHONPATH=/home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../build/nmea_navsat_driver build --build-base /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/build install --record /home/cooper530/MQP/cleaningoceanplastics/build/nmea_navsat_driver/install.log --single-version-externally-managed install_data
+[1.282s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver' for CMake module files
+[1.282s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver' for CMake config files
+[1.283s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib'
+[1.283s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/bin'
+[1.283s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/pkgconfig/nmea_navsat_driver.pc'
+[1.283s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.10/site-packages'
+[1.283s] Level 1:colcon.colcon_core.shell:create_environment_hook('nmea_navsat_driver', 'pythonpath')
+[1.283s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/hook/pythonpath.ps1'
+[1.284s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/hook/pythonpath.dsv'
+[1.284s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/hook/pythonpath.sh'
+[1.284s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/bin'
+[1.284s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(nmea_navsat_driver)
+[1.284s] INFO:colcon.colcon_core.shell:Creating package script '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/package.ps1'
+[1.285s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/package.dsv'
+[1.285s] INFO:colcon.colcon_core.shell:Creating package script '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/package.sh'
+[1.286s] INFO:colcon.colcon_core.shell:Creating package script '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/package.bash'
+[1.286s] INFO:colcon.colcon_core.shell:Creating package script '/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/package.zsh'
+[1.286s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/cooper530/MQP/cleaningoceanplastics/install/nmea_navsat_driver/share/colcon-core/packages/nmea_navsat_driver)
+[1.287s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/test_input' for CMake module files
+[1.288s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/test_input' returned '0': PYTHONPATH=/home/cooper530/MQP/cleaningoceanplastics/build/test_input/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../build/test_input build --build-base /home/cooper530/MQP/cleaningoceanplastics/build/test_input/build install --record /home/cooper530/MQP/cleaningoceanplastics/build/test_input/install.log --single-version-externally-managed install_data
+[1.288s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/test_input' for CMake config files
+[1.289s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib'
+[1.289s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/bin'
+[1.289s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/pkgconfig/test_input.pc'
+[1.289s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/python3.10/site-packages'
+[1.289s] Level 1:colcon.colcon_core.shell:create_environment_hook('test_input', 'pythonpath')
+[1.289s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/share/test_input/hook/pythonpath.ps1'
+[1.289s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/share/test_input/hook/pythonpath.dsv'
+[1.290s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/share/test_input/hook/pythonpath.sh'
+[1.290s] Level 1:colcon.colcon_core.environment:checking '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/bin'
+[1.290s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(test_input)
+[1.290s] INFO:colcon.colcon_core.shell:Creating package script '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/share/test_input/package.ps1'
+[1.290s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/share/test_input/package.dsv'
+[1.291s] INFO:colcon.colcon_core.shell:Creating package script '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/share/test_input/package.sh'
+[1.291s] INFO:colcon.colcon_core.shell:Creating package script '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/share/test_input/package.bash'
+[1.291s] INFO:colcon.colcon_core.shell:Creating package script '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/share/test_input/package.zsh'
+[1.292s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/cooper530/MQP/cleaningoceanplastics/install/test_input/share/colcon-core/packages/test_input)
+[1.292s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.292s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.292s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.292s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.297s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.297s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.297s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.307s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.307s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/cooper530/MQP/cleaningoceanplastics/install/local_setup.ps1'
+[1.308s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/cooper530/MQP/cleaningoceanplastics/install/_local_setup_util_ps1.py'
+[1.309s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/cooper530/MQP/cleaningoceanplastics/install/setup.ps1'
+[1.310s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/cooper530/MQP/cleaningoceanplastics/install/local_setup.sh'
+[1.311s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/cooper530/MQP/cleaningoceanplastics/install/_local_setup_util_sh.py'
+[1.311s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/cooper530/MQP/cleaningoceanplastics/install/setup.sh'
+[1.312s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/cooper530/MQP/cleaningoceanplastics/install/local_setup.bash'
+[1.312s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/cooper530/MQP/cleaningoceanplastics/install/setup.bash'
+[1.313s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/cooper530/MQP/cleaningoceanplastics/install/local_setup.zsh'
+[1.313s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/cooper530/MQP/cleaningoceanplastics/install/setup.zsh'

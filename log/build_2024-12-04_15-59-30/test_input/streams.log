@@ -1,0 +1,29 @@
+[0.781s] Invoking command in '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/test_input': PYTHONPATH=/home/cooper530/MQP/cleaningoceanplastics/build/test_input/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../build/test_input build --build-base /home/cooper530/MQP/cleaningoceanplastics/build/test_input/build install --record /home/cooper530/MQP/cleaningoceanplastics/build/test_input/install.log --single-version-externally-managed install_data
+[0.935s] running egg_info
+[0.935s] writing ../../../build/test_input/test_input.egg-info/PKG-INFO
+[0.935s] writing dependency_links to ../../../build/test_input/test_input.egg-info/dependency_links.txt
+[0.935s] writing entry points to ../../../build/test_input/test_input.egg-info/entry_points.txt
+[0.935s] writing requirements to ../../../build/test_input/test_input.egg-info/requires.txt
+[0.935s] writing top-level names to ../../../build/test_input/test_input.egg-info/top_level.txt
+[0.937s] reading manifest file '../../../build/test_input/test_input.egg-info/SOURCES.txt'
+[0.937s] adding license file 'LICENSE'
+[0.938s] writing manifest file '../../../build/test_input/test_input.egg-info/SOURCES.txt'
+[0.938s] running build
+[0.938s] running build_py
+[0.938s] copying test_input/imu_publisher.py -> /home/cooper530/MQP/cleaningoceanplastics/build/test_input/build/lib/test_input
+[0.938s] running install
+[0.938s] running install_lib
+[0.939s] copying /home/cooper530/MQP/cleaningoceanplastics/build/test_input/build/lib/test_input/imu_publisher.py -> /home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/python3.10/site-packages/test_input
+[0.940s] byte-compiling /home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/python3.10/site-packages/test_input/imu_publisher.py to imu_publisher.cpython-310.pyc
+[0.941s] running install_data
+[0.941s] running install_egg_info
+[0.942s] removing '/home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/python3.10/site-packages/test_input-0.0.0-py3.10.egg-info' (and everything under it)
+[0.942s] Copying ../../../build/test_input/test_input.egg-info to /home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/python3.10/site-packages/test_input-0.0.0-py3.10.egg-info
+[0.943s] running install_scripts
+[0.958s] Installing gps_subscriber script to /home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/test_input
+[0.958s] Installing imu script to /home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/test_input
+[0.958s] Installing object_detector script to /home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/test_input
+[0.958s] Installing object_selector script to /home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/test_input
+[0.958s] Installing water_sensor script to /home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/test_input
+[0.958s] writing list of installed files to '/home/cooper530/MQP/cleaningoceanplastics/build/test_input/install.log'
+[0.975s] Invoked command in '/home/cooper530/MQP/cleaningoceanplastics/ros2_ws/src/test_input' returned '0': PYTHONPATH=/home/cooper530/MQP/cleaningoceanplastics/build/test_input/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cooper530/MQP/cleaningoceanplastics/install/test_input/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../build/test_input build --build-base /home/cooper530/MQP/cleaningoceanplastics/build/test_input/build install --record /home/cooper530/MQP/cleaningoceanplastics/build/test_input/install.log --single-version-externally-managed install_data
