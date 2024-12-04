@@ -1,0 +1,90 @@
+[0.000000] (-) TimerEvent: {}
+[0.000227] (nmea_navsat_driver) JobQueued: {'identifier': 'nmea_navsat_driver', 'dependencies': OrderedDict()}
+[0.000268] (test_input) JobQueued: {'identifier': 'test_input', 'dependencies': OrderedDict()}
+[0.000666] (nmea_navsat_driver) JobStarted: {'identifier': 'nmea_navsat_driver'}
+[0.020460] (test_input) JobStarted: {'identifier': 'test_input'}
+[0.099746] (-) TimerEvent: {}
+[0.200045] (-) TimerEvent: {}
+[0.300342] (-) TimerEvent: {}
+[0.400711] (-) TimerEvent: {}
+[0.501046] (-) TimerEvent: {}
+[0.601341] (-) TimerEvent: {}
+[0.701712] (-) TimerEvent: {}
+[0.802040] (-) TimerEvent: {}
+[0.902369] (-) TimerEvent: {}
+[1.002660] (-) TimerEvent: {}
+[1.102974] (-) TimerEvent: {}
+[1.203295] (-) TimerEvent: {}
+[1.303602] (-) TimerEvent: {}
+[1.403921] (-) TimerEvent: {}
+[1.504194] (-) TimerEvent: {}
+[1.604590] (-) TimerEvent: {}
+[1.704968] (-) TimerEvent: {}
+[1.771148] (test_input) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/test_input', 'build', '--build-base', '/home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/build', 'install', '--record', '/home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/pi1/cleaningoceanplastics/ros2_ws/src/test_input', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pi1', 'SSH_CLIENT': '130.215.9.169 41490 22', 'SSH_AGENT_PID': '3113', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/pi1', 'OLDPWD': '/home/pi1/cleaningoceanplastics', 'SSH_TTY': '/dev/pts/0', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1002/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'pi1', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '6', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1002', 'DISPLAY': 'localhost:10.0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'SSH_AUTH_SOCK': '/tmp/ssh-A4YgxTD9KGc7/agent.3112', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/pi1/cleaningoceanplastics/ros2_ws/build/test_input', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '130.215.9.169 41490 130.215.173.222 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[1.779208] (nmea_navsat_driver) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/nmea_navsat_driver', 'build', '--build-base', '/home/pi1/cleaningoceanplastics/ros2_ws/build/nmea_navsat_driver/build', 'install', '--record', '/home/pi1/cleaningoceanplastics/ros2_ws/build/nmea_navsat_driver/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/pi1/cleaningoceanplastics/ros2_ws/src/nmea_navsat_driver-ros2', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pi1', 'SSH_CLIENT': '130.215.9.169 41490 22', 'SSH_AGENT_PID': '3113', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/pi1', 'OLDPWD': '/home/pi1/cleaningoceanplastics', 'SSH_TTY': '/dev/pts/0', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1002/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'pi1', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '6', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1002', 'DISPLAY': 'localhost:10.0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'SSH_AUTH_SOCK': '/tmp/ssh-A4YgxTD9KGc7/agent.3112', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/pi1/cleaningoceanplastics/ros2_ws/build/nmea_navsat_driver', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '130.215.9.169 41490 130.215.173.222 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pi1/cleaningoceanplastics/ros2_ws/build/nmea_navsat_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi1/cleaningoceanplastics/ros2_ws/install/nmea_navsat_driver/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[1.805050] (-) TimerEvent: {}
+[1.905331] (-) TimerEvent: {}
+[2.005618] (-) TimerEvent: {}
+[2.105895] (-) TimerEvent: {}
+[2.132446] (test_input) StdoutLine: {'line': b'running egg_info\n'}
+[2.140374] (nmea_navsat_driver) StdoutLine: {'line': b'running egg_info\n'}
+[2.155964] (test_input) StdoutLine: {'line': b'writing ../../build/test_input/test_input.egg-info/PKG-INFO\n'}
+[2.156706] (test_input) StdoutLine: {'line': b'writing dependency_links to ../../build/test_input/test_input.egg-info/dependency_links.txt\n'}
+[2.157504] (test_input) StdoutLine: {'line': b'writing entry points to ../../build/test_input/test_input.egg-info/entry_points.txt\n'}
+[2.158001] (test_input) StdoutLine: {'line': b'writing requirements to ../../build/test_input/test_input.egg-info/requires.txt\n'}
+[2.158695] (test_input) StdoutLine: {'line': b'writing top-level names to ../../build/test_input/test_input.egg-info/top_level.txt\n'}
+[2.164165] (nmea_navsat_driver) StdoutLine: {'line': b'writing ../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/PKG-INFO\n'}
+[2.164560] (nmea_navsat_driver) StdoutLine: {'line': b'writing dependency_links to ../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/dependency_links.txt\n'}
+[2.165213] (nmea_navsat_driver) StdoutLine: {'line': b'writing entry points to ../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/entry_points.txt\n'}
+[2.165644] (nmea_navsat_driver) StdoutLine: {'line': b'writing requirements to ../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/requires.txt\n'}
+[2.166232] (nmea_navsat_driver) StdoutLine: {'line': b'writing top-level names to ../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/top_level.txt\n'}
+[2.205973] (-) TimerEvent: {}
+[2.208152] (test_input) StdoutLine: {'line': b"reading manifest file '../../build/test_input/test_input.egg-info/SOURCES.txt'\n"}
+[2.208536] (test_input) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[2.209417] (test_input) StdoutLine: {'line': b"writing manifest file '../../build/test_input/test_input.egg-info/SOURCES.txt'\n"}
+[2.209619] (test_input) StdoutLine: {'line': b'running build\n'}
+[2.209748] (test_input) StdoutLine: {'line': b'running build_py\n'}
+[2.210560] (test_input) StdoutLine: {'line': b'running install\n'}
+[2.215931] (nmea_navsat_driver) StdoutLine: {'line': b"reading manifest file '../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/SOURCES.txt'\n"}
+[2.217267] (nmea_navsat_driver) StdoutLine: {'line': b"writing manifest file '../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/SOURCES.txt'\n"}
+[2.217469] (nmea_navsat_driver) StdoutLine: {'line': b'running build\n'}
+[2.217590] (nmea_navsat_driver) StdoutLine: {'line': b'running build_py\n'}
+[2.218501] (nmea_navsat_driver) StdoutLine: {'line': b'running install\n'}
+[2.219976] (test_input) StdoutLine: {'line': b'running install_lib\n'}
+[2.227721] (nmea_navsat_driver) StdoutLine: {'line': b'running install_lib\n'}
+[2.244087] (test_input) StdoutLine: {'line': b'copying /home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/object_detecter.py -> /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input\n'}
+[2.244426] (test_input) StdoutLine: {'line': b'copying /home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/object_selector.py -> /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input\n'}
+[2.244586] (test_input) StdoutLine: {'line': b'copying /home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/gps_subscriber.py -> /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input\n'}
+[2.245355] (test_input) StdoutLine: {'line': b'byte-compiling /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/object_detecter.py to object_detecter.cpython-312.pyc\n'}
+[2.246600] (test_input) StdoutLine: {'line': b'byte-compiling /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/object_selector.py to object_selector.cpython-312.pyc\n'}
+[2.247541] (test_input) StdoutLine: {'line': b'byte-compiling /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/gps_subscriber.py to gps_subscriber.cpython-312.pyc\n'}
+[2.248113] (test_input) StdoutLine: {'line': b'running install_data\n'}
+[2.248284] (test_input) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.253251] (nmea_navsat_driver) StdoutLine: {'line': b'running install_data\n'}
+[2.253552] (nmea_navsat_driver) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.274017] (test_input) StdoutLine: {'line': b"removing '/home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input-0.0.0-py3.12.egg-info' (and everything under it)\n"}
+[2.274445] (test_input) StdoutLine: {'line': b'Copying ../../build/test_input/test_input.egg-info to /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input-0.0.0-py3.12.egg-info\n'}
+[2.275598] (test_input) StdoutLine: {'line': b'running install_scripts\n'}
+[2.279643] (nmea_navsat_driver) StdoutLine: {'line': b"removing '/home/pi1/cleaningoceanplastics/ros2_ws/install/nmea_navsat_driver/lib/python3.12/site-packages/nmea_navsat_driver-2.0.1-py3.12.egg-info' (and everything under it)\n"}
+[2.280106] (nmea_navsat_driver) StdoutLine: {'line': b'Copying ../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info to /home/pi1/cleaningoceanplastics/ros2_ws/install/nmea_navsat_driver/lib/python3.12/site-packages/nmea_navsat_driver-2.0.1-py3.12.egg-info\n'}
+[2.281291] (nmea_navsat_driver) StdoutLine: {'line': b'running install_scripts\n'}
+[2.306072] (-) TimerEvent: {}
+[2.406388] (-) TimerEvent: {}
+[2.449548] (test_input) StdoutLine: {'line': b'Installing gps_subscriber script to /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input\n'}
+[2.449842] (test_input) StdoutLine: {'line': b'Installing imu script to /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input\n'}
+[2.450859] (test_input) StdoutLine: {'line': b'Installing object_detector script to /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input\n'}
+[2.451387] (test_input) StdoutLine: {'line': b'Installing object_selector script to /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input\n'}
+[2.452016] (test_input) StdoutLine: {'line': b'Installing water_sensor script to /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input\n'}
+[2.453075] (test_input) StdoutLine: {'line': b"writing list of installed files to '/home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/install.log'\n"}
+[2.457822] (nmea_navsat_driver) StdoutLine: {'line': b'Installing nmea_serial_driver script to /home/pi1/cleaningoceanplastics/ros2_ws/install/nmea_navsat_driver/lib/nmea_navsat_driver\n'}
+[2.458217] (nmea_navsat_driver) StdoutLine: {'line': b'Installing nmea_socket_driver script to /home/pi1/cleaningoceanplastics/ros2_ws/install/nmea_navsat_driver/lib/nmea_navsat_driver\n'}
+[2.458884] (nmea_navsat_driver) StdoutLine: {'line': b'Installing nmea_tcpclient_driver script to /home/pi1/cleaningoceanplastics/ros2_ws/install/nmea_navsat_driver/lib/nmea_navsat_driver\n'}
+[2.459483] (nmea_navsat_driver) StdoutLine: {'line': b'Installing nmea_topic_driver script to /home/pi1/cleaningoceanplastics/ros2_ws/install/nmea_navsat_driver/lib/nmea_navsat_driver\n'}
+[2.460233] (nmea_navsat_driver) StdoutLine: {'line': b'Installing nmea_topic_serial_reader script to /home/pi1/cleaningoceanplastics/ros2_ws/install/nmea_navsat_driver/lib/nmea_navsat_driver\n'}
+[2.461635] (nmea_navsat_driver) StdoutLine: {'line': b"writing list of installed files to '/home/pi1/cleaningoceanplastics/ros2_ws/build/nmea_navsat_driver/install.log'\n"}
+[2.506503] (-) TimerEvent: {}
+[2.563851] (test_input) CommandEnded: {'returncode': 0}
+[2.587199] (test_input) JobEnded: {'identifier': 'test_input', 'rc': 0}
+[2.588648] (nmea_navsat_driver) CommandEnded: {'returncode': 0}
+[2.597152] (nmea_navsat_driver) JobEnded: {'identifier': 'nmea_navsat_driver', 'rc': 0}
+[2.598130] (-) EventReactorShutdown: {}

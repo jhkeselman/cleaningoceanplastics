@@ -24,28 +24,33 @@ class IMU(Node):
         timer_period = 0.5  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.i = 0
-        
+        self.gyroXangle = 0.0
+        self.gyroYangle = 0.0
+        self.gyroZangle = 0.0
+        self.CFangleX = 0.0
+        self.CFangleY = 0.0
+
         # Initialize IMU
-        IMU.detectIMU()     #Detect if BerryIMU is connected.
-        if(IMU.BerryIMUversion == 99):
+        detectIMU()     #Detect if BerryIMU is connected.
+        if(BerryIMUversion == 99):
             print(" No BerryIMU found... exiting ")
             sys.exit()
-        IMU.initIMU()       #Initialise the accelerometer, gyroscope and compass
+        initIMU()       #Initialise the accelerometer, gyroscope and compass
         self.a = datetime.datetime.now()
 
         self.get_logger().info("IMU initialized...")
    
     def get_data(self):
         #Read the accelerometer,gyroscope and magnetometer values
-        ACCx = IMU.readACCx()
-        ACCy = IMU.readACCy()
-        ACCz = IMU.readACCz()
-        GYRx = IMU.readGYRx()
-        GYRy = IMU.readGYRy()
-        GYRz = IMU.readGYRz()
-        MAGx = IMU.readMAGx()
-        MAGy = IMU.readMAGy()
-        MAGz = IMU.readMAGz()
+        ACCx = readACCx()
+        ACCy = readACCy()
+        ACCz = readACCz()
+        GYRx = readGYRx()
+        GYRy = readGYRy()
+        GYRz = readGYRz()
+        MAGx = readMAGx()
+        MAGy = readMAGy()
+        MAGz = readMAGz()
 
         ##Calculate loop Period(LP). How long between Gyro Reads
         b = datetime.datetime.now() - self.a
@@ -59,9 +64,9 @@ class IMU(Node):
         rate_gyr_z =  GYRz * G_GAIN
 
         #Calculate the angles from the gyro.
-        gyroXangle+=rate_gyr_x*LP
-        gyroYangle+=rate_gyr_y*LP
-        gyroZangle+=rate_gyr_z*LP
+        self.gyroXangle+=rate_gyr_x*LP
+        self.gyroYangle+=rate_gyr_y*LP
+        self.gyroZangle+=rate_gyr_z*LP
 
         #Convert Accelerometer values to degrees
         AccXangle =  (math.atan2(ACCy,ACCz)*RAD_TO_DEG)
@@ -74,8 +79,8 @@ class IMU(Node):
             AccYangle += 90.0
 
         #Complementary filter used to combine the accelerometer and gyro values.
-        CFangleX=AA*(CFangleX+rate_gyr_x*LP) +(1 - AA) * AccXangle
-        CFangleY=AA*(CFangleY+rate_gyr_y*LP) +(1 - AA) * AccYangle
+        self.CFangleX=AA*(self.CFangleX+rate_gyr_x*LP) +(1 - AA) * AccXangle
+        self.CFangleY=AA*(self.CFangleY+rate_gyr_y*LP) +(1 - AA) * AccYangle
 
         #Calculate heading
         heading = 180 * math.atan2(MAGy,MAGx)/M_PI
@@ -117,7 +122,7 @@ class IMU(Node):
             outputString +="\t# GRYX Angle %5.2f  GYRY Angle %5.2f  GYRZ Angle %5.2f # " % (gyroXangle,gyroYangle,gyroZangle)
 
         if 1:                       #Change to '0' to stop  showing the angles from the complementary filter
-            outputString +="\t#  CFangleX Angle %5.2f   CFangleY Angle %5.2f  #" % (CFangleX,CFangleY)
+            outputString +="\t#  CFangleX Angle %5.2f   CFangleY Angle %5.2f  #" % (self.CFangleX,self.CFangleY)
 
         if 1:                       #Change to '0' to stop  showing the heading
             outputString +="\t# HEADING %5.2f  tiltCompensatedHeading %5.2f #" % (heading,tiltCompensatedHeading)

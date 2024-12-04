@@ -13,7 +13,7 @@ resource/test_input
 test/test_copyright.py
 test/test_flake8.py
 test/test_pep257.py
-test_input/IMU.py
+test_input/IMU_lib.py
 test_input/LIS3MDL.py
 test_input/LSM6DSL.py
 test_input/__init__.py

@@ -1,0 +1,29 @@
+[1.503s] Invoking command in '/home/pi1/cleaningoceanplastics/ros2_ws/src/test_input': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/test_input build --build-base /home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/build install --record /home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/install.log --single-version-externally-managed install_data
+[1.866s] running egg_info
+[1.890s] writing ../../build/test_input/test_input.egg-info/PKG-INFO
+[1.890s] writing dependency_links to ../../build/test_input/test_input.egg-info/dependency_links.txt
+[1.891s] writing entry points to ../../build/test_input/test_input.egg-info/entry_points.txt
+[1.892s] writing requirements to ../../build/test_input/test_input.egg-info/requires.txt
+[1.893s] writing top-level names to ../../build/test_input/test_input.egg-info/top_level.txt
+[1.943s] reading manifest file '../../build/test_input/test_input.egg-info/SOURCES.txt'
+[1.944s] adding license file 'LICENSE'
+[1.945s] writing manifest file '../../build/test_input/test_input.egg-info/SOURCES.txt'
+[1.945s] running build
+[1.945s] running build_py
+[1.946s] copying test_input/imu_publisher.py -> /home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input
+[1.946s] running install
+[1.955s] running install_lib
+[1.981s] copying /home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/build/lib/test_input/imu_publisher.py -> /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input
+[1.982s] byte-compiling /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input/imu_publisher.py to imu_publisher.cpython-312.pyc
+[1.984s] running install_data
+[1.984s] running install_egg_info
+[2.011s] removing '/home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input-0.0.0-py3.12.egg-info' (and everything under it)
+[2.011s] Copying ../../build/test_input/test_input.egg-info to /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages/test_input-0.0.0-py3.12.egg-info
+[2.012s] running install_scripts
+[2.189s] Installing gps_subscriber script to /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input
+[2.190s] Installing imu script to /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input
+[2.191s] Installing object_detector script to /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input
+[2.191s] Installing object_selector script to /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input
+[2.192s] Installing water_sensor script to /home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/test_input
+[2.193s] writing list of installed files to '/home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/install.log'
+[2.300s] Invoked command in '/home/pi1/cleaningoceanplastics/ros2_ws/src/test_input' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi1/cleaningoceanplastics/ros2_ws/install/test_input/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/test_input build --build-base /home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/build install --record /home/pi1/cleaningoceanplastics/ros2_ws/build/test_input/install.log --single-version-externally-managed install_data
