@@ -53,9 +53,9 @@ class IMU(Node):
         ACCx = readACCx()
         ACCy = readACCy()
         ACCz = readACCz()
-        GYRx = readGYRx() 
-        GYRy = readGYRy() 
-        GYRz = readGYRz() 
+        GYRx = readGYRx() - self.biasx
+        GYRy = readGYRy() - self.biasy
+        GYRz = readGYRz() - self.biasz
         MAGx = readMAGx()
         MAGy = readMAGy()
         MAGz = readMAGz()
@@ -67,9 +67,9 @@ class IMU(Node):
         outputString = "Loop Time %5.2f " % ( LP )
 
         #Convert Gyro raw to degrees per second
-        rate_gyr_x =  GYRx * G_GAIN - self.biasx
-        rate_gyr_y =  GYRy * G_GAIN - self.biasy
-        rate_gyr_z =  GYRz * G_GAIN - self.biasz
+        rate_gyr_x =  GYRx * G_GAIN
+        rate_gyr_y =  GYRy * G_GAIN
+        rate_gyr_z =  GYRz * G_GAIN
 
         #Calculate the angles from the gyro.
         self.gyroXangle+=rate_gyr_x*LP
@@ -134,7 +134,7 @@ class IMU(Node):
             CF_heading += 360
         elif CF_heading > 360:
             CF_heading -= 360
-        self.biasz = B*(CF_heading-gyr_heading)
+        self.biasz += B*(CF_heading-gyr_heading)/LP/G_GAIN
         self.prev_gyr_heading = gyr_heading #should this update to the CF heading? or just always keep the gyro heading?
 
 
@@ -142,7 +142,7 @@ class IMU(Node):
             outputString += "#  ACCX Angle %5.2f ACCY Angle %5.2f  #  " % (AccXangle, AccYangle)
 
         if 1:                       #Change to '0' to stop  showing the angles from the gyro
-            outputString +="\t#  GYRZ Rate %5.2f Bias %5.2f# " % (rate_gyr_z, self.biasz)
+            outputString +="\t#  GYRZ Rate %5.2f Bias %5.2f# " % (rate_gyr_z, self.biasz*G_GAIN)
 
         if 0:                       #Change to '0' to stop  showing the angles from the complementary filter
             outputString +="\t#  CFangleX Angle %5.2f   CFangleY Angle %5.2f  #" % (self.CFangleX,self.CFangleY)
@@ -167,9 +167,9 @@ class IMU(Node):
         biasy = 0
         biasz = 0
         for i in range(readings):
-            biasx += readGYRx()*G_GAIN
-            biasy += readGYRy()*G_GAIN
-            biasz += readGYRz()*G_GAIN
+            biasx += readGYRx()
+            biasy += readGYRy()
+            biasz += readGYRz()
             time.sleep(0.001)
         
         self.biasx = biasx/readings
