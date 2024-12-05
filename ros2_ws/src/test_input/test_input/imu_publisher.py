@@ -40,7 +40,10 @@ class IMU(Node):
 
         self.get_logger().info("IMU initialized...")
 
-        self.prev_gyr_heading = 180 * math.atan2(readMAGy,readMAGx())/M_PI
+        init_magX = readMAGx()
+        init_magY = readMAGy()
+        print(init_magX,init_magY)
+        self.prev_gyr_heading = 180 * math.atan2(init_magY,init_magX)/M_PI
    
     def get_data(self):
         #Read the accelerometer,gyroscope and magnetometer values
