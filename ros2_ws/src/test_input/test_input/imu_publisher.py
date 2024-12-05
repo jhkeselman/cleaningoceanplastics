@@ -134,7 +134,7 @@ class IMU(Node):
             CF_heading += 360
         elif CF_heading > 360:
             CF_heading -= 360
-        self.biasz += B*(CF_heading-gyr_heading)/LP/G_GAIN
+        #self.biasz += B*(CF_heading-gyr_heading)/LP/G_GAIN
         self.prev_gyr_heading = gyr_heading #should this update to the CF heading? or just always keep the gyro heading?
 
 
