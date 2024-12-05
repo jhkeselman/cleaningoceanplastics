@@ -22,7 +22,7 @@ class IMU(Node):
     def __init__(self):
         super().__init__('imu')
         self.publisher_ = self.create_publisher(String, 'topic', 10)
-        timer_period = 0.5  # seconds
+        timer_period = 0.25  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.i = 0
         self.gyroXangle = 0.0
@@ -95,6 +95,7 @@ class IMU(Node):
 
         #Only have our heading between 0 and 360
         if heading < 0:
+            print("negative")
             heading += 360
 
         ####################################################################
@@ -142,7 +143,7 @@ class IMU(Node):
             outputString += "#  ACCX Angle %5.2f ACCY Angle %5.2f  #  " % (AccXangle, AccYangle)
 
         if 1:                       #Change to '0' to stop  showing the angles from the gyro
-            outputString +="\t#  GYRZ Rate %5.2f Bias %5.2f# " % (rate_gyr_z, self.biasz*G_GAIN)
+            outputString +="\t#  GYRX Rate %5.2f GYRY Rate %5.2f GYRZ Rate %5.2f Bias %5.2f# " % (rate_gyr_x, rate_gyr_y, rate_gyr_z, self.biasz*G_GAIN)
 
         if 0:                       #Change to '0' to stop  showing the angles from the complementary filter
             outputString +="\t#  CFangleX Angle %5.2f   CFangleY Angle %5.2f  #" % (self.CFangleX,self.CFangleY)
