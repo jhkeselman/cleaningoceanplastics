@@ -41,7 +41,7 @@ class IMU(Node):
 
         self.get_logger().info("IMU initialized...")
 
-        self.calibrate()
+        self.calibrate(500)
         print(self.biasx,self.biasy,self.biasz)
 
         init_magX = readMAGx()
@@ -129,11 +129,13 @@ class IMU(Node):
 
         gyr_heading = self.prev_gyr_heading + rate_gyr_z*LP
         K = 0.9
+        B = 0.001
         CF_heading = K*gyr_heading + (1-K)*heading
         if CF_heading < 0:
             CF_heading += 360
         elif CF_heading > 360:
             CF_heading -= 360
+        self.biasz = B*(CF_heading-gyr_heading)
         self.prev_gyr_heading = gyr_heading #should this update to the CF heading? or just always keep the gyro heading?
 
 
