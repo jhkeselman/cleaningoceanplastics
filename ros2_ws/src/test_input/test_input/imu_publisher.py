@@ -6,6 +6,7 @@ from std_msgs.msg import String
 import math
 import datetime
 import sys
+import time
 
 # sys.path.append('./test_input/test_input/')
 
@@ -40,6 +41,9 @@ class IMU(Node):
 
         self.get_logger().info("IMU initialized...")
 
+        self.calibrate()
+        print(self.biasx,self.biasy,self.biasz)
+
         init_magX = readMAGx()
         init_magY = readMAGy()
         print(init_magX,init_magY)
@@ -50,9 +54,9 @@ class IMU(Node):
         ACCx = readACCx()
         ACCy = readACCy()
         ACCz = readACCz()
-        GYRx = readGYRx()
-        GYRy = readGYRy()
-        GYRz = readGYRz()
+        GYRx = readGYRx() - self.biasx
+        GYRy = readGYRy() - self.biasy
+        GYRz = readGYRz() - self.biasz
         MAGx = readMAGx()
         MAGy = readMAGy()
         MAGz = readMAGz()
@@ -156,6 +160,24 @@ class IMU(Node):
         self.publisher_.publish(msg)
         self.get_logger().info('Publishing: "%s"' % msg.data)
         self.i += 1
+
+    def calibrate(self,readings):
+        biasx = 0
+        biasy = 0
+        biasz = 0
+        for i in range(readings):
+            biasx += readGYRx()
+            biasy += readGYRy()
+            biasz += readGYRz()
+            time.sleep(0.001)
+        
+        self.biasx = biasx/readings
+        self.biasy = biasy/readings
+        self.biasz = biasz/readings
+
+
+        
+
 
 
 def main(args=None):
