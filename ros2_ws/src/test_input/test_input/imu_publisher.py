@@ -125,17 +125,21 @@ class IMU(Node):
 
         gyr_heading = self.prev_gyr_heading + rate_gyr_z*LP
         K = 0.9
-        CF_heading = K*gyr_heading + (1-K)*tiltCompensatedHeading
+        CF_heading = K*gyr_heading + (1-K)*heading
+        if CF_heading < 0:
+            CF_heading += 360
+        elif CF_heading > 360:
+            CF_heading -= 360
         self.prev_gyr_heading = gyr_heading #should this update to the CF heading? or just always keep the gyro heading?
 
 
         if 0:                       #Change to '0' to stop showing the angles from the accelerometer
             outputString += "#  ACCX Angle %5.2f ACCY Angle %5.2f  #  " % (AccXangle, AccYangle)
 
-        if 0:                       #Change to '0' to stop  showing the angles from the gyro
+        if 1:                       #Change to '0' to stop  showing the angles from the gyro
             outputString +="\t# GRYX Angle %5.2f  GYRY Angle %5.2f  GYRZ Angle %5.2f # " % (self.gyroXangle,self.gyroYangle,self.gyroZangle)
 
-        if 1:                       #Change to '0' to stop  showing the angles from the complementary filter
+        if 0:                       #Change to '0' to stop  showing the angles from the complementary filter
             outputString +="\t#  CFangleX Angle %5.2f   CFangleY Angle %5.2f  #" % (self.CFangleX,self.CFangleY)
 
         if 1:                       #Change to '0' to stop  showing the heading
