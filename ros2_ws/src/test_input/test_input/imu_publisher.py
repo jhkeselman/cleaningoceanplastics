@@ -53,9 +53,9 @@ class IMU(Node):
         ACCx = readACCx()
         ACCy = readACCy()
         ACCz = readACCz()
-        GYRx = readGYRx() - self.biasx
-        GYRy = readGYRy() - self.biasy
-        GYRz = readGYRz() - self.biasz
+        GYRx = readGYRx()
+        GYRy = readGYRy()
+        GYRz = readGYRz()
         MAGx = readMAGx()
         MAGy = readMAGy()
         MAGz = readMAGz()
@@ -143,7 +143,7 @@ class IMU(Node):
             outputString += "#  ACCX Angle %5.2f ACCY Angle %5.2f  #  " % (AccXangle, AccYangle)
 
         if 1:                       #Change to '0' to stop  showing the angles from the gyro
-            outputString +="\t#  GYRX Rate %5.2f GYRY Rate %5.2f GYRZ Rate %5.2f Bias %5.2f# " % (rate_gyr_x, rate_gyr_y, rate_gyr_z, self.biasz*G_GAIN)
+            outputString +="#  GYRX Rate %5.2f GYRY Rate %5.2f GYRZ Rate %5.2f Bias %5.2f# " % (rate_gyr_x, rate_gyr_y, rate_gyr_z, self.biasz*G_GAIN)
 
         if 0:                       #Change to '0' to stop  showing the angles from the complementary filter
             outputString +="\t#  CFangleX Angle %5.2f   CFangleY Angle %5.2f  #" % (self.CFangleX,self.CFangleY)

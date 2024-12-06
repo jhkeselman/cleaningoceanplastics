@@ -6,6 +6,7 @@ from std_msgs.msg import String
 import math
 import datetime
 import sys
+import time
 
 # sys.path.append('./test_input/test_input/')
 
@@ -21,7 +22,7 @@ class IMU(Node):
     def __init__(self):
         super().__init__('imu')
         self.publisher_ = self.create_publisher(String, 'topic', 10)
-        timer_period = 0.5  # seconds
+        timer_period = 0.25  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.i = 0
         self.gyroXangle = 0.0
@@ -39,15 +40,22 @@ class IMU(Node):
         self.a = datetime.datetime.now()
 
         self.get_logger().info("IMU initialized...")
+
+        self.calibrate(500)
+        print(self.biasz)
+
+        init_magX = readMAGx()
+        init_magY = readMAGy()
+        self.prev_gyr_heading = 180 * math.atan2(init_magY,init_magX)/M_PI
    
     def get_data(self):
         #Read the accelerometer,gyroscope and magnetometer values
         ACCx = readACCx()
         ACCy = readACCy()
         ACCz = readACCz()
-        GYRx = readGYRx()
-        GYRy = readGYRy()
-        GYRz = readGYRz()
+        GYRx = readGYRx() - self.biasx
+        GYRy = readGYRy() - self.biasy
+        GYRz = readGYRz() - self.biasz
         MAGx = readMAGx()
         MAGy = readMAGy()
         MAGz = readMAGz()
@@ -87,6 +95,7 @@ class IMU(Node):
 
         #Only have our heading between 0 and 360
         if heading < 0:
+            print("negative")
             heading += 360
 
         ####################################################################
@@ -114,18 +123,36 @@ class IMU(Node):
 
         ##################### END Tilt Compensation ########################
 
+        '''
+        Fusing gyroscope and magnetometer data
+        '''
+
+        gyr_heading = self.prev_gyr_heading + rate_gyr_z*LP
+        K = 0.9
+        B = 0.001
+        CF_heading = K*gyr_heading + (1-K)*heading
+        if CF_heading < 0:
+            CF_heading += 360
+        elif CF_heading > 360:
+            CF_heading -= 360
+        #self.biasz += B*(CF_heading-gyr_heading)/LP/G_GAIN
+        self.prev_gyr_heading = gyr_heading #should this update to the CF heading? or just always keep the gyro heading?
+
 
         if 0:                       #Change to '0' to stop showing the angles from the accelerometer
             outputString += "#  ACCX Angle %5.2f ACCY Angle %5.2f  #  " % (AccXangle, AccYangle)
 
-        if 0:                       #Change to '0' to stop  showing the angles from the gyro
-            outputString +="\t# GRYX Angle %5.2f  GYRY Angle %5.2f  GYRZ Angle %5.2f # " % (gyroXangle,gyroYangle,gyroZangle)
+        if 1:                       #Change to '0' to stop  showing the angles from the gyro
+            outputString +="#  GYRX Rate %5.2f GYRY Rate %5.2f GYRZ Rate %5.2f Bias %5.2f# " % (rate_gyr_x, rate_gyr_y, rate_gyr_z, self.biasz*G_GAIN)
 
-        if 1:                       #Change to '0' to stop  showing the angles from the complementary filter
+        if 0:                       #Change to '0' to stop  showing the angles from the complementary filter
             outputString +="\t#  CFangleX Angle %5.2f   CFangleY Angle %5.2f  #" % (self.CFangleX,self.CFangleY)
 
         if 1:                       #Change to '0' to stop  showing the heading
             outputString +="\t# HEADING %5.2f  tiltCompensatedHeading %5.2f #" % (heading,tiltCompensatedHeading)
+
+        if 1:                       #Change to '0' to stop  showing the heading
+            outputString +="\n# CFHeading %5.2f #" % (CF_heading)
 
         return outputString
 
@@ -135,6 +162,24 @@ class IMU(Node):
         self.publisher_.publish(msg)
         self.get_logger().info('Publishing: "%s"' % msg.data)
         self.i += 1
+
+    def calibrate(self,readings):
+        biasx = 0
+        biasy = 0
+        biasz = 0
+        for i in range(readings):
+            biasx += readGYRx()
+            biasy += readGYRy()
+            biasz += readGYRz()
+            time.sleep(0.001)
+        
+        self.biasx = biasx/readings
+        self.biasy = biasy/readings
+        self.biasz = biasz/readings
+
+
+        
+
 
 
 def main(args=None):
