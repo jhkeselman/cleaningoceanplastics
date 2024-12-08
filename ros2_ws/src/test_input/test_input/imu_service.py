@@ -44,8 +44,8 @@ class IMUService(Node):
         # self.calibrate(500)
         # print(self.biasz)
 
-        # init_magX = readMAGx()
-        # init_magY = readMAGy()
+        init_magX = readMAGx()
+        init_magY = readMAGy()
         self.prev_gyr_heading = 180 * math.atan2(init_magY,init_magX)/M_PI
 
     def timer_callback(self):
