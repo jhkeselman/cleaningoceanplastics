@@ -38,13 +38,15 @@ class IMUService(Node):
 
         #self.calibrate(500)
         self.biasz = 0.0
-        print(self.biasz)
 
         init_magX = readMAGx()
         init_magY = readMAGy()
         self.gyroXangle = 0.0
         self.gyroYangle = 0.0
-        self.gyroZangle = 180 * math.atan2(init_magY,init_magX)/M_PI
+        init_heading = 180 * math.atan2(init_magY,init_magX)/M_PI
+        if init_heading < 0:
+            init_heading += 360
+        self.gyroZangle = init_heading
         print(self.gyroZangle)
         self.CFangleX = 0.0
         self.CFangleY = 0.0
