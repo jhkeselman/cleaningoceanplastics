@@ -24,10 +24,11 @@ setup(
     entry_points={
         'console_scripts': [
             'water_sensor = test_input.water_sensor:main',
-            'imu = test_input.imu_publisher:main',
+            'imu_pub = test_input.imu_publisher:main',
             'object_detector = test_input.object_detector:main',
             'object_selector = test_input.object_selector:main',
-            'gps_subscriber = test_input.gps_subscriber:main'
+            'gps_subscriber = test_input.gps_subscriber:main',
+            'imu_srv = test_input.imu_service:main'
         ],
     },
 )
