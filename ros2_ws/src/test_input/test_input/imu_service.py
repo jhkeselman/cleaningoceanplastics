@@ -36,8 +36,8 @@ class IMUService(Node):
 
         self.get_logger().info("IMU initialized...")
 
-        # self.calibrate(500)
-        # print(self.biasz)
+        self.calibrate(500)
+        print(self.biasz)
 
         init_magX = readMAGx()
         init_magY = readMAGy()
@@ -133,8 +133,22 @@ class IMUService(Node):
             CF_heading += 360
         elif CF_heading > 360:
             CF_heading -= 360
-        #self.biasz += B*(CF_heading-gyr_heading)/LP/G_GAIN
-        print(CF_heading)
+        self.biasz += B*(CF_heading-self.gyroZangle)
+        print(CF_heading, self.biasz)
+
+    def calibrate(self,readings):
+        biasx = 0
+        biasy = 0
+        biasz = 0
+        for i in range(readings):
+            biasx += readGYRx() * G_GAIN * 0.001
+            biasy += readGYRy() * G_GAIN * 0.001
+            biasz += readGYRz() * G_GAIN * 0.001
+            time.sleep(0.001)
+        
+        self.biasx = biasx/readings
+        self.biasy = biasy/readings
+        self.biasz = biasz/readings
 
     def get_heading_callback(self, response):
         response = self.heading #UPDATE
