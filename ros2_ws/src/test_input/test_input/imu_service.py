@@ -36,7 +36,8 @@ class IMUService(Node):
 
         self.get_logger().info("IMU initialized...")
 
-        self.calibrate(500)
+        #self.calibrate(500)
+        self.biasz = 0.0
         print(self.biasz)
 
         init_magX = readMAGx()
@@ -44,6 +45,7 @@ class IMUService(Node):
         self.gyroXangle = 0.0
         self.gyroYangle = 0.0
         self.gyroZangle = 180 * math.atan2(init_magY,init_magX)/M_PI
+        print(self.gyroZangle)
         self.CFangleX = 0.0
         self.CFangleY = 0.0
         self.heading = 0.0
