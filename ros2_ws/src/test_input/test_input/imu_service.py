@@ -128,7 +128,7 @@ class IMUService(Node):
 
         K = 0.9
         B = 0.001
-        CF_heading = K*self.gyroZangle+ (1-K)*heading
+        CF_heading = K*(self.gyroZangle-self.biasz)+ (1-K)*heading
         if CF_heading < 0:
             CF_heading += 360
         elif CF_heading > 360:
@@ -141,10 +141,10 @@ class IMUService(Node):
         biasy = 0
         biasz = 0
         for i in range(readings):
-            biasx += readGYRx() * G_GAIN * 0.001
-            biasy += readGYRy() * G_GAIN * 0.001
-            biasz += readGYRz() * G_GAIN * 0.001
-            time.sleep(0.001)
+            biasx += readGYRx() * G_GAIN * 0.02
+            biasy += readGYRy() * G_GAIN * 0.02
+            biasz += readGYRz() * G_GAIN * 0.02
+            time.sleep(0.02)
         
         self.biasx = biasx/readings
         self.biasy = biasy/readings
