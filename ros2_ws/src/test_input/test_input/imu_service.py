@@ -46,7 +46,7 @@ class IMUService(Node):
 
         # init_magX = readMAGx()
         # init_magY = readMAGy()
-        # self.prev_gyr_heading = 180 * math.atan2(init_magY,init_magX)/M_PI
+        self.prev_gyr_heading = 180 * math.atan2(init_magY,init_magX)/M_PI
 
     def timer_callback(self):
         #Read the accelerometer,gyroscope and magnetometer values
