@@ -24,12 +24,7 @@ class IMUService(Node):
         self.srv = self.create_service(IMUData, 'get_heading', self.get_heading_callback)
         timer_period = 0.02
         self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.gyroXangle = 0.0
-        self.gyroYangle = 0.0
-        self.gyroZangle = 0.0
-        self.CFangleX = 0.0
-        self.CFangleY = 0.0
-        self.heading = 0.0
+        
 
         # Initialize IMU
         detectIMU()     #Detect if BerryIMU is connected.
@@ -46,7 +41,12 @@ class IMUService(Node):
 
         init_magX = readMAGx()
         init_magY = readMAGy()
-        self.prev_gyr_heading = 180 * math.atan2(init_magY,init_magX)/M_PI
+        self.gyroXangle = 0.0
+        self.gyroYangle = 0.0
+        self.gyroZangle = 180 * math.atan2(init_magY,init_magX)/M_PI
+        self.CFangleX = 0.0
+        self.CFangleY = 0.0
+        self.heading = 0.0
 
     def timer_callback(self):
         #Read the accelerometer,gyroscope and magnetometer values
@@ -126,17 +126,15 @@ class IMUService(Node):
         Fusing gyroscope and magnetometer data
         '''
 
-        gyr_heading = self.prev_gyr_heading + rate_gyr_z*LP
-        print(gyr_heading)
         K = 0.9
         B = 0.001
-        CF_heading = K*gyr_heading + (1-K)*heading
+        CF_heading = K*self.gyroZangle+ (1-K)*heading
         if CF_heading < 0:
             CF_heading += 360
         elif CF_heading > 360:
             CF_heading -= 360
         #self.biasz += B*(CF_heading-gyr_heading)/LP/G_GAIN
-        self.prev_gyr_heading = gyr_heading #should this update to the CF heading? or just always keep the gyro heading?
+        print(CF_heading)
 
     def get_heading_callback(self, response):
         response = self.heading #UPDATE
