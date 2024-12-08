@@ -59,6 +59,7 @@ class IMU(Node):
         MAGx = readMAGx()
         MAGy = readMAGy()
         MAGz = readMAGz()
+        print(GYRz)
 
         ##Calculate loop Period(LP). How long between Gyro Reads
         b = datetime.datetime.now() - self.a
