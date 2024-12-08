@@ -59,7 +59,6 @@ class IMUService(Node):
         MAGx = readMAGx()
         MAGy = readMAGy()
         MAGz = readMAGz()
-        print(GYRz)
 
         ##Calculate loop Period(LP). How long between Gyro Reads
         b = datetime.datetime.now() - self.a
@@ -96,7 +95,6 @@ class IMUService(Node):
 
         #Only have our heading between 0 and 360
         if heading < 0:
-            print("negative")
             heading += 360
 
         ####################################################################
@@ -129,6 +127,7 @@ class IMUService(Node):
         '''
 
         gyr_heading = self.prev_gyr_heading + rate_gyr_z*LP
+        print(gyr_heading)
         K = 0.9
         B = 0.001
         CF_heading = K*gyr_heading + (1-K)*heading
