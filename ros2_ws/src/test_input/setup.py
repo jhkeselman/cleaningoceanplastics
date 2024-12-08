@@ -1,4 +1,5 @@
 from setuptools import find_packages, setup
+from glob import glob
 
 package_name = 'test_input'
 
@@ -10,6 +11,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/launch', glob('launch/*.py')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -27,7 +29,7 @@ setup(
             'imu = test_input.imu_publisher:main',
             'object_detector = test_input.object_detector:main',
             'object_selector = test_input.object_selector:main',
-            'gps_subscriber = test_input.gps_subscriber:main'
+            'control = test_input.control:main'
         ],
     },
 )
