@@ -139,7 +139,7 @@ class IMUService(Node):
         #self.biasz += B*(CF_heading-gyr_heading)/LP/G_GAIN
         self.prev_gyr_heading = gyr_heading #should this update to the CF heading? or just always keep the gyro heading?
 
-    def getheading_callback(self, response):
+    def get_heading_callback(self, response):
         response = self.heading #UPDATE
         self.get_logger().info('Incoming request')
 
