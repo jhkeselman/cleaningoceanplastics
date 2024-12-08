@@ -1,5 +1,5 @@
-import smbus
-bus = smbus.SMBus(1)
+import smbus2
+bus = smbus2.SMBus(1)
 from .LSM6DSL import *
 from .LIS3MDL import *
 import time

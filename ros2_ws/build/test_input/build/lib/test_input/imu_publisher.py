@@ -53,12 +53,13 @@ class IMU(Node):
         ACCx = readACCx()
         ACCy = readACCy()
         ACCz = readACCz()
-        GYRx = readGYRx() - self.biasx
-        GYRy = readGYRy() - self.biasy
-        GYRz = readGYRz() - self.biasz
+        GYRx = readGYRx()
+        GYRy = readGYRy()
+        GYRz = readGYRz()
         MAGx = readMAGx()
         MAGy = readMAGy()
         MAGz = readMAGz()
+        print(GYRz)
 
         ##Calculate loop Period(LP). How long between Gyro Reads
         b = datetime.datetime.now() - self.a
