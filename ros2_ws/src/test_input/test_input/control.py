@@ -32,9 +32,8 @@ class Control(Node):
     def detect_water(self, msg):
         if(msg.data):
             #Shutdown everything
-            self.get_logger().warn("Emergency Stop Received! Shutting down all nodes...")
-            os.system('ros2 lifecycle set / all shutdown')  # For managed nodes
-            os.system('killall -9 ros2')
+            self.get_logger().warn("Emergency Stop Received! Shutting down the system...")
+            os.system('sudo shutdown now')
     
     '''
     Update the x, y, z position of the robot
