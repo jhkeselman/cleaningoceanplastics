@@ -150,7 +150,7 @@ class IMUService(Node):
         elif CF_heading > 360:
             CF_heading -= 360
         self.biasz += B*(CF_heading-self.gyroZangle)
-        self.heading = CF_heading
+        self.heading = tiltCompensatedHeading
         print("#  CFheading Angle %5.2f   Gyro Angle %5.2f  Bias %5.2f  Mag %5.2f#" % (CF_heading, self.gyroZangle, self.biasz, tiltCompensatedHeading))
 
     def calibrate(self,readings):
