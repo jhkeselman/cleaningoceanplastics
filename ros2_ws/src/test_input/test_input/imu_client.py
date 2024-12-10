@@ -26,7 +26,7 @@ def main(args=None):
     imu_client = IMUClient()
     response = imu_client.send_request()
     imu_client.get_logger().info(
-        'IMU Heading %5.3f:',response.heading)
+        'IMU Heading %5.3f:' %response.heading)
 
     imu_client.destroy_node()
     rclpy.shutdown()
