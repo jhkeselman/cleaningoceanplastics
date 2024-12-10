@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 
-from std_msgs.msg import String
+from std_msgs.msg import Float64MultiArray
 
 import math
 import datetime
@@ -21,7 +21,7 @@ class IMU(Node):
 
     def __init__(self):
         super().__init__('imu')
-        self.publisher_ = self.create_publisher(String, 'topic', 10)
+        self.publisher_ = self.create_publisher(Float64MultiArray, 'imu', 10)
         timer_period = 0.25  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.i = 0
@@ -151,17 +151,17 @@ class IMU(Node):
 
         if 1:                       #Change to '0' to stop  showing the heading
             outputString +="\t# HEADING %5.2f  tiltCompensatedHeading %5.2f #" % (heading,tiltCompensatedHeading)
-
         if 1:                       #Change to '0' to stop  showing the heading
             outputString +="\n# CFHeading %5.2f #" % (CF_heading)
 
-        return outputString
+        # return outputString
+        return [self.CFangleX, self.CFangleY, heading]
 
     def timer_callback(self):
-        msg = String()
+        msg = Float64MultiArray()
         msg.data = self.get_data() 
         self.publisher_.publish(msg)
-        self.get_logger().info('Publishing: "%s"' % msg.data)
+        #self.get_logger().info('Publishing: "%s"' % msg.data)
         self.i += 1
 
     def calibrate(self,readings):

@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 
-from std_msgs.msg import String
+from std_msgs.msg import Bool
 
 from gpiozero import DigitalInputDevice
 
@@ -9,7 +9,7 @@ class WaterSensor(Node):
 
     def __init__(self):
         super().__init__('water_sensor')
-        self.publisher_ = self.create_publisher(String, 'topic', 10)
+        self.publisher_ = self.create_publisher(Bool, 'water_detected', 10)
         timer_period = 0.5  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.i = 0
@@ -17,6 +17,7 @@ class WaterSensor(Node):
         # Initialize water sensor
         SENSOR_GPIO = 27
         self.sensor = DigitalInputDevice(SENSOR_GPIO)
+        self.prev = False
 
         self.get_logger().info("Water sensor initialized...")
    
@@ -25,18 +26,21 @@ class WaterSensor(Node):
             # Read the sensor state
             sensor_state = self.sensor.value  # 1 if HIGH, 0 if LOW
             if sensor_state == 1:
-                return "Water detected"
+                return True
             else:
-                return "No water detected"
+                return False
         except Exception as e:
-            return "An error occurred while reading the sensor: {e}"
+            return True # False positive
 
     def timer_callback(self):
-        msg = String()
-        msg.data = self.get_data() 
-        self.publisher_.publish(msg)
-        self.get_logger().info('Publishing: "%s"' % msg.data)
-        self.i += 1
+        status = self.get_data()
+        if status != self.prev:
+            msg = Bool()
+            msg.data = status
+            self.publisher_.publish(msg)
+            self.get_logger().info('Publishing: "%s"' % msg.data)
+            self.i += 1
+            self.prev = status
 
 
 def main(args=None):
