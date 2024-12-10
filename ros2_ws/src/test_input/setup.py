@@ -28,7 +28,8 @@ setup(
             'object_detector = test_input.object_detector:main',
             'object_selector = test_input.object_selector:main',
             'gps_subscriber = test_input.gps_subscriber:main',
-            'imu_srv = test_input.imu_service:main'
+            'imu_srv = test_input.imu_service:main',
+            'imu_cli = test_input.imu_client:main'
         ],
     },
 )
