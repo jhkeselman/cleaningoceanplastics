@@ -155,6 +155,7 @@ class IMUService(Node):
         self.biasz = biasz/readings
 
     def get_heading_callback(self, request, response):
+        print(type(self.heading))
         response = self.heading #UPDATE
         self.get_logger().info('Incoming request')
 
