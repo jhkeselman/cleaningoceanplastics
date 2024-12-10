@@ -9,7 +9,7 @@ class IMUClient(Node):
 
     def __init__(self):
         super().__init__('imu_client')
-        self.cli = self.create_client(IMUData, 'read_imu')
+        self.cli = self.create_client(IMUData, 'get_heading')
         while not self.cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
         self.req = IMUData.Request()
