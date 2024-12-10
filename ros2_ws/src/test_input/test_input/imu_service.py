@@ -52,6 +52,14 @@ class IMUService(Node):
         self.CFangleY = 0.0
         self.heading = 0.0
 
+        self.magXmin = 309
+        self.magYmin = -2350
+        self.magZmin = -1496
+        self.magXmax = 2684
+        self.magYmax = 753
+        self.magZmax = 1770
+
+
     def timer_callback(self):
         #Read the accelerometer,gyroscope and magnetometer values
         ACCx = readACCx()
@@ -63,6 +71,10 @@ class IMUService(Node):
         MAGx = readMAGx()
         MAGy = readMAGy()
         MAGz = readMAGz()
+
+        MAGx -= (self.magXmin + self.magXmax) /2
+        MAGy -= (self.magYmin + self.magYmax) /2
+        MAGz -= (self.magZmin + self.magZmax) /2
 
         ##Calculate loop Period(LP). How long between Gyro Reads
         b = datetime.datetime.now() - self.a
