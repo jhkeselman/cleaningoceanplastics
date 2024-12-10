@@ -156,7 +156,7 @@ class IMUService(Node):
 
     def get_heading_callback(self, request, response):
         print(type(self.heading))
-        response = self.heading #UPDATE
+        response.heading = self.heading #UPDATE
         self.get_logger().info('Incoming request')
 
         return response
