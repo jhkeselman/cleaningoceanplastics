@@ -15,7 +15,14 @@ class Control(Node):
         # Subscriber for water sensor
         self.create_subscription(Bool, 'water_detected', self.detect_water, 10)
         self.create_subscription(NavSatFix, 'fix', self.update_position, 10)
-        self.create_subscription(Float64MultiArray, 'imu', self.update_tilt, 10)
+        # self.create_subscription(Float64MultiArray, 'imu', self.update_tilt, 10)
+        self.cli = self.create_client(IMUData, 'get_heading')
+        while not self.cli.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('Service not available, waiting again...')
+        self.req = IMUData.Request()
+
+        # Create a timer to send requests every 5-10 seconds
+        self.timer = self.create_timer(5.0, self.timer_callback)
 
         # Initialize variables
         self.longitude = 0.0
@@ -45,16 +52,34 @@ class Control(Node):
         self.longitude = msg.longitude
         self.altitude = msg.altitude
     
-    '''
-    Update the x, y, z angle of the robot
-    '''
-    def update_tilt(self, msg):
-        self.xAngle = msg.data[0]
-        self.yAngle = msg.data[1]
-        self.heading = msg.data[2]
+    # '''
+    # Update the x, y, z angle of the robot
+    # '''
+    # def update_tilt(self, msg):
+    #     self.xAngle = msg.data[0]
+    #     self.yAngle = msg.data[1]
+    #     self.heading = msg.data[2]
 
-        
+    '''
+    Runs on 5 second timer to update heading
+    '''
+    def timer_callback(self):
+        # Callback to send a request periodically
+        self.future = self.cli.call_async(self.req)
+        self.future.add_done_callback(self.response_callback)
 
+    '''
+    Performs and displays the heading update
+    '''
+    def response_callback(self, future):
+        try:
+            response = future.result()
+            self.get_logger().info(
+            'IMU Heading: %5.3f, Latitude: %5.6f, Longitude: %5.6f, Altitude: %5.2f' %
+            (response.heading, self.latitude, self.longitude, self.altitude)
+        )
+        except Exception as e:
+            self.get_logger().error('Service call failed: %r' % (e,))
 
 def main(args=None):
     rclpy.init(args=args)
