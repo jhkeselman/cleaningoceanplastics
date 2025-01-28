@@ -8,7 +8,7 @@ class MotorControllerNode(Node):
     def __init__(self):
 
         super().__init__('motor_controller')
-        
+
         # Replace these with the actual GPIO pin numbers
         self.GPIO_PIN_LEFT = 24  # Actually on the right side
         self.GPIO_PIN_RIGHT = 26  # Actually on the left side
@@ -23,7 +23,7 @@ class MotorControllerNode(Node):
 
     #takes in an array with two floats, the first of which is the power (0.0-1.0) of the left motor and the second of which is the power (0.0-1.0) of the right motor
     def set_motor_velocity(self, msg):
-        self.set_motor_speeds(min(0.0, max(msg.value.data[0], 1.0)), min(0.0, max(msg.value.data[1], 1.0)))
+        self.set_motor_speeds(min(0.0, max(msg.value.data[0], 1.0)), min(0.0, max(msg.data[1], 1.0)))
 
     def set_motor_speeds(self, left_speed, right_speed):
         # Map the speeds to the PWM range
