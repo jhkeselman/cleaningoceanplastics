@@ -19,6 +19,10 @@ class MotorControllerNode(Node):
         self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=0, frequency=100)
         self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=0, frequency=100)
 
+        self.left_motor.on()
+        self.right_motor.on()
+
+
         self.motor_subscription = self.create_subscription(Float64MultiArray, 'set_motor_vels', self.set_motor_velocity, 10)
 
     #takes in an array with two floats, the first of which is the power (0.0-1.0) of the left motor and the second of which is the power (0.0-1.0) of the right motor
@@ -36,7 +40,7 @@ class MotorControllerNode(Node):
         print(right_speed)
         left_pwm = self.map_speed_to_pwm(left_speed, 'left')  # Speed increases with decreasing PWM
         right_pwm = self.map_speed_to_pwm(right_speed, 'right')  # Speed increases with increasing PWM
-        
+
         # Set the PWM duty cycle for each motor
         self.left_motor.value = left_pwm
         self.right_motor.value = right_pwm
