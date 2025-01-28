@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import FLoat64MultiArray
+from std_msgs.msg import Float64MultiArray
 from simple_pid import PID
 from gpiozero import PWMOutputDevice
 
