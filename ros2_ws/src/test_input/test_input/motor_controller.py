@@ -14,7 +14,7 @@ class MotorControllerNode(Node):
         self.GPIO_PIN_LEFT = 24  # Actually on the right side
         self.GPIO_PIN_RIGHT = 26  # Actually on the left side
         # Define the pulse width modulation ranges
-        self.MIN_PWM = 0.0  # gpiozero expects values between 0.0 and 1.0
+        self.MIN_PWM = 0.5  # gpiozero expects values between 0.0 and 1.0
         self.MAX_PWM = 1.0
         # Initialize the PWM output devices
         self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=0, frequency=100)
