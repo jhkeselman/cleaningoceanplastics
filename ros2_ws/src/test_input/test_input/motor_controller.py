@@ -68,11 +68,11 @@ class MotorControllerNode(Node):
             print("setting left pwm")
             print(speed)
             
-            return max(0.0, min(1.0, (speed * (self.MAX_PWM - 0))))
+            return max(0.0, min(1.0, (speed * (self.MAX_PWM - self.MIN_PWM))))
         elif motor == 'right':
             print("setting right pwm")
             print(speed)
-            return max(0.0, min(1.0, (speed * (self.MAX_PWM - 0)) + 0))
+            return max(0.0, min(1.0, (speed * (self.MAX_PWM - self.MIN_PWM)) + 0))
 
 
     def destroy_node(self):
