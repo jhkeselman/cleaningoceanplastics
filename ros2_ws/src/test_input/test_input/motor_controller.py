@@ -23,6 +23,9 @@ class MotorControllerNode(Node):
         self.left_motor.on()
         self.right_motor.on()
 
+        self.left_motor.off()
+        self.right_motor.off()
+
         # self.left_motor.value = 1.0
         # self.right_motor.value = 1.0
         # time.sleep(500)
