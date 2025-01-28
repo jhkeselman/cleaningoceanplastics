@@ -26,7 +26,7 @@ class MotorControllerNode(Node):
         print("Message recieved")
         print(msg.data[0])
         print(msg.data[1])
-        self.set_motor_speeds(min(0.0, max(msg.data[0], 1.0)), min(0.0, max(msg.data[1], 1.0)))
+        self.set_motor_speeds(min(1.0, max(msg.data[0], 0.0)), min(1.0, max(msg.data[1], 0.0)))
 
     def set_motor_speeds(self, left_speed, right_speed):
         # Map the speeds to the PWM range
