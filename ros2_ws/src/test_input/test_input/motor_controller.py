@@ -62,7 +62,7 @@ class MotorControllerNode(Node):
             # Scale the speed value (e.g., -1 to 1) to the PWM range
             print("setting left pwm")
             print(speed)
-            return max(0.0, min(1.0, 1 - (speed * (1 - self.MIN_PWM))))
+            return max(0.0, min(1.0, (speed * (self.MAX_PWM - 0))))
         elif motor == 'right':
             print("setting right pwm")
             print(speed)
