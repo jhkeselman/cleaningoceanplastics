@@ -23,10 +23,17 @@ class MotorControllerNode(Node):
 
     #takes in an array with two floats, the first of which is the power (0.0-1.0) of the left motor and the second of which is the power (0.0-1.0) of the right motor
     def set_motor_velocity(self, msg):
+        print("Message recieved")
+        print(msg.data[0])
+        print(msg.data[1])
         self.set_motor_speeds(min(0.0, max(msg.data[0], 1.0)), min(0.0, max(msg.data[1], 1.0)))
 
     def set_motor_speeds(self, left_speed, right_speed):
         # Map the speeds to the PWM range
+        print("left speed")
+        print(left_speed)
+        print("right speed")
+        print(right_speed)
         left_pwm = self.map_speed_to_pwm(left_speed, 'left')  # Speed increases with decreasing PWM
         right_pwm = self.map_speed_to_pwm(right_speed, 'right')  # Speed increases with increasing PWM
         
@@ -37,8 +44,10 @@ class MotorControllerNode(Node):
     def map_speed_to_pwm(self, speed, motor):
         if motor == 'left':
             # Scale the speed value (e.g., -1 to 1) to the PWM range
+            print("setting left")
             return max(0.0, min(1.0, 1 - (speed * (1 - self.MIN_PWM))))
         elif motor == 'right':
+            print("setting right")
             return max(0.0, min(1.0, (speed * (self.MAX_PWM - 0)) + 0))
 
 
