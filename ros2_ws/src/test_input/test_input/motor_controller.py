@@ -17,8 +17,8 @@ class MotorControllerNode(Node):
         self.MIN_PWM = 0.5  # gpiozero expects values between 0.0 and 1.0
         self.MAX_PWM = 1.0
         # Initialize the PWM output devices
-        self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=0, frequency=100)
-        self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=0, frequency=100)
+        self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, active_high=False, initial_value=0, frequency=100)
+        self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, active_high=False, initial_value=0, frequency=100)
 
         self.left_motor.on()
         self.right_motor.on()
