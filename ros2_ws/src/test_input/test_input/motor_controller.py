@@ -16,7 +16,7 @@ class MotorController(Node):
         self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=0, frequency=100)
         self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=0, frequency=100)
 
-        self.create_subscription(FLoat64MultiArray, 'set_motor_vels', self.set_motor_velocity, 10)
+        self.create_subscription(Float64MultiArray, 'set_motor_vels', self.set_motor_velocity, 10)
         super().__init__('motor_controller')
 
     #takes in an array with two floats, the first of which is the power (0.0-1.0) of the left motor and the second of which is the power (0.0-1.0) of the right motor
