@@ -58,6 +58,7 @@ class MotorControllerNode(Node):
         self.right_motor.value = right_pwm
         self.left_motor.on()
         self.right_motor.on()
+        print(self.left_motor.value)
 
     def map_speed_to_pwm(self, speed, motor):
         if motor == 'left':
