@@ -6,6 +6,9 @@ from gpiozero import PWMOutputDevice
 
 class MotorControllerNode(Node):
     def __init__(self):
+
+        super().__init__('motor_controller')
+        
         # Replace these with the actual GPIO pin numbers
         self.GPIO_PIN_LEFT = 24  # Actually on the right side
         self.GPIO_PIN_RIGHT = 26  # Actually on the left side
@@ -17,7 +20,6 @@ class MotorControllerNode(Node):
         self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=0, frequency=100)
 
         self.motor_subscription = self.create_subscription(Float64MultiArray, 'set_motor_vels', self.set_motor_velocity, 10)
-        super().__init__('motor_controller')
 
     #takes in an array with two floats, the first of which is the power (0.0-1.0) of the left motor and the second of which is the power (0.0-1.0) of the right motor
     def set_motor_velocity(self, msg):
