@@ -4,7 +4,7 @@ from std_msgs.msg import Float64MultiArray
 from simple_pid import PID
 from gpiozero import PWMOutputDevice
 
-class MotorController(Node):
+class MotorControllerNode(Node):
     def __init__(self):
         # Replace these with the actual GPIO pin numbers
         self.GPIO_PIN_LEFT = 24  # Actually on the right side
@@ -46,7 +46,7 @@ class MotorController(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    motor_controller = MotorController()
+    motor_controller = MotorControllerNode()
     try:
         rclpy.spin(motor_controller)
     except KeyboardInterrupt:
