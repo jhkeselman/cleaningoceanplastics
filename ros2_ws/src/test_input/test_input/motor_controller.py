@@ -3,6 +3,7 @@ from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray
 from simple_pid import PID
 from gpiozero import PWMOutputDevice
+import time
 
 class MotorControllerNode(Node):
     def __init__(self):
@@ -21,6 +22,14 @@ class MotorControllerNode(Node):
 
         self.left_motor.on()
         self.right_motor.on()
+
+        self.left_motor.value = 1.0
+        self.right_motor.value = 1.0
+        time.sleep(500)
+        self.left_motor.value = 0.0
+        self.right_motor.value = 0.0
+        time.sleep(500)
+
 
 
         self.motor_subscription = self.create_subscription(Float64MultiArray, 'set_motor_vels', self.set_motor_velocity, 10)
