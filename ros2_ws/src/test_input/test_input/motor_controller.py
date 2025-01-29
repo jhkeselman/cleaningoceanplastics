@@ -30,9 +30,9 @@ class MotorControllerNode(Node):
         # self.left_motor.blink()
 
         self.left_motor.value = self.MAX_PWM
-        time.sleep(500)
+        time.sleep(1000)
         self.left_motor.value = self.MIN_PWM
-        time.sleep(500)
+        time.sleep(1000)
 
         self.left_motor.value = 0.5
         time.sleep(10000)
