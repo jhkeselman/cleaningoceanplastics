@@ -20,11 +20,11 @@ class MotorControllerNode(Node):
         self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=0, frequency=50)
         self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=0, frequency=50)
 
-        self.left_motor.on()
-        self.right_motor.on()
+        # self.left_motor.on()
+        # self.right_motor.on()
 
-        self.left_motor.off()
-        self.right_motor.off()
+        # self.left_motor.off()
+        # self.right_motor.off()
 
         #self.left_motor.blink(on_time=3, off_time=3, fade_in_time=0, fade_out_time=0, n=2, background=True)
         self.left_motor.blink()
