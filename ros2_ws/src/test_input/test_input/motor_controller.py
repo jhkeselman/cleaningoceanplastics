@@ -15,12 +15,13 @@ class MotorControllerNode(Node):
         self.GPIO_PIN_RIGHT = 26  # Actually on the left side
 
         # Define the pulse width modulation ranges
-        self.MIN_PWM = 0.0  # gpiozero expects values between 0.0 and 1.0
-        self.MAX_PWM = 1.0
+        self.MIN_PWM = 0.05  # gpiozero expects values between 0.0 and 1.0
+        self.MID_PWM = 0.075
+        self.MAX_PWM = 0.1
 
         # Initialize the PWM output devices
-        self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=0, frequency=100)
-        self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=0, frequency=100)
+        self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=0, frequency=50)
+        self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=0, frequency=50)
 
         # Double check it's on by running this
         self.left_motor.on()
@@ -29,11 +30,11 @@ class MotorControllerNode(Node):
         # self.left_motor.blink(on_time=3, off_time=3, fade_in_time=0, fade_out_time=0, n=2, background=False)
 
         # ARMING SEQUENCE
-        self.left_motor.value = self.MAX_PWM
-        time.sleep(0.1)
-        self.left_motor.value = self.MIN_PWM
-        time.sleep(0.1)
-        self.left_motor.value = 0.5
+        # self.left_motor.value = self.MAX_PWM
+        # self.left_motor.value = self.MIN_PWM
+        self.left_motor.value = self.MID_PWM
+        time.sleep(1)
+        self.left_motor.value = 0.5*(self.MAX_PWM-self.MID_PWM) + self.MID_PWM
         
 
 
