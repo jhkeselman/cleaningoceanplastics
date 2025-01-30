@@ -32,7 +32,6 @@ class MotorControllerNode(Node):
         # ARMING SEQUENCE
         # self.left_motor.value = self.MAX_PWM
         # self.left_motor.value = self.MIN_PWM
-        self.left_motor.value = self.MIN_PWM
 
         self.left_motor.value = self.MID_PWM
 
