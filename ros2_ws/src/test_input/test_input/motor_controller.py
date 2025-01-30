@@ -34,8 +34,6 @@ class MotorControllerNode(Node):
         self.left_motor.value = self.MAX_PWM
         time.sleep(.001)
 
-        self.left_motor.value = 0.5
-        time.sleep(.001)
         # self.right_motor.value = 1.0
         # time.sleep(500)
         # self.left_motor.value = 0.0
