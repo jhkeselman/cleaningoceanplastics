@@ -33,9 +33,8 @@ class MotorControllerNode(Node):
         # self.left_motor.value = self.MAX_PWM
         # self.left_motor.value = self.MIN_PWM
 
-        self.left_motor.value = self.MID_PWM
-
-        
+        # self.left_motor.value = self.MID_PWM
+        self.left_motor.value.blink(on_time=0.0015, off_time=0.9985, fade_in_time=0, fade_out_time=0, n=1000, background=True)        
 
 
         self.motor_subscription = self.create_subscription(Float64MultiArray, 'set_motor_vels', self.hard_code, 10)
