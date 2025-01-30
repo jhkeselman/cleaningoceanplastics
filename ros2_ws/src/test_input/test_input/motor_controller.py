@@ -37,8 +37,8 @@ class MotorControllerNode(Node):
         self.motor_subscription = self.create_subscription(Float64MultiArray, 'set_motor_vels', self.hard_code, 10)
 
     def hard_code(self, msg):
-        print(msg.data)
-        self.left_motor.value = msg.data
+        print(msg.data[0])
+        self.left_motor.value = msg.data[0]
 
     #takes in an array with two floats, the first of which is the power (0.0-1.0) of the left motor and the second of which is the power (0.0-1.0) of the right motor
     def set_motor_velocity(self, msg):
