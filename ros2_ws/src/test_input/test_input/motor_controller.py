@@ -13,36 +13,32 @@ class MotorControllerNode(Node):
         # Replace these with the actual GPIO pin numbers
         self.GPIO_PIN_LEFT = 24  # Actually on the right side
         self.GPIO_PIN_RIGHT = 26  # Actually on the left side
+
         # Define the pulse width modulation ranges
         self.MIN_PWM = 0.0  # gpiozero expects values between 0.0 and 1.0
         self.MAX_PWM = 0.9
+
         # Initialize the PWM output devices
         self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=0, frequency=100)
         self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=0, frequency=100)
 
+        # Double check it's on by running this
         self.left_motor.on()
-        # self.right_motor.on()
 
-        # self.left_motor.off()
-        # self.right_motor.off()
-
+        # Test if ESC is connected
         #self.left_motor.blink(on_time=3, off_time=3, fade_in_time=0, fade_out_time=0, n=2, background=True)
-        # self.left_motor.blink()
 
+        # ARMING SEQUENCE
         self.left_motor.value = self.MIN_PWM
         time.sleep(.001)
         self.left_motor.value = self.MAX_PWM
         time.sleep(.001)
 
-        # self.right_motor.value = 1.0
-        # time.sleep(500)
-        # self.left_motor.value = 0.0
-        # self.right_motor.value = 0.0
-        # time.sleep(500)
+        self.motor_subscription = self.create_subscription(Float64MultiArray, 'set_motor_vels', self.hard_code, 10)
 
-
-
-        self.motor_subscription = self.create_subscription(Float64MultiArray, 'set_motor_vels', self.set_motor_velocity, 10)
+    def hard_code(self, msg):
+        print(msg.data)
+        self.left_motor.value = msg.data
 
     #takes in an array with two floats, the first of which is the power (0.0-1.0) of the left motor and the second of which is the power (0.0-1.0) of the right motor
     def set_motor_velocity(self, msg):
