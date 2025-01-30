@@ -20,8 +20,8 @@ class MotorControllerNode(Node):
         self.MAX_PWM = 0.1
 
         # Initialize the PWM output devices
-        self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=self.MIN_PWM, frequency=50)
-        self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=self.MIN_PWM, frequency=50)
+        self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=self.MID_PWM, frequency=50)
+        self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=self.MID_PWM, frequency=50)
 
         # Double check it's on by running this
         # self.left_motor.on()
@@ -30,10 +30,10 @@ class MotorControllerNode(Node):
         # self.left_motor.blink(on_time=3, off_time=3, fade_in_time=0, fade_out_time=0, n=2, background=False)
 
         # ARMING SEQUENCE
-        self.left_motor.value = self.MAX_PWM
+        # self.left_motor.value = self.MAX_PWM
         # self.left_motor.value = self.MIN_PWM
 
-        # self.left_motor.value = self.MID_PWM
+        self.left_motor.value = self.MID_PWM
         # self.left_motor.value = 0.0
         # self.left_motor.blink(on_time=0.0015, off_time=0.9985, fade_in_time=0, fade_out_time=0, n=None, background=True)        
 
