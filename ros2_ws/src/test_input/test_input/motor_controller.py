@@ -21,7 +21,6 @@ class MotorControllerNode(Node):
         self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=0, frequency=100)
 
         self.left_motor.on()
-        time.sleep(1)
         # self.right_motor.on()
 
         # self.left_motor.off()
