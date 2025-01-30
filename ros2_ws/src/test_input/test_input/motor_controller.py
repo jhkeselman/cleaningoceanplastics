@@ -30,8 +30,8 @@ class MotorControllerNode(Node):
         # self.left_motor.blink(on_time=3, off_time=3, fade_in_time=0, fade_out_time=0, n=2, background=False)
 
         # ARMING SEQUENCE
-        # self.left_motor.value = self.MAX_PWM
-        self.left_motor.value = self.MIN_PWM
+        self.left_motor.value = self.MAX_PWM
+        # self.left_motor.value = self.MIN_PWM
 
         # self.left_motor.value = self.MID_PWM
         # self.left_motor.value = 0.0
