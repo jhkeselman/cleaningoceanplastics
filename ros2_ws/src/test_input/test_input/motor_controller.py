@@ -30,7 +30,10 @@ class MotorControllerNode(Node):
 
         # ARMING SEQUENCE
         self.left_motor.value = self.MAX_PWM
+        time.sleep(0.5)
         self.left_motor.value = self.MIN_PWM
+        time.sleep(0.5)
+
 
         self.motor_subscription = self.create_subscription(Float64MultiArray, 'set_motor_vels', self.hard_code, 10)
 
