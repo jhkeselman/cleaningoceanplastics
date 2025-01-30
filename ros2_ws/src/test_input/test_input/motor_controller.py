@@ -15,7 +15,7 @@ class MotorControllerNode(Node):
         self.GPIO_PIN_RIGHT = 26  # Actually on the left side
 
         # Define the pulse width modulation ranges
-        self.MIN_PWM = 0.1  # gpiozero expects values between 0.0 and 1.0
+        self.MIN_PWM = 0.0  # gpiozero expects values between 0.0 and 1.0
         self.MAX_PWM = 0.9
 
         # Initialize the PWM output devices
@@ -30,9 +30,7 @@ class MotorControllerNode(Node):
 
         # ARMING SEQUENCE
         self.left_motor.value = self.MAX_PWM
-        time.sleep(.001)
         self.left_motor.value = self.MIN_PWM
-        time.sleep(.001)
 
         self.motor_subscription = self.create_subscription(Float64MultiArray, 'set_motor_vels', self.hard_code, 10)
 
