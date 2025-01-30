@@ -29,9 +29,9 @@ class MotorControllerNode(Node):
         # self.left_motor.blink(on_time=3, off_time=3, fade_in_time=0, fade_out_time=0, n=2, background=False)
 
         # ARMING SEQUENCE
-        self.left_motor.value = self.MIN_PWM
-        time.sleep(.001)
         self.left_motor.value = self.MAX_PWM
+        time.sleep(.001)
+        self.left_motor.value = self.MIN_PWM
         time.sleep(.001)
 
         self.motor_subscription = self.create_subscription(Float64MultiArray, 'set_motor_vels', self.hard_code, 10)
