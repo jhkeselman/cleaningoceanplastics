@@ -20,6 +20,16 @@ class MotorControllerNode(Node):
         self.MID_PWM = 0.075
         self.MAX_PWM = 0.1
 
+        import RPi.GPIO as GPIO
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(12, GPIO.OUT)
+
+        p = GPIO.PWM(12, 50)
+        p.start(0.075)
+        input('Press return to stop:')   # use raw_input for Python 2
+        p.stop()
+        GPIO.cleanup()
+
         # pwm = HardwarePWM(pwm_channel=0, hz=50, chip=)
         # pwm.start(7.5) # full duty cycle
         # time.sleep(2)
@@ -30,17 +40,17 @@ class MotorControllerNode(Node):
         # pwm.stop()
 
         # Initialize the PWM output devices
-        self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=0.079, frequency=50)
-        self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=self.MID_PWM, frequency=50)
+        # self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=0.079, frequency=50)
+        # self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=self.MID_PWM, frequency=50)
 
-        # Double check it's on by running this
-        # self.left_motor.on()
+        # # Double check it's on by running this
+        # # self.left_motor.on()
 
-        # Test if ESC is connected
-        self.left_motor.blink(on_time=3, off_time=3, fade_in_time=0, fade_out_time=0, n=2, background=False)
+        # # Test if ESC is connected
+        # self.left_motor.blink(on_time=3, off_time=3, fade_in_time=0, fade_out_time=0, n=2, background=False)
 
 
-        self.left_motor.value = 0.079
+        # self.left_motor.value = 0.079
         # ARMING SEQUENCE
         # self.left_motor.value = self.MAX_PWM
         # self.left_motor.value = self.MIN_PWM
