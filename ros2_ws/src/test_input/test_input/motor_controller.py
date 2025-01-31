@@ -26,9 +26,9 @@ class MotorControllerNode(Node):
             low = self.period - high
 
             self.LEFT_MOTOR.on()
-            time.sleep(high / 1000)
-            self.LEFT_MOTOR.off()
             time.sleep(low / 1000)
+            self.LEFT_MOTOR.off()
+            time.sleep(high / 1000)
 
     def destroy_node(self):
         self.running = False
