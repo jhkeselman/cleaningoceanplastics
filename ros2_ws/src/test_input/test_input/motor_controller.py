@@ -20,7 +20,7 @@ class MotorControllerNode(Node):
         self.MAX_PWM = 0.1
 
         # Initialize the PWM output devices
-        self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=self.MID_PWM, frequency=50)
+        self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=0, frequency=50)
         self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=self.MID_PWM, frequency=50)
 
         # Double check it's on by running this
