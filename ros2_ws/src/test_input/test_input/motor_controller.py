@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray
-from simple_pid import PID
+# from simple_pid import PID
 from gpiozero import PWMOutputDevice
 import time
 
@@ -33,7 +33,7 @@ class MotorControllerNode(Node):
         # self.left_motor.value = self.MAX_PWM
         # self.left_motor.value = self.MIN_PWM
 
-        self.left_motor.value = self.MID_PWM
+        self.left_motor._write(self.MID_PWM)
         # self.left_motor.value = 0.0
         # self.left_motor.blink(on_time=0.0015, off_time=0.9985, fade_in_time=0, fade_out_time=0, n=None, background=True)        
 
