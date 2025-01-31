@@ -30,14 +30,14 @@ class MotorControllerNode(Node):
         # pwm.stop()
 
         # Initialize the PWM output devices
-        self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=0.075, frequency=50)
+        self.left_motor = PWMOutputDevice(self.GPIO_PIN_LEFT, initial_value=0.0775, frequency=50)
         self.right_motor = PWMOutputDevice(self.GPIO_PIN_RIGHT, initial_value=self.MID_PWM, frequency=50)
 
         # Double check it's on by running this
         # self.left_motor.on()
 
         # Test if ESC is connected
-        # self.left_motor.blink(on_time=3, off_time=3, fade_in_time=0, fade_out_time=0, n=2, background=False)
+        self.left_motor.blink(on_time=3, off_time=3, fade_in_time=0, fade_out_time=0, n=2, background=False)
 
         # ARMING SEQUENCE
         # self.left_motor.value = self.MAX_PWM
