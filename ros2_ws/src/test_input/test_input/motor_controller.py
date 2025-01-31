@@ -16,7 +16,7 @@ class MotorControllerNode(Node):
 
         # Define the pulse width modulation ranges
         self.MIN_PWM = 0.05  # gpiozero expects values between 0.0 and 1.0
-        self.MID_PWM = 0.075
+        self.MID_PWM = 0.08
         self.MAX_PWM = 0.1
 
         # Initialize the PWM output devices
