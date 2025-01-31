@@ -20,7 +20,7 @@ class MotorControllerNode(Node):
         self.MID_PWM = 0.075
         self.MAX_PWM = 0.1
 
-        pwm = HardwarePWM(pwm_channel=0, hz=50, chip=1)
+        pwm = HardwarePWM(pwm_channel=1, hz=50, chip=1)
         pwm.start(7.5) # full duty cycle
         time.sleep(2)
 
