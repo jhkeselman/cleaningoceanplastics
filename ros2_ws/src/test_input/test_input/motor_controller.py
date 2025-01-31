@@ -11,7 +11,7 @@ class MotorControllerNode(Node):
         super().__init__('motor_controller')
 
         # Replace these with the actual GPIO pin numbers
-        self.GPIO_PIN_LEFT = 24  # Actually on the right side
+        self.GPIO_PIN_LEFT = 18  # Actually on the right side
         self.GPIO_PIN_RIGHT = 26  # Actually on the left side
 
         # Define the pulse width modulation ranges
@@ -28,15 +28,12 @@ class MotorControllerNode(Node):
 
         # Test if ESC is connected
         # self.left_motor.blink(on_time=3, off_time=3, fade_in_time=0, fade_out_time=0, n=2, background=False)
-        time.sleep(1)
 
         # ARMING SEQUENCE
         # self.left_motor.value = self.MAX_PWM
         # self.left_motor.value = self.MIN_PWM
 
         self.left_motor.value = self.MID_PWM
-        time.sleep(1)
-        self.left_motor.value = 0.7
         # self.left_motor.value = 0.0
         # self.left_motor.blink(on_time=0.0015, off_time=0.9985, fade_in_time=0, fade_out_time=0, n=None, background=True)        
 
