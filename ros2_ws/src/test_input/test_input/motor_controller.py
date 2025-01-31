@@ -32,7 +32,7 @@ class MotorControllerNode(Node):
         # ARMING SEQUENCE
         # self.left_motor.value = self.MAX_PWM
         # self.left_motor.value = self.MIN_PWM
-        for i in range(3000):
+        for i in range(5000):
             self.left_motor.value = self.MID_PWM
             time.sleep(0.001)
 
