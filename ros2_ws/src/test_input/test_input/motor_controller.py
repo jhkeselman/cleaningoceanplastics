@@ -32,9 +32,11 @@ class MotorControllerNode(Node):
         # ARMING SEQUENCE
         # self.left_motor.value = self.MAX_PWM
         # self.left_motor.value = self.MIN_PWM
+        for i in range(3000):
+            self.left_motor.value = self.MID_PWM
+            time.sleep(0.001)
 
-        self.left_motor.value = self.MID_PWM
-        time.sleep(3)
+        time.sleep(1)
         self.left_motor.value = 0.05
         # self.left_motor.value = 0.0
         # self.left_motor.blink(on_time=0.0015, off_time=0.9985, fade_in_time=0, fade_out_time=0, n=None, background=True)        
