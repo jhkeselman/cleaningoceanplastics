@@ -22,14 +22,13 @@ class MotorControllerNode(Node):
 
     def pwm_loop(self):
         while self.running:
-            self.LEFT_MOTOR.on()
-            # high = (self.duty_cycle / 100) * self.period
-            # low = self.period - high
+            high = (self.duty_cycle / 100) * self.period
+            low = self.period - high
 
-            # self.LEFT_MOTOR.on()
-            # time.sleep(low / 1000)
-            # self.LEFT_MOTOR.off()
-            # time.sleep(high / 1000)
+            self.LEFT_MOTOR.on()
+            time.sleep(low / 1000)
+            self.LEFT_MOTOR.off()
+            time.sleep(high / 1000)
 
     def destroy_node(self):
         self.running = False
