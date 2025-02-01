@@ -28,7 +28,8 @@ class MotorControllerNode(Node):
         self.thread.start()
 
     def duty_cycle_callback(self, msg):
-        self.duty_cycle = msg.data
+        if 0 <= msg.data <= 10:
+            self.duty_cycle = msg.data
 
     def pwm_loop(self):
         while self.running:
