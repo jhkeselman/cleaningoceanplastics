@@ -13,7 +13,7 @@ class MotorControllerNode(Node):
 
         # self.frequency = 50
         self.period = 20
-        self.duty_cycle = 7.5
+        self.duty_cycle = 7.4
 
         self.running = True
 
