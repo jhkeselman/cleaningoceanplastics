@@ -43,7 +43,7 @@ class MotorControllerNode(Node):
             # Bound between these values
             self.current_duty_cycle = max(5.0, min(10.0, self.current_duty_cycle))
 
-            high = (self.duty_cycle / 100) * self.period
+            high = (self.current_duty_cycle / 100) * self.period
             low = self.period - high
 
             self.LEFT_MOTOR.on()
