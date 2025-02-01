@@ -18,7 +18,7 @@ class MotorControllerNode(Node):
         self.target_duty_cycle = 7
 
         # Proportional gain
-        self.kp = 0.5
+        self.kp = 0.05
         self.init_complete = False
 
         self.running = True
