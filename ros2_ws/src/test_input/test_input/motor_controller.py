@@ -1,6 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from gpiozero import DigitalOutputDevice
+from std_msgs.msg import Float32
 import time
 import threading
 
@@ -17,8 +18,17 @@ class MotorControllerNode(Node):
 
         self.running = True
 
+        self.subscription = self.create_subscription(
+            Float32,
+            'set_duty_cycle',
+            self.duty_cycle_callback,
+            10)
+
         self.thread = threading.Thread(target=self.pwm_loop)
         self.thread.start()
+
+    def duty_cycle_callback(self, msg):
+        self.duty_cycle = msg.data
 
     def pwm_loop(self):
         while self.running:
