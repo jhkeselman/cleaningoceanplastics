@@ -34,7 +34,7 @@ class MotorControllerNode(Node):
 
     def duty_cycle_callback(self, msg):
         if 5 <= msg.data <= 10:
-            self.init_complete = True
+            # self.init_complete = True
             self.target_duty_cycle = msg.data
 
     def pwm_loop(self):
