@@ -40,7 +40,7 @@ class MotorControllerNode(Node):
     def pwm_loop(self):
         while self.running:
             error = self.target_duty_cycle - self.current_duty_cycle
-            self.current_duty_cycle = self.kp * error
+            self.current_duty_cycle += self.kp * error
 
             # Bound between these values if not being initalized
             if self.init_complete:
