@@ -19,6 +19,7 @@ class MotorControllerNode(Node):
 
         # Proportional gain
         self.kp = 0.5
+        self.init_complete = False
 
         self.running = True
 
@@ -33,6 +34,7 @@ class MotorControllerNode(Node):
 
     def duty_cycle_callback(self, msg):
         if 5 <= msg.data <= 10:
+            self.init_complete = True
             self.target_duty_cycle = msg.data
 
     def pwm_loop(self):
@@ -40,8 +42,9 @@ class MotorControllerNode(Node):
             error = self.target_duty_cycle - self.current_duty_cycle
             self.current_duty_cycle = self.kp * error
 
-            # Bound between these values
-            self.current_duty_cycle = max(5.0, min(10.0, self.current_duty_cycle))
+            # Bound between these values if not being initalized
+            if self.init_complete:
+                self.current_duty_cycle = max(5.0, min(10.0, self.current_duty_cycle))
 
             high = (self.current_duty_cycle / 100) * self.period
             low = self.period - high
