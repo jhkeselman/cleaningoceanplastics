@@ -34,10 +34,14 @@ class MotorControllerNode(Node):
             self.duty_cycle_callback,
             10)
 
+        print("starting left")
         self.thread_left = threading.Thread(target=self.pwm_loop_left)
         self.thread_left.start()
+        print("left started")
+        print("starting right")
         self.thread_right = threading.Thread(target=self.pwm_loop_right)
         self.thread_right.start()
+        print("right started")
 
     def duty_cycle_callback(self, msg):
         if (5 <= msg.data[0] <= 10 and 5 <= msg.data[1] <= 10):
