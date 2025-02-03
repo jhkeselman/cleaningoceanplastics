@@ -2,6 +2,7 @@ import rclpy
 from rclpy.node import Node
 from gpiozero import DigitalOutputDevice
 from std_msgs.msg import Float32MultiArray
+from std_msgs.msg import Bool
 import time
 import threading
 
@@ -37,7 +38,7 @@ class MotorControllerNode(Node):
             10)
         
         self.stop_subscription = self.create_subscription(
-            bool,
+            Bool,
             'stop_motors',
             self.stop_movement,
             10)
