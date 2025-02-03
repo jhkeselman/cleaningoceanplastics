@@ -15,12 +15,14 @@ class MotorControllerNode(Node):
         self.RIGHT_MOTOR = DigitalOutputDevice(self.GPIO_PIN_RIGHT)
         
 
+        self.center_left = 7.14
+        self.center_right = 7.14
         # self.frequency = 50
         self.period = 20
-        self.current_duty_cycle_left = 7.14
-        self.target_duty_cycle_left = 7.14
-        self.current_duty_cycle_right = 7.14
-        self.target_duty_cycle_right = 7.14
+        self.current_duty_cycle_left = self.center_left
+        self.target_duty_cycle_left = self.center_left
+        self.current_duty_cycle_right = self.center_right
+        self.target_duty_cycle_right = self.center_right
 
         # Proportional gain
         self.kp = 0.01
@@ -33,6 +35,12 @@ class MotorControllerNode(Node):
             'set_duty_cycle',
             self.duty_cycle_callback,
             10)
+        
+        self.stop_subscription = self.create_subscription(
+            bool,
+            'stop_motors',
+            self.stop_movement,
+            10)
 
         print("starting left")
         self.thread_left = threading.Thread(target=self.pwm_loop_left)
@@ -42,6 +50,10 @@ class MotorControllerNode(Node):
         self.thread_right = threading.Thread(target=self.pwm_loop_right)
         self.thread_right.start()
         print("right started")
+
+    def stop_movement(self, msg):
+        self.target_duty_cycle_left = self.center_left
+        self.target_duty_cycle_right = self.center_right
 
     def duty_cycle_callback(self, msg):
         if (5 <= msg.data[0] <= 10 and 5 <= msg.data[1] <= 10):
