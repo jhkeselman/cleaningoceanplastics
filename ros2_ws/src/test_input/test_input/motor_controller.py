@@ -12,7 +12,7 @@ class MotorControllerNode(Node):
         self.GPIO_PIN_LEFT = 24
         self.LEFT_MOTOR = DigitalOutputDevice(self.GPIO_PIN_LEFT)
         self.GPIO_PIN_RIGHT = 26
-        self.LEFT_MOTOR = DigitalOutputDevice(self.GPIO_PIN_RIGHT)
+        self.RIGHT_MOTOR = DigitalOutputDevice(self.GPIO_PIN_RIGHT)
         
 
         # self.frequency = 50
