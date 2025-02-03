@@ -15,8 +15,8 @@ class MotorControllerNode(Node):
 
         # self.frequency = 50
         self.period = 20
-        self.current_duty_cycle = 7.5
-        self.target_duty_cycle = 7.5
+        self.current_duty_cycle = 7.14
+        self.target_duty_cycle = 7.14
 
         # Proportional gain
         self.kp = 0.01
