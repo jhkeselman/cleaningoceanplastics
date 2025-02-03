@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from gpiozero import DigitalOutputDevice
-from std_msgs.msg import Float32
+from std_msgs.msg import Float32MultiArray
 import time
 import threading
 
@@ -11,12 +11,16 @@ class MotorControllerNode(Node):
 
         self.GPIO_PIN_LEFT = 24
         self.LEFT_MOTOR = DigitalOutputDevice(self.GPIO_PIN_LEFT)
+        self.GPIO_PIN_RIGHT = 26
+        self.LEFT_MOTOR = DigitalOutputDevice(self.GPIO_PIN_RIGHT)
         
 
         # self.frequency = 50
         self.period = 20
-        self.current_duty_cycle = 7.14
-        self.target_duty_cycle = 7.14
+        self.current_duty_cycle_left = 7.14
+        self.target_duty_cycle_left = 7.14
+        self.current_duty_cycle_right = 7.14
+        self.target_duty_cycle_right = 7.14
 
         # Proportional gain
         self.kp = 0.01
@@ -25,40 +29,61 @@ class MotorControllerNode(Node):
         self.running = True
 
         self.subscription = self.create_subscription(
-            Float32,
+            Float32MultiArray,
             'set_duty_cycle',
             self.duty_cycle_callback,
             10)
 
-        self.thread = threading.Thread(target=self.pwm_loop)
-        self.thread.start()
+        self.thread_left = threading.Thread(target=self.pwm_loop_left)
+        self.thread_left.start()
+        self.thread_right = threading.Thread(target=self.pwm_loop_right)
+        self.thread_right.start()
 
     def duty_cycle_callback(self, msg):
-        if 5 <= msg.data <= 10:
+        if (5 <= msg.data[0] <= 10 and 5 <= msg.data[1] <= 10):
             self.init_complete = True
-            self.target_duty_cycle = msg.data
+            self.target_duty_cycle_left = msg.data[0]
+            self.target_duty_cycle_right = msg.data[1]
 
-    def pwm_loop(self):
-        while self.running:
-            error = self.target_duty_cycle - self.current_duty_cycle
-            self.current_duty_cycle += self.kp * error
+    def pwm_loop_right(self):
+            error_right = self.target_duty_cycle_right - self.current_duty_cycle_right
+            self.current_duty_cycle_right += self.kp * error_right
 
             # Bound between these values if not being initalized
             if self.init_complete:
-                self.current_duty_cycle = max(5.0, min(10.0, self.current_duty_cycle))
+                self.current_duty_cycle_right = max(5.0, min(10.0, self.current_duty_cycle_right))
 
-            high = (self.current_duty_cycle / 100) * self.period
-            low = self.period - high
+            high_right = (self.current_duty_cycle_right / 100) * self.period
+            low_right = self.period - high_right
+
+            self.RIGHT_MOTOR.on()
+            time.sleep(high_right / 1000)
+            self.RIGHT_MOTOR.off()
+            time.sleep(low_right / 1000)
+
+
+    def pwm_loop_left(self):
+        while self.running:
+            error_left = self.target_duty_cycle_left - self.current_duty_cycle_left
+            self.current_duty_cycle_left += self.kp * error_left
+
+            # Bound between these values if not being initalized
+            if self.init_complete:
+                self.current_duty_cycle_left = max(5.0, min(10.0, self.current_duty_cycle_left))
+
+            high_left = (self.current_duty_cycle_left / 100) * self.period
+            low_left = self.period - high_left
 
             self.LEFT_MOTOR.on()
-            time.sleep(high / 1000)
+            time.sleep(high_left / 1000)
             self.LEFT_MOTOR.off()
-            time.sleep(low / 1000)
+            time.sleep(low_left / 1000)
 
     def destroy_node(self):
         self.running = False
         self.thread.join()
         self.LEFT_MOTOR.off()
+        self.RIGHT_MOTOR.off()
         super().destroy_node()
 
 def main(args=None):
@@ -68,7 +93,7 @@ def main(args=None):
     try:
         rclpy.spin(motor_controller)
     except KeyboardInterrupt:
-        motor_controller.get_logger().info("Stopping motor")
+        motor_controller.get_logger().info("Stopping motors")
     finally:
         motor_controller.destroy_node()
         rclpy.shutdown()
