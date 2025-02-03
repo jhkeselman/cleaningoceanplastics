@@ -99,7 +99,8 @@ class MotorControllerNode(Node):
 
     def destroy_node(self):
         self.running = False
-        self.thread.join()
+        self.thread_left.join()
+        self.thread_right.join()
         self.LEFT_MOTOR.off()
         self.RIGHT_MOTOR.off()
         super().destroy_node()
