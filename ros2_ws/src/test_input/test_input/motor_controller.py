@@ -11,11 +11,12 @@ class MotorControllerNode(Node):
 
         self.GPIO_PIN_LEFT = 24
         self.LEFT_MOTOR = DigitalOutputDevice(self.GPIO_PIN_LEFT)
+        
 
         # self.frequency = 50
         self.period = 20
-        self.current_duty_cycle = 7
-        self.target_duty_cycle = 7
+        self.current_duty_cycle = 7.5
+        self.target_duty_cycle = 7.5
 
         # Proportional gain
         self.kp = 0.01
