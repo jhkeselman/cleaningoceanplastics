@@ -50,6 +50,7 @@ class MotorControllerNode(Node):
             self.target_duty_cycle_right = msg.data[1]
 
     def pwm_loop_right(self):
+        while self.running:
             error_right = self.target_duty_cycle_right - self.current_duty_cycle_right
             self.current_duty_cycle_right += self.kp * error_right
 
