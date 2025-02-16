@@ -32,7 +32,8 @@ setup(
             'gps_subscriber = test_input.gps_subscriber:main',
             'imu_srv = test_input.imu_service:main',
             'imu_cli = test_input.imu_client:main',
-            'control = test_input.control:main'
+            'control = test_input.control:main',
+            'kalman = test_input.Kalman_service:main'
         ],
     },
 )
