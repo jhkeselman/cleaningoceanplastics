@@ -1,3 +1,3 @@
-#KalmanState.srv
+#Kalman_State.srv
 ---
-Float32MultiArray state
+float64[5] state
