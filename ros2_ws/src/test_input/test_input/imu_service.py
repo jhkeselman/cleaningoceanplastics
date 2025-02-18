@@ -21,7 +21,7 @@ class IMUService(Node):
 
     def __init__(self):
         super().__init__('IMU_service')
-        self.srv = self.create_service(IMUData, 'get_data', self.get_data_callback)
+        self.srv = self.create_service(IMUData, 'get_IMU_data', self.get_data_callback)
         timer_period = 0.02
         self.timer = self.create_timer(timer_period, self.timer_callback)
         
