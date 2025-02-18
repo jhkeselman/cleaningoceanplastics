@@ -20,7 +20,7 @@ class IMUClient(Node):
         self.future = self.cli.call_async(self.req)
         self.future.add_done_callback(self.response_callback)
     
-    def response_callback(self):
+    def response_callback(self,future):
         try:
             response = future.result()
             self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(response.heading, response.acceleration, response.omega))
