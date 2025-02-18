@@ -57,17 +57,17 @@ class MotorControllerNode(Node):
                 self.left_value = msg.data[0]
                 self.right_value = msg.data[1]
 
-    def binary_left(self, value):
+    def binary_left(self):
         while self.running:
             with self.value_lock:
-                int_value = int(value * 10)
+                int_value = int(self.left_value * 10)
             self.send_binary(int_value, self.LEFT_MOTOR)
             time.sleep(0.5)
 
-    def binary_right(self, value):
+    def binary_right(self):
         while self.running:
             with self.value_lock:
-                int_value = int(value * 10)
+                int_value = int(self.right_value * 10)
             self.send_binary(int_value, self.RIGHT_MOTOR)
             time.sleep(0.5)
 
