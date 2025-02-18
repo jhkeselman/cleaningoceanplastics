@@ -3,8 +3,8 @@ from rclpy.node import Node
 from gpiozero import DigitalOutputDevice
 from std_msgs.msg import Float32MultiArray
 from std_msgs.msg import Bool
+from smbus2 import SMBus
 import time
-import threading
 
 
 class MotorControllerNode(Node):
@@ -15,16 +15,16 @@ class MotorControllerNode(Node):
         self.LEFT_MOTOR = DigitalOutputDevice(self.GPIO_PIN_LEFT)
         self.GPIO_PIN_RIGHT = 6
         self.RIGHT_MOTOR = DigitalOutputDevice(self.GPIO_PIN_RIGHT)
-        
+
+        self.I2C_BUS = 1
+        self.esp_address = 0x1D
+        self.bus = SMBus(self.I2C_BUS)
 
         self.center = 7.5
-        self.period = 20
         self.left_value = self.center
         self.right_value = self.center
 
         self.running = True
-
-        self.value_lock = threading.Lock()
 
         self.subscription = self.create_subscription(
             Float32MultiArray,
@@ -32,53 +32,33 @@ class MotorControllerNode(Node):
             self.duty_cycle_callback,
             10)
 
-        print("starting left")
-        self.thread_left = threading.Thread(target=self.binary_left)
-        self.thread_left.start()
-        print("left started")
-        print("starting right")
-        self.thread_right = threading.Thread(target=self.binary_right)
-        self.thread_right.start()
-        print("right started")
-
-    def send_binary(self, value, motor):
-        binary_value = f'{value:010b}'
-        for bit in binary_value:
-            if bit == '1':
-                motor.on()
-            else:
-                motor.off()
-            time.sleep(0.1)
-        motor.off()
-
     def duty_cycle_callback(self, msg):
         if (5 <= msg.data[0] <= 10 and 5 <= msg.data[1] <= 10):
             with self.value_lock:
                 self.left_value = msg.data[0]
                 self.right_value = msg.data[1]
+    
+    def send_motor_values(self):
+        scaled_left = self.left_value * 100
+        scaled_right = self.right_value * 100
 
-    def binary_left(self):
-        while self.running:
-            with self.value_lock:
-                int_value = int(self.left_value * 100)
-            self.send_binary(int_value, self.LEFT_MOTOR)
-            time.sleep(0.5)
+    def send_i2c_data(self, left_value, right_value):
 
-    def binary_right(self):
-        while self.running:
-            with self.value_lock:
-                int_value = int(self.right_value * 100)
-            self.send_binary(int_value, self.RIGHT_MOTOR)
-            time.sleep(0.5)
+        # Break the values into bytes
+        left_msb = (left_value >> 8) & 0xFF
+        left_lsb = left_value & 0xFF
+        right_msb = (right_value >> 8) & 0xFF
+        right_lsb = right_value & 0xFF
 
-
-    def destroy_node(self):
-        self.running = False
-        self.thread_left.join()
-        self.thread_right.join()
-        self.LEFT_MOTOR.off()
-        self.RIGHT_MOTOR.off()
-        super().destroy_node()
+        try:
+            # Send both motor values in one I2C transaction
+            self.bus.write_i2c_block_data(
+                self.slave_address,
+                0x00,  # Command byte (can be used to identify motor data packet)
+                [left_msb, left_lsb, right_msb, right_lsb]
+            )
+        except Exception as e:
+            pass
 
 def main(args=None):
     rclpy.init(args=args)
