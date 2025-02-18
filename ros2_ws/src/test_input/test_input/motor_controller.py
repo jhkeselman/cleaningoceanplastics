@@ -24,6 +24,8 @@ class MotorControllerNode(Node):
 
         self.running = True
 
+        self.value_lock = threading.Lock()
+
         self.subscription = self.create_subscription(
             Float32MultiArray,
             'set_duty_cycle',
@@ -51,19 +53,21 @@ class MotorControllerNode(Node):
 
     def duty_cycle_callback(self, msg):
         if (5 <= msg.data[0] <= 10 and 5 <= msg.data[1] <= 10):
-            self.init_complete = True
-            self.left_value = msg.data[0]
-            self.right_value = msg.data[1]
+            with self.value_lock:
+                self.left_value = msg.data[0]
+                self.right_value = msg.data[1]
 
     def binary_left(self, value):
         while self.running:
-            int_value = int(value * 10)
+            with self.value_lock:
+                int_value = int(value * 10)
             self.send_binary(int_value, self.LEFT_MOTOR)
             time.sleep(0.5)
 
     def binary_right(self, value):
         while self.running:
-            int_value = int(value * 10)
+            with self.value_lock:
+                int_value = int(value * 10)
             self.send_binary(int_value, self.RIGHT_MOTOR)
             time.sleep(0.5)
 
