@@ -1,0 +1,242 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-fcf51883f819ffa50fbe.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18
+					]
+				},
+				{
+					"build" : "services__py",
+					"jsonFile" : "directory-services__py-4e6e614276648d43b961.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/pi2/cleaningoceanplastics/build/services/services__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "services",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_services_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_services_egg-7e33618c4be47a9d5e36.json",
+					"name" : "ament_cmake_python_build_services_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_services::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_services-2610a91038a0d6261b4e.json",
+					"name" : "ament_cmake_python_copy_services",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services-ea9204dfc9d8e303e3c1.json",
+					"name" : "services",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services__cpp-2091840d9d182d47e84f.json",
+					"name" : "services__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "services__py::@0538353bee494ff75f8f",
+					"jsonFile" : "target-services__py-935b613c136d91a657bf.json",
+					"name" : "services__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services__rosidl_generator_c-8471dcbe43452d03fc84.json",
+					"name" : "services__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services__rosidl_generator_py-6f8af0b5d1ddfea12226.json",
+					"name" : "services__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services__rosidl_generator_type_description::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services__rosidl_generator_type_description-09b0bcd2390d7d966e73.json",
+					"name" : "services__rosidl_generator_type_description",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services__rosidl_typesupport_c-5cf08ba47a8ca000fbfd.json",
+					"name" : "services__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services__rosidl_typesupport_cpp-e8a0ac7e4bd6200f73ef.json",
+					"name" : "services__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services__rosidl_typesupport_fastrtps_c-dc032c6221f0c0e0b1bc.json",
+					"name" : "services__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services__rosidl_typesupport_fastrtps_cpp-ecb92361f7fb8f349154.json",
+					"name" : "services__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services__rosidl_typesupport_introspection_c-b115a3b41ab2cc67a50b.json",
+					"name" : "services__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services__rosidl_typesupport_introspection_cpp-119b5e7232f002a208a6.json",
+					"name" : "services__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services_s__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services_s__rosidl_typesupport_c-8bc676cc42826d2e5083.json",
+					"name" : "services_s__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services_s__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services_s__rosidl_typesupport_fastrtps_c-58c45bb92ec300c24bd3.json",
+					"name" : "services_s__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services_s__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services_s__rosidl_typesupport_introspection_c-cee171731ad7da320d0f.json",
+					"name" : "services_s__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "services_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-services_uninstall-2ac069cd47ebf55f00f8.json",
+					"name" : "services_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-c9f7af141024ce891a04.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/pi2/cleaningoceanplastics/build/services",
+		"source" : "/home/pi2/cleaningoceanplastics/ros2_ws/src/services"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

@@ -1,0 +1,26 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "services/srv/IMUData_Response",
+      "fields": [
+        {
+          "name": "heading",
+          "type": {
+            "type_id": 11,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "services/srv/IMUData_Response",
+      "hash_string": "RIHS01_7915abba8d2288b320ba1a99051a7e5b1ec8f04f45365a3d036353b5c102c8de"
+    }
+  ]
+}

@@ -21,7 +21,7 @@ class IMUService(Node):
 
     def __init__(self):
         super().__init__('IMU_service')
-        self.srv = self.create_service(IMUData, 'get_IMU_data', self.get_data_callback)
+        self.srv = self.create_service(IMUData, 'get_heading', self.get_heading_callback)
         timer_period = 0.02
         self.timer = self.create_timer(timer_period, self.timer_callback)
         
@@ -87,8 +87,6 @@ class IMUService(Node):
         rate_gyr_y =  GYRy * G_GAIN
         rate_gyr_z =  GYRz * G_GAIN
 
-        self.omega = rate_gyr_z #MAY NEED TO ACCOUNT FOR BIAS
-
         #Calculate the angles from the gyro.
         self.gyroXangle+=rate_gyr_x*LP
         self.gyroYangle+=rate_gyr_y*LP
@@ -114,8 +112,6 @@ class IMUService(Node):
         #Only have our heading between 0 and 360
         if heading < 0:
             heading += 360
-
-        self.acceleration = ACCx * 0.244/1000 * 9.81 #conversion between raw accelerometer and m/s^s
 
         ####################################################################
         ###################Tilt compensated heading#########################
@@ -155,7 +151,7 @@ class IMUService(Node):
             CF_heading -= 360
         self.biasz += B*(CF_heading-self.gyroZangle)
         self.heading = tiltCompensatedHeading
-#        print("#  CFheading Angle %5.2f   Gyro Angle %5.2f  Bias %5.2f  Mag %5.2f#" % (CF_heading, self.gyroZangle, self.biasz, tiltCompensatedHeading))
+        print("#  CFheading Angle %5.2f   Gyro Angle %5.2f  Bias %5.2f  Mag %5.2f#" % (CF_heading, self.gyroZangle, self.biasz, tiltCompensatedHeading))
 
     def calibrate(self,readings):
         biasx = 0
@@ -171,11 +167,9 @@ class IMUService(Node):
         self.biasy = biasy/readings
         self.biasz = biasz/readings
 
-    def get_data_callback(self, request, response):
+    def get_heading_callback(self, request, response):
 
         response.heading = self.heading #UPDATE
-        response.acceleration = self.acceleration
-        response.omega = self.omega
         self.get_logger().info('Incoming request')
 
         return response
