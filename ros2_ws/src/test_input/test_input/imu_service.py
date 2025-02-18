@@ -115,7 +115,7 @@ class IMUService(Node):
         if heading < 0:
             heading += 360
 
-        self.acceleration = ACCx * 0.244/1000 * 9.81 #conversion between raw accelerometer and m/s^s
+        self.acceleration = ACCz * 0.244/1000 * 9.81 #conversion between raw accelerometer and m/s^s
 
         ####################################################################
         ###################Tilt compensated heading#########################
