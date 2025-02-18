@@ -42,7 +42,7 @@ class MotorControllerNode(Node):
         print("right started")
 
     def send_binary(self, value, motor):
-        binary_value = bin(value)[2:]
+        binary_value = f'{value:010b}'
         for bit in binary_value:
             if bit == '1':
                 motor.on()
@@ -60,14 +60,14 @@ class MotorControllerNode(Node):
     def binary_left(self):
         while self.running:
             with self.value_lock:
-                int_value = int(self.left_value * 10)
+                int_value = int(self.left_value * 100)
             self.send_binary(int_value, self.LEFT_MOTOR)
             time.sleep(0.5)
 
     def binary_right(self):
         while self.running:
             with self.value_lock:
-                int_value = int(self.right_value * 10)
+                int_value = int(self.right_value * 100)
             self.send_binary(int_value, self.RIGHT_MOTOR)
             time.sleep(0.5)
 
