@@ -14,17 +14,18 @@ class IMUClient(Node):
             self.get_logger().info('service not available, waiting again...')
         self.req = IMUData.Request()
         timer_period = 1
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.timer = self.create_timer(timer_period, self.send_request)
 
     def send_request(self):
         self.future = self.cli.call_async(self.req)
-        rclpy.spin_until_future_complete(self, self.future)
-        return self.future.result()
+        self.future.add_done_callback(self.response_callback)
     
-    def timer_callback(self):
-        response = self.send_request()
-        self.get_logger().info(
-        'IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(response.heading, response.acceleration, response.omega))
+    def response_callback(self):
+        try:
+            response = future.result()
+            self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(response.heading, response.acceleration, response.omega))
+        except Exception as e:
+            self.get_logger().error(f'Service call failed {str(e)}')
 
 
 
@@ -33,7 +34,6 @@ def main(args=None):
 
     imu_client = IMUClient()
     rclpy.spin(imu_client)
-    
     imu_client.destroy_node()
     rclpy.shutdown()
 
