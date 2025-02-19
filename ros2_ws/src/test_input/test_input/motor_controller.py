@@ -31,13 +31,17 @@ class MotorControllerNode(Node):
     def send_value(self, left_value, right_value):
         data = struct.pack('ff', left_value, right_value)
         byte_list = list(data)
+        self.get_logger().info(f"Byte list to send: {byte_list} (Length: {len(byte_list)})")
         try:
             self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
         except:
             self.get_logger().info("Failed to send value")
 
+    def stop_motors(self):
+        self.send_value(7.5, 7.5)
+
     def destroy_node(self):
-        self.send_value(7.5)
+        self.stop_motors()
         time.sleep(0.1)
         super().destroy_node()
 
