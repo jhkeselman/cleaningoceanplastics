@@ -26,12 +26,10 @@ class MotorControllerNode(Node):
 
     def duty_cycle_callback(self, msg):
         if (5 <= msg.data[0] <= 10 and 5 <= msg.data[1] <= 10):
-            self.left_value = msg.data[0]
-            self.right_value = msg.data[1]
-            self.send_value(self.left_value)
+            self.send_value(msg.data[0], msg.data[1])
                 
-    def send_value(self, value):
-        data = struct.pack('f', value)
+    def send_value(self, left_value, right_value):
+        data = struct.pack('ff', left_value, right_value)
         byte_list = list(data)
         try:
             self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
@@ -39,7 +37,9 @@ class MotorControllerNode(Node):
             self.get_logger().info("Failed to send value")
 
     def destroy_node(self):
-        pass
+        self.send_value(7.5)
+        time.sleep(0.1)
+        super().destroy_node()
 
 def main(args=None):
     rclpy.init(args=args)
