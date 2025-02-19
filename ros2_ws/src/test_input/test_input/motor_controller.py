@@ -31,7 +31,6 @@ class MotorControllerNode(Node):
     def send_value(self, left_value, right_value):
         data = struct.pack('ff', left_value, right_value)
         byte_list = list(data)
-        self.get_logger().info(f"Packed data: {byte_list} (Length: {len(byte_list)})")
         try:
             self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
         except:
