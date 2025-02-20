@@ -21,9 +21,7 @@ class IMUService(Node):
 
     def __init__(self):
         super().__init__('IMU_service')
-        self.srv = self.create_service(IMUData, 'get_IMU_data', self.get_data_callback)
-        timer_period = 0.02
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+
         
 
         # Initialize IMU
@@ -36,7 +34,6 @@ class IMUService(Node):
 
         self.get_logger().info("IMU initialized...")
 
-        #self.calibrate(500)
         self.biasz = 0.0
 
         init_magX = readMAGx()
@@ -52,12 +49,47 @@ class IMUService(Node):
         self.CFangleY = 0.0
         self.heading = 0.0
 
-        self.magXmin = 309
-        self.magYmin = -2350
-        self.magZmin = -1496
-        self.magXmax = 2684
-        self.magYmax = 753
-        self.magZmax = 1770
+        self.magXmin = 32767
+        self.magYmin = 32767
+        self.magZmin = 32767
+        self.magXmax = -32767
+        self.magYmax = -32767
+        self.magZmax = -32767
+        self.calibrate_Mag()
+
+        # self.magXmin = 309 #Previous Calibration values of magnetometer
+        # self.magYmin = -2350
+        # self.magZmin = -1496
+        # self.magXmax = 2684
+        # self.magYmax = 753
+        # self.magZmax = 1770
+
+        self.srv = self.create_service(IMUData, 'get_IMU_data', self.get_data_callback)
+        timer_period = 0.02
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+
+    def calibrate_Mag(self):
+        for i in range(200):
+            MAGx = readMAGx()
+            MAGy = readMAGy()
+            MAGz = readMAGz()
+
+            if MAGx > self.magXmax:
+                self.magXmax = MAGx
+            if MAGy > self.magYmax:
+                self.magYmax = MAGy
+            if MAGz > self.magZmax:
+                self.magZmax = MAGz
+
+            if MAGx < self.magXmin:
+                self.magXmin = MAGx
+            if MAGy < self.magYmin:
+                self.magYmin = MAGy
+            if MAGz < self.magZmin:
+                self.magZmin = MAGz
+
+            time.sleep(0.025)
+        
 
 
     def timer_callback(self):
@@ -158,26 +190,12 @@ class IMUService(Node):
         self.heading = tiltCompensatedHeading
 #        print("#  CFheading Angle %5.2f   Gyro Angle %5.2f  Bias %5.2f  Mag %5.2f#" % (CF_heading, self.gyroZangle, self.biasz, tiltCompensatedHeading))
 
-    def calibrate(self,readings):
-        biasx = 0
-        biasy = 0
-        biasz = 0
-        for i in range(readings):
-            biasx += readGYRx() * G_GAIN * 0.02
-            biasy += readGYRy() * G_GAIN * 0.02
-            biasz += readGYRz() * G_GAIN * 0.02
-            time.sleep(0.02)
-        
-        self.biasx = biasx/readings
-        self.biasy = biasy/readings
-        self.biasz = biasz/readings
-
     def get_data_callback(self, request, response):
 
-        response.heading = self.heading #UPDATE
+        response.heading = self.heading 
         response.acceleration = self.acceleration
         response.omega = self.omega
-        self.get_logger().info('Incoming request')
+        self.get_logger().info('Incoming IMU request')
 
         return response
 
