@@ -33,7 +33,8 @@ setup(
             'imu_srv = test_input.imu_service:main',
             'imu_cli = test_input.imu_client:main',
             'control = test_input.control:main',
-            'motor_control = test_input.motor_controller:main'
+            'motor_control = test_input.motor_controller:main',
+            'teleop = test_input.teleop:main'
         ],
     },
 )
