@@ -15,6 +15,7 @@ class Teleop(Node):
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
     def timer_callback(self):
+        print(self.key)
         if self.key == keys.UP:
             msg = Float32MultiArray()
             msg.data = (1,1)
