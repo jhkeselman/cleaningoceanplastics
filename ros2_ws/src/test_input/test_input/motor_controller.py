@@ -24,12 +24,12 @@ class MotorControllerNode(Node):
             self.duty_cycle_callback,
             10)
 
-        self.stop_subscription = self.create_subscription{
+        self.emergency_stop = self.create_subscription(
             Bool,
             'emergency_stop',
             self.destroy_node,
             10
-        }
+        )
 
     def duty_cycle_callback(self, msg):
         if (5 <= msg.data[0] <= 10 and 5 <= msg.data[1] <= 10):
