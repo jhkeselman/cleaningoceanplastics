@@ -59,7 +59,7 @@ class IMUService(Node):
         # self.magZmax = -32767
         # self.calibrate_Mag()
 
-        print((" magXmin  %i  magYmin  %i  magZmin  %i  ## magXmax  %i  magYmax  %i  magZmax %i  " %(self.magXmin,self.magYmin,self.magZmin,self.magXmax,self.magYmax,self.magZmax)))
+        #print((" magXmin  %i  magYmin  %i  magZmin  %i  ## magXmax  %i  magYmax  %i  magZmax %i  " %(self.magXmin,self.magYmin,self.magZmin,self.magXmax,self.magYmax,self.magZmax)))
 
         self.magXmin = -1261 #Previous Calibration values of magnetometer
         self.magYmin = -2286
