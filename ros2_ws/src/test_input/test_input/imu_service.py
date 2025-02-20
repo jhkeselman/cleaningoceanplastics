@@ -87,7 +87,7 @@ class IMUService(Node):
         rate_gyr_y =  GYRy * G_GAIN
         rate_gyr_z =  GYRz * G_GAIN
 
-        self.omega = rate_gyr_z #MAY NEED TO ACCOUNT FOR BIAS
+        self.omega = rate_gyr_z*M_PI/180 #MAY NEED TO ACCOUNT FOR BIAS
 
         #Calculate the angles from the gyro.
         self.gyroXangle+=rate_gyr_x*LP
