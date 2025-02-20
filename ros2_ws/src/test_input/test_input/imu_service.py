@@ -49,22 +49,24 @@ class IMUService(Node):
         self.CFangleY = 0.0
         self.heading = 0.0
 
-        self.magXmin = 32767
-        self.magYmin = 32767
-        self.magZmin = 32767
-        self.magXmax = -32767
-        self.magYmax = -32767
-        self.magZmax = -32767
-        self.calibrate_Mag()
+        self.declination = -214.1/1000 * RAD_TO_DEG #calculated at Worcester (-214 milliradians)
+
+        # self.magXmin = 32767
+        # self.magYmin = 32767
+        # self.magZmin = 32767
+        # self.magXmax = -32767
+        # self.magYmax = -32767
+        # self.magZmax = -32767
+        # self.calibrate_Mag()
 
         print((" magXmin  %i  magYmin  %i  magZmin  %i  ## magXmax  %i  magYmax  %i  magZmax %i  " %(self.magXmin,self.magYmin,self.magZmin,self.magXmax,self.magYmax,self.magZmax)))
 
-        # self.magXmin = 309 #Previous Calibration values of magnetometer
-        # self.magYmin = -2350
-        # self.magZmin = -1496
-        # self.magXmax = 2684
-        # self.magYmax = 753
-        # self.magZmax = 1770
+        self.magXmin = -1261 #Previous Calibration values of magnetometer
+        self.magYmin = -2286
+        self.magZmin = -2048
+        self.magXmax = 2465
+        self.magYmax = 1529
+        self.magZmax = 1822
 
         self.srv = self.create_service(IMUData, 'get_IMU_data', self.get_data_callback)
         timer_period = 0.02
@@ -144,6 +146,7 @@ class IMUService(Node):
 
         #Calculate heading
         heading = 180 * math.atan2(MAGy,MAGx)/M_PI
+        heading += self.declination
 
         #Only have our heading between 0 and 360
         if heading < 0:
@@ -181,14 +184,14 @@ class IMUService(Node):
         Fusing gyroscope and magnetometer data
         '''
 
-        K = 0.9
-        B = 0.001
-        CF_heading = K*(self.gyroZangle-self.biasz)+ (1-K)*heading
-        if CF_heading < 0:
-            CF_heading += 360
-        elif CF_heading > 360:
-            CF_heading -= 360
-        self.biasz += B*(CF_heading-self.gyroZangle)
+        # K = 0.9
+        # B = 0.001
+        # CF_heading = K*(self.gyroZangle-self.biasz)+ (1-K)*heading
+        # if CF_heading < 0:
+        #     CF_heading += 360
+        # elif CF_heading > 360:
+        #     CF_heading -= 360
+        # self.biasz += B*(CF_heading-self.gyroZangle)
         self.heading = tiltCompensatedHeading
 #        print("#  CFheading Angle %5.2f   Gyro Angle %5.2f  Bias %5.2f  Mag %5.2f#" % (CF_heading, self.gyroZangle, self.biasz, tiltCompensatedHeading))
 
