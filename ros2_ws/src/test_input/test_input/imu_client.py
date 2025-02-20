@@ -13,7 +13,7 @@ class IMUClient(Node):
         while not self.cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
         self.req = IMUData.Request()
-        timer_period = 1
+        timer_period = 0.25
         self.timer = self.create_timer(timer_period, self.send_request)
 
     def send_request(self):
