@@ -18,11 +18,18 @@ class MotorControllerNode(Node):
         self.I2C_address = 0x55
         self.bus = smbus.SMBus(1)
 
-        self.subscription = self.create_subscription(
+        self.pwm_subscription = self.create_subscription(
             Float32MultiArray,
             'set_duty_cycle',
             self.duty_cycle_callback,
             10)
+
+        self.stop_subscription = self.create_subscription{
+            Bool,
+            'emergency_stop',
+            self.destroy_node,
+            10
+        }
 
     def duty_cycle_callback(self, msg):
         if (5 <= msg.data[0] <= 10 and 5 <= msg.data[1] <= 10):
@@ -35,6 +42,7 @@ class MotorControllerNode(Node):
             self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
         except:
             self.get_logger().info("Failed to send value")
+
 
     def stop_motors(self):
         self.send_value(7.5, 7.5)
