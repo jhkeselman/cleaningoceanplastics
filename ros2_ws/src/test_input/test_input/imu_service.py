@@ -212,7 +212,7 @@ class IMUService(Node):
                 avg_omega += n
                 elements += 1
         if elements:
-            avg_omega/elements
+            avg_omega = avg_omega/elements
         return avg_omega
         
 
