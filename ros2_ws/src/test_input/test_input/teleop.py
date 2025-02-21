@@ -4,7 +4,7 @@ from std_msgs.msg import Float32MultiArray, Bool
 import struct
 import sys
 import time
-from getkey import getkey, keys
+from sys import stdin
 
 class Teleop(Node):
     def __init__(self):
@@ -18,29 +18,29 @@ class Teleop(Node):
         self.right_value = 7.5
 
     def check_input(self):
-        key = getkey()
-        if key == keys.UP:
+        key = sys.stdin.read(1)
+        if key == 'w':
             if key == self.last_input:
                 self.left_value = min(10, self.left_value + 0.5)
                 self.right_value = min(10, self.right_value + 0.5)
             else:
                 self.left_value = 8.0
                 self.right_value = 8.0
-        elif key == keys.DOWN:
+        elif key == 'a':
             if key == self.last_input:
                 self.left_value = max(5, self.left_value - 0.5)
                 self.right_value = max(5, self.right_value - 0.5)
             else:
                 self.left_value = 6.0
                 self.right_value = 6.0
-        elif key == keys.LEFT:
+        elif key == 's':
             if key == self.last_input:
                 self.left_value = max(5, self.left_value - 0.5)
                 self.right_value = min(10, self.right_value + 0.5)
             else:
                 self.left_value = 6.0
                 self.right_value = 8.0
-        elif key == keys.RIGHT:
+        elif key == 'd':
             if key == self.last_input:
                 self.left_value = min(10, self.left_value + 0.5)
                 self.right_value = max(5, self.right_value - 0.5)
