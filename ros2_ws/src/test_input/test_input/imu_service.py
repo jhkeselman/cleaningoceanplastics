@@ -47,7 +47,7 @@ class IMUService(Node):
         if init_heading < 0:
             init_heading += 360
         self.gyroZangle = init_heading
-        print(self.gyroZangle)
+        #print(self.gyroZangle)
         self.CFangleX = 0.0
         self.CFangleY = 0.0
         self.heading = 0.0
@@ -76,7 +76,7 @@ class IMUService(Node):
         self.emergency_stop = self.create_subscription(
             Bool,
             'emergency_stop',
-            self.destroy_node,
+            super().destroy_node,
             10
         )
 
