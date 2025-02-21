@@ -71,7 +71,7 @@ class IMUService(Node):
         self.magYmax = 1529
         self.magZmax = 1822
 
-        self.gyro_avg_data = GYRO_MAX*np.ones(10)
+        self.gyro_avg_data = GYRO_MAX*np.ones(20)
 
         self.srv = self.create_service(IMUData, 'get_IMU_data', self.get_data_callback)
         timer_period = 0.02
