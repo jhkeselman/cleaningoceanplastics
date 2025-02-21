@@ -3,12 +3,14 @@ from services.srv import IMUData
 import rclpy
 from rclpy.node import Node
 
+
 from std_msgs.msg import String
 
 import math
 import datetime
 import sys
 import time
+import numpy as np
 
 from .IMU_lib import *
 
@@ -16,6 +18,7 @@ RAD_TO_DEG = 57.29578
 M_PI = 3.14159265358979323846
 G_GAIN = 0.070  # [deg/s/LSB]  If you change the dps for gyro, you need to update this value accordingly
 AA =  0.40      # Complementary filter constant
+GYRO_MAX = 32767
 
 class IMUService(Node):
 
@@ -67,6 +70,8 @@ class IMUService(Node):
         self.magXmax = 2465
         self.magYmax = 1529
         self.magZmax = 1822
+
+        self.gyro_avg_data = GYRO_MAX*np.ones(10)
 
         self.srv = self.create_service(IMUData, 'get_IMU_data', self.get_data_callback)
         timer_period = 0.02
@@ -124,6 +129,10 @@ class IMUService(Node):
         rate_gyr_z =  GYRz * G_GAIN
 
         self.omega = rate_gyr_z*M_PI/180 #MAY NEED TO ACCOUNT FOR BIAS
+        
+        np.roll(self.gyro_avg,1) #shift moving average data by one and then store current reading
+        self.gyro_avg_data[0,0] = rate_gyr_z*M_PI/180
+        self.omega = self.calc_avg_gyro()
 
         #Calculate the angles from the gyro.
         self.gyroXangle+=rate_gyr_x*LP
@@ -194,6 +203,18 @@ class IMUService(Node):
         # self.biasz += B*(CF_heading-self.gyroZangle)
         self.heading = tiltCompensatedHeading
 #        print("#  CFheading Angle %5.2f   Gyro Angle %5.2f  Bias %5.2f  Mag %5.2f#" % (CF_heading, self.gyroZangle, self.biasz, tiltCompensatedHeading))
+
+    def calc_avg_gyro(self):
+        avg_omega = 0
+        elements = 0
+        for n in self.gyro_avg_data:
+            if n != GYRO_MAX:
+                avg_omega += n
+                elements += 1
+        if elements:
+            avg_omega/elements
+        return avg_omega
+        
 
     def get_data_callback(self, request, response):
 
