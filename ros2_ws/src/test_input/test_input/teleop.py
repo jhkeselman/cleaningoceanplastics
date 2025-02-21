@@ -19,6 +19,7 @@ class Teleop(Node):
 
     def check_input(self):
         key = sys.stdin.read(1)
+        self.get_logger().info('Key: ' + key)
         if key == 'w':
             if key == self.last_input:
                 self.left_value = min(10, self.left_value + 0.5)
