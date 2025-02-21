@@ -128,9 +128,9 @@ class IMUService(Node):
         rate_gyr_y =  GYRy * G_GAIN
         rate_gyr_z =  GYRz * G_GAIN
 
-        self.omega = rate_gyr_z*M_PI/180 #MAY NEED TO ACCOUNT FOR BIAS
+        #self.omega = rate_gyr_z*M_PI/180 #MAY NEED TO ACCOUNT FOR BIAS
         
-        np.roll(self.gyro_avg,1) #shift moving average data by one and then store current reading
+        np.roll(self.gyro_avg_data,1) #shift moving average data by one and then store current reading
         self.gyro_avg_data[0,0] = rate_gyr_z*M_PI/180
         self.omega = self.calc_avg_gyro()
 
