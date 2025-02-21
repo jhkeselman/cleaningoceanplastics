@@ -46,7 +46,7 @@ class MotorControllerNode(Node):
     def stop_motors(self):
         self.send_value(7.5, 7.5)
 
-    def destroy_node(self):
+    def destroy_node(self, msg):
         self.stop_motors()
         time.sleep(0.1)
         super().destroy_node()
