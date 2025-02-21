@@ -84,11 +84,11 @@ class IMUService(Node):
         timer_period = 0.02
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
-    def destroy_node(self):
+    def destroy_node(self,msg):
         time.sleep(0.1)
         super().destroy_node()
 
-        
+
     def calibrate_Mag(self):
         for i in range(200):
             MAGx = readMAGx()
