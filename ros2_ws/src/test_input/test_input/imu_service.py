@@ -4,7 +4,7 @@ import rclpy
 from rclpy.node import Node
 
 
-from std_msgs.msg import String
+from std_msgs.msg import String, Bool
 
 import math
 import datetime
@@ -72,6 +72,13 @@ class IMUService(Node):
         self.magZmax = 1822
 
         self.gyro_avg_data = GYRO_MAX*np.ones(20)
+
+        self.emergency_stop = self.create_subscription(
+            Bool,
+            'emergency_stop',
+            self.destroy_node,
+            10
+        )
 
         self.srv = self.create_service(IMUData, 'get_IMU_data', self.get_data_callback)
         timer_period = 0.02
@@ -155,7 +162,7 @@ class IMUService(Node):
 
         #Calculate heading
         heading = 180 * math.atan2(MAGy,MAGx)/M_PI
-        heading += self.declination
+        #heading += self.declination
 
         #Only have our heading between 0 and 360
         if heading < 0:
@@ -222,7 +229,6 @@ class IMUService(Node):
         response.acceleration = self.acceleration
         response.omega = self.omega
         self.get_logger().info('Incoming IMU request')
-        print(self.gyro_avg_data)
 
         return response
 
