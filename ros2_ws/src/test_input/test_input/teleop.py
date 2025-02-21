@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Float32MultiArray
+from std_msgs.msg import Float32MultiArray, Bool
 import struct
 import sys
 import time
@@ -9,38 +9,57 @@ from getkey import getkey, keys
 class Teleop(Node):
     def __init__(self):
         super().__init__('teleop')
-        self.key = getkey()
-        self.speed_publisher = self.create_publisher(Float32MultiArray, 'set_motor_speeds', 10)
-        timer_period: float = 0.05
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.pwm_publisher = self.create_publisher(Float32MultiArray, 'set_duty_cycle', 10)
+        
+        self.timer = self.create_timer(0.1, self.check_input)
 
-    def timer_callback(self):
-        print(self.key)
-        if self.key == keys.UP:
-            msg = Float32MultiArray()
-            msg.data = (1,1)
-            self.speed_publisher.publish(msg)
-        elif self.key == keys.DOWN:
-            msg = Float32MultiArray()
-            msg.data = (-1,-1)
-            self.speed_publisher.publish(msg)
-        elif self.key == keys.LEFT:
-            msg = Float32MultiArray()
-            msg.data = (-1,1)
-            self.speed_publisher.publish(msg)
-        elif self.key == keys.RIGHT:
-            msg = Float32MultiArray()
-            msg.data = (1,-1)
-            self.speed_publisher.publish(msg)
-        elif self.key == 'x':
-            msg = Float32MultiArray()
-            msg.data = (0,0)
-            self.speed_publisher.publish(msg)
-            
-            
+        self.last_input = ''
+        self.left_value = 7.5
+        self.right_value = 7.5
+
+    def check_input(self):
+        key = getkey()
+        if key == keys.UP:
+            if key == self.last_input:
+                self.left_value = min(10, self.left_value + 0.5)
+                self.right_value = min(10, self.right_value + 0.5)
+            else:
+                self.left_value = 8.0
+                self.right_value = 8.0
+        elif key == keys.DOWN:
+            if key == self.last_input:
+                self.left_value = max(5, self.left_value - 0.5)
+                self.right_value = max(5, self.right_value - 0.5)
+            else:
+                self.left_value = 6.0
+                self.right_value = 6.0
+        elif key == keys.LEFT:
+            if key == self.last_input:
+                self.left_value = max(5, self.left_value - 0.5)
+                self.right_value = min(10, self.right_value + 0.5)
+            else:
+                self.left_value = 6.0
+                self.right_value = 8.0
+        elif key == keys.RIGHT:
+            if key == self.last_input:
+                self.left_value = min(10, self.left_value + 0.5)
+                self.right_value = max(5, self.right_value - 0.5)
+            else:
+                self.left_value = 8.0
+                self.right_value = 6.0
+        elif key == 'x':
+            self.left_value = 7.5
+            self.right_value = 7.5
+        self.last_input = key
+        self.publish_pwm()
+    
+    def publish_pwm(self):
+        msg = Float32MultiArray()
+        msg.data = [self.left_value, self.right_value]
+        self.pwm_publisher.publish(msg)
+    
 
     def destroy_node(self):
-        #send message to stop motors
         time.sleep(0.1)
         super().destroy_node()
 
