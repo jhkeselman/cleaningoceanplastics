@@ -6,6 +6,7 @@ import signal
 
 from std_msgs.msg import Bool, Float64MultiArray
 from sensor_msgs.msg import NavSatFix
+from services.srv import IMUData
 
 class Control(Node):
 
@@ -21,8 +22,8 @@ class Control(Node):
             self.get_logger().info('Service not available, waiting again...')
         self.req = IMUData.Request()
 
-        # Create a timer to send requests every 5-10 seconds
-        self.timer = self.create_timer(5.0, self.timer_callback)
+        # Create a timer to send requests every second
+        self.timer = self.create_timer(1.0, self.timer_callback)
 
         # Initialize variables
         self.longitude = 0.0
@@ -74,10 +75,16 @@ class Control(Node):
     def response_callback(self, future):
         try:
             response = future.result()
+            GREEN = '\033[92m'
+            RESET = '\033[0m'  # Resets to default color
+
+            # Log message with green color
             self.get_logger().info(
-            'IMU Heading: %5.3f, Latitude: %5.6f, Longitude: %5.6f, Altitude: %5.2f' %
-            (response.heading, self.latitude, self.longitude, self.altitude)
-        )
+                f'{GREEN}IMU Heading: {response.heading:.3f}, '
+                f'Latitude: {self.latitude:.6f}, '
+                f'Longitude: {self.longitude:.6f}, '
+                f'Altitude: {self.altitude:.2f}{RESET}'
+            )
         except Exception as e:
             self.get_logger().error('Service call failed: %r' % (e,))
 

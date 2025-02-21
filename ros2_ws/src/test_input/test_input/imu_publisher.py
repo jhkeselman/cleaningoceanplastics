@@ -59,7 +59,6 @@ class IMU(Node):
         MAGx = readMAGx()
         MAGy = readMAGy()
         MAGz = readMAGz()
-        print(GYRz)
 
         ##Calculate loop Period(LP). How long between Gyro Reads
         b = datetime.datetime.now() - self.a
@@ -143,17 +142,18 @@ class IMU(Node):
         if 0:                       #Change to '0' to stop showing the angles from the accelerometer
             outputString += "#  ACCX Angle %5.2f ACCY Angle %5.2f  #  " % (AccXangle, AccYangle)
 
-        if 1:                       #Change to '0' to stop  showing the angles from the gyro
+        if 0:                       #Change to '0' to stop  showing the angles from the gyro
             outputString +="#  GYRX Rate %5.2f GYRY Rate %5.2f GYRZ Rate %5.2f Bias %5.2f# " % (rate_gyr_x, rate_gyr_y, rate_gyr_z, self.biasz*G_GAIN)
 
-        if 0:                       #Change to '0' to stop  showing the angles from the complementary filter
+        if 1:                       #Change to '0' to stop  showing the angles from the complementary filter
             outputString +="\t#  CFangleX Angle %5.2f   CFangleY Angle %5.2f  #" % (self.CFangleX,self.CFangleY)
 
         if 1:                       #Change to '0' to stop  showing the heading
             outputString +="\t# HEADING %5.2f  tiltCompensatedHeading %5.2f #" % (heading,tiltCompensatedHeading)
         if 1:                       #Change to '0' to stop  showing the heading
-            outputString +="\n# CFHeading %5.2f #" % (CF_heading)
+            outputString +="\t# CFHeading %5.2f #" % (CF_heading)
 
+        self.get_logger().info(outputString)
         # return outputString
         return [self.CFangleX, self.CFangleY, heading]
 
