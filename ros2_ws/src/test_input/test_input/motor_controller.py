@@ -43,7 +43,6 @@ class MotorControllerNode(Node):
         except:
             self.get_logger().info("Failed to send value")
 
-
     def stop_motors(self):
         self.send_value(7.5, 7.5)
 
