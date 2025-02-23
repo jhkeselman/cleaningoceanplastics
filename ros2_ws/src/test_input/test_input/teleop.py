@@ -20,19 +20,19 @@ class Teleop(Node):
     def check_input(self):
         key = sys.stdin.read(1)
         if key == 'w':
-            if key == self.last_input:
+            if key == self.last_input or key == 's':
                 self.left_value = max(5, self.left_value - 0.5)
                 self.right_value = max(5, self.right_value - 0.5)
             else:
                 self.left_value = 6.0
                 self.right_value = 6.0
         elif key == 's':
-            if key == self.last_input:
-                self.left_value = min(10, self.left_value + 0.5)
-                self.right_value = min(10, self.right_value + 0.5)
+            if key == self.last_input or key == 'w':
+                self.left_value = max(7.5, self.left_value + 0.5)
+                self.right_value = max(7.5, self.right_value + 0.5)
             else:
-                self.left_value = 8.0
-                self.right_value = 8.0
+                self.left_value = 7.0
+                self.right_value = 7.0
         elif key == 'a': # Turn left
             if key == self.last_input:
                 self.left_value = min(10, self.left_value + 0.5)
