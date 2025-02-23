@@ -5,6 +5,7 @@ import struct
 import sys
 import time
 from sys import stdin
+import select
 
 class Teleop(Node):
     def __init__(self):
@@ -18,7 +19,13 @@ class Teleop(Node):
         self.right_value = 7.5
 
     def check_input(self):
-        key = sys.stdin.read(1)
+        if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
+            key = sys.stdin.read(1)
+            key = key.strip()
+            if key:
+                self.process_key(key)
+
+    def process_key(self, key):
         self.get_logger().info(f"Last key: {self.last_input}")
         if key == 'w':
             self.get_logger().info("W pressed")
