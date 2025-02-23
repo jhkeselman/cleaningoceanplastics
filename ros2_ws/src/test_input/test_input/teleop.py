@@ -19,6 +19,7 @@ class Teleop(Node):
 
     def check_input(self):
         key = sys.stdin.read(1)
+        self.get_logger().info(f"Last key: {self.last_input}")
         if key == 'w':
             self.get_logger().info("W pressed")
             if key == self.last_input or self.last_input == 's':
