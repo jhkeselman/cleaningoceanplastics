@@ -22,13 +22,14 @@ class Teleop(Node):
         if key == 'w':
             self.get_logger().info("W pressed")
             if key == self.last_input or self.last_input == 's':
+                self.get_logger().info("W last key")
                 self.left_value = max(5, self.left_value - 0.5)
                 self.right_value = max(5, self.right_value - 0.5)
             else:
+                self.get_logger().info("W new")
                 self.left_value = 6.0
                 self.right_value = 6.0
         elif key == 's':
-            self.get_logger().info("S pressed")
             if key == self.last_input or self.last_input == 'w':
                 self.left_value = min(7.5, self.left_value + 0.5)
                 self.right_value = min(7.5, self.right_value + 0.5)
@@ -36,7 +37,6 @@ class Teleop(Node):
                 self.left_value = 7.0
                 self.right_value = 7.0
         elif key == 'a': # Turn left
-            self.get_logger().info("A pressed")
             if key == self.last_input:
                 self.left_value = min(7.5, self.left_value + 0.5)
                 self.right_value = max(5, self.right_value - 0.5)
@@ -44,7 +44,6 @@ class Teleop(Node):
                 self.left_value = 7.0
                 self.right_value = 6.5
         elif key == 'd': # Turn Right
-            self.get_logger().info("D pressed")
             if key == self.last_input:
                 self.left_value = max(5, self.left_value - 0.5)
                 self.right_value = min(7.5, self.right_value + 0.5)
@@ -52,7 +51,6 @@ class Teleop(Node):
                 self.left_value = 6.5
                 self.right_value = 7.0
         elif key == 'x':
-            self.get_logger().info("X pressed")
             self.left_value = 7.5
             self.right_value = 7.5
         self.last_input = key
