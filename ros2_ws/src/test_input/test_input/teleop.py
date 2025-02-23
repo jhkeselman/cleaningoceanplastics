@@ -26,15 +26,11 @@ class Teleop(Node):
                 self.process_key(key)
 
     def process_key(self, key):
-        self.get_logger().info(f"Last key: {self.last_input}")
         if key == 'w':
-            self.get_logger().info("W pressed")
             if key == self.last_input or self.last_input == 's':
-                self.get_logger().info("W last key")
                 self.left_value = max(5, self.left_value - 0.5)
                 self.right_value = max(5, self.right_value - 0.5)
             else:
-                self.get_logger().info("W new")
                 self.left_value = 6.0
                 self.right_value = 6.0
         elif key == 's':
