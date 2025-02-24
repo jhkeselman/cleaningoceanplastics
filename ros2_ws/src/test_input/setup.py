@@ -22,7 +22,6 @@ setup(
     py_modules=[
         'test_input.IMU_lib',  # Path to IMU_lib.py
     ],
-    tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             'water_sensor = test_input.water_sensor:main',

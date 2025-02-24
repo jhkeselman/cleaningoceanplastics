@@ -16,11 +16,15 @@ setup(
                     'pyserial',
                     'numpy',
                     'pyyaml'],
+    py_modules=[
+        'gps_service.checksum_utils',
+        'gps_service.parser',
+        'gps_service.driver'
+    ],
     maintainer='johnk',
     maintainer_email='jkhall@wpi.edu',
     description='TODO: Package description',
     license='TODO: License declaration',
-    tests_require=['pytest'],
     entry_points={
         'console_scripts': ['gps_srv = nmea_service_driver:main'
         ],

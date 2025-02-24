@@ -6,8 +6,8 @@ from rclpy.node import Node
 from sensor_msgs.msg import NavSatFix, NavSatStatus, TimeReference
 from geometry_msgs.msg import TwistStamped, QuaternionStamped
 from tf_transformations import quaternion_from_euler
-from libnmea_navsat_driver.checksum_utils import check_nmea_checksum
-from libnmea_navsat_driver import parser
+from checksum_utils import check_nmea_checksum
+import parser
 from services.srv import GPSdata
 
 
@@ -15,18 +15,12 @@ class Ros2NMEADriver(Node):
     def __init__(self):
         super().__init__('nmea_navsat_driver')
 
-        self.fix_pub = self.create_publisher(NavSatFix, 'fix', 10)
-        self.vel_pub = self.create_publisher(TwistStamped, 'vel', 10)
-        self.heading_pub = self.create_publisher(QuaternionStamped, 'heading', 10)
         self.fix_service = self.create_service(GPSdata, 'get_GPS_data', self.data_callback)
 
         self.time_ref_source = self.declare_parameter('time_ref_source', 'gps').value
         self.use_RMC = self.declare_parameter('useRMC', False).value
         self.use_GNSS_time = self.declare_parameter('use_GNSS_time', False).value
         self.valid_fix = False
-
-        if not self.use_GNSS_time:
-            self.time_ref_pub = self.create_publisher(TimeReference, 'time_reference', 10)
 
         # epe = estimated position error
         self.default_epe_quality0 = self.declare_parameter('epe_quality0', 1000000).value
@@ -167,25 +161,23 @@ class Ros2NMEADriver(Node):
             current_fix.position_covariance[4] = (hdop * self.lat_std_dev) ** 2
             current_fix.position_covariance[8] = (2 * hdop * self.alt_std_dev) ** 2  # FIXME
 
-            self.fix_pub.publish(current_fix)
             self.fix = current_fix
 
             if not (math.isnan(data['utc_time'][0]) or self.use_GNSS_time):
                 current_time_ref.time_ref = rclpy.time.Time(seconds=data['utc_time'][0], nanoseconds=data['utc_time'][1]).to_msg()
                 self.last_valid_fix_time = current_time_ref
-                self.time_ref_pub.publish(current_time_ref)
 
-        elif not self.use_RMC and 'VTG' in parsed_sentence:
-            data = parsed_sentence['VTG']
+        # elif not self.use_RMC and 'VTG' in parsed_sentence:
+        #     data = parsed_sentence['VTG']
 
-            # Only report VTG data when you've received a valid GGA fix as well.
-            if self.valid_fix:
-                current_vel = TwistStamped()
-                current_vel.header.stamp = current_time
-                current_vel.header.frame_id = frame_id
-                current_vel.twist.linear.x = data['speed'] * math.sin(data['true_course'])
-                current_vel.twist.linear.y = data['speed'] * math.cos(data['true_course'])
-                self.vel_pub.publish(current_vel)
+        #     # Only report VTG data when you've received a valid GGA fix as well.
+        #     if self.valid_fix:
+        #         current_vel = TwistStamped()
+        #         current_vel.header.stamp = current_time
+        #         current_vel.header.frame_id = frame_id
+        #         current_vel.twist.linear.x = data['speed'] * math.sin(data['true_course'])
+        #         current_vel.twist.linear.y = data['speed'] * math.cos(data['true_course'])
+        #         self.vel_pub.publish(current_vel)
 
         elif 'RMC' in parsed_sentence:
             data = parsed_sentence['RMC']
@@ -213,21 +205,19 @@ class Ros2NMEADriver(Node):
                 current_fix.position_covariance_type = \
                     NavSatFix.COVARIANCE_TYPE_UNKNOWN
 
-                self.fix_pub.publish(current_fix)
                 self.fix = current_fix
 
                 if not (math.isnan(data['utc_time'][0]) or self.use_GNSS_time):
                     current_time_ref.time_ref = rclpy.time.Time(seconds=data['utc_time'][0], nanoseconds=data['utc_time'][1]).to_msg()
-                    self.time_ref_pub.publish(current_time_ref)
 
-            # Publish velocity from RMC regardless, since GGA doesn't provide it.
-            if data['fix_valid']:
-                current_vel = TwistStamped()
-                current_vel.header.stamp = current_time
-                current_vel.header.frame_id = frame_id
-                current_vel.twist.linear.x = data['speed'] * math.sin(data['true_course'])
-                current_vel.twist.linear.y = data['speed'] * math.cos(data['true_course'])
-                self.vel_pub.publish(current_vel)
+            # # Publish velocity from RMC regardless, since GGA doesn't provide it.
+            # if data['fix_valid']:
+            #     current_vel = TwistStamped()
+            #     current_vel.header.stamp = current_time
+            #     current_vel.header.frame_id = frame_id
+            #     current_vel.twist.linear.x = data['speed'] * math.sin(data['true_course'])
+            #     current_vel.twist.linear.y = data['speed'] * math.cos(data['true_course'])
+            #     self.vel_pub.publish(current_vel)
         elif 'GST' in parsed_sentence:
             data = parsed_sentence['GST']
 
@@ -236,18 +226,18 @@ class Ros2NMEADriver(Node):
             self.lon_std_dev = data['lon_std_dev']
             self.lat_std_dev = data['lat_std_dev']
             self.alt_std_dev = data['alt_std_dev']
-        elif 'HDT' in parsed_sentence:
-            data = parsed_sentence['HDT']
-            if data['heading']:
-                current_heading = QuaternionStamped()
-                current_heading.header.stamp = current_time
-                current_heading.header.frame_id = frame_id
-                q = quaternion_from_euler(0, 0, math.radians(data['heading']))
-                current_heading.quaternion.x = q[0]
-                current_heading.quaternion.y = q[1]
-                current_heading.quaternion.z = q[2]
-                current_heading.quaternion.w = q[3]
-                self.heading_pub.publish(current_heading)
+        # elif 'HDT' in parsed_sentence:
+        #     data = parsed_sentence['HDT']
+        #     if data['heading']:
+        #         current_heading = QuaternionStamped()
+        #         current_heading.header.stamp = current_time
+        #         current_heading.header.frame_id = frame_id
+        #         q = quaternion_from_euler(0, 0, math.radians(data['heading']))
+        #         current_heading.quaternion.x = q[0]
+        #         current_heading.quaternion.y = q[1]
+        #         current_heading.quaternion.z = q[2]
+        #         current_heading.quaternion.w = q[3]
+        #         self.heading_pub.publish(current_heading)
         else:
             return False
         return True
