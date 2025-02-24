@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 from glob import glob
 
-package_name = 'test_input'
+package_name = 'sensors'
 
 setup(
     name=package_name,
@@ -20,21 +20,21 @@ setup(
     description='TODO: Package description',
     license='Apache-2.0',
     py_modules=[
-        'test_input.IMU_lib',  # Path to IMU_lib.py
+        'sensors.IMU_lib',  # Path to IMU_lib.py
     ],
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'water_sensor = test_input.water_sensor:main',
-            'imu_pub = test_input.imu_publisher:main',
-            'object_detector = test_input.object_detector:main',
-            'object_selector = test_input.object_selector:main',
-            'gps_subscriber = test_input.gps_subscriber:main',
-            'imu_srv = test_input.imu_service:main',
-            'imu_cli = test_input.imu_client:main',
-            'control = test_input.control:main',
-            'motor_control = test_input.motor_controller:main',
-            'teleop = test_input.teleop:main'
+            'water_sensor = sensors.water_sensor:main',
+            'imu_pub = sensors.imu_publisher:main',
+            'object_detector = sensors.object_detector:main',
+            'object_selector = sensors.object_selector:main',
+            'gps_subscriber = sensors.gps_subscriber:main',
+            'imu_srv = sensors.imu_service:main',
+            'imu_cli = sensors.imu_client:main',
+            'control = sensors.control:main',
+            'motor_control = sensors.motor_controller:main',
+            'teleop = sensors.teleop:main'
         ],
     },
 )
