@@ -1,5 +1,7 @@
 import sys
+import time
 
+from std_msgs.msg import Bool
 from services.srv import IMUData
 import rclpy
 from rclpy.node import Node
@@ -13,6 +15,14 @@ class IMUClient(Node):
         while not self.cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
         self.req = IMUData.Request()
+
+        self.emergency_stop = self.create_subscription(
+            Bool,
+            'emergency_stop',
+            self.destroy_node,
+            10
+        )
+        
         timer_period = 0.25
         self.timer = self.create_timer(timer_period, self.send_request)
 
@@ -26,6 +36,10 @@ class IMUClient(Node):
             self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(response.heading, response.acceleration, response.omega))
         except Exception as e:
             self.get_logger().error(f'Service call failed {str(e)}')
+
+    def destroy_node(self,msg):
+        time.sleep(0.1)
+        super().destroy_node()
 
 
 

@@ -1,9 +1,11 @@
 import math
+import time
 
 import rclpy
 
 from rclpy.node import Node
 from sensor_msgs.msg import NavSatFix, NavSatStatus, TimeReference
+from std_msgs.msg import Bool
 from .checksum_utils import check_nmea_checksum
 from .parser import *
 from services.srv import GPSdata
@@ -14,6 +16,12 @@ class Ros2NMEADriver(Node):
         super().__init__('nmea_navsat_driver')
 
         self.fix_service = self.create_service(GPSdata, 'get_GPS_data', self.data_callback)
+        self.emergency_stop = self.create_subscription(
+            Bool,
+            'emergency_stop',
+            self.destroy_node,
+            10
+        )
 
         self.time_ref_source = self.declare_parameter('time_ref_source', 'gps').value
         self.use_RMC = self.declare_parameter('useRMC', False).value
@@ -247,6 +255,10 @@ class Ros2NMEADriver(Node):
         if len(prefix):
             return '%s/%s' % (prefix, frame_id)
         return frame_id
+    
+    def destroy_node(self):
+        time.sleep(0.1)
+        super().destroy_node()
     
     def data_callback(self,request,response):
         response.fix = self.fix

@@ -1,5 +1,7 @@
 import sys
+import time
 
+from std_msgs.msg import Bool
 from services.srv import GPSdata
 import rclpy
 from rclpy.node import Node
@@ -13,6 +15,12 @@ class GPSClient(Node):
         while not self.cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
         self.req = GPSdata.Request()
+        self.emergency_stop = self.create_subscription(
+            Bool,
+            'emergency_stop',
+            self.destroy_node,
+            10
+        )
         timer_period = 1
         self.timer = self.create_timer(timer_period, self.send_request)
 
@@ -28,6 +36,9 @@ class GPSClient(Node):
         except Exception as e:
             self.get_logger().error(f'Service call failed {str(e)}')
 
+    def destroy_node(self,msg):
+        time.sleep(0.1)
+        super().destroy_node()
 
 
 def main(args=None):
