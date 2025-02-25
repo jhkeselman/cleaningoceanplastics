@@ -31,10 +31,7 @@ setup(
             'object_selector = sensors.object_selector:main',
             'gps_subscriber = sensors.gps_subscriber:main',
             'imu_srv = sensors.imu_service:main',
-            'imu_cli = sensors.imu_client:main',
-            'control = sensors.control:main',
-            'motor_control = sensors.motor_controller:main',
-            'teleop = sensors.teleop:main'
+            'imu_cli = sensors.imu_client:main'
         ],
     },
 )

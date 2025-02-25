@@ -20,6 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'control = sensors.control:main',
+            'motor_control = sensors.motor_controller:main',
+            'teleop = sensors.teleop:main'
         ],
     },
 )
