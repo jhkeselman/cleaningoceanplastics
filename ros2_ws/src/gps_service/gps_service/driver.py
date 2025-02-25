@@ -4,10 +4,8 @@ import rclpy
 
 from rclpy.node import Node
 from sensor_msgs.msg import NavSatFix, NavSatStatus, TimeReference
-from geometry_msgs.msg import TwistStamped, QuaternionStamped
-from tf_transformations import quaternion_from_euler
 from .checksum_utils import check_nmea_checksum
-import parser
+from .parser import *
 from services.srv import GPSdata
 
 
@@ -92,7 +90,7 @@ class Ros2NMEADriver(Node):
                                    "Sentence was: %s" % nmea_string)
             return False
 
-        parsed_sentence = parser.parse_nmea_sentence(nmea_string)
+        parsed_sentence = parse_nmea_sentence(nmea_string)
         if not parsed_sentence:
             self.get_logger().debug("Failed to parse NMEA sentence. Sentence was: %s" % nmea_string)
             return False
