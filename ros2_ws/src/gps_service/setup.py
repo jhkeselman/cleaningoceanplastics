@@ -26,8 +26,8 @@ setup(
     description='TODO: Package description',
     license='TODO: License declaration',
     entry_points={
-        'console_scripts': ['gps_srv = nmea_service_driver:main',
-                            'gps_cli = gps_client:main'
+        'console_scripts': ['gps_srv = gps_service.nmea_service_driver:main',
+                            'gps_cli = gps_service.gps_client:main'
         ],
     },
 )
