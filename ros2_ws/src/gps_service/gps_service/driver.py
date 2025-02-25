@@ -6,7 +6,7 @@ from rclpy.node import Node
 from sensor_msgs.msg import NavSatFix, NavSatStatus, TimeReference
 from geometry_msgs.msg import TwistStamped, QuaternionStamped
 from tf_transformations import quaternion_from_euler
-from checksum_utils import check_nmea_checksum
+from .checksum_utils import check_nmea_checksum
 import parser
 from services.srv import GPSdata
 

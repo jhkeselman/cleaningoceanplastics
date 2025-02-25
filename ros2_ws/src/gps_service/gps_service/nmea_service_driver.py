@@ -2,7 +2,7 @@ import serial
 
 import rclpy
 
-from driver import Ros2NMEADriver
+from .driver import Ros2NMEADriver
 
 
 def main(args=None):
