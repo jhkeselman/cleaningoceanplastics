@@ -13,7 +13,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob('launch/*.py')),
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools','numpy'],
     zip_safe=True,
     maintainer='pi2',
     maintainer_email='pi2@todo.todo',
@@ -22,7 +22,6 @@ setup(
     py_modules=[
         'test_input.IMU_lib',  # Path to IMU_lib.py
     ],
-    tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             'water_sensor = test_input.water_sensor:main',
@@ -33,8 +32,9 @@ setup(
             'imu_srv = test_input.imu_service:main',
             'imu_cli = test_input.imu_client:main',
             'control = test_input.control:main',
-            'motor_control = test_input.motor_controller:main',
-            'teleop = test_input.teleop:main'
+            'teleop = test_input.teleop:main',
+            'kalman = test_input.Kalman_service:main',
+            'motor_control = test_input.motor_controller:main'
         ],
     },
 )
