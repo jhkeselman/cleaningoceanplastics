@@ -46,6 +46,7 @@ class MotorControllerNode(Node):
                 left_cycle -= (self.center - self.low) * abs(msg.data[0])
             if(msg.data[1] > 0):
                 right_cycle -= (self.center - self.low) * abs(msg.data[1])
+            self.get_logger().info(left_cycle, right_cycle)
             self.send_value(left_cycle, right_cycle)
 
     def duty_cycle_callback(self, msg):
