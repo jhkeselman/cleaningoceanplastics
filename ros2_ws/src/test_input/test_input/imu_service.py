@@ -39,11 +39,11 @@ class IMUService(Node):
 
         self.biasz = 0.0
 
-        init_magX = readMAGx()
+        init_magZ = readMAGz()
         init_magY = readMAGy()
         self.gyroXangle = 0.0
         self.gyroYangle = 0.0
-        init_heading = 180 * math.atan2(init_magY,init_magX)/M_PI
+        init_heading = 180 * math.atan2(init_magY,init_magZ)/M_PI
         if init_heading < 0:
             init_heading += 360
         self.gyroZangle = init_heading
@@ -166,7 +166,7 @@ class IMUService(Node):
         self.CFangleY=AA*(self.CFangleY+rate_gyr_y*LP) +(1 - AA) * AccYangle
 
         #Calculate heading
-        heading = 180 * math.atan2(MAGy,MAGx)/M_PI
+        heading = 180 * math.atan2(MAGy,MAGz)/M_PI
         #heading += self.declination
 
         #Only have our heading between 0 and 360
@@ -213,7 +213,7 @@ class IMUService(Node):
         # elif CF_heading > 360:
         #     CF_heading -= 360
         # self.biasz += B*(CF_heading-self.gyroZangle)
-        self.heading = tiltCompensatedHeading
+        #self.heading = tiltCompensatedHeading
 #        print("#  CFheading Angle %5.2f   Gyro Angle %5.2f  Bias %5.2f  Mag %5.2f#" % (CF_heading, self.gyroZangle, self.biasz, tiltCompensatedHeading))
 
     def calc_avg_gyro(self):
