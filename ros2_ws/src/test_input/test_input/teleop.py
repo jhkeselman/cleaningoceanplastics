@@ -31,29 +31,29 @@ class Teleop(Node):
                 self.left_value = max(5, self.left_value - 0.25)
                 self.right_value = max(5, self.right_value - 0.25)
             else:
-                self.left_value = 6.5
-                self.right_value = 6.5
-        elif key == 's':
-            if key == self.last_input or self.last_input == 'w':
-                self.left_value = min(7.5, self.left_value + 0.25)
-                self.right_value = min(7.5, self.right_value + 0.25)
-            else:
                 self.left_value = 7.0
                 self.right_value = 7.0
+        elif key == 's':
+            if key == self.last_input or self.last_input == 'w':
+                self.left_value = min(10, self.left_value + 0.25)
+                self.right_value = min(10, self.right_value + 0.25)
+            else:
+                self.left_value = 8.0
+                self.right_value = 8.0
         elif key == 'a': # Turn left
             if key == self.last_input:
-                self.left_value = min(7.5, self.left_value + 0.25)
+                self.left_value = min(10, self.left_value + 0.25)
                 self.right_value = max(5, self.right_value - 0.25)
             else:
-                self.left_value = 7.0
-                self.right_value = 6.5
+                self.left_value = 8.0
+                self.right_value = 7.0
         elif key == 'd': # Turn Right
             if key == self.last_input:
                 self.left_value = max(5, self.left_value - 0.25)
-                self.right_value = min(7.5, self.right_value + 0.25)
+                self.right_value = min(10, self.right_value + 0.25)
             else:
-                self.left_value = 6.5
-                self.right_value = 7.0
+                self.left_value = 7.0
+                self.right_value = 8.0
         elif key == 'x':
             self.left_value = 7.5
             self.right_value = 7.5
