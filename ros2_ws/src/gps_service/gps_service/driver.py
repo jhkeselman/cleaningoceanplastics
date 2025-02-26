@@ -256,7 +256,7 @@ class Ros2NMEADriver(Node):
             return '%s/%s' % (prefix, frame_id)
         return frame_id
     
-    def destroy_node(self):
+    def destroy_node(self,msg):
         time.sleep(0.1)
         super().destroy_node()
     
