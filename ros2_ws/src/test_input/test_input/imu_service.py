@@ -173,8 +173,8 @@ class IMUService(Node):
         if heading < 0:
             heading += 360.0
 
-        self.acc_bias = 0.2 #experimentally found but should be updated
-        self.acceleration = (ACCy * 0.244/1000 * 9.81) - self.acc_bias #conversion between raw accelerometer and m/s^s
+        self.acc_bias = 0.4 #experimentally found but should be updated #-0.2 for Z axis
+        self.acceleration = (ACCy * 0.244/1000 * 9.81) + self.acc_bias #conversion between raw accelerometer and m/s^s
 
         ####################################################################
         ###################Tilt compensated heading#########################
