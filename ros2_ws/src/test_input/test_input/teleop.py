@@ -15,8 +15,8 @@ class Teleop(Node):
         self.timer = self.create_timer(0.1, self.check_input)
 
         self.last_input = ''
-        self.left_value = 0
-        self.right_value = 0
+        self.left_value = 7.5
+        self.right_value = 7.5
 
     def check_input(self):
         if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
