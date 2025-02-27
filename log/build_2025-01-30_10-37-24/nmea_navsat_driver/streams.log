@@ -1,0 +1,25 @@
+[1.716s] Invoking command in '/home/pi2/cleaningoceanplastics/ros2_ws/src/nmea_navsat_driver-ros2': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/nmea_navsat_driver build --build-base /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build install --record /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/install.log --single-version-externally-managed install_data
+[2.082s] running egg_info
+[2.107s] writing ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/PKG-INFO
+[2.107s] writing dependency_links to ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/dependency_links.txt
+[2.110s] writing entry points to ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/entry_points.txt
+[2.113s] writing requirements to ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/requires.txt
+[2.115s] writing top-level names to ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/top_level.txt
+[2.168s] reading manifest file '../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/SOURCES.txt'
+[2.170s] writing manifest file '../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/SOURCES.txt'
+[2.170s] running build
+[2.170s] running build_py
+[2.171s] running install
+[2.180s] running install_lib
+[2.206s] running install_data
+[2.206s] running install_egg_info
+[2.234s] removing '/home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/nmea_navsat_driver-2.0.1-py3.12.egg-info' (and everything under it)
+[2.234s] Copying ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info to /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/nmea_navsat_driver-2.0.1-py3.12.egg-info
+[2.235s] running install_scripts
+[2.413s] Installing nmea_serial_driver script to /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[2.413s] Installing nmea_socket_driver script to /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[2.416s] Installing nmea_tcpclient_driver script to /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[2.418s] Installing nmea_topic_driver script to /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[2.421s] Installing nmea_topic_serial_reader script to /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[2.424s] writing list of installed files to '/home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/install.log'
+[2.521s] Invoked command in '/home/pi2/cleaningoceanplastics/ros2_ws/src/nmea_navsat_driver-ros2' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/nmea_navsat_driver build --build-base /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build install --record /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/install.log --single-version-externally-managed install_data

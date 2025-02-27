@@ -13,7 +13,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob('launch/*.py')),
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools','numpy'],
     zip_safe=True,
     maintainer='pi2',
     maintainer_email='pi2@todo.todo',
@@ -22,7 +22,6 @@ setup(
     py_modules=[
         'sensors.IMU_lib',  # Path to IMU_lib.py
     ],
-    tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             'water_sensor = sensors.water_sensor:main',
@@ -31,7 +30,8 @@ setup(
             'object_selector = sensors.object_selector:main',
             'gps_subscriber = sensors.gps_subscriber:main',
             'imu_srv = sensors.imu_service:main',
-            'imu_cli = sensors.imu_client:main'
+            'imu_cli = sensors.imu_client:main',
+            'kalman = sensors.Kalman_service:main'
         ],
     },
 )

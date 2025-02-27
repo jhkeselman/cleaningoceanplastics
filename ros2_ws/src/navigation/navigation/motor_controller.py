@@ -13,6 +13,7 @@ class MotorControllerNode(Node):
     def __init__(self):
         super().__init__('motor_controller')
 
+        self.amplitude = 2.5
         self.center = 7.5
 
         self.I2C_address = 0x55
@@ -23,6 +24,12 @@ class MotorControllerNode(Node):
             'set_duty_cycle',
             self.duty_cycle_callback,
             10)
+        
+        self.speed_subscription = self.create_subscription(
+            Float32MultiArray,
+            'set_motor_speeds',
+            self.set_motor_speeds,
+            10)
 
         self.emergency_stop = self.create_subscription(
             Bool,
@@ -30,6 +37,13 @@ class MotorControllerNode(Node):
             self.destroy_node,
             10
         )
+
+    def convert_speed(self, speed):
+        return -self.amplitude*speed + self.center
+
+    def set_motor_speeds(self, msg):
+        if (-1 <= msg.data[0] <= 1 and -1 <= msg.data[1] <= 1):
+            self.send_value(self.convert_speed(msg.data[0]), self.convert_speed(msg.data[1]))
 
     def duty_cycle_callback(self, msg):
         if (5 <= msg.data[0] <= 10 and 5 <= msg.data[1] <= 10):

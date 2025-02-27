@@ -10,13 +10,13 @@ import select
 class Teleop(Node):
     def __init__(self):
         super().__init__('teleop')
-        self.pwm_publisher = self.create_publisher(Float32MultiArray, 'set_duty_cycle', 10)
+        self.speed_publisher = self.create_publisher(Float32MultiArray, 'set_motor_speeds', 10)
         
         self.timer = self.create_timer(0.1, self.check_input)
 
         self.last_input = ''
-        self.left_value = 7.5
-        self.right_value = 7.5
+        self.left_value = 0
+        self.right_value = 0
 
     def check_input(self):
         if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
@@ -28,42 +28,42 @@ class Teleop(Node):
     def process_key(self, key):
         if key == 'w':
             if key == self.last_input or self.last_input == 's':
-                self.left_value = max(5, self.left_value - 0.5)
-                self.right_value = max(5, self.right_value - 0.5)
+                self.left_value = min(1, self.left_value + 0.1)
+                self.right_value = min(1, self.right_value + 0.1)
             else:
-                self.left_value = 6.0
-                self.right_value = 6.0
+                self.left_value = 0.2
+                self.right_value = 0.2
         elif key == 's':
             if key == self.last_input or self.last_input == 'w':
-                self.left_value = min(7.5, self.left_value + 0.5)
-                self.right_value = min(7.5, self.right_value + 0.5)
+                self.left_value = max(-1, self.left_value - 0.1)
+                self.right_value = max(-1, self.right_value - 0.1)
             else:
-                self.left_value = 7.0
-                self.right_value = 7.0
+                self.left_value = -0.2
+                self.right_value = -0.2
         elif key == 'a': # Turn left
-            if key == self.last_input:
-                self.left_value = min(7.5, self.left_value + 0.5)
-                self.right_value = max(5, self.right_value - 0.5)
+            if key == self.last_input or self.last_input == 'd':
+                self.left_value = max(-1, self.left_value - 0.1)
+                self.right_value = min(1, self.right_value + 0.1)
             else:
-                self.left_value = 7.0
-                self.right_value = 6.5
+                self.left_value = -0.2
+                self.right_value = 0.2
         elif key == 'd': # Turn Right
-            if key == self.last_input:
-                self.left_value = max(5, self.left_value - 0.5)
-                self.right_value = min(7.5, self.right_value + 0.5)
+            if key == self.last_input  or self.last_input == 'a':
+                self.left_value = max(-1, self.left_value + 0.1)
+                self.right_value = min(1, self.right_value - 0.1)
             else:
-                self.left_value = 6.5
-                self.right_value = 7.0
+                self.left_value = 0.2
+                self.right_value = -0.2
         elif key == 'x':
-            self.left_value = 7.5
-            self.right_value = 7.5
+            self.left_value = 0.0
+            self.right_value = 0.0
         self.last_input = key
-        self.publish_pwm()
+        self.publish_speed()
     
-    def publish_pwm(self):
+    def publish_speed(self):
         msg = Float32MultiArray()
         msg.data = [self.left_value, self.right_value]
-        self.pwm_publisher.publish(msg)
+        self.speed_publisher.publish(msg)
     
 
     def destroy_node(self):
