@@ -261,7 +261,10 @@ class Ros2NMEADriver(Node):
         super().destroy_node()
     
     def data_callback(self,request,response):
-        response.fix = self.fix
+        if self.fix:
+            response.fix = self.fix
+        else:
+            print("no fix")
         self.get_logger().info('Incoming request')
         return response
 
