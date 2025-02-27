@@ -1,0 +1,33 @@
+[1.714s] Invoking command in '/home/pi2/cleaningoceanplastics/ros2_ws/src/test_input': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pi2/cleaningoceanplastics/build/test_input/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi2/cleaningoceanplastics/install/test_input/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/test_input build --build-base /home/pi2/cleaningoceanplastics/build/test_input/build install --record /home/pi2/cleaningoceanplastics/build/test_input/install.log --single-version-externally-managed install_data
+[2.074s] running egg_info
+[2.099s] writing ../../../build/test_input/test_input.egg-info/PKG-INFO
+[2.101s] writing dependency_links to ../../../build/test_input/test_input.egg-info/dependency_links.txt
+[2.103s] writing entry points to ../../../build/test_input/test_input.egg-info/entry_points.txt
+[2.106s] writing requirements to ../../../build/test_input/test_input.egg-info/requires.txt
+[2.108s] writing top-level names to ../../../build/test_input/test_input.egg-info/top_level.txt
+[2.162s] reading manifest file '../../../build/test_input/test_input.egg-info/SOURCES.txt'
+[2.162s] adding license file 'LICENSE'
+[2.163s] writing manifest file '../../../build/test_input/test_input.egg-info/SOURCES.txt'
+[2.163s] running build
+[2.163s] running build_py
+[2.164s] copying test_input/motor_controller.py -> /home/pi2/cleaningoceanplastics/build/test_input/build/lib/test_input
+[2.165s] running install
+[2.174s] running install_lib
+[2.199s] copying /home/pi2/cleaningoceanplastics/build/test_input/build/lib/test_input/motor_controller.py -> /home/pi2/cleaningoceanplastics/install/test_input/lib/python3.12/site-packages/test_input
+[2.200s] byte-compiling /home/pi2/cleaningoceanplastics/install/test_input/lib/python3.12/site-packages/test_input/motor_controller.py to motor_controller.cpython-312.pyc
+[2.202s] running install_data
+[2.202s] running install_egg_info
+[2.230s] removing '/home/pi2/cleaningoceanplastics/install/test_input/lib/python3.12/site-packages/test_input-0.0.0-py3.12.egg-info' (and everything under it)
+[2.230s] Copying ../../../build/test_input/test_input.egg-info to /home/pi2/cleaningoceanplastics/install/test_input/lib/python3.12/site-packages/test_input-0.0.0-py3.12.egg-info
+[2.231s] running install_scripts
+[2.408s] Installing control script to /home/pi2/cleaningoceanplastics/install/test_input/lib/test_input
+[2.410s] Installing gps_subscriber script to /home/pi2/cleaningoceanplastics/install/test_input/lib/test_input
+[2.413s] Installing imu_cli script to /home/pi2/cleaningoceanplastics/install/test_input/lib/test_input
+[2.416s] Installing imu_pub script to /home/pi2/cleaningoceanplastics/install/test_input/lib/test_input
+[2.419s] Installing imu_srv script to /home/pi2/cleaningoceanplastics/install/test_input/lib/test_input
+[2.422s] Installing motor_control script to /home/pi2/cleaningoceanplastics/install/test_input/lib/test_input
+[2.423s] Installing object_detector script to /home/pi2/cleaningoceanplastics/install/test_input/lib/test_input
+[2.423s] Installing object_selector script to /home/pi2/cleaningoceanplastics/install/test_input/lib/test_input
+[2.424s] Installing water_sensor script to /home/pi2/cleaningoceanplastics/install/test_input/lib/test_input
+[2.426s] writing list of installed files to '/home/pi2/cleaningoceanplastics/build/test_input/install.log'
+[2.520s] Invoked command in '/home/pi2/cleaningoceanplastics/ros2_ws/src/test_input' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pi2/cleaningoceanplastics/build/test_input/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi2/cleaningoceanplastics/install/test_input/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/test_input build --build-base /home/pi2/cleaningoceanplastics/build/test_input/build install --record /home/pi2/cleaningoceanplastics/build/test_input/install.log --single-version-externally-managed install_data

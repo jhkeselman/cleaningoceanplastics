@@ -1,0 +1,75 @@
+[2.232s] Invoking command in '/home/pi2/cleaningoceanplastics/ros2_ws/src/nmea_navsat_driver-ros2': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/nmea_navsat_driver build --build-base /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build install --record /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/install.log --single-version-externally-managed install_data
+[2.626s] running egg_info
+[2.626s] creating ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info
+[2.651s] writing ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/PKG-INFO
+[2.652s] writing dependency_links to ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/dependency_links.txt
+[2.652s] writing entry points to ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/entry_points.txt
+[2.652s] writing requirements to ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/requires.txt
+[2.652s] writing top-level names to ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/top_level.txt
+[2.654s] writing manifest file '../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/SOURCES.txt'
+[2.709s] reading manifest file '../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/SOURCES.txt'
+[2.709s] writing manifest file '../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/SOURCES.txt'
+[2.709s] running build
+[2.709s] running build_py
+[2.709s] creating /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build
+[2.709s] creating /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib
+[2.710s] creating /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver
+[2.710s] copying src/libnmea_navsat_driver/__init__.py -> /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver
+[2.710s] copying src/libnmea_navsat_driver/driver.py -> /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver
+[2.712s] copying src/libnmea_navsat_driver/parser.py -> /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver
+[2.713s] copying src/libnmea_navsat_driver/checksum_utils.py -> /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver
+[2.713s] creating /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[2.714s] copying src/libnmea_navsat_driver/nodes/__init__.py -> /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[2.714s] copying src/libnmea_navsat_driver/nodes/nmea_socket_driver.py -> /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[2.715s] copying src/libnmea_navsat_driver/nodes/nmea_serial_driver.py -> /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[2.715s] copying src/libnmea_navsat_driver/nodes/nmea_topic_driver.py -> /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[2.715s] copying src/libnmea_navsat_driver/nodes/nmea_topic_serial_reader.py -> /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[2.716s] copying src/libnmea_navsat_driver/nodes/nmea_tcpclient_driver.py -> /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes
+[2.718s] running install
+[2.728s] running install_lib
+[2.755s] creating /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver
+[2.755s] copying /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/__init__.py -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver
+[2.756s] creating /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/nodes
+[2.756s] copying /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/__init__.py -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/nodes
+[2.756s] copying /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_socket_driver.py -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/nodes
+[2.756s] copying /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_serial_driver.py -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/nodes
+[2.756s] copying /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_topic_driver.py -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/nodes
+[2.756s] copying /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_topic_serial_reader.py -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/nodes
+[2.757s] copying /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_tcpclient_driver.py -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/nodes
+[2.757s] copying /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/driver.py -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver
+[2.758s] copying /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/parser.py -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver
+[2.758s] copying /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/checksum_utils.py -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver
+[2.758s] byte-compiling /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/__init__.py to __init__.cpython-312.pyc
+[2.759s] byte-compiling /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/nodes/__init__.py to __init__.cpython-312.pyc
+[2.759s] byte-compiling /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/nodes/nmea_socket_driver.py to nmea_socket_driver.cpython-312.pyc
+[2.760s] byte-compiling /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/nodes/nmea_serial_driver.py to nmea_serial_driver.cpython-312.pyc
+[2.761s] byte-compiling /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/nodes/nmea_topic_driver.py to nmea_topic_driver.cpython-312.pyc
+[2.761s] byte-compiling /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/nodes/nmea_topic_serial_reader.py to nmea_topic_serial_reader.cpython-312.pyc
+[2.762s] byte-compiling /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/nodes/nmea_tcpclient_driver.py to nmea_tcpclient_driver.cpython-312.pyc
+[2.763s] byte-compiling /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/driver.py to driver.cpython-312.pyc
+[2.767s] byte-compiling /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/parser.py to parser.cpython-312.pyc
+[2.769s] byte-compiling /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/libnmea_navsat_driver/checksum_utils.py to checksum_utils.cpython-312.pyc
+[2.769s] running install_data
+[2.770s] creating /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/share/ament_index
+[2.770s] creating /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/share/ament_index/resource_index
+[2.770s] creating /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/share/ament_index/resource_index/packages
+[2.770s] copying resource/nmea_navsat_driver -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/share/ament_index/resource_index/packages
+[2.770s] copying package.xml -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver
+[2.770s] creating /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/launch
+[2.771s] copying launch/nmea_serial_driver.launch.py -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/launch
+[2.771s] copying launch/nmea_tcpclient_driver.launch.py -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/launch
+[2.772s] copying launch/nmea_socket_driver.launch.py -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/launch
+[2.772s] creating /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/config
+[2.773s] copying config/nmea_socket_driver.yaml -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/config
+[2.773s] copying config/nmea_tcpclient_driver.yaml -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/config
+[2.773s] copying config/nmea_serial_driver.yaml -> /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/share/nmea_navsat_driver/config
+[2.774s] running install_egg_info
+[2.803s] Copying ../../../build/nmea_navsat_driver/nmea_navsat_driver.egg-info to /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages/nmea_navsat_driver-2.0.1-py3.12.egg-info
+[2.805s] running install_scripts
+[3.000s] Installing nmea_serial_driver script to /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[3.001s] Installing nmea_socket_driver script to /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[3.001s] Installing nmea_tcpclient_driver script to /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[3.001s] Installing nmea_topic_driver script to /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[3.001s] Installing nmea_topic_serial_reader script to /home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/nmea_navsat_driver
+[3.002s] writing list of installed files to '/home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/install.log'
+[3.143s] Invoked command in '/home/pi2/cleaningoceanplastics/ros2_ws/src/nmea_navsat_driver-ros2' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi2/cleaningoceanplastics/install/nmea_navsat_driver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/nmea_navsat_driver build --build-base /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/build install --record /home/pi2/cleaningoceanplastics/build/nmea_navsat_driver/install.log --single-version-externally-managed install_data
