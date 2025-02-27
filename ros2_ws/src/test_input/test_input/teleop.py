@@ -28,32 +28,32 @@ class Teleop(Node):
     def process_key(self, key):
         if key == 'w':
             if key == self.last_input or self.last_input == 's':
-                self.left_value = min(1, self.left_value + 0.2)
-                self.right_value = min(1, self.right_value + 0.2)
+                self.left_value = min(1, self.left_value + 0.1)
+                self.right_value = min(1, self.right_value + 0.1)
             else:
-                self.left_value = 0.6
-                self.right_value = 0.6
+                self.left_value = 0.2
+                self.right_value = 0.2
         elif key == 's':
             if key == self.last_input or self.last_input == 'w':
-                self.left_value = max(0, self.left_value - 0.2)
-                self.right_value = max(0, self.right_value - 0.2)
+                self.left_value = max(-1, self.left_value - 0.1)
+                self.right_value = max(-1, self.right_value - 0.1)
             else:
-                self.left_value = 0.2
-                self.right_value = 0.2
+                self.left_value = -0.2
+                self.right_value = -0.2
         elif key == 'a': # Turn left
-            if key == self.last_input:
-                self.left_value = max(0, self.left_value - 0.2)
-                self.right_value = min(1, self.right_value + 0.2)
+            if key == self.last_input or self.last_input == 'd':
+                self.left_value = max(-1, self.left_value - 0.1)
+                self.right_value = min(1, self.right_value + 0.1)
+            else:
+                self.left_value = -0.2
+                self.right_value = 0.2
+        elif key == 'd': # Turn Right
+            if key == self.last_input  or self.last_input == 'a':
+                self.left_value = max(-1, self.left_value + 0.1)
+                self.right_value = min(1, self.right_value - 0.1)
             else:
                 self.left_value = 0.2
-                self.right_value = 0.4
-        elif key == 'd': # Turn Right
-            if key == self.last_input:
-                self.left_value = min(1, self.left_value + 0.2)
-                self.right_value = max(0, self.right_value - 0.2)
-            else:
-                self.left_value = 0.4
-                self.right_value = 0.2
+                self.right_value = -0.2
         elif key == 'x':
             self.left_value = 0.0
             self.right_value = 0.0
