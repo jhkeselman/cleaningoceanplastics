@@ -13,8 +13,8 @@ class MotorControllerNode(Node):
     def __init__(self):
         super().__init__('motor_controller')
 
+        self.amplitude = 2.5
         self.center = 7.5
-        self.low = 5.0
 
         self.I2C_address = 0x55
         self.bus = smbus.SMBus(1)
@@ -38,16 +38,12 @@ class MotorControllerNode(Node):
             10
         )
 
+    def convert_speed(self, speed):
+        return -self.amplitude*speed + self.center
+
     def set_motor_speeds(self, msg):
-        if (0 <= msg.data[0] <= 1 and 0 <= msg.data[1] <= 1):
-            left_cycle = self.center
-            right_cycle = self.center
-            if(msg.data[0] > 0):
-                left_cycle -= (self.center - self.low) * abs(msg.data[0])
-            if(msg.data[1] > 0):
-                right_cycle -= (self.center - self.low) * abs(msg.data[1])
-            # self.get_logger().info(left_cycle)
-            self.send_value(left_cycle, right_cycle)
+        if (-1 <= msg.data[0] <= 1 and -1 <= msg.data[1] <= 1):
+            self.send_value(self.convert_speed(msg.data[0]), self.convert_speed(msg.data[1]))
 
     def duty_cycle_callback(self, msg):
         if (5 <= msg.data[0] <= 10 and 5 <= msg.data[1] <= 10):
