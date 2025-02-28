@@ -292,6 +292,7 @@ class GPSFixDriver(Node):
         try:
             if isinstance(data, bytes):
                 data = data.decode("utf-8")
+            print(data)
             self.add_sentence(data, self.frame_id)
         except ValueError as e:
             self.get_logger().warn(
