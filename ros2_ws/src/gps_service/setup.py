@@ -16,7 +16,8 @@ setup(
     install_requires=['setuptools',
                     'pyserial',
                     'numpy',
-                    'pyyaml'],
+                    'pyyaml',
+                    'gps'],
     py_modules=[
         'gps_service.checksum_utils',
         'gps_service.parser',

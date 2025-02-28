@@ -3,6 +3,7 @@ import time
 import rclpy
 import os
 import math
+from gps import *
 
 from ament_index_python.packages import get_package_share_directory
 from rclpy.executors import SingleThreadedExecutor
@@ -27,13 +28,16 @@ class GPSFixDriver(Node):
         elif method == 'serial':
             serial_port = self.declare_parameter('port', '/dev/ttyAMA0').value
             serial_baud = self.declare_parameter('baud', 4800).value
-            self.create_timer(0.05,self.read_serial)
+
             try:
                 self.GPS = serial.Serial(port=serial_port, baudrate=serial_baud, timeout=2)
-                self.get_logger().info("Successfully connected to {0} at {1}.".format(serial_port, serial_baud))
+                `self.get_logger().info("`Successfully connected to {0} at {1}.".format(serial_port, serial_baud))
             except serial.SerialException as ex:
                 self.get_logger().fatal("Could not open serial port: I/O error({0}): {1}".format(ex.errno, ex.strerror))
-
+            self.create_timer(0.05,self.read_serial)
+        elif method == 'gpsd':
+            self.gpsd = gps(mode=WATCH_ENABLE|WATCH_NEWSTYLE) 
+            self.create_timer(0.05,self.read_gpsd)
 
         self.fix_service = self.create_service(GPSdata, 'get_GPS_fix', self.data_callback)
         self.emergency_stop = self.create_subscription(
@@ -216,7 +220,6 @@ class GPSFixDriver(Node):
             data = parsed_sentence['RMC']
             # Only publish a fix from RMC if the use_RMC flag is set.
             if self.use_RMC:
-                print("here")
                 if data['fix_valid']:
                     current_fix.status.status = NavSatStatus.STATUS_FIX
                 else:
@@ -297,6 +300,14 @@ class GPSFixDriver(Node):
         except ValueError as e:
             self.get_logger().warn(
                 "Unable to obtain fix: %s" % e)
+            
+    def read_gpsd(self):
+        report = self.gpsd.next()
+        if report['class'] == 'TPV':
+            lat = getattr(report,'lat',0.0)
+            lon = getattr(report,'lon',0.0)
+            self.get_logger().info("Lat: %5.3f, Lon %5.3f", %(lat, lon))
+            
 
     def read_text_file(self):
         data = self.GPS[self.i]
@@ -326,7 +337,7 @@ class GPSFixDriver(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    method = 'serial'
+    method = 'gpsd'
     driver = GPSFixDriver(method)
 
     frame_id = driver.get_frame_id()
