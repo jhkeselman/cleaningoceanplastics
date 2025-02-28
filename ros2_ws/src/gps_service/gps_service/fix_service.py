@@ -306,7 +306,7 @@ class GPSFixDriver(Node):
         if report['class'] == 'TPV':
             lat = getattr(report,'lat',0.0)
             lon = getattr(report,'lon',0.0)
-            self.get_logger().info("Lat: %5.3f, Lon %5.3f", %(lat, lon))
+            self.get_logger().info('Lat: %5.3f, Lon %5.3f' %(lat, lon))
             
 
     def read_text_file(self):
