@@ -1,7 +1,11 @@
-import math
+import serial
 import time
-
 import rclpy
+import os
+import math
+
+from ament_index_python.packages import get_package_share_directory
+from rclpy.executors import SingleThreadedExecutor
 
 from rclpy.node import Node
 from sensor_msgs.msg import NavSatFix, NavSatStatus, TimeReference
@@ -10,18 +14,35 @@ from .checksum_utils import check_nmea_checksum
 from .parser import *
 from services.srv import GPSdata
 
+class GPSFixDriver(Node):
+    def __init__(self,method):
+        super().__init__('gps_fix_driver')
+        
+        if method == 'text':
+            package_dir = get_package_share_directory('gps_service')  
+            file_path = os.path.join(package_dir, 'test_nmea_path.txt') 
+            self.GPS = open(file_path,'r').readlines()
+            self.i=0
+            self.create_timer(0.05,self.read_text_file)
+        elif method == 'serial':
+            serial_port = self.declare_parameter('port', '/dev/ttyAMA0').value
+            serial_baud = self.declare_parameter('baud', 4800).value
+            self.create_timer(0.05,self.read_serial)
+            try:
+                self.GPS = serial.Serial(port=serial_port, baudrate=serial_baud, timeout=2)
+                self.get_logger().info("Successfully connected to {0} at {1}.".format(serial_port, serial_baud))
+            except serial.SerialException as ex:
+                self.get_logger().fatal("Could not open serial port: I/O error({0}): {1}".format(ex.errno, ex.strerror))
 
-class Ros2NMEADriver(Node):
-    def __init__(self):
-        super().__init__('nmea_navsat_driver')
 
-        self.fix_service = self.create_service(GPSdata, 'get_GPS_data', self.data_callback)
+        self.fix_service = self.create_service(GPSdata, 'get_GPS_fix', self.data_callback)
         self.emergency_stop = self.create_subscription(
             Bool,
             'emergency_stop',
             self.destroy_node,
             10
         )
+        
 
         self.time_ref_source = self.declare_parameter('time_ref_source', 'gps').value
         self.use_RMC = self.declare_parameter('useRMC', False).value
@@ -95,7 +116,6 @@ class Ros2NMEADriver(Node):
     # Returns True if we successfully did something with the passed in
     # nmea_string
     def add_sentence(self, nmea_string, frame_id, timestamp=None):
-        print('doing this')
         if not check_nmea_checksum(nmea_string):
             self.get_logger().warn("Received a sentence with an invalid checksum. " +
                                    "Sentence was: %s" % nmea_string)
@@ -124,7 +144,6 @@ class Ros2NMEADriver(Node):
                 current_time_ref.source = frame_id
 
         if not self.use_RMC and 'GGA' in parsed_sentence:
-            print("got here")
             current_fix.position_covariance_type = NavSatFix.COVARIANCE_TYPE_APPROXIMATED
 
             data = parsed_sentence['GGA']
@@ -174,9 +193,9 @@ class Ros2NMEADriver(Node):
             current_fix.position_covariance[4] = (hdop * self.lat_std_dev) ** 2
             current_fix.position_covariance[8] = (2 * hdop * self.alt_std_dev) ** 2  # FIXME
             
-            print(current_fix)
+            print(latitude)
             self.fix = current_fix
-            self.get_logger().info("Set new fix")
+            # self.get_logger().info("Set new fix")
 
             if not (math.isnan(data['utc_time'][0]) or self.use_GNSS_time):
                 current_time_ref.time_ref = rclpy.time.Time(seconds=data['utc_time'][0], nanoseconds=data['utc_time'][1]).to_msg()
@@ -220,9 +239,9 @@ class Ros2NMEADriver(Node):
                 current_fix.position_covariance_type = \
                     NavSatFix.COVARIANCE_TYPE_UNKNOWN
 
-                print(current_fix)
+                # print(current_fix)
                 self.fix = current_fix
-                self.get_logger().info("Set new fix")
+                # self.get_logger().info("Set new fix")
 
                 if not (math.isnan(data['utc_time'][0]) or self.use_GNSS_time):
                     current_time_ref.time_ref = rclpy.time.Time(seconds=data['utc_time'][0], nanoseconds=data['utc_time'][1]).to_msg()
@@ -265,8 +284,35 @@ class Ros2NMEADriver(Node):
         prefix = self.declare_parameter('tf_prefix', '').value
         if len(prefix):
             return '%s/%s' % (prefix, frame_id)
+        
+        self.frame_id = frame_id
         return frame_id
     
+    def read_serial(self):
+        data = self.GPS.readline().strip()
+        try:
+            if isinstance(data, bytes):
+                data = data.decode("utf-8")
+            self.add_sentence(data, self.frame_id)
+        except ValueError as e:
+            self.get_logger().warn(
+                "Unable to obtain fix: %s" % e)
+
+    def read_text_file(self):
+        data = self.GPS[self.i]
+        if self.i < 263:
+            self.i += 1
+        else:
+            self.i = 0
+
+        try:
+            if isinstance(data, bytes):
+                data = data.decode("utf-8")
+            self.add_sentence(data, self.frame_id)
+        except ValueError as e:
+            self.get_logger().warn(
+                "Unable to obtain fix: %s" % e)
+
     def destroy_node(self,msg):
         time.sleep(0.1)
         super().destroy_node()
@@ -277,3 +323,59 @@ class Ros2NMEADriver(Node):
 
         return response
 
+
+def main(args=None):
+    rclpy.init(args=args)
+    method = 'text'
+    driver = GPSFixDriver(method)
+
+    frame_id = driver.get_frame_id()
+
+    if method == 'text':
+        executor = SingleThreadedExecutor()
+        executor.add_node(driver)
+
+        while rclpy.ok():
+            executor.spin_once(timeout_sec=1)
+    else:
+        rclpy.spin(driver)
+
+    rclpy.shutdown()
+
+
+    try:
+        # GPS = serial.Serial(port=serial_port, baudrate=serial_baud, timeout=2)
+        # driver.get_logger().info("Successfully connected to {0} at {1}.".format(serial_port, serial_baud))
+        # try:
+        #     while rclpy.ok():
+        #         data = GPS.readline().strip()
+        #         try:
+        #             if isinstance(data, bytes):
+        #                 data = data.decode("utf-8")
+        #             driver.add_sentence(data, frame_id)
+        #         except ValueError as e:
+        #             driver.get_logger().warn(
+        #                 "Unable to obtain fix: %s" % e)
+
+        package_dir = get_package_share_directory('gps_service')  
+        file_path = os.path.join(package_dir, 'test_nmea_path.txt') 
+        GPS = open(file_path,'r')   
+        try:
+            while rclpy.ok():
+                executor.spin_once(timeout_sec=0.1)
+                for data in GPS:
+                    try:
+                        if isinstance(data, bytes):
+                            data = data.decode("utf-8")
+                        driver.add_sentence(data, frame_id)
+                    except ValueError as e:
+                        driver.get_logger().warn(
+                            "Unable to obtain fix: %s" % e)
+                    time.sleep(0.1)
+                
+
+        except Exception as e:
+            driver.get_logger().error("Ros error: {0}".format(e))
+            GPS.close()  # Close GPS serial port
+    except serial.SerialException as ex:
+        driver.get_logger().fatal("Could not open serial port: I/O error({0}): {1}".format(ex.errno, ex.strerror))

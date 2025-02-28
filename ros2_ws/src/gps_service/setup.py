@@ -10,6 +10,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name, ['share/test_nmea_path.txt']),
     ],
     zip_safe=True,
     install_requires=['setuptools',
@@ -27,7 +28,8 @@ setup(
     license='TODO: License declaration',
     entry_points={
         'console_scripts': ['gps_srv = gps_service.nmea_service_driver:main',
-                            'gps_cli = gps_service.gps_client:main'
+                            'gps_cli = gps_service.gps_client:main',
+                            'fix_srv = gps_service.fix_service:main'
         ],
     },
 )

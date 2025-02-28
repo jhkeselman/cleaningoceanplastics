@@ -11,7 +11,7 @@ class GPSClient(Node):
 
     def __init__(self):
         super().__init__('gps_client')
-        self.cli = self.create_client(GPSdata, 'get_GPS_data')
+        self.cli = self.create_client(GPSdata, 'get_GPS_fix')
         while not self.cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
         self.req = GPSdata.Request()
@@ -25,14 +25,15 @@ class GPSClient(Node):
         self.timer = self.create_timer(timer_period, self.send_request)
 
     def send_request(self):
+        self.get_logger().info('Sent Request')
         self.future = self.cli.call_async(self.req)
         self.future.add_done_callback(self.response_callback)
     
     def response_callback(self,future):
         try:
             response = future.result()
-            fix = response.status.status
-            self.get_logger().info('GPS Fix %d, Lat %5.3f, Long %5.3f:' %(fix, response.latitude, response.longitude))
+            fix = response.fix.status.status
+            self.get_logger().info('GPS Fix %d, Lat %5.3f, Long %5.3f:' %(fix, response.fix.latitude, response.fix.longitude))
         except Exception as e:
             self.get_logger().error(f'Service call failed {str(e)}')
 
