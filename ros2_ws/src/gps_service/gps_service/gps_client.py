@@ -33,7 +33,8 @@ class GPSClient(Node):
         try:
             response = future.result()
             fix = response.fix.status.status
-            self.get_logger().info('GPS Fix %d, Lat %5.3f, Long %5.3f:' %(fix, response.fix.latitude, response.fix.longitude))
+            self.get_logger().info('GPS Fix %d, Lat %5.8f, Long %5.8f:' %(fix, response.fix.latitude, response.fix.longitude))
+            self.get_logger().info('GPS Covariance Long %5.3f, Lat %5.2f' %(response.fix.position_covariance[0], response.fix.position_covariance[0]))
         except Exception as e:
             self.get_logger().error(f'Service call failed {str(e)}')
 

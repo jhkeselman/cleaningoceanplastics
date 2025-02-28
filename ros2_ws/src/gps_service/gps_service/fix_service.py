@@ -175,7 +175,6 @@ class GPSFixDriver(Node):
                 longitude = -longitude
             current_fix.longitude = longitude
 
-            self.get_logger().debug("Lat %5.3f, Long %5.3f" % (latitude,longitude))
             # Altitude is above ellipsoid, so adjust for mean-sea-level
             altitude = data['altitude'] + data['mean_sea_level']
             current_fix.altitude = altitude
@@ -193,7 +192,7 @@ class GPSFixDriver(Node):
             current_fix.position_covariance[4] = (hdop * self.lat_std_dev) ** 2
             current_fix.position_covariance[8] = (2 * hdop * self.alt_std_dev) ** 2  # FIXME
             
-            print(latitude)
+            # print(latitude)
             self.fix = current_fix
             # self.get_logger().info("Set new fix")
 
@@ -234,7 +233,7 @@ class GPSFixDriver(Node):
                 if data['longitude_direction'] == 'W':
                     longitude = -longitude
                 current_fix.longitude = longitude
-
+                
                 current_fix.altitude = float('NaN')
                 current_fix.position_covariance_type = \
                     NavSatFix.COVARIANCE_TYPE_UNKNOWN
@@ -331,51 +330,44 @@ def main(args=None):
 
     frame_id = driver.get_frame_id()
 
-    if method == 'text':
-        executor = SingleThreadedExecutor()
-        executor.add_node(driver)
-
-        while rclpy.ok():
-            executor.spin_once(timeout_sec=1)
-    else:
-        rclpy.spin(driver)
+    rclpy.spin(driver)
 
     rclpy.shutdown()
 
 
-    try:
-        # GPS = serial.Serial(port=serial_port, baudrate=serial_baud, timeout=2)
-        # driver.get_logger().info("Successfully connected to {0} at {1}.".format(serial_port, serial_baud))
-        # try:
-        #     while rclpy.ok():
-        #         data = GPS.readline().strip()
-        #         try:
-        #             if isinstance(data, bytes):
-        #                 data = data.decode("utf-8")
-        #             driver.add_sentence(data, frame_id)
-        #         except ValueError as e:
-        #             driver.get_logger().warn(
-        #                 "Unable to obtain fix: %s" % e)
+    # try:
+    #     # GPS = serial.Serial(port=serial_port, baudrate=serial_baud, timeout=2)
+    #     # driver.get_logger().info("Successfully connected to {0} at {1}.".format(serial_port, serial_baud))
+    #     # try:
+    #     #     while rclpy.ok():
+    #     #         data = GPS.readline().strip()
+    #     #         try:
+    #     #             if isinstance(data, bytes):
+    #     #                 data = data.decode("utf-8")
+    #     #             driver.add_sentence(data, frame_id)
+    #     #         except ValueError as e:
+    #     #             driver.get_logger().warn(
+    #     #                 "Unable to obtain fix: %s" % e)
 
-        package_dir = get_package_share_directory('gps_service')  
-        file_path = os.path.join(package_dir, 'test_nmea_path.txt') 
-        GPS = open(file_path,'r')   
-        try:
-            while rclpy.ok():
-                executor.spin_once(timeout_sec=0.1)
-                for data in GPS:
-                    try:
-                        if isinstance(data, bytes):
-                            data = data.decode("utf-8")
-                        driver.add_sentence(data, frame_id)
-                    except ValueError as e:
-                        driver.get_logger().warn(
-                            "Unable to obtain fix: %s" % e)
-                    time.sleep(0.1)
+    #     package_dir = get_package_share_directory('gps_service')  
+    #     file_path = os.path.join(package_dir, 'test_nmea_path.txt') 
+    #     GPS = open(file_path,'r')   
+    #     try:
+    #         while rclpy.ok():
+    #             executor.spin_once(timeout_sec=0.1)
+    #             for data in GPS:
+    #                 try:
+    #                     if isinstance(data, bytes):
+    #                         data = data.decode("utf-8")
+    #                     driver.add_sentence(data, frame_id)
+    #                 except ValueError as e:
+    #                     driver.get_logger().warn(
+    #                         "Unable to obtain fix: %s" % e)
+    #                 time.sleep(0.1)
                 
 
-        except Exception as e:
-            driver.get_logger().error("Ros error: {0}".format(e))
-            GPS.close()  # Close GPS serial port
-    except serial.SerialException as ex:
-        driver.get_logger().fatal("Could not open serial port: I/O error({0}): {1}".format(ex.errno, ex.strerror))
+    #     except Exception as e:
+    #         driver.get_logger().error("Ros error: {0}".format(e))
+    #         GPS.close()  # Close GPS serial port
+    # except serial.SerialException as ex:
+    #     driver.get_logger().fatal("Could not open serial port: I/O error({0}): {1}".format(ex.errno, ex.strerror))
