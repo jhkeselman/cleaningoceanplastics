@@ -31,7 +31,7 @@ class GPSFixDriver(Node):
 
             try:
                 self.GPS = serial.Serial(port=serial_port, baudrate=serial_baud, timeout=2)
-                `self.get_logger().info("`Successfully connected to {0} at {1}.".format(serial_port, serial_baud))
+                self.get_logger().info("`Successfully connected to {0} at {1}.".format(serial_port, serial_baud))
             except serial.SerialException as ex:
                 self.get_logger().fatal("Could not open serial port: I/O error({0}): {1}".format(ex.errno, ex.strerror))
             self.create_timer(0.05,self.read_serial)
