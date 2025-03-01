@@ -25,7 +25,7 @@ class GPSClient(Node):
         self.timer = self.create_timer(timer_period, self.send_request)
 
     def send_request(self):
-        self.get_logger().info('Sent Request')
+        # self.get_logger().info('Sent Request')
         self.future = self.cli.call_async(self.req)
         self.future.add_done_callback(self.response_callback)
     
