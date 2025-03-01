@@ -357,7 +357,7 @@ class GPSFixDriver(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    method = 'serial'
+    method = 'gpsd'
     driver = GPSFixDriver(method)
 
     frame_id = driver.get_frame_id()
