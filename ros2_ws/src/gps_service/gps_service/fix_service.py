@@ -280,29 +280,25 @@ class GPSFixDriver(Node):
             return False
         return True
     
-    def read_TPV(self,report):
-        current_time = self.get_clock().now().to_msg()
-        self.fix.header.stamp = current_time
-        self.fix.header.frame_id = self.frame_id
-
-        fix = getattr(report,'mode',0)
-        if fix > 1: self.fix.status.status = NavSatStatus.STATUS_FIX
-        else: 
-            self.fix.status.status = NavSatStatus.STATUS_NO_FIX
-            return
-
-        self.fix.latitude = getattr(report,'lat',0.0)
-        self.fix.longitude = getattr(report,'lon',0.0)
-
-    def read_SKY(self,report):
-        current_time = self.get_clock().now().to_msg()
-        self.fix.header.stamp = current_time
-        self.fix.header.frame_id = self.frame_id
-
-        hdop = getattr(report,'hdop',1.0)
-        self.fix.position_covariance[0] = (hdop * 4.0) ** 2
-        self.fix.position_covariance[4] = (hdop * 4.0) ** 2
-
+    def parse_gpsd(self,report):
+        if report['class'] == 'TPV':
+            fix = getattr(report,'mode',0)
+            if fix > 1: self.fix.status.status = NavSatStatus.STATUS_FIX
+            else: 
+                self.fix.status.status = NavSatStatus.STATUS_NO_FIX
+                self.fix.position_covariance_type = NavSatFix.COVARIANCE_TYPE_UNKNOWN
+                return
+            self.fix.latitude = getattr(report,'lat',0.0)
+            self.fix.longitude = getattr(report,'lon',0.0)
+        elif report['class'] == 'SKY':
+            hdop = getattr(report,'hdop',1.0)
+            self.fix.position_covariance[0] = (hdop * 4.0) ** 2
+            self.fix.position_covariance[4] = (hdop * 4.0) ** 2
+            self.fix.position_covariance_type = NavSatFix.COVARIANCE_TYPE_APPROXIMATED
+        elif report['class'] == 'GST':
+            self.fix.position_covariance[0] = getattr(report,'lon',0.0)**2
+            self.fix.position_covariance[4] = getattr(report,'lat',0.0)**2
+            self.fix.position_covariance_type = NavSatFix.COVARIANCE_TYPE_DIAGONAL_KNOWN
 
     """Helper method for getting the frame_id with the correct TF prefix"""
     def get_frame_id(self):
@@ -326,12 +322,11 @@ class GPSFixDriver(Node):
                 "Unable to obtain fix: %s" % e)
             
     def read_gpsd(self):
+        current_time = self.get_clock().now().to_msg()
+        self.fix.header.stamp = current_time
+        self.fix.header.frame_id = self.frame_id
         report = self.gpsd.next()
-        if report['class'] == 'TPV':
-            self.add_TPV(report)
-            lat = getattr(report,'lat',0.0)
-            lon = getattr(report,'lon',0.0)
-            self.get_logger().info('Lat: %5.8f, Lon %5.8f' %(lat, lon))
+        self.parse_gpsd(report)
             
 
     def read_text_file(self):
