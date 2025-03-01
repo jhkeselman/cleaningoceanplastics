@@ -27,7 +27,7 @@ class GPSFixDriver(Node):
             self.create_timer(0.05,self.read_text_file)
         elif method == 'serial':
             serial_port = self.declare_parameter('port', '/dev/ttyAMA0').value
-            serial_baud = self.declare_parameter('baud', 4800).value
+            serial_baud = self.declare_parameter('baud', 9600).value
 
             try:
                 self.GPS = serial.Serial(port=serial_port, baudrate=serial_baud, timeout=2)
@@ -337,7 +337,7 @@ class GPSFixDriver(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    method = 'gpsd'
+    method = 'serial'
     driver = GPSFixDriver(method)
 
     frame_id = driver.get_frame_id()
