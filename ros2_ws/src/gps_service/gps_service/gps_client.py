@@ -44,11 +44,11 @@ class GPSClient(Node):
             self.get_logger().info('GPS Covariance Long %5.3f, Lat %5.2f' %(response.fix.position_covariance[0], response.fix.position_covariance[0]))
             if self.first_fix is None:
                 self.first_fix = [math.radians(response.fix.latitude), math.radians(response.fix.longitude), math.cos(math.radians(response.fix.latitude))]
-                self.covariance = self.calc_covariance()
+                self.covariance = self.calc_covariance(response.fix)
             else:
                 [self.dx,self.dy] = self.calc_dist(response.fix)
                 self.covariance = self.calc_covariance(response.fix)
-                self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))
+            self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))   
 
 
         except Exception as e:
@@ -59,8 +59,8 @@ class GPSClient(Node):
         super().destroy_node()
         
     def calc_dist(self,fix):
-        dx = RADIUS*(fix.longitude - self.first_fix[1])*self.first_fix[2]
-        dy = RADIUS*(fix.latitude - self.first_fix[0])
+        dx = RADIUS*(math.radians(fix.longitude) - self.first_fix[1])*self.first_fix[2]
+        dy = RADIUS*(math.radians(fix.latitude) - self.first_fix[0])
         return [dx,dy]
     
     def calc_covariance(self,fix):
@@ -70,9 +70,8 @@ class GPSClient(Node):
         else:
             x_lon = fix.position_covariance[0]
             y_lat = fix.position_covariance[4]
-        R_lon = RADIUS * math.cos(math.radians(fix.latitude))
-        sigma_x = x_lon * R_lon
-        sigma_y = y_lat * RADIUS
+        sigma_x = x_lon
+        sigma_y = y_lat
 
         covariance = np.array([[sigma_x**2,0],[0,sigma_y**2]])
         return covariance
