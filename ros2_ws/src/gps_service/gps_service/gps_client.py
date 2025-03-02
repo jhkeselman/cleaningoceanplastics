@@ -40,7 +40,7 @@ class GPSClient(Node):
         try:
             response = future.result()
             fix_status = response.fix.status.status
-            if fix >=0 :
+            if fix_status >=0 :
                 self.get_logger().info('GPS Fix %d, Lat %5.8f, Long %5.8f:' %(fix_status, response.fix.latitude, response.fix.longitude))
                 self.get_logger().info('GPS Covariance Long %5.3f, Lat %5.2f' %(response.fix.position_covariance[0], response.fix.position_covariance[0]))
                 if self.first_fix is None:
