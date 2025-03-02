@@ -47,7 +47,7 @@ class GPSClient(Node):
                 self.covariance = self.calc_covariance()
             else:
                 [self.dx,self.dy] = self.calc_dist(response.fix)
-                self.covariance = self.calc_covariance()
+                self.covariance = self.calc_covariance(response.fix)
                 self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))
 
 
