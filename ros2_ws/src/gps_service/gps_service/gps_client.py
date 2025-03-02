@@ -74,7 +74,7 @@ class GPSClient(Node):
         sigma_x = x_lon * R_lon
         sigma_y = y_lat * RADIUS
 
-        covariance = np.aray([[sigma_x**2,0],[0,sigma_y**2]])
+        covariance = np.array([[sigma_x**2,0],[0,sigma_y**2]])
         return covariance
 
 def main(args=None):
