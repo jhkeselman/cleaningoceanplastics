@@ -11,7 +11,8 @@ import numpy as np
 
 
 RADIUS = 6371000
-UERE = 2.5
+UERE = 4.0
+AVERAGE = 10
 
 class GPSClient(Node):
 
@@ -29,7 +30,8 @@ class GPSClient(Node):
         )
         timer_period = 1
         self.timer = self.create_timer(timer_period, self.send_request)
-        self.first_fix = None
+        self.avg_pos = np.zeros((AVERAGE,2))
+        self.avg_i = 0
 
     def send_request(self):
         # self.get_logger().info('Sent Request')
@@ -43,15 +45,24 @@ class GPSClient(Node):
             if fix_status >=0 :
                 self.get_logger().info('GPS Fix %d, Lat %5.8f, Long %5.8f:' %(fix_status, response.fix.latitude, response.fix.longitude))
                 self.get_logger().info('GPS Covariance Long %5.3f, Lat %5.2f' %(response.fix.position_covariance[0], response.fix.position_covariance[0]))
-                if self.first_fix is None:
-                    self.first_fix = [math.radians(response.fix.latitude), math.radians(response.fix.longitude), math.cos(math.radians(response.fix.latitude))]
+                if self.avg_i < AVERAGE-1:
+                    fix = [math.radians(response.fix.latitude), math.radians(response.fix.longitude)]
+                    self.avg_pos[self.avg_i,:] = fix    
+                    self.avg_i += 1               
+                elif self.avg_i == AVERAGE-1:
+                    fix = [math.radians(response.fix.latitude), math.radians(response.fix.longitude)]
+                    self.avg_pos[self.avg_i,:] = fix
+                    avg_lat = self.avg_pos[:,0].mean(axis=0)
+                    avg_lon = self.avg_pos[:,1].mean(axis=0)
+                    self.first_fix = [avg_lat,avg_lon,math.cos(avg_lat)]
                     self.covariance = self.calc_covariance(response.fix)
                     self.dx = 0
                     self.dy = 0
+                    self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
                 else:
                     [self.dx,self.dy] = self.calc_dist(response.fix)
                     self.covariance = self.calc_covariance(response.fix)
-                self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
+                    self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
             else:
                  self.get_logger().info('No GPS Fix')
 

@@ -44,8 +44,8 @@ class GPSFixDriver(Node):
             self.fix.longitude = getattr(report,'lon',0.0)
         elif report['class'] == 'SKY':
             if hasattr(report,'xdop') and hasattr(report, 'ydop'):
-                xdop = getattr(report,'xdop',2.0)
-                ydop = getattr(report,'ydop',2.0)
+                xdop = getattr(report,'xdop')
+                ydop = getattr(report,'ydop')
                 self.fix.position_covariance[0] = xdop
                 self.fix.position_covariance[4] = ydop
             else:
