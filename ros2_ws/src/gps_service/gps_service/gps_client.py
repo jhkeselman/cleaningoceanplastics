@@ -39,20 +39,21 @@ class GPSClient(Node):
     def response_callback(self,future):
         try:
             response = future.result()
-            fix = response.fix.status.status
-            if fix >=0:
-                self.get_logger().info('GPS Fix %d, Lat %5.8f, Long %5.8f:' %(fix, response.fix.latitude, response.fix.longitude))
+            fix_status = response.fix.status.status
+            if fix >=0 :
+                self.get_logger().info('GPS Fix %d, Lat %5.8f, Long %5.8f:' %(fix_status, response.fix.latitude, response.fix.longitude))
                 self.get_logger().info('GPS Covariance Long %5.3f, Lat %5.2f' %(response.fix.position_covariance[0], response.fix.position_covariance[0]))
                 if self.first_fix is None:
                     self.first_fix = [math.radians(response.fix.latitude), math.radians(response.fix.longitude), math.cos(math.radians(response.fix.latitude))]
                     self.covariance = self.calc_covariance(response.fix)
-                    self.dx,self.dy = 0
+                    self.dx = 0
+                    self.dy = 0
                 else:
                     [self.dx,self.dy] = self.calc_dist(response.fix)
                     self.covariance = self.calc_covariance(response.fix)
                 self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
             else:
-                 self.get_logger().warn('No GPS Fix')
+                 self.get_logger().info('No GPS Fix')
 
 
         except Exception as e:
