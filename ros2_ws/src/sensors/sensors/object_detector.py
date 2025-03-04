@@ -17,14 +17,14 @@ class ObjectDetector(Node):
         
         self.detection_pub = self.create_publisher(String, 'object_detections', 10)
         
-        timer_period = 0.06  # seconds
+        timer_period = 0.1  # seconds
         self.timer = self.create_timer(timer_period, self.process_image)
 
     def process_image(self):
         ret, frame = self.cap.read()
         if ret:
             frame = cv2.flip(frame, 0)
-            results = self.model(frame)
+            results = self.model(frame, verbose=False)
             annotated_frame = results[0].plot()  # YOLO outputs annotated images with .plot()
             cv2.imshow("Real-Time Detection w/ YOLO", annotated_frame)
             cv2.waitKey(1)
