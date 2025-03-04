@@ -15,7 +15,7 @@ class ObjectDetector(Node):
         
         self.detection_pub = self.create_publisher(String, 'object_detections', 10)
         
-        timer_period = 0.5  # seconds
+        timer_period = 0.03  # seconds
         self.timer = self.create_timer(timer_period, self.process_image)
 
     def process_image(self):
