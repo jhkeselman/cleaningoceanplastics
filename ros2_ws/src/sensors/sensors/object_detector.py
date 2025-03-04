@@ -1,5 +1,6 @@
 import rclpy
 from rclpy.node import Node
+from ultralytics import YOLO
 from std_msgs.msg import String
 import cv2
 
@@ -7,6 +8,7 @@ class ObjectDetector(Node):
     def __init__(self):
         super().__init__('object_detector')
 
+        self.model = YOLO('yolo11n.pt')
         self.cap = cv2.VideoCapture(0)
         if not self.cap.isOpened():
             self.get_logger().error("Error: Could not open webcam.")
@@ -22,7 +24,9 @@ class ObjectDetector(Node):
         ret, frame = self.cap.read()
         if ret:
             frame = cv2.flip(frame, 0)
-            cv2.imshow("Output", frame)
+            results = self.model(frame)
+            annotated_frame = results[0].plot()  # YOLO outputs annotated images with .plot()
+            cv2.imshow("Real-Time Detection w/ YOLO", frame)
             cv2.waitKey(1)
         
 
