@@ -21,6 +21,7 @@ class ObjectDetector(Node):
     def process_image(self):
         ret, frame = self.cap.read()
         if ret:
+            frame = cv2.flip(frame, 0)
             cv2.imshow("Output", frame)
             cv2.waitKey(1)
         
