@@ -42,6 +42,7 @@ class ObjectDetector(Node):
 
             if objectStrings != "":
                 publishString.data = objectStrings
+            self.detection_pub.publish(publishString)
 
     def destroy_node(self):
         if self.cap.isOpened():
