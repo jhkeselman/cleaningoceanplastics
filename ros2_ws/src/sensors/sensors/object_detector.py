@@ -22,12 +22,13 @@ class ObjectDetector(Node):
         ret, frame = self.cap.read()
         if ret:
             cv2.imshow("Output", frame)
+            cv2.waitKey(1)
         
 
     def destroy_node(self):
         if self.cap.isOpened():
             self.cap.release()
-            cv2.destroyAllWindows
+            cv2.destroyAllWindows()
         super().destroy_node()
 
 def main(args=None):
