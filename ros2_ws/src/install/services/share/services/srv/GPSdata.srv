@@ -1,3 +1,0 @@
-#GPS_data.srv
----
-sensor_msgs/NavSatFix fix

@@ -1,8 +1,0 @@
-{
-  "package_name": "services",
-  "non_idl_tuples": [
-    "/home/johnk/cleaningoceanplastics/ros2_ws/src/services:srv/IMUData.srv",
-    "/home/johnk/cleaningoceanplastics/ros2_ws/src/services:srv/KalmanState.srv",
-    "/home/johnk/cleaningoceanplastics/ros2_ws/src/services:srv/GPSdata.srv"
-  ]
-}
