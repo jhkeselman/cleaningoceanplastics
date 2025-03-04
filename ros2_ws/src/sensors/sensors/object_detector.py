@@ -9,7 +9,7 @@ class ObjectDetector(Node):
         super().__init__('object_detector')
 
         self.model = YOLO('yolo11n.pt')
-        self.cap = cv2.VideoCapture(2)
+        self.cap = cv2.VideoCapture(0)
         if not self.cap.isOpened():
             self.get_logger().error("Error: Could not open webcam.")
             self.destroy_node()
