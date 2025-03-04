@@ -19,7 +19,6 @@ setup(
     maintainer_email='coop530@comcast.net',
     description='TODO: Package description',
     license='TODO: License declaration',
-    tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             'control = navigation.control:main',

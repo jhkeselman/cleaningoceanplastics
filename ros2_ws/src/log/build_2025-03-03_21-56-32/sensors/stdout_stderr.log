@@ -1,0 +1,77 @@
+running egg_info
+creating ../build/sensors/sensors.egg-info
+writing ../build/sensors/sensors.egg-info/PKG-INFO
+writing dependency_links to ../build/sensors/sensors.egg-info/dependency_links.txt
+writing entry points to ../build/sensors/sensors.egg-info/entry_points.txt
+writing requirements to ../build/sensors/sensors.egg-info/requires.txt
+writing top-level names to ../build/sensors/sensors.egg-info/top_level.txt
+writing manifest file '../build/sensors/sensors.egg-info/SOURCES.txt'
+reading manifest file '../build/sensors/sensors.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../build/sensors/sensors.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/IMU_lib.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/imu_publisher.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/object_selector.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/gps_client.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/imu_client.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/object_detecter.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/Kalman_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/LSM6DSL.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/fix_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/IMU_lib.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/LIS3MDL.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/imu_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+copying sensors/water_sensor.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors
+running install
+running install_lib
+creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/imu_publisher.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/object_selector.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/gps_client.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/imu_client.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/object_detecter.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/Kalman_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/LSM6DSL.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/fix_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/IMU_lib.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/LIS3MDL.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/imu_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/water_sensor.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors
+byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/imu_publisher.py to imu_publisher.cpython-310.pyc
+byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/object_selector.py to object_selector.cpython-310.pyc
+byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/gps_client.py to gps_client.cpython-310.pyc
+byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/imu_client.py to imu_client.cpython-310.pyc
+byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/object_detecter.py to object_detecter.cpython-310.pyc
+byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/Kalman_service.py to Kalman_service.cpython-310.pyc
+byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/LSM6DSL.py to LSM6DSL.cpython-310.pyc
+byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/fix_service.py to fix_service.cpython-310.pyc
+byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/IMU_lib.py to IMU_lib.cpython-310.pyc
+byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/LIS3MDL.py to LIS3MDL.cpython-310.pyc
+byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/imu_service.py to imu_service.cpython-310.pyc
+byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/water_sensor.py to water_sensor.cpython-310.pyc
+running install_data
+creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/share/ament_index/resource_index/packages
+copying resource/sensors -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/share/ament_index/resource_index/packages
+copying package.xml -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/share/sensors
+creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/share/sensors/launch
+copying launch/control_launch.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/share/sensors/launch
+running install_egg_info
+Copying ../build/sensors/sensors.egg-info to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors-0.0.0-py3.10.egg-info
+running install_scripts
+Installing gps_cli script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors
+Installing gps_srv script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors
+Installing imu_cli script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors
+Installing imu_pub script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors
+Installing imu_srv script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors
+Installing kalman script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors
+Installing object_detector script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors
+Installing object_selector script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors
+Installing water_sensor script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors
+writing list of installed files to '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/install.log'

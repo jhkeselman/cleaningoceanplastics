@@ -13,7 +13,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob('launch/*.py')),
     ],
-    install_requires=['setuptools','numpy'],
+    install_requires=['setuptools','numpy', 'gps'],
     zip_safe=True,
     maintainer='pi2',
     maintainer_email='pi2@todo.todo',
@@ -28,10 +28,11 @@ setup(
             'imu_pub = sensors.imu_publisher:main',
             'object_detector = sensors.object_detector:main',
             'object_selector = sensors.object_selector:main',
-            'gps_subscriber = sensors.gps_subscriber:main',
             'imu_srv = sensors.imu_service:main',
             'imu_cli = sensors.imu_client:main',
-            'kalman = sensors.Kalman_service:main'
+            'kalman = sensors.Kalman_service:main',
+            'gps_srv = sensors.fix_service:main',
+            'gps_cli = sensors.gps_client:main'
         ],
     },
 )

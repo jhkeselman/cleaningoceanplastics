@@ -1,0 +1,741 @@
+[0.000000] (-) TimerEvent: {}
+[0.000194] (gps_service) JobQueued: {'identifier': 'gps_service', 'dependencies': OrderedDict()}
+[0.000233] (navigation) JobQueued: {'identifier': 'navigation', 'dependencies': OrderedDict()}
+[0.000257] (nmea_navsat_driver) JobQueued: {'identifier': 'nmea_navsat_driver', 'dependencies': OrderedDict()}
+[0.000278] (sensors) JobQueued: {'identifier': 'sensors', 'dependencies': OrderedDict()}
+[0.000298] (services) JobQueued: {'identifier': 'services', 'dependencies': OrderedDict()}
+[0.000318] (gps_service) JobStarted: {'identifier': 'gps_service'}
+[0.010190] (navigation) JobStarted: {'identifier': 'navigation'}
+[0.018622] (nmea_navsat_driver) JobStarted: {'identifier': 'nmea_navsat_driver'}
+[0.027793] (sensors) JobStarted: {'identifier': 'sensors'}
+[0.098975] (-) TimerEvent: {}
+[0.199344] (-) TimerEvent: {}
+[0.299671] (-) TimerEvent: {}
+[0.399969] (-) TimerEvent: {}
+[0.500281] (-) TimerEvent: {}
+[0.600586] (-) TimerEvent: {}
+[0.700882] (-) TimerEvent: {}
+[0.801260] (-) TimerEvent: {}
+[0.901578] (-) TimerEvent: {}
+[1.001922] (-) TimerEvent: {}
+[1.102396] (-) TimerEvent: {}
+[1.202743] (-) TimerEvent: {}
+[1.303641] (-) TimerEvent: {}
+[1.404057] (-) TimerEvent: {}
+[1.505878] (-) TimerEvent: {}
+[1.606286] (-) TimerEvent: {}
+[1.706719] (-) TimerEvent: {}
+[1.808154] (-) TimerEvent: {}
+[1.908658] (-) TimerEvent: {}
+[2.010157] (-) TimerEvent: {}
+[2.110584] (-) TimerEvent: {}
+[2.211129] (-) TimerEvent: {}
+[2.312094] (-) TimerEvent: {}
+[2.413932] (-) TimerEvent: {}
+[2.514373] (-) TimerEvent: {}
+[2.615089] (-) TimerEvent: {}
+[2.716719] (-) TimerEvent: {}
+[2.817267] (-) TimerEvent: {}
+[2.918561] (-) TimerEvent: {}
+[3.019077] (-) TimerEvent: {}
+[3.119892] (-) TimerEvent: {}
+[3.142142] (sensors) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/sensors', 'build', '--build-base', '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build', 'install', '--record', '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/johnk/cleaningoceanplastics/ros2_ws/src/sensors', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'USER': 'johnk', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:', 'HOME': '/home/johnk', 'OLDPWD': '/home/johnk/cleaningoceanplastics/ros2_ws/src/navigation', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/terminator.desktop', 'GAZEBO_MASTER_URI': 'http://localhost:11345', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '1510', 'SYSTEMD_EXEC_PID': '1683', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '2783', '_colcon_cd_root': '/opt/ros/humble/', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/johnk/rbe4540_final/install:/home/johnk/rbe4540_final/src/point_cloud_processing/src/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'johnk', 'JOURNAL_STREAM': '8:14247', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'johnk', 'TERM': 'xterm-256color', 'GAZEBO_MODEL_PATH': '/usr/share/gazebo/../../share/gazebo-11/models:', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '1', 'OGRE_RESOURCE_PATH': '/usr/lib/x86_64-linux-gnu/OGRE-1.9.0', 'PATH': '/opt/ros/humble/bin:/home/johnk/.local/bin:/home/johnk/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/johnkpad:@/tmp/.ICE-unix/1655,unix/johnkpad:/tmp/.ICE-unix/1655', 'INVOCATION_ID': 'a69560ecef8f4769a41f246df46185e9', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'IBUS_DISABLE_SNOOPER': '1', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.9DXO22', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '45', 'AMENT_PREFIX_PATH': '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test:/opt/ros/humble', 'SHELL': '/bin/bash', 'TERMINATOR_UUID': 'urn:uuid:20ffcab8-1151-4beb-87ea-c1f9a4d016f6', 'QT_ACCESSIBILITY': '1', 'ROS_MASTER_URI': 'http://192.168.1.16:11311', 'GDMSESSION': 'ubuntu', 'GAZEBO_RESOURCE_PATH': '/usr/share/gazebo/../../share/gazebo-11:', 'GJS_DEBUG_OUTPUT': 'stderr', 'GAZEBO_MODEL_DATABASE_URI': 'http://models.gazebosim.org', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'GAZEBO_PLUGIN_PATH': '/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages:/home/johnk/rbe4540_final/install/pcl/local/lib/python3.10/dist-packages:/home/johnk/rbe4540_final/install/cv_test/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'ROS_HOSTNAME': '192.168.1.16', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test'}, 'shell': False}
+[3.179254] (gps_service) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/gps_service', 'build', '--build-base', '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build', 'install', '--record', '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/johnk/cleaningoceanplastics/ros2_ws/src/gps_service', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'USER': 'johnk', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:', 'HOME': '/home/johnk', 'OLDPWD': '/home/johnk/cleaningoceanplastics/ros2_ws/src/navigation', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/terminator.desktop', 'GAZEBO_MASTER_URI': 'http://localhost:11345', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '1510', 'SYSTEMD_EXEC_PID': '1683', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '2783', '_colcon_cd_root': '/opt/ros/humble/', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/johnk/rbe4540_final/install:/home/johnk/rbe4540_final/src/point_cloud_processing/src/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'johnk', 'JOURNAL_STREAM': '8:14247', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'johnk', 'TERM': 'xterm-256color', 'GAZEBO_MODEL_PATH': '/usr/share/gazebo/../../share/gazebo-11/models:', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '1', 'OGRE_RESOURCE_PATH': '/usr/lib/x86_64-linux-gnu/OGRE-1.9.0', 'PATH': '/opt/ros/humble/bin:/home/johnk/.local/bin:/home/johnk/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/johnkpad:@/tmp/.ICE-unix/1655,unix/johnkpad:/tmp/.ICE-unix/1655', 'INVOCATION_ID': 'a69560ecef8f4769a41f246df46185e9', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'IBUS_DISABLE_SNOOPER': '1', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.9DXO22', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '45', 'AMENT_PREFIX_PATH': '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test:/opt/ros/humble', 'SHELL': '/bin/bash', 'TERMINATOR_UUID': 'urn:uuid:20ffcab8-1151-4beb-87ea-c1f9a4d016f6', 'QT_ACCESSIBILITY': '1', 'ROS_MASTER_URI': 'http://192.168.1.16:11311', 'GDMSESSION': 'ubuntu', 'GAZEBO_RESOURCE_PATH': '/usr/share/gazebo/../../share/gazebo-11:', 'GJS_DEBUG_OUTPUT': 'stderr', 'GAZEBO_MODEL_DATABASE_URI': 'http://models.gazebosim.org', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'GAZEBO_PLUGIN_PATH': '/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages:/home/johnk/rbe4540_final/install/pcl/local/lib/python3.10/dist-packages:/home/johnk/rbe4540_final/install/cv_test/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'ROS_HOSTNAME': '192.168.1.16', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test'}, 'shell': False}
+[3.211244] (nmea_navsat_driver) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/nmea_navsat_driver', 'build', '--build-base', '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build', 'install', '--record', '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/johnk/cleaningoceanplastics/ros2_ws/src/nmea_navsat_driver-ros2', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'USER': 'johnk', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:', 'HOME': '/home/johnk', 'OLDPWD': '/home/johnk/cleaningoceanplastics/ros2_ws/src/navigation', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/terminator.desktop', 'GAZEBO_MASTER_URI': 'http://localhost:11345', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '1510', 'SYSTEMD_EXEC_PID': '1683', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '2783', '_colcon_cd_root': '/opt/ros/humble/', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/johnk/rbe4540_final/install:/home/johnk/rbe4540_final/src/point_cloud_processing/src/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'johnk', 'JOURNAL_STREAM': '8:14247', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'johnk', 'TERM': 'xterm-256color', 'GAZEBO_MODEL_PATH': '/usr/share/gazebo/../../share/gazebo-11/models:', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '1', 'OGRE_RESOURCE_PATH': '/usr/lib/x86_64-linux-gnu/OGRE-1.9.0', 'PATH': '/opt/ros/humble/bin:/home/johnk/.local/bin:/home/johnk/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/johnkpad:@/tmp/.ICE-unix/1655,unix/johnkpad:/tmp/.ICE-unix/1655', 'INVOCATION_ID': 'a69560ecef8f4769a41f246df46185e9', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'IBUS_DISABLE_SNOOPER': '1', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.9DXO22', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '45', 'AMENT_PREFIX_PATH': '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test:/opt/ros/humble', 'SHELL': '/bin/bash', 'TERMINATOR_UUID': 'urn:uuid:20ffcab8-1151-4beb-87ea-c1f9a4d016f6', 'QT_ACCESSIBILITY': '1', 'ROS_MASTER_URI': 'http://192.168.1.16:11311', 'GDMSESSION': 'ubuntu', 'GAZEBO_RESOURCE_PATH': '/usr/share/gazebo/../../share/gazebo-11:', 'GJS_DEBUG_OUTPUT': 'stderr', 'GAZEBO_MODEL_DATABASE_URI': 'http://models.gazebosim.org', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'GAZEBO_PLUGIN_PATH': '/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages:/home/johnk/rbe4540_final/install/pcl/local/lib/python3.10/dist-packages:/home/johnk/rbe4540_final/install/cv_test/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'ROS_HOSTNAME': '192.168.1.16', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test'}, 'shell': False}
+[3.222938] (-) TimerEvent: {}
+[3.323377] (-) TimerEvent: {}
+[3.396050] (navigation) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/navigation', 'build', '--build-base', '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation/build', 'install', '--record', '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/johnk/cleaningoceanplastics/ros2_ws/src/navigation', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'USER': 'johnk', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:', 'HOME': '/home/johnk', 'OLDPWD': '/home/johnk/cleaningoceanplastics/ros2_ws/src/navigation', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/terminator.desktop', 'GAZEBO_MASTER_URI': 'http://localhost:11345', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '1510', 'SYSTEMD_EXEC_PID': '1683', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '2783', '_colcon_cd_root': '/opt/ros/humble/', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/johnk/rbe4540_final/install:/home/johnk/rbe4540_final/src/point_cloud_processing/src/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'johnk', 'JOURNAL_STREAM': '8:14247', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'johnk', 'TERM': 'xterm-256color', 'GAZEBO_MODEL_PATH': '/usr/share/gazebo/../../share/gazebo-11/models:', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '1', 'OGRE_RESOURCE_PATH': '/usr/lib/x86_64-linux-gnu/OGRE-1.9.0', 'PATH': '/opt/ros/humble/bin:/home/johnk/.local/bin:/home/johnk/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/johnkpad:@/tmp/.ICE-unix/1655,unix/johnkpad:/tmp/.ICE-unix/1655', 'INVOCATION_ID': 'a69560ecef8f4769a41f246df46185e9', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'IBUS_DISABLE_SNOOPER': '1', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.9DXO22', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '45', 'AMENT_PREFIX_PATH': '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test:/opt/ros/humble', 'SHELL': '/bin/bash', 'TERMINATOR_UUID': 'urn:uuid:20ffcab8-1151-4beb-87ea-c1f9a4d016f6', 'QT_ACCESSIBILITY': '1', 'ROS_MASTER_URI': 'http://192.168.1.16:11311', 'GDMSESSION': 'ubuntu', 'GAZEBO_RESOURCE_PATH': '/usr/share/gazebo/../../share/gazebo-11:', 'GJS_DEBUG_OUTPUT': 'stderr', 'GAZEBO_MODEL_DATABASE_URI': 'http://models.gazebosim.org', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'GAZEBO_PLUGIN_PATH': '/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.10/site-packages:/home/johnk/rbe4540_final/install/pcl/local/lib/python3.10/dist-packages:/home/johnk/rbe4540_final/install/cv_test/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'ROS_HOSTNAME': '192.168.1.16', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test'}, 'shell': False}
+[3.424203] (-) TimerEvent: {}
+[3.524626] (-) TimerEvent: {}
+[3.626017] (-) TimerEvent: {}
+[3.726517] (-) TimerEvent: {}
+[3.828070] (-) TimerEvent: {}
+[3.928513] (-) TimerEvent: {}
+[3.963161] (sensors) StdoutLine: {'line': b'running egg_info\n'}
+[3.964275] (sensors) StdoutLine: {'line': b'creating ../build/sensors/sensors.egg-info\n'}
+[4.018368] (sensors) StdoutLine: {'line': b'writing ../build/sensors/sensors.egg-info/PKG-INFO\n'}
+[4.018692] (sensors) StdoutLine: {'line': b'writing dependency_links to ../build/sensors/sensors.egg-info/dependency_links.txt\n'}
+[4.019190] (sensors) StdoutLine: {'line': b'writing entry points to ../build/sensors/sensors.egg-info/entry_points.txt\n'}
+[4.019768] (sensors) StdoutLine: {'line': b'writing requirements to ../build/sensors/sensors.egg-info/requires.txt\n'}
+[4.021041] (sensors) StdoutLine: {'line': b'writing top-level names to ../build/sensors/sensors.egg-info/top_level.txt\n'}
+[4.021304] (sensors) StdoutLine: {'line': b"writing manifest file '../build/sensors/sensors.egg-info/SOURCES.txt'\n"}
+[4.028623] (-) TimerEvent: {}
+[4.037477] (gps_service) StdoutLine: {'line': b'running egg_info\n'}
+[4.038643] (gps_service) StdoutLine: {'line': b'creating ../build/gps_service/gps_service.egg-info\n'}
+[4.041475] (nmea_navsat_driver) StdoutLine: {'line': b'running egg_info\n'}
+[4.042928] (nmea_navsat_driver) StdoutLine: {'line': b'creating ../build/nmea_navsat_driver/nmea_navsat_driver.egg-info\n'}
+[4.098633] (gps_service) StdoutLine: {'line': b'writing ../build/gps_service/gps_service.egg-info/PKG-INFO\n'}
+[4.099032] (nmea_navsat_driver) StdoutLine: {'line': b'writing ../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/PKG-INFO\n'}
+[4.099354] (gps_service) StdoutLine: {'line': b'writing dependency_links to ../build/gps_service/gps_service.egg-info/dependency_links.txt\n'}
+[4.099567] (nmea_navsat_driver) StdoutLine: {'line': b'writing dependency_links to ../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/dependency_links.txt\n'}
+[4.101040] (nmea_navsat_driver) StdoutLine: {'line': b'writing entry points to ../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/entry_points.txt\n'}
+[4.101270] (gps_service) StdoutLine: {'line': b'writing entry points to ../build/gps_service/gps_service.egg-info/entry_points.txt\n'}
+[4.101467] (gps_service) StdoutLine: {'line': b'writing requirements to ../build/gps_service/gps_service.egg-info/requires.txt\n'}
+[4.101644] (gps_service) StdoutLine: {'line': b'writing top-level names to ../build/gps_service/gps_service.egg-info/top_level.txt\n'}
+[4.102882] (gps_service) StdoutLine: {'line': b"writing manifest file '../build/gps_service/gps_service.egg-info/SOURCES.txt'\n"}
+[4.103093] (nmea_navsat_driver) StdoutLine: {'line': b'writing requirements to ../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/requires.txt\n'}
+[4.103309] (nmea_navsat_driver) StdoutLine: {'line': b'writing top-level names to ../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/top_level.txt\n'}
+[4.103499] (nmea_navsat_driver) StdoutLine: {'line': b"writing manifest file '../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/SOURCES.txt'\n"}
+[4.128830] (-) TimerEvent: {}
+[4.134467] (sensors) StdoutLine: {'line': b"reading manifest file '../build/sensors/sensors.egg-info/SOURCES.txt'\n"}
+[4.135159] (sensors) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[4.138794] (sensors) StdoutLine: {'line': b"writing manifest file '../build/sensors/sensors.egg-info/SOURCES.txt'\n"}
+[4.140097] (sensors) StdoutLine: {'line': b'running build\n'}
+[4.140345] (sensors) StdoutLine: {'line': b'running build_py\n'}
+[4.140600] (sensors) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.142263] (sensors) StdoutLine: {'line': b'copying sensors/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.142492] (sensors) StdoutLine: {'line': b'copying sensors/IMU_lib.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.142888] (sensors) StdoutLine: {'line': b'copying sensors/imu_publisher.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.144366] (sensors) StdoutLine: {'line': b'copying sensors/object_selector.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.144761] (sensors) StdoutLine: {'line': b'copying sensors/gps_client.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.145639] (sensors) StdoutLine: {'line': b'copying sensors/imu_client.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.146544] (sensors) StdoutLine: {'line': b'copying sensors/object_detecter.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.147478] (sensors) StdoutLine: {'line': b'copying sensors/Kalman_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.148425] (sensors) StdoutLine: {'line': b'copying sensors/LSM6DSL.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.149373] (sensors) StdoutLine: {'line': b'copying sensors/fix_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.150302] (sensors) StdoutLine: {'line': b'copying sensors/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.151261] (sensors) StdoutLine: {'line': b'copying sensors/IMU_lib.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.152280] (sensors) StdoutLine: {'line': b'copying sensors/LIS3MDL.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.153189] (sensors) StdoutLine: {'line': b'copying sensors/imu_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.154107] (sensors) StdoutLine: {'line': b'copying sensors/water_sensor.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[4.156076] (sensors) StdoutLine: {'line': b'running install\n'}
+[4.172783] (sensors) StdoutLine: {'line': b'running install_lib\n'}
+[4.215016] (nmea_navsat_driver) StdoutLine: {'line': b"reading manifest file '../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/SOURCES.txt'\n"}
+[4.217615] (gps_service) StdoutLine: {'line': b"reading manifest file '../build/gps_service/gps_service.egg-info/SOURCES.txt'\n"}
+[4.218779] (nmea_navsat_driver) StdoutLine: {'line': b"writing manifest file '../build/nmea_navsat_driver/nmea_navsat_driver.egg-info/SOURCES.txt'\n"}
+[4.219139] (nmea_navsat_driver) StdoutLine: {'line': b'running build\n'}
+[4.219410] (nmea_navsat_driver) StdoutLine: {'line': b'running build_py\n'}
+[4.220939] (nmea_navsat_driver) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver\n'}
+[4.221232] (nmea_navsat_driver) StdoutLine: {'line': b'copying src/libnmea_navsat_driver/driver_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver\n'}
+[4.221655] (nmea_navsat_driver) StdoutLine: {'line': b'copying src/libnmea_navsat_driver/checksum_utils.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver\n'}
+[4.221896] (gps_service) StdoutLine: {'line': b"writing manifest file '../build/gps_service/gps_service.egg-info/SOURCES.txt'\n"}
+[4.225499] (nmea_navsat_driver) StdoutLine: {'line': b'copying src/libnmea_navsat_driver/parser.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver\n'}
+[4.225853] (nmea_navsat_driver) StdoutLine: {'line': b'copying src/libnmea_navsat_driver/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver\n'}
+[4.226103] (nmea_navsat_driver) StdoutLine: {'line': b'copying src/libnmea_navsat_driver/driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver\n'}
+[4.226330] (gps_service) StdoutLine: {'line': b'running build\n'}
+[4.226629] (gps_service) StdoutLine: {'line': b'running build_py\n'}
+[4.226845] (gps_service) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service\n'}
+[4.227156] (nmea_navsat_driver) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes\n'}
+[4.227373] (nmea_navsat_driver) StdoutLine: {'line': b'copying src/libnmea_navsat_driver/nodes/nmea_topic_driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes\n'}
+[4.227601] (nmea_navsat_driver) StdoutLine: {'line': b'copying src/libnmea_navsat_driver/nodes/nmea_serial_driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes\n'}
+[4.227829] (nmea_navsat_driver) StdoutLine: {'line': b'copying src/libnmea_navsat_driver/nodes/nmea_socket_driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes\n'}
+[4.231050] (-) TimerEvent: {}
+[4.231317] (nmea_navsat_driver) StdoutLine: {'line': b'copying src/libnmea_navsat_driver/nodes/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes\n'}
+[4.231546] (gps_service) StdoutLine: {'line': b'copying gps_service/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service\n'}
+[4.231744] (gps_service) StdoutLine: {'line': b'copying gps_service/checksum_utils.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service\n'}
+[4.231959] (gps_service) StdoutLine: {'line': b'copying gps_service/parser.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service\n'}
+[4.232148] (gps_service) StdoutLine: {'line': b'copying gps_service/driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service\n'}
+[4.232336] (nmea_navsat_driver) StdoutLine: {'line': b'copying src/libnmea_navsat_driver/nodes/nmea_tcpclient_driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes\n'}
+[4.232534] (gps_service) StdoutLine: {'line': b'copying gps_service/nmea_service_driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service\n'}
+[4.232714] (nmea_navsat_driver) StdoutLine: {'line': b'copying src/libnmea_navsat_driver/nodes/nmea_topic_serial_reader.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes\n'}
+[4.232919] (gps_service) StdoutLine: {'line': b'copying gps_service/checksum_utils.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service\n'}
+[4.233121] (gps_service) StdoutLine: {'line': b'copying gps_service/gps_client.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service\n'}
+[4.233304] (nmea_navsat_driver) StdoutLine: {'line': b'running install\n'}
+[4.233495] (gps_service) StdoutLine: {'line': b'copying gps_service/parser.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service\n'}
+[4.233672] (gps_service) StdoutLine: {'line': b'copying gps_service/fix_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service\n'}
+[4.233854] (gps_service) StdoutLine: {'line': b'copying gps_service/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service\n'}
+[4.237186] (gps_service) StdoutLine: {'line': b'copying gps_service/driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service\n'}
+[4.237405] (gps_service) StdoutLine: {'line': b'running install\n'}
+[4.239276] (sensors) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.240338] (sensors) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/imu_publisher.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.241193] (sensors) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/object_selector.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.242005] (sensors) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/gps_client.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.242789] (sensors) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/imu_client.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.244959] (nmea_navsat_driver) StdoutLine: {'line': b'running install_lib\n'}
+[4.245235] (sensors) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/object_detecter.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.245449] (sensors) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/Kalman_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.245640] (sensors) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/LSM6DSL.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.245824] (sensors) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/fix_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.246408] (sensors) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.247679] (gps_service) StdoutLine: {'line': b'running install_lib\n'}
+[4.247976] (sensors) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/IMU_lib.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.248295] (sensors) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/LIS3MDL.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.249129] (sensors) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/imu_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.249981] (sensors) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/water_sensor.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors\n'}
+[4.251881] (sensors) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/imu_publisher.py to imu_publisher.cpython-310.pyc\n'}
+[4.255610] (sensors) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/object_selector.py to object_selector.cpython-310.pyc\n'}
+[4.259049] (sensors) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/gps_client.py to gps_client.cpython-310.pyc\n'}
+[4.260975] (sensors) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/imu_client.py to imu_client.cpython-310.pyc\n'}
+[4.263084] (sensors) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/object_detecter.py to object_detecter.cpython-310.pyc\n'}
+[4.265240] (sensors) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/Kalman_service.py to Kalman_service.cpython-310.pyc\n'}
+[4.266864] (sensors) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/LSM6DSL.py to LSM6DSL.cpython-310.pyc\n'}
+[4.268278] (sensors) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/fix_service.py to fix_service.cpython-310.pyc\n'}
+[4.271401] (sensors) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/__init__.py to __init__.cpython-310.pyc\n'}
+[4.271800] (sensors) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/IMU_lib.py to IMU_lib.cpython-310.pyc\n'}
+[4.274820] (sensors) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/LIS3MDL.py to LIS3MDL.cpython-310.pyc\n'}
+[4.276937] (sensors) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/imu_service.py to imu_service.cpython-310.pyc\n'}
+[4.280020] (sensors) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors/water_sensor.py to water_sensor.cpython-310.pyc\n'}
+[4.282674] (sensors) StdoutLine: {'line': b'running install_data\n'}
+[4.283065] (sensors) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/share/ament_index/resource_index/packages\n'}
+[4.284319] (sensors) StdoutLine: {'line': b'copying resource/sensors -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/share/ament_index/resource_index/packages\n'}
+[4.285590] (sensors) StdoutLine: {'line': b'copying package.xml -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/share/sensors\n'}
+[4.286567] (sensors) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/share/sensors/launch\n'}
+[4.287626] (sensors) StdoutLine: {'line': b'copying launch/control_launch.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/share/sensors/launch\n'}
+[4.288421] (sensors) StdoutLine: {'line': b'running install_egg_info\n'}
+[4.301228] (nmea_navsat_driver) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver\n'}
+[4.301514] (nmea_navsat_driver) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes\n'}
+[4.302298] (nmea_navsat_driver) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_topic_driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes\n'}
+[4.303195] (nmea_navsat_driver) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_serial_driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes\n'}
+[4.303520] (nmea_navsat_driver) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_socket_driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes\n'}
+[4.304591] (nmea_navsat_driver) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes\n'}
+[4.305352] (nmea_navsat_driver) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_tcpclient_driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes\n'}
+[4.305603] (nmea_navsat_driver) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/nodes/nmea_topic_serial_reader.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes\n'}
+[4.305798] (nmea_navsat_driver) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/driver_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver\n'}
+[4.306013] (nmea_navsat_driver) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/checksum_utils.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver\n'}
+[4.308229] (nmea_navsat_driver) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/parser.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver\n'}
+[4.308452] (nmea_navsat_driver) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver\n'}
+[4.308640] (nmea_navsat_driver) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/build/lib/libnmea_navsat_driver/driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver\n'}
+[4.308842] (nmea_navsat_driver) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes/nmea_topic_driver.py to nmea_topic_driver.cpython-310.pyc\n'}
+[4.312277] (nmea_navsat_driver) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes/nmea_serial_driver.py to nmea_serial_driver.cpython-310.pyc\n'}
+[4.312519] (gps_service) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service\n'}
+[4.312733] (gps_service) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service/nmea_service_driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service\n'}
+[4.313010] (nmea_navsat_driver) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes/nmea_socket_driver.py to nmea_socket_driver.cpython-310.pyc\n'}
+[4.313231] (gps_service) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service/checksum_utils.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service\n'}
+[4.313545] (gps_service) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service/gps_client.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service\n'}
+[4.313761] (gps_service) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service/parser.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service\n'}
+[4.313987] (nmea_navsat_driver) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes/__init__.py to __init__.cpython-310.pyc\n'}
+[4.314264] (gps_service) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service/fix_service.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service\n'}
+[4.314470] (gps_service) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service\n'}
+[4.314674] (gps_service) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/build/lib/gps_service/driver.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service\n'}
+[4.314862] (nmea_navsat_driver) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes/nmea_tcpclient_driver.py to nmea_tcpclient_driver.cpython-310.pyc\n'}
+[4.318194] (nmea_navsat_driver) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/nodes/nmea_topic_serial_reader.py to nmea_topic_serial_reader.cpython-310.pyc\n'}
+[4.318401] (gps_service) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service/nmea_service_driver.py to nmea_service_driver.cpython-310.pyc\n'}
+[4.318585] (nmea_navsat_driver) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/driver_service.py to driver_service.cpython-310.pyc\n'}
+[4.318786] (gps_service) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service/checksum_utils.py to checksum_utils.cpython-310.pyc\n'}
+[4.318990] (gps_service) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service/gps_client.py to gps_client.cpython-310.pyc\n'}
+[4.319824] (nmea_navsat_driver) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/checksum_utils.py to checksum_utils.cpython-310.pyc\n'}
+[4.320070] (nmea_navsat_driver) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/parser.py to parser.cpython-310.pyc\n'}
+[4.320988] (gps_service) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service/parser.py to parser.cpython-310.pyc\n'}
+[4.321361] (navigation) StdoutLine: {'line': b'running egg_info\n'}
+[4.322015] (gps_service) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service/fix_service.py to fix_service.cpython-310.pyc\n'}
+[4.322500] (nmea_navsat_driver) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/__init__.py to __init__.cpython-310.pyc\n'}
+[4.325937] (nmea_navsat_driver) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/libnmea_navsat_driver/driver.py to driver.cpython-310.pyc\n'}
+[4.326301] (gps_service) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service/__init__.py to __init__.cpython-310.pyc\n'}
+[4.326548] (navigation) StdoutLine: {'line': b'creating ../build/navigation/navigation.egg-info\n'}
+[4.326809] (gps_service) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service/driver.py to driver.cpython-310.pyc\n'}
+[4.327124] (nmea_navsat_driver) StdoutLine: {'line': b'running install_data\n'}
+[4.327596] (nmea_navsat_driver) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/share/ament_index/resource_index/packages\n'}
+[4.331166] (nmea_navsat_driver) StdoutLine: {'line': b'copying resource/nmea_navsat_driver -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/share/ament_index/resource_index/packages\n'}
+[4.331440] (-) TimerEvent: {}
+[4.331902] (gps_service) StdoutLine: {'line': b'running install_data\n'}
+[4.332224] (gps_service) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/share/ament_index/resource_index/packages\n'}
+[4.332500] (gps_service) StdoutLine: {'line': b'copying resource/gps_service -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/share/ament_index/resource_index/packages\n'}
+[4.332720] (gps_service) StdoutLine: {'line': b'copying package.xml -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/share/gps_service\n'}
+[4.333017] (nmea_navsat_driver) StdoutLine: {'line': b'copying package.xml -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/share/nmea_navsat_driver\n'}
+[4.336100] (nmea_navsat_driver) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/share/nmea_navsat_driver/launch\n'}
+[4.336347] (nmea_navsat_driver) StdoutLine: {'line': b'copying launch/nmea_socket_driver.launch.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/share/nmea_navsat_driver/launch\n'}
+[4.336544] (nmea_navsat_driver) StdoutLine: {'line': b'copying launch/nmea_serial_driver.launch.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/share/nmea_navsat_driver/launch\n'}
+[4.336734] (nmea_navsat_driver) StdoutLine: {'line': b'copying launch/nmea_tcpclient_driver.launch.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/share/nmea_navsat_driver/launch\n'}
+[4.336935] (gps_service) StdoutLine: {'line': b'copying share/test_nmea_path.txt -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/share/gps_service\n'}
+[4.337140] (nmea_navsat_driver) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/share/nmea_navsat_driver/config\n'}
+[4.337333] (nmea_navsat_driver) StdoutLine: {'line': b'copying config/nmea_socket_driver.yaml -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/share/nmea_navsat_driver/config\n'}
+[4.337529] (gps_service) StdoutLine: {'line': b'running install_egg_info\n'}
+[4.337713] (nmea_navsat_driver) StdoutLine: {'line': b'copying config/nmea_serial_driver.yaml -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/share/nmea_navsat_driver/config\n'}
+[4.337912] (nmea_navsat_driver) StdoutLine: {'line': b'copying config/nmea_tcpclient_driver.yaml -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/share/nmea_navsat_driver/config\n'}
+[4.338104] (nmea_navsat_driver) StdoutLine: {'line': b'running install_egg_info\n'}
+[4.366501] (sensors) StdoutLine: {'line': b'Copying ../build/sensors/sensors.egg-info to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.10/site-packages/sensors-0.0.0-py3.10.egg-info\n'}
+[4.369334] (sensors) StdoutLine: {'line': b'running install_scripts\n'}
+[4.385928] (navigation) StdoutLine: {'line': b'writing ../build/navigation/navigation.egg-info/PKG-INFO\n'}
+[4.386227] (navigation) StdoutLine: {'line': b'writing dependency_links to ../build/navigation/navigation.egg-info/dependency_links.txt\n'}
+[4.386522] (navigation) StdoutLine: {'line': b'writing entry points to ../build/navigation/navigation.egg-info/entry_points.txt\n'}
+[4.387123] (navigation) StdoutLine: {'line': b'writing requirements to ../build/navigation/navigation.egg-info/requires.txt\n'}
+[4.389942] (navigation) StdoutLine: {'line': b'writing top-level names to ../build/navigation/navigation.egg-info/top_level.txt\n'}
+[4.390253] (navigation) StdoutLine: {'line': b"writing manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'\n"}
+[4.393074] (nmea_navsat_driver) StdoutLine: {'line': b'Copying ../build/nmea_navsat_driver/nmea_navsat_driver.egg-info to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/python3.10/site-packages/nmea_navsat_driver-2.0.1-py3.10.egg-info\n'}
+[4.395424] (nmea_navsat_driver) StdoutLine: {'line': b'running install_scripts\n'}
+[4.399171] (gps_service) StdoutLine: {'line': b'Copying ../build/gps_service/gps_service.egg-info to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/python3.10/site-packages/gps_service-0.0.0-py3.10.egg-info\n'}
+[4.401759] (gps_service) StdoutLine: {'line': b'running install_scripts\n'}
+[4.431560] (-) TimerEvent: {}
+[4.516934] (navigation) StdoutLine: {'line': b"reading manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'\n"}
+[4.519692] (navigation) StdoutLine: {'line': b"writing manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'\n"}
+[4.520100] (navigation) StdoutLine: {'line': b'running build\n'}
+[4.523084] (navigation) StdoutLine: {'line': b'running build_py\n'}
+[4.523347] (navigation) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation\n'}
+[4.523579] (navigation) StdoutLine: {'line': b'copying navigation/motor_controller.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation\n'}
+[4.523792] (navigation) StdoutLine: {'line': b'copying navigation/control.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation\n'}
+[4.524136] (navigation) StdoutLine: {'line': b'copying navigation/teleop.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation\n'}
+[4.524333] (navigation) StdoutLine: {'line': b'copying navigation/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation\n'}
+[4.524627] (navigation) StdoutLine: {'line': b'running install\n'}
+[4.531663] (-) TimerEvent: {}
+[4.542503] (navigation) StdoutLine: {'line': b'running install_lib\n'}
+[4.608948] (navigation) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.10/site-packages/navigation\n'}
+[4.609248] (navigation) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation/motor_controller.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.10/site-packages/navigation\n'}
+[4.609478] (navigation) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation/control.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.10/site-packages/navigation\n'}
+[4.609667] (navigation) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation/teleop.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.10/site-packages/navigation\n'}
+[4.609880] (navigation) StdoutLine: {'line': b'copying /home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation/__init__.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.10/site-packages/navigation\n'}
+[4.610573] (navigation) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.10/site-packages/navigation/motor_controller.py to motor_controller.cpython-310.pyc\n'}
+[4.613049] (navigation) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.10/site-packages/navigation/control.py to control.cpython-310.pyc\n'}
+[4.615190] (navigation) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.10/site-packages/navigation/teleop.py to teleop.cpython-310.pyc\n'}
+[4.617500] (navigation) StdoutLine: {'line': b'byte-compiling /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.10/site-packages/navigation/__init__.py to __init__.cpython-310.pyc\n'}
+[4.618931] (navigation) StdoutLine: {'line': b'running install_data\n'}
+[4.619321] (navigation) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/share/ament_index/resource_index/packages\n'}
+[4.621922] (navigation) StdoutLine: {'line': b'copying resource/navigation -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/share/ament_index/resource_index/packages\n'}
+[4.622215] (navigation) StdoutLine: {'line': b'copying package.xml -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/share/navigation\n'}
+[4.622426] (navigation) StdoutLine: {'line': b'creating /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/share/navigation/launch\n'}
+[4.623944] (navigation) StdoutLine: {'line': b'copying launch/teleop_launch.py -> /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/share/navigation/launch\n'}
+[4.624231] (navigation) StdoutLine: {'line': b'running install_egg_info\n'}
+[4.631775] (-) TimerEvent: {}
+[4.690083] (navigation) StdoutLine: {'line': b'Copying ../build/navigation/navigation.egg-info to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.10/site-packages/navigation-0.0.0-py3.10.egg-info\n'}
+[4.694929] (navigation) StdoutLine: {'line': b'running install_scripts\n'}
+[4.731904] (-) TimerEvent: {}
+[4.832313] (-) TimerEvent: {}
+[4.858039] (sensors) StdoutLine: {'line': b'Installing gps_cli script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[4.858513] (sensors) StdoutLine: {'line': b'Installing gps_srv script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[4.859855] (sensors) StdoutLine: {'line': b'Installing imu_cli script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[4.860252] (sensors) StdoutLine: {'line': b'Installing imu_pub script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[4.861630] (sensors) StdoutLine: {'line': b'Installing imu_srv script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[4.862499] (sensors) StdoutLine: {'line': b'Installing kalman script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[4.862892] (sensors) StdoutLine: {'line': b'Installing object_detector script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[4.863922] (sensors) StdoutLine: {'line': b'Installing object_selector script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[4.866058] (sensors) StdoutLine: {'line': b'Installing water_sensor script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[4.866481] (sensors) StdoutLine: {'line': b"writing list of installed files to '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/sensors/install.log'\n"}
+[4.873719] (nmea_navsat_driver) StdoutLine: {'line': b'Installing nmea_serial_driver script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/nmea_navsat_driver\n'}
+[4.874141] (nmea_navsat_driver) StdoutLine: {'line': b'Installing nmea_socket_driver script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/nmea_navsat_driver\n'}
+[4.874502] (nmea_navsat_driver) StdoutLine: {'line': b'Installing nmea_tcpclient_driver script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/nmea_navsat_driver\n'}
+[4.875269] (nmea_navsat_driver) StdoutLine: {'line': b'Installing nmea_topic_driver script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/nmea_navsat_driver\n'}
+[4.875747] (nmea_navsat_driver) StdoutLine: {'line': b'Installing nmea_topic_serial_reader script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/nmea_navsat_driver/lib/nmea_navsat_driver\n'}
+[4.878946] (nmea_navsat_driver) StdoutLine: {'line': b"writing list of installed files to '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/nmea_navsat_driver/install.log'\n"}
+[4.902745] (gps_service) StdoutLine: {'line': b'Installing fix_srv script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/gps_service\n'}
+[4.903215] (gps_service) StdoutLine: {'line': b'Installing gps_cli script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/gps_service\n'}
+[4.903535] (gps_service) StdoutLine: {'line': b'Installing gps_srv script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/gps_service/lib/gps_service\n'}
+[4.906987] (gps_service) StdoutLine: {'line': b"writing list of installed files to '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/gps_service/install.log'\n"}
+[4.932447] (-) TimerEvent: {}
+[4.951170] (sensors) CommandEnded: {'returncode': 0}
+[4.981697] (sensors) JobEnded: {'identifier': 'sensors', 'rc': 0}
+[4.983710] (services) JobStarted: {'identifier': 'services'}
+[4.995499] (gps_service) CommandEnded: {'returncode': 0}
+[5.007356] (gps_service) JobEnded: {'identifier': 'gps_service', 'rc': 0}
+[5.010149] (nmea_navsat_driver) CommandEnded: {'returncode': 0}
+[5.021475] (nmea_navsat_driver) JobEnded: {'identifier': 'nmea_navsat_driver', 'rc': 0}
+[5.022661] (services) JobProgress: {'identifier': 'services', 'progress': 'cmake'}
+[5.023128] (services) Command: {'cmd': ['/usr/bin/cmake', '/home/johnk/cleaningoceanplastics/ros2_ws/src/services', '-DCMAKE_INSTALL_PREFIX=/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services'], 'cwd': '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/services', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('USER', 'johnk'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:'), ('HOME', '/home/johnk'), ('OLDPWD', '/home/johnk/cleaningoceanplastics/ros2_ws/src/navigation'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('GAZEBO_MASTER_URI', 'http://localhost:11345'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1510'), ('SYSTEMD_EXEC_PID', '1683'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2783'), ('_colcon_cd_root', '/opt/ros/humble/'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/johnk/rbe4540_final/install:/home/johnk/rbe4540_final/src/point_cloud_processing/src/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'johnk'), ('JOURNAL_STREAM', '8:14247'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'johnk'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/usr/share/gazebo/../../share/gazebo-11/models:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('OGRE_RESOURCE_PATH', '/usr/lib/x86_64-linux-gnu/OGRE-1.9.0'), ('PATH', '/opt/ros/humble/bin:/home/johnk/.local/bin:/home/johnk/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/johnkpad:@/tmp/.ICE-unix/1655,unix/johnkpad:/tmp/.ICE-unix/1655'), ('INVOCATION_ID', 'a69560ecef8f4769a41f246df46185e9'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.9DXO22'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '45'), ('AMENT_PREFIX_PATH', '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:20ffcab8-1151-4beb-87ea-c1f9a4d016f6'), ('QT_ACCESSIBILITY', '1'), ('ROS_MASTER_URI', 'http://192.168.1.16:11311'), ('GDMSESSION', 'ubuntu'), ('GAZEBO_RESOURCE_PATH', '/usr/share/gazebo/../../share/gazebo-11:'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('GAZEBO_MODEL_DATABASE_URI', 'http://models.gazebosim.org'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/services'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/johnk/rbe4540_final/install/pcl/local/lib/python3.10/dist-packages:/home/johnk/rbe4540_final/install/cv_test/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('ROS_HOSTNAME', '192.168.1.16'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test:/opt/ros/humble')]), 'shell': False}
+[5.032550] (-) TimerEvent: {}
+[5.124671] (navigation) StdoutLine: {'line': b'Installing control script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/navigation\n'}
+[5.125017] (navigation) StdoutLine: {'line': b'Installing motor_control script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/navigation\n'}
+[5.125264] (navigation) StdoutLine: {'line': b'Installing teleop script to /home/johnk/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/navigation\n'}
+[5.125973] (navigation) StdoutLine: {'line': b"writing list of installed files to '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/navigation/install.log'\n"}
+[5.132647] (-) TimerEvent: {}
+[5.172847] (navigation) CommandEnded: {'returncode': 0}
+[5.185465] (navigation) JobEnded: {'identifier': 'navigation', 'rc': 0}
+[5.195218] (services) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[5.232854] (-) TimerEvent: {}
+[5.333154] (-) TimerEvent: {}
+[5.352567] (services) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[5.366493] (services) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[5.433294] (-) TimerEvent: {}
+[5.460969] (services) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[5.471797] (services) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[5.472366] (services) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[5.473434] (services) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[5.478691] (services) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[5.533437] (-) TimerEvent: {}
+[5.590532] (services) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[5.601481] (services) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[5.601798] (services) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[5.602581] (services) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[5.607567] (services) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[5.633545] (-) TimerEvent: {}
+[5.733882] (-) TimerEvent: {}
+[5.834228] (-) TimerEvent: {}
+[5.934551] (-) TimerEvent: {}
+[6.034895] (-) TimerEvent: {}
+[6.117421] (services) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[6.134967] (-) TimerEvent: {}
+[6.235351] (-) TimerEvent: {}
+[6.258122] (services) StdoutLine: {'line': b'-- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[6.321901] (services) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[6.330940] (services) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[6.335463] (-) TimerEvent: {}
+[6.345799] (services) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[6.369538] (services) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[6.397834] (services) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[6.435598] (-) TimerEvent: {}
+[6.465923] (services) StdoutLine: {'line': b'-- Found sensor_msgs: 4.2.4 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[6.496990] (services) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[6.535700] (-) TimerEvent: {}
+[6.635984] (-) TimerEvent: {}
+[6.736304] (-) TimerEvent: {}
+[6.836638] (-) TimerEvent: {}
+[6.936966] (-) TimerEvent: {}
+[6.977574] (services) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[7.037084] (-) TimerEvent: {}
+[7.137424] (-) TimerEvent: {}
+[7.237782] (-) TimerEvent: {}
+[7.338066] (-) TimerEvent: {}
+[7.438366] (-) TimerEvent: {}
+[7.538646] (-) TimerEvent: {}
+[7.636541] (services) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[7.638732] (-) TimerEvent: {}
+[7.739019] (-) TimerEvent: {}
+[7.839318] (-) TimerEvent: {}
+[7.894001] (services) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[7.927295] (services) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") \n'}
+[7.930059] (services) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[7.939445] (-) TimerEvent: {}
+[7.965959] (services) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") \n'}
+[7.966294] (services) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[7.966530] (services) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[7.966689] (services) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[7.998701] (services) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[8.039563] (-) TimerEvent: {}
+[8.105418] (services) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[8.139663] (-) TimerEvent: {}
+[8.140494] (services) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[8.142518] (services) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[8.146271] (services) StdoutLine: {'line': b'-- Configuring done\n'}
+[8.203779] (services) StdoutLine: {'line': b'-- Generating done\n'}
+[8.207274] (services) StdoutLine: {'line': b'-- Build files have been written to: /home/johnk/cleaningoceanplastics/ros2_ws/src/build/services\n'}
+[8.219715] (services) CommandEnded: {'returncode': 0}
+[8.220469] (services) JobProgress: {'identifier': 'services', 'progress': 'build'}
+[8.221404] (services) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/services', '--', '-j4', '-l4'], 'cwd': '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/services', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('USER', 'johnk'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:'), ('HOME', '/home/johnk'), ('OLDPWD', '/home/johnk/cleaningoceanplastics/ros2_ws/src/navigation'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('GAZEBO_MASTER_URI', 'http://localhost:11345'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1510'), ('SYSTEMD_EXEC_PID', '1683'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2783'), ('_colcon_cd_root', '/opt/ros/humble/'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/johnk/rbe4540_final/install:/home/johnk/rbe4540_final/src/point_cloud_processing/src/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'johnk'), ('JOURNAL_STREAM', '8:14247'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'johnk'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/usr/share/gazebo/../../share/gazebo-11/models:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('OGRE_RESOURCE_PATH', '/usr/lib/x86_64-linux-gnu/OGRE-1.9.0'), ('PATH', '/opt/ros/humble/bin:/home/johnk/.local/bin:/home/johnk/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/johnkpad:@/tmp/.ICE-unix/1655,unix/johnkpad:/tmp/.ICE-unix/1655'), ('INVOCATION_ID', 'a69560ecef8f4769a41f246df46185e9'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.9DXO22'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '45'), ('AMENT_PREFIX_PATH', '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:20ffcab8-1151-4beb-87ea-c1f9a4d016f6'), ('QT_ACCESSIBILITY', '1'), ('ROS_MASTER_URI', 'http://192.168.1.16:11311'), ('GDMSESSION', 'ubuntu'), ('GAZEBO_RESOURCE_PATH', '/usr/share/gazebo/../../share/gazebo-11:'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('GAZEBO_MODEL_DATABASE_URI', 'http://models.gazebosim.org'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/services'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/johnk/rbe4540_final/install/pcl/local/lib/python3.10/dist-packages:/home/johnk/rbe4540_final/install/cv_test/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('ROS_HOSTNAME', '192.168.1.16'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test:/opt/ros/humble')]), 'shell': False}
+[8.239785] (-) TimerEvent: {}
+[8.283038] (services) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[8.310127] (services) StdoutLine: {'line': b'[  4%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[8.331772] (services) StdoutLine: {'line': b'[  4%] Built target ament_cmake_python_copy_services\n'}
+[8.339996] (-) TimerEvent: {}
+[8.440357] (-) TimerEvent: {}
+[8.540735] (-) TimerEvent: {}
+[8.641104] (-) TimerEvent: {}
+[8.741699] (-) TimerEvent: {}
+[8.842046] (-) TimerEvent: {}
+[8.942422] (-) TimerEvent: {}
+[8.950563] (services) StdoutLine: {'line': b'running egg_info\n'}
+[8.953582] (services) StdoutLine: {'line': b'creating services.egg-info\n'}
+[9.002742] (services) StdoutLine: {'line': b'writing services.egg-info/PKG-INFO\n'}
+[9.003671] (services) StdoutLine: {'line': b'writing dependency_links to services.egg-info/dependency_links.txt\n'}
+[9.004391] (services) StdoutLine: {'line': b'writing top-level names to services.egg-info/top_level.txt\n'}
+[9.004798] (services) StdoutLine: {'line': b"writing manifest file 'services.egg-info/SOURCES.txt'\n"}
+[9.042531] (-) TimerEvent: {}
+[9.126608] (services) StdoutLine: {'line': b"reading manifest file 'services.egg-info/SOURCES.txt'\n"}
+[9.127120] (services) StdoutLine: {'line': b"writing manifest file 'services.egg-info/SOURCES.txt'\n"}
+[9.142657] (-) TimerEvent: {}
+[9.194853] (services) StdoutLine: {'line': b'[  4%] Built target ament_cmake_python_build_services_egg\n'}
+[9.242968] (-) TimerEvent: {}
+[9.310929] (services) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_generator_c.dir/rosidl_generator_c/services/srv/detail/kalman_state__functions.c.o\x1b[0m\n'}
+[9.311613] (services) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_generator_c.dir/rosidl_generator_c/services/srv/detail/imu_data__functions.c.o\x1b[0m\n'}
+[9.312040] (services) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_generator_c.dir/rosidl_generator_c/services/srv/detail/gp_sdata__functions.c.o\x1b[0m\n'}
+[9.343402] (-) TimerEvent: {}
+[9.444428] (-) TimerEvent: {}
+[9.487026] (services) StdoutLine: {'line': b'[ 12%] \x1b[32m\x1b[1mLinking C shared library libservices__rosidl_generator_c.so\x1b[0m\n'}
+[9.544534] (-) TimerEvent: {}
+[9.555221] (services) StdoutLine: {'line': b'[ 12%] Built target services__rosidl_generator_c\n'}
+[9.585990] (services) StdoutLine: {'line': b'[ 14%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[9.586388] (services) StdoutLine: {'line': b'[ 17%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[9.586772] (services) StdoutLine: {'line': b'[ 19%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[9.644651] (-) TimerEvent: {}
+[9.747184] (-) TimerEvent: {}
+[9.847565] (-) TimerEvent: {}
+[9.876031] (services) StdoutLine: {'line': b'[ 19%] Built target services__cpp\n'}
+[9.901506] (services) StdoutLine: {'line': b'[ 21%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[9.947677] (-) TimerEvent: {}
+[10.048940] (-) TimerEvent: {}
+[10.149500] (-) TimerEvent: {}
+[10.249906] (-) TimerEvent: {}
+[10.351087] (-) TimerEvent: {}
+[10.451493] (-) TimerEvent: {}
+[10.555121] (-) TimerEvent: {}
+[10.630621] (services) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_c.dir/rosidl_typesupport_c/services/srv/imu_data__type_support.cpp.o\x1b[0m\n'}
+[10.655238] (-) TimerEvent: {}
+[10.735977] (services) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_c.dir/rosidl_typesupport_c/services/srv/kalman_state__type_support.cpp.o\x1b[0m\n'}
+[10.755348] (-) TimerEvent: {}
+[10.826610] (services) StdoutLine: {'line': b'[ 27%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_c.dir/rosidl_typesupport_c/services/srv/gp_sdata__type_support.cpp.o\x1b[0m\n'}
+[10.855460] (-) TimerEvent: {}
+[10.930400] (services) StdoutLine: {'line': b'[ 29%] \x1b[32m\x1b[1mLinking CXX shared library libservices__rosidl_typesupport_c.so\x1b[0m\n'}
+[10.955600] (-) TimerEvent: {}
+[10.996956] (services) StdoutLine: {'line': b'[ 31%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/services/srv/imu_data__type_support.cpp.o\x1b[0m\n'}
+[11.005952] (services) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/services/srv/detail/imu_data__type_support_c.cpp.o\x1b[0m\n'}
+[11.055762] (services) StdoutLine: {'line': b'[ 34%] Built target services__rosidl_typesupport_c\n'}
+[11.056119] (-) TimerEvent: {}
+[11.078990] (services) StdoutLine: {'line': b'[ 36%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/services/srv/detail/kalman_state__type_support_c.cpp.o\x1b[0m\n'}
+[11.085633] (services) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/services/srv/detail/imu_data__type_support.c.o\x1b[0m\n'}
+[11.156333] (-) TimerEvent: {}
+[11.184385] (services) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/services/srv/detail/kalman_state__type_support.c.o\x1b[0m\n'}
+[11.258959] (-) TimerEvent: {}
+[11.292402] (services) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/services/srv/detail/gp_sdata__type_support.c.o\x1b[0m\n'}
+[11.359082] (-) TimerEvent: {}
+[11.401010] (services) StdoutLine: {'line': b'[ 44%] \x1b[32m\x1b[1mLinking C shared library libservices__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[11.459206] (-) TimerEvent: {}
+[11.499745] (services) StdoutLine: {'line': b'[ 44%] Built target services__rosidl_typesupport_introspection_c\n'}
+[11.522947] (services) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/services/srv/detail/gp_sdata__type_support_c.cpp.o\x1b[0m\n'}
+[11.559328] (-) TimerEvent: {}
+[11.659742] (-) TimerEvent: {}
+[11.760190] (-) TimerEvent: {}
+[11.817058] (services) StdoutLine: {'line': b'[ 48%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/services/srv/kalman_state__type_support.cpp.o\x1b[0m\n'}
+[11.860338] (-) TimerEvent: {}
+[11.960790] (-) TimerEvent: {}
+[12.062130] (-) TimerEvent: {}
+[12.085975] (services) StdoutLine: {'line': b'[ 51%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[12.096537] (services) StdoutLine: {'line': b'[ 53%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/services/srv/gp_sdata__type_support.cpp.o\x1b[0m\n'}
+[12.162256] (-) TimerEvent: {}
+[12.264112] (-) TimerEvent: {}
+[12.364680] (-) TimerEvent: {}
+[12.465229] (-) TimerEvent: {}
+[12.503194] (services) StdoutLine: {'line': b'[ 55%] \x1b[32m\x1b[1mLinking CXX shared library libservices__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[12.567944] (-) TimerEvent: {}
+[12.659400] (services) StdoutLine: {'line': b'[ 57%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[12.668055] (-) TimerEvent: {}
+[12.729936] (services) StdoutLine: {'line': b'[ 57%] Built target services__rosidl_typesupport_fastrtps_c\n'}
+[12.768176] (-) TimerEvent: {}
+[12.868716] (-) TimerEvent: {}
+[12.902856] (services) StdoutLine: {'line': b'[ 59%] \x1b[32m\x1b[1mLinking CXX shared library libservices__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[12.968841] (-) TimerEvent: {}
+[13.019820] (services) StdoutLine: {'line': b'[ 59%] Built target services__rosidl_typesupport_cpp\n'}
+[13.068938] (-) TimerEvent: {}
+[13.169287] (-) TimerEvent: {}
+[13.204694] (services) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/services/srv/detail/dds_fastrtps/gp_sdata__type_support.cpp.o\x1b[0m\n'}
+[13.205091] (services) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/services/srv/detail/dds_fastrtps/imu_data__type_support.cpp.o\x1b[0m\n'}
+[13.205425] (services) StdoutLine: {'line': b'[ 65%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/services/srv/detail/dds_fastrtps/kalman_state__type_support.cpp.o\x1b[0m\n'}
+[13.271946] (-) TimerEvent: {}
+[13.372363] (-) TimerEvent: {}
+[13.472758] (-) TimerEvent: {}
+[13.573166] (-) TimerEvent: {}
+[13.673632] (-) TimerEvent: {}
+[13.774093] (-) TimerEvent: {}
+[13.874519] (-) TimerEvent: {}
+[13.884565] (services) StdoutLine: {'line': b'[ 68%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/services/srv/detail/imu_data__type_support.cpp.o\x1b[0m\n'}
+[13.976954] (-) TimerEvent: {}
+[14.077538] (-) TimerEvent: {}
+[14.178116] (-) TimerEvent: {}
+[14.278698] (-) TimerEvent: {}
+[14.356231] (services) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/services/srv/detail/kalman_state__type_support.cpp.o\x1b[0m\n'}
+[14.378822] (-) TimerEvent: {}
+[14.383620] (services) StdoutLine: {'line': b'[ 72%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/services/srv/detail/gp_sdata__type_support.cpp.o\x1b[0m\n'}
+[14.390543] (services) StdoutLine: {'line': b'[ 74%] \x1b[32m\x1b[1mLinking CXX shared library libservices__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[14.479584] (-) TimerEvent: {}
+[14.580569] (-) TimerEvent: {}
+[14.632994] (services) StdoutLine: {'line': b'[ 74%] Built target services__rosidl_typesupport_fastrtps_cpp\n'}
+[14.680687] (-) TimerEvent: {}
+[14.781091] (-) TimerEvent: {}
+[14.881525] (-) TimerEvent: {}
+[14.981958] (-) TimerEvent: {}
+[15.082374] (-) TimerEvent: {}
+[15.182777] (-) TimerEvent: {}
+[15.234507] (services) StdoutLine: {'line': b'[ 76%] \x1b[32m\x1b[1mLinking CXX shared library libservices__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[15.282928] (-) TimerEvent: {}
+[15.346155] (services) StdoutLine: {'line': b'[ 76%] Built target services__rosidl_typesupport_introspection_cpp\n'}
+[15.373655] (services) StdoutLine: {'line': b'[ 76%] Built target services\n'}
+[15.383034] (-) TimerEvent: {}
+[15.401186] (services) StdoutLine: {'line': b'[ 78%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[15.483162] (-) TimerEvent: {}
+[15.583460] (-) TimerEvent: {}
+[15.683857] (-) TimerEvent: {}
+[15.784134] (-) TimerEvent: {}
+[15.884433] (-) TimerEvent: {}
+[15.984731] (-) TimerEvent: {}
+[16.085014] (-) TimerEvent: {}
+[16.185327] (-) TimerEvent: {}
+[16.285640] (-) TimerEvent: {}
+[16.368285] (services) StdoutLine: {'line': b'[ 78%] Built target services__py\n'}
+[16.385758] (-) TimerEvent: {}
+[16.398475] (services) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_generator_py.dir/rosidl_generator_py/services/srv/_imu_data_s.c.o\x1b[0m\n'}
+[16.403911] (services) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_generator_py.dir/rosidl_generator_py/services/srv/_gp_sdata_s.c.o\x1b[0m\n'}
+[16.404267] (services) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_generator_py.dir/rosidl_generator_py/services/srv/_kalman_state_s.c.o\x1b[0m\n'}
+[16.485924] (-) TimerEvent: {}
+[16.586399] (-) TimerEvent: {}
+[16.679262] (services) StdoutLine: {'line': b'[ 87%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/services/libservices__rosidl_generator_py.so\x1b[0m\n'}
+[16.686530] (-) TimerEvent: {}
+[16.742364] (services) StdoutLine: {'line': b'[ 87%] Built target services__rosidl_generator_py\n'}
+[16.780775] (services) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/services/_services_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[16.786653] (-) TimerEvent: {}
+[16.787583] (services) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/services/_services_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[16.790099] (services) StdoutLine: {'line': b'[ 93%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/services/_services_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[16.886801] (-) TimerEvent: {}
+[16.987263] (-) TimerEvent: {}
+[17.010567] (services) StdoutLine: {'line': b'[ 95%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/services/services_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[17.087393] (-) TimerEvent: {}
+[17.095630] (services) StdoutLine: {'line': b'[ 95%] Built target services__rosidl_typesupport_c__pyext\n'}
+[17.115983] (services) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/services/services_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[17.121822] (services) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/services/services_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[17.187514] (-) TimerEvent: {}
+[17.190677] (services) StdoutLine: {'line': b'[100%] Built target services__rosidl_typesupport_fastrtps_c__pyext\n'}
+[17.198295] (services) StdoutLine: {'line': b'[100%] Built target services__rosidl_typesupport_introspection_c__pyext\n'}
+[17.214160] (services) CommandEnded: {'returncode': 0}
+[17.287603] (-) TimerEvent: {}
+[17.356718] (services) JobProgress: {'identifier': 'services', 'progress': 'install'}
+[17.368717] (services) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/services'], 'cwd': '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/services', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('USER', 'johnk'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:'), ('HOME', '/home/johnk'), ('OLDPWD', '/home/johnk/cleaningoceanplastics/ros2_ws/src/navigation'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('GAZEBO_MASTER_URI', 'http://localhost:11345'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1510'), ('SYSTEMD_EXEC_PID', '1683'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2783'), ('_colcon_cd_root', '/opt/ros/humble/'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/johnk/rbe4540_final/install:/home/johnk/rbe4540_final/src/point_cloud_processing/src/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'johnk'), ('JOURNAL_STREAM', '8:14247'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'johnk'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/usr/share/gazebo/../../share/gazebo-11/models:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('OGRE_RESOURCE_PATH', '/usr/lib/x86_64-linux-gnu/OGRE-1.9.0'), ('PATH', '/opt/ros/humble/bin:/home/johnk/.local/bin:/home/johnk/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/johnkpad:@/tmp/.ICE-unix/1655,unix/johnkpad:/tmp/.ICE-unix/1655'), ('INVOCATION_ID', 'a69560ecef8f4769a41f246df46185e9'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.9DXO22'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '45'), ('AMENT_PREFIX_PATH', '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:20ffcab8-1151-4beb-87ea-c1f9a4d016f6'), ('QT_ACCESSIBILITY', '1'), ('ROS_MASTER_URI', 'http://192.168.1.16:11311'), ('GDMSESSION', 'ubuntu'), ('GAZEBO_RESOURCE_PATH', '/usr/share/gazebo/../../share/gazebo-11:'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('GAZEBO_MODEL_DATABASE_URI', 'http://models.gazebosim.org'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/johnk/cleaningoceanplastics/ros2_ws/src/build/services'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/usr/share/gazebo/../../lib/x86_64-linux-gnu/gazebo-11/plugins:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/johnk/rbe4540_final/install/pcl/local/lib/python3.10/dist-packages:/home/johnk/rbe4540_final/install/cv_test/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('ROS_HOSTNAME', '192.168.1.16'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/johnk/rbe4540_final/install/vbm_project_env:/home/johnk/rbe4540_final/install/point_cloud_processing:/home/johnk/rbe4540_final/install/pcl:/home/johnk/rbe4540_final/install/cv_test:/opt/ros/humble')]), 'shell': False}
+[17.379993] (services) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[17.380252] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/ament_index/resource_index/rosidl_interfaces/services\n'}
+[17.380411] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services\n'}
+[17.380612] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg\n'}
+[17.380797] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg/rosidl_generator_c__visibility_control.h\n'}
+[17.381005] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv\n'}
+[17.381164] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/imu_data.h\n'}
+[17.381321] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/kalman_state.h\n'}
+[17.381534] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/gp_sdata.h\n'}
+[17.381737] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail\n'}
+[17.381991] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/imu_data__struct.h\n'}
+[17.382190] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__functions.h\n'}
+[17.382366] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__type_support.h\n'}
+[17.382609] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__struct.h\n'}
+[17.382819] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/imu_data__functions.h\n'}
+[17.383070] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__functions.c\n'}
+[17.383220] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/gp_sdata__struct.h\n'}
+[17.383394] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/gp_sdata__functions.c\n'}
+[17.383602] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/imu_data__functions.c\n'}
+[17.383844] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/imu_data__type_support.h\n'}
+[17.384022] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/gp_sdata__type_support.h\n'}
+[17.384165] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/gp_sdata__functions.h\n'}
+[17.384389] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/library_path.sh\n'}
+[17.384597] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/library_path.dsv\n'}
+[17.384783] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_generator_c.so\n'}
+[17.385524] (services) StdoutLine: {'line': b'-- Set runtime path of "/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_generator_c.so" to ""\n'}
+[17.385709] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services\n'}
+[17.385946] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg\n'}
+[17.386221] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[17.386392] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv\n'}
+[17.386566] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail\n'}
+[17.386782] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/gp_sdata__rosidl_typesupport_fastrtps_c.h\n'}
+[17.387001] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__rosidl_typesupport_fastrtps_c.h\n'}
+[17.387152] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/imu_data__rosidl_typesupport_fastrtps_c.h\n'}
+[17.387288] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_fastrtps_c.so\n'}
+[17.387498] (services) StdoutLine: {'line': b'-- Set runtime path of "/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[17.387640] (-) TimerEvent: {}
+[17.387880] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services\n'}
+[17.388044] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv\n'}
+[17.388141] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/gp_sdata.hpp\n'}
+[17.388314] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/imu_data.hpp\n'}
+[17.388461] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail\n'}
+[17.388608] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__struct.hpp\n'}
+[17.388750] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/imu_data__builder.hpp\n'}
+[17.388946] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/gp_sdata__struct.hpp\n'}
+[17.389113] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/imu_data__struct.hpp\n'}
+[17.389382] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/gp_sdata__traits.hpp\n'}
+[17.389585] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/imu_data__traits.hpp\n'}
+[17.389798] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/gp_sdata__builder.hpp\n'}
+[17.390091] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__traits.hpp\n'}
+[17.390405] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__builder.hpp\n'}
+[17.390646] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/kalman_state.hpp\n'}
+[17.390866] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services\n'}
+[17.391104] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg\n'}
+[17.391270] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[17.391504] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv\n'}
+[17.391616] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail\n'}
+[17.391783] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/dds_fastrtps\n'}
+[17.391970] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/gp_sdata__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[17.392079] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/imu_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[17.392218] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[17.392405] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_fastrtps_cpp.so\n'}
+[17.393230] (services) StdoutLine: {'line': b'-- Set runtime path of "/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[17.393462] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services\n'}
+[17.393671] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg\n'}
+[17.393825] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[17.394063] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv\n'}
+[17.394178] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail\n'}
+[17.394265] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/imu_data__type_support.c\n'}
+[17.394419] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__type_support.c\n'}
+[17.394541] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/gp_sdata__rosidl_typesupport_introspection_c.h\n'}
+[17.394679] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/gp_sdata__type_support.c\n'}
+[17.394879] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/imu_data__rosidl_typesupport_introspection_c.h\n'}
+[17.395075] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__rosidl_typesupport_introspection_c.h\n'}
+[17.395445] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_introspection_c.so\n'}
+[17.396185] (services) StdoutLine: {'line': b'-- Set runtime path of "/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_introspection_c.so" to ""\n'}
+[17.396447] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_c.so\n'}
+[17.396984] (services) StdoutLine: {'line': b'-- Set runtime path of "/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_c.so" to ""\n'}
+[17.397332] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services\n'}
+[17.397439] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv\n'}
+[17.397530] (services) StdoutLine: {'line': b'-- Up-to-date: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail\n'}
+[17.397610] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/gp_sdata__rosidl_typesupport_introspection_cpp.hpp\n'}
+[17.397782] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__rosidl_typesupport_introspection_cpp.hpp\n'}
+[17.397891] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/imu_data__type_support.cpp\n'}
+[17.398065] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__type_support.cpp\n'}
+[17.398255] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/imu_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[17.398411] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/gp_sdata__type_support.cpp\n'}
+[17.398746] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_introspection_cpp.so\n'}
+[17.399559] (services) StdoutLine: {'line': b'-- Set runtime path of "/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[17.399750] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_cpp.so\n'}
+[17.400248] (services) StdoutLine: {'line': b'-- Set runtime path of "/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_cpp.so" to ""\n'}
+[17.400462] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/pythonpath.sh\n'}
+[17.400648] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/pythonpath.dsv\n'}
+[17.400834] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services-0.0.0-py3.10.egg-info\n'}
+[17.401114] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[17.401365] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[17.401587] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[17.401799] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[17.402038] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services\n'}
+[17.402191] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/services_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[17.402410] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/libservices__rosidl_generator_py.so\n'}
+[17.402623] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/services_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[17.402840] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/_services_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[17.403079] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/srv\n'}
+[17.403282] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/srv/_gp_sdata.py\n'}
+[17.403491] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/srv/_imu_data.py\n'}
+[17.403701] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/srv/_imu_data_s.c\n'}
+[17.403918] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/srv/_kalman_state_s.c\n'}
+[17.404149] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/srv/_kalman_state.py\n'}
+[17.404330] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/srv/__init__.py\n'}
+[17.404552] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/srv/_gp_sdata_s.c\n'}
+[17.404725] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/_services_s.ep.rosidl_typesupport_c.c\n'}
+[17.405010] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/__init__.py\n'}
+[17.405206] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/services_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[17.405359] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/_services_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[17.460508] (services) StdoutLine: {'line': b"Listing '/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services'...\n"}
+[17.460731] (services) StdoutLine: {'line': b"Compiling '/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/__init__.py'...\n"}
+[17.460823] (services) StdoutLine: {'line': b"Listing '/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/srv'...\n"}
+[17.460980] (services) StdoutLine: {'line': b"Compiling '/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/srv/__init__.py'...\n"}
+[17.461074] (services) StdoutLine: {'line': b"Compiling '/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/srv/_gp_sdata.py'...\n"}
+[17.461143] (services) StdoutLine: {'line': b"Compiling '/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/srv/_imu_data.py'...\n"}
+[17.461224] (services) StdoutLine: {'line': b"Compiling '/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/srv/_kalman_state.py'...\n"}
+[17.467339] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/services_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[17.467964] (services) StdoutLine: {'line': b'-- Set runtime path of "/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/services_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[17.468288] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/services_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[17.468784] (services) StdoutLine: {'line': b'-- Set runtime path of "/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/services_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[17.469247] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/services_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[17.469744] (services) StdoutLine: {'line': b'-- Set runtime path of "/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/local/lib/python3.10/dist-packages/services/services_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[17.469913] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_generator_py.so\n'}
+[17.470548] (services) StdoutLine: {'line': b'-- Set runtime path of "/home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_generator_py.so" to ""\n'}
+[17.470739] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/IMUData.idl\n'}
+[17.470908] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/KalmanState.idl\n'}
+[17.471274] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/GPSdata.idl\n'}
+[17.471477] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/IMUData.srv\n'}
+[17.471632] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/IMUData_Request.msg\n'}
+[17.471910] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/IMUData_Response.msg\n'}
+[17.472108] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/KalmanState.srv\n'}
+[17.472379] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/KalmanState_Request.msg\n'}
+[17.472547] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/KalmanState_Response.msg\n'}
+[17.472759] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/GPSdata.srv\n'}
+[17.473081] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/GPSdata_Request.msg\n'}
+[17.473278] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/GPSdata_Response.msg\n'}
+[17.473559] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/ament_index/resource_index/package_run_dependencies/services\n'}
+[17.473850] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/ament_index/resource_index/parent_prefix_path/services\n'}
+[17.474221] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/ament_prefix_path.sh\n'}
+[17.474439] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/ament_prefix_path.dsv\n'}
+[17.474597] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/path.sh\n'}
+[17.474812] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/path.dsv\n'}
+[17.475177] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/local_setup.bash\n'}
+[17.475415] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/local_setup.sh\n'}
+[17.475635] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/local_setup.zsh\n'}
+[17.475851] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/local_setup.dsv\n'}
+[17.476119] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/package.dsv\n'}
+[17.476474] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/ament_index/resource_index/packages/services\n'}
+[17.476773] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_generator_cExport.cmake\n'}
+[17.477054] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_generator_cExport-noconfig.cmake\n'}
+[17.477363] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[17.477567] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[17.477838] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_generator_cppExport.cmake\n'}
+[17.478155] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[17.478444] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[17.478660] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_introspection_cExport.cmake\n'}
+[17.478915] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[17.479309] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_cExport.cmake\n'}
+[17.479527] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[17.479767] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[17.480133] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[17.480422] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_cppExport.cmake\n'}
+[17.480652] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[17.480843] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_generator_pyExport.cmake\n'}
+[17.481191] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_generator_pyExport-noconfig.cmake\n'}
+[17.481436] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/rosidl_cmake-extras.cmake\n'}
+[17.481615] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[17.481834] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[17.482130] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[17.482385] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[17.482655] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[17.482812] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[17.483147] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/servicesConfig.cmake\n'}
+[17.483318] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/servicesConfig-version.cmake\n'}
+[17.483489] (services) StdoutLine: {'line': b'-- Installing: /home/johnk/cleaningoceanplastics/ros2_ws/src/install/services/share/services/package.xml\n'}
+[17.487316] (services) CommandEnded: {'returncode': 0}
+[17.487690] (-) TimerEvent: {}
+[17.588007] (-) TimerEvent: {}
+[17.646487] (services) JobEnded: {'identifier': 'services', 'rc': 0}
+[17.647742] (-) EventReactorShutdown: {}

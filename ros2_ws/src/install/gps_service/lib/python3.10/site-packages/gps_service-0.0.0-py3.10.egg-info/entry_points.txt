@@ -1,0 +1,4 @@
+[console_scripts]
+fix_srv = gps_service.fix_service:main
+gps_cli = gps_service.gps_client:main
+gps_srv = gps_service.nmea_service_driver:main
