@@ -24,7 +24,7 @@ class ObjectDetector(Node):
         ret, frame = self.cap.read()
         if ret:
             frame = cv2.flip(frame, 0)
-            results = self.model(frame, verbose=False)
+            results = self.model(frame, verbose=True)
             annotated_frame = results[0].plot()  # YOLO outputs annotated images with .plot()
             cv2.imshow("Real-Time Detection w/ YOLO", annotated_frame)
             cv2.waitKey(1)
