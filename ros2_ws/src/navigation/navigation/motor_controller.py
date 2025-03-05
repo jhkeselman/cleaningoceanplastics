@@ -15,7 +15,7 @@ class MotorControllerNode(Node):
 
         # self.amplitude = 2.5
         self.left_amp = 2.5
-        self.right_amp = 2.3
+        self.right_amp = 2.2
         self.center = 7.5
 
         self.I2C_address = 0x55
@@ -41,6 +41,7 @@ class MotorControllerNode(Node):
         )
 
     def convert_speed(self, speed, side=True):
+        # 
         if side:
             return -self.left_amp*speed + self.center
         else:
