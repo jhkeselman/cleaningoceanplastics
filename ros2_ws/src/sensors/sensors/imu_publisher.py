@@ -182,7 +182,7 @@ class IMUPub(Node):
         # self.heading = math.radians(heading)
         imu_msg = Imu()
         imu_msg.header.frame_id = 'imu_pub'
-        imu_msg.header.stamp = self.get_clock.now().to_msg()
+        imu_msg.header.stamp = self.get_clock().now().to_msg()
         current_heading = Quaternion()
         imu_msg.angular_velocity = self.omega
         q = quaternion_from_euler(0,0,math.radians(heading))
