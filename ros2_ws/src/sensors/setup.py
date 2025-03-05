@@ -32,7 +32,8 @@ setup(
             'imu_cli = sensors.imu_client:main',
             'kalman = sensors.Kalman_service:main',
             'gps_srv = sensors.fix_service:main',
-            'gps_cli = sensors.gps_client:main'
+            'gps_cli = sensors.gps_client:main',
+            'gps_pub = sensors.fix_publisher:main'
         ],
     },
 )
