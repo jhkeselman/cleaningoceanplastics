@@ -190,7 +190,7 @@ class IMUPub(Node):
         current_heading.y = q[1]
         current_heading.z = q[2]
         current_heading.w = q[3]
-        imu_msg.orientation = self.heading
+        imu_msg.orientation = current_heading
         imu_msg.linear_acceleration = self.acceleration
         imu_msg.angular_velocity_covariance = (70/1000)**2
         imu_msg.linear_acceleration_covariance = (0.244/1000)**2
