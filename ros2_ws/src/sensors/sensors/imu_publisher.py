@@ -140,8 +140,8 @@ class IMUPub(Node):
             AccYangle += 90.0
 
         #Complementary filter used to combine the accelerometer and gyro values.
-        self.CFangleX=AA*(self.CFangleX+rate_gyr_x*LP) +(1 - AA) * AccXangle
-        self.CFangleY=AA*(self.CFangleY+rate_gyr_y*LP) +(1 - AA) * AccYangle
+        # self.CFangleX=AA*(self.CFangleX+rate_gyr_x*LP) +(1 - AA) * AccXangle
+        # self.CFangleY=AA*(self.CFangleY+rate_gyr_y*LP) +(1 - AA) * AccYangle
 
         #Calculate heading
         heading = 180 * math.atan2(MAGy,MAGz)/M_PI
