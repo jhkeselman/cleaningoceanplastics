@@ -184,17 +184,21 @@ class IMUPub(Node):
         imu_msg.header.frame_id = 'imu_pub'
         imu_msg.header.stamp = self.get_clock().now().to_msg()
         current_heading = Quaternion()
-        imu_msg.angular_velocity = self.omega
+        imu_msg.angular_velocity.x = self.omega
+        imu_msg.angular_velocity.y = self.omega
+        imu_msg.angular_velocity.z = self.omega
         q = quaternion_from_euler(0,0,math.radians(heading))
         current_heading.x = q[0]
         current_heading.y = q[1]
         current_heading.z = q[2]
         current_heading.w = q[3]
         imu_msg.orientation = current_heading
-        imu_msg.linear_acceleration = self.acceleration
-        imu_msg.angular_velocity_covariance = (70/1000)**2
-        imu_msg.linear_acceleration_covariance = (0.244/1000)**2
-        imu_msg.orientation_covariance = 0.1**2 #sort of a guess
+        imu_msg.linear_acceleration.x = self.acceleration
+        imu_msg.linear_acceleration.y = 0
+        imu_msg.linear_acceleration.z = 0
+        imu_msg.angular_velocity_covariance = [(70/1000)**2,0,0,0,0,0,0,0,0]
+        imu_msg.linear_acceleration_covariance = [(0.244/1000)**2,0,0,0,0,0,0,0,0]
+        imu_msg.orientation_covariance = [(0.1**2),0,0,0,0,0,0,0,0] #sort of a guess
         self.pub.publish(imu_msg)
 #        print("#  CFheading Angle %5.2f   Gyro Angle %5.2f  Bias %5.2f  Mag %5.2f#" % (CF_heading, self.gyroZangle, self.biasz, tiltCompensatedHeading))
 
