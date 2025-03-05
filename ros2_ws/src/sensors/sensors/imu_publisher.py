@@ -125,9 +125,9 @@ class IMUPub(Node):
         self.omega = self.calc_avg_gyro()
 
         #Calculate the angles from the gyro.
-        self.gyroXangle+=rate_gyr_x*LP
-        self.gyroYangle+=rate_gyr_y*LP
-        self.gyroZangle+=rate_gyr_z*LP
+        # self.gyroXangle+=rate_gyr_x*LP
+        # self.gyroYangle+=rate_gyr_y*LP
+        # self.gyroZangle+=rate_gyr_z*LP
 
         #Convert Accelerometer values to degrees
         AccXangle =  (math.atan2(ACCy,ACCz)*RAD_TO_DEG)
