@@ -192,8 +192,8 @@ class IMUPub(Node):
         imu_msg.orientation.z = q[2]
         imu_msg.orientation.w = q[3]
         imu_msg.linear_acceleration.x = self.acceleration
-        imu_msg.linear_acceleration.y = 0.0
-        imu_msg.linear_acceleration.z = 0.0
+        imu_msg.linear_acceleration.y = (ACCx * 0.244/1000 * 9.81)
+        imu_msg.linear_acceleration.z = (ACCz * 0.244/1000 * 9.81)
         imu_msg.angular_velocity_covariance = [(70/1000)**2,0,0,0,0,0,0,0,0]
         imu_msg.linear_acceleration_covariance = [(0.244/1000)**2,0,0,0,0,0,0,0,0]
         imu_msg.orientation_covariance = [(0.1**2),0,0,0,0,0,0,0,0] #sort of a guess
