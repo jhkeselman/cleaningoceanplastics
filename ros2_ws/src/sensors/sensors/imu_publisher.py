@@ -4,6 +4,8 @@ from rclpy.node import Node
 
 from std_msgs.msg import String, Bool
 from sensor_msgs.msg import Imu
+from tf_transformations import quaternion_from_euler
+from geometry_msgs.msg import Quaternion
 
 import math
 import datetime
@@ -177,9 +179,17 @@ class IMUPub(Node):
 
         ##################### END Tilt Compensation ########################
 
-        self.heading = math.radians(heading)
+        # self.heading = math.radians(heading)
         imu_msg = Imu()
+        imu_msg.header.frame_id = 'imu_pub'
+        imu_msg.header.stamp = self.get_clock.now().to_msg()
+        current_heading = Quaternion()
         imu_msg.angular_velocity = self.omega
+        q = quaternion_from_euler(0,0,math.radians(heading))
+        current_heading.quaternion.x = q[0]
+        current_heading.quaternion.y = q[1]
+        current_heading.quaternion.z = q[2]
+        current_heading.quaternion.w = q[3]
         imu_msg.orientation = self.heading
         imu_msg.linear_acceleration = self.acceleration
         imu_msg.angular_velocity_covariance = (70/1000)**2

@@ -27,6 +27,7 @@ class GPSFixPub(Node):
         )
         
         self.fix = NavSatFix()
+        self.fix.header.frame_id = 'fix_pub'
     
     def parse_gpsd(self,report):
         if report['class'] == 'TPV':
@@ -38,6 +39,8 @@ class GPSFixPub(Node):
                 return
             self.fix.latitude = getattr(report,'lat',0.0)
             self.fix.longitude = getattr(report,'lon',0.0)
+            current_time = self.get_clock().now().to_msg()
+            self.fix.header.stamp = current_time
             self.pub.publish(self.fix)
         elif report['class'] == 'SKY':
             if hasattr(report,'xdop') and hasattr(report, 'ydop'):
@@ -55,19 +58,7 @@ class GPSFixPub(Node):
             self.fix.position_covariance[4] = getattr(report,'lat',4.0)
             self.fix.position_covariance_type = NavSatFix.COVARIANCE_TYPE_DIAGONAL_KNOWN
 
-    """Helper method for getting the frame_id with the correct TF prefix"""
-    def get_frame_id(self):
-        frame_id = self.declare_parameter('frame_id', 'gps').value
-        prefix = self.declare_parameter('tf_prefix', '').value
-        if len(prefix):
-            return '%s/%s' % (prefix, frame_id)
-        
-        self.frame_id = frame_id
-
     def read_gpsd(self):
-        current_time = self.get_clock().now().to_msg()
-        self.fix.header.stamp = current_time
-        self.fix.header.frame_id = self.frame_id
         report = self.gpsd.next()
         self.parse_gpsd(report)
 
@@ -78,7 +69,6 @@ class GPSFixPub(Node):
 def main(args=None):
     rclpy.init(args=args)
     gps_pub = GPSFixPub()
-    gps_pub.get_frame_id()
 
     rclpy.spin(gps_pub)
 
