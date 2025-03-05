@@ -186,10 +186,10 @@ class IMUPub(Node):
         current_heading = Quaternion()
         imu_msg.angular_velocity = self.omega
         q = quaternion_from_euler(0,0,math.radians(heading))
-        current_heading.quaternion.x = q[0]
-        current_heading.quaternion.y = q[1]
-        current_heading.quaternion.z = q[2]
-        current_heading.quaternion.w = q[3]
+        current_heading.x = q[0]
+        current_heading.y = q[1]
+        current_heading.z = q[2]
+        current_heading.w = q[3]
         imu_msg.orientation = self.heading
         imu_msg.linear_acceleration = self.acceleration
         imu_msg.angular_velocity_covariance = (70/1000)**2
