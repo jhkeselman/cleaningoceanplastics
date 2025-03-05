@@ -183,8 +183,8 @@ class IMUPub(Node):
         imu_msg = Imu()
         imu_msg.header.frame_id = 'imu_pub'
         imu_msg.header.stamp = self.get_clock().now().to_msg()
-        imu_msg.angular_velocity.x = self.omega
-        imu_msg.angular_velocity.y = self.omega
+        imu_msg.angular_velocity.x = 0.0
+        imu_msg.angular_velocity.y = 0.0
         imu_msg.angular_velocity.z = self.omega
         q = quaternion_from_euler(0,0,math.radians(heading))
         imu_msg.orientation.x = q[0]
@@ -192,8 +192,8 @@ class IMUPub(Node):
         imu_msg.orientation.z = q[2]
         imu_msg.orientation.w = q[3]
         imu_msg.linear_acceleration.x = self.acceleration
-        imu_msg.linear_acceleration.y = 0
-        imu_msg.linear_acceleration.z = 0
+        imu_msg.linear_acceleration.y = 0.0
+        imu_msg.linear_acceleration.z = 0.0
         imu_msg.angular_velocity_covariance = [(70/1000)**2,0,0,0,0,0,0,0,0]
         imu_msg.linear_acceleration_covariance = [(0.244/1000)**2,0,0,0,0,0,0,0,0]
         imu_msg.orientation_covariance = [(0.1**2),0,0,0,0,0,0,0,0] #sort of a guess
