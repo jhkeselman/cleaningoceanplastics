@@ -15,7 +15,7 @@ class MotorControllerNode(Node):
 
         # self.amplitude = 2.5
         self.left_amp = 2.5
-        self.right_amp = 1.85
+        self.right_amp = 2.0
         self.center = 7.5
 
         self.I2C_address = 0x55
