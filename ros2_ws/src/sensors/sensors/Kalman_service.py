@@ -40,7 +40,7 @@ class KalmanService(Node):
         self.avg_pos = np.zeros((AVERAGE,2))
         self.avg_i = 0
         self.gps_ready = False
-        self.state = np.zeros((5,1)) #x,y,v,theta,omega
+        self.state = np.zeros((5,1),np.float32) #x,y,v,theta,omega
         self.covariance = np.zeros((5,5))
         
         self.dt = 0.1
@@ -49,6 +49,8 @@ class KalmanService(Node):
         R = 0.1 * np.ones((5,5)) #model noise
         Q = 0.1 * np.ones((5,5)) #sensor noise
         self.sensor_data = np.zeros((5,1))
+        self.Tl = 0
+        self.Tr = 0
     
     def calc_state(self):
         #NON-LINEAR STATE PREDICTION
@@ -81,7 +83,7 @@ class KalmanService(Node):
         self.covariance = np.matmul((np.eye(5) - np.mapmul(K,H)),covariance_pred)
 
     def return_state(self, request, response):
-        response.state = np.zeros(5)
+        response.state.data = self.state.T
         self.get_logger().info('Incoming request')
         return response
     
