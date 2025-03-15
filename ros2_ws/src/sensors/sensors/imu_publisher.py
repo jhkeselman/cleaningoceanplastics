@@ -11,7 +11,9 @@ import math
 import datetime
 import sys
 import time
+import struct
 import numpy as np
+import smbus
 
 from .IMU_lib import *
 
@@ -19,7 +21,7 @@ RAD_TO_DEG = 57.29578
 M_PI = 3.14159265358979323846
 G_GAIN = 0.070  # [deg/s/LSB]  If you change the dps for gyro, you need to update this value accordingly
 AA =  0.40      # Complementary filter constant
-GYRO_MAX = 32767
+MAX_DATA = 32767
 
 class IMUPub(Node):
 
@@ -36,6 +38,9 @@ class IMUPub(Node):
 
         self.get_logger().info("IMU initialized...")
 
+        self.I2C_address = 0x55
+        self.bus = smbus.SMBus(1)       
+
         self.heading = 0.0
 
         self.declination = -214.1/1000 * RAD_TO_DEG #calculated at Worcester (-214 milliradians)
@@ -49,7 +54,8 @@ class IMUPub(Node):
         self.magYmax = 1529
         self.magZmax = 1822
 
-        self.gyro_avg_data = GYRO_MAX*np.ones(20)
+        self.gyro_avg_data = MAX_DATA*np.ones(20)
+        self.acc_avg_data = MAX_DATA*np.ones(20)
 
         self.emergency_stop = self.create_subscription(
             Bool,
@@ -122,7 +128,7 @@ class IMUPub(Node):
         
         self.gyro_avg_data = np.roll(self.gyro_avg_data,1) #shift moving average data by one and then store current reading
         self.gyro_avg_data[0] = rate_gyr_x*M_PI/180
-        self.omega = self.calc_avg_gyro()
+        self.omega= self.calc_avg_gyro()
 
         #Calculate the angles from the gyro.
         # self.gyroXangle+=rate_gyr_x*LP
@@ -152,8 +158,8 @@ class IMUPub(Node):
             heading += 360.0
 
         self.acc_bias = 0.2 #experimentally found but should be updated #-0.2 for Z axis
-        self.acceleration = (ACCy * 0.244/1000 * 9.81) + self.acc_bias #conversion between raw accelerometer and m/s^s
-
+        self.acc_avg_data[0] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias #conversion between raw accelerometer and m/s^s
+        self.acceleration = self.calc_avg_acc()
         ####################################################################
         ###################Tilt compensated heading#########################
         ####################################################################
@@ -196,21 +202,40 @@ class IMUPub(Node):
         imu_msg.linear_acceleration.z = (ACCz * 0.244/1000 * 9.81)
         imu_msg.angular_velocity_covariance = [(70/1000)**2,0,0,0,0,0,0,0,0]
         imu_msg.linear_acceleration_covariance = [(0.244/1000)**2,0,0,0,0,0,0,0,0]
-        imu_msg.orientation_covariance = [(0.1**2),0,0,0,0,0,0,0,0] #sort of a guess
+        imu_msg.orientation_covariance = [(0.1**2),0,0,0,0,0,0,0,0] #sort of a guess based in radians
         self.pub.publish(imu_msg)
+        self.write_esp()
 #        print("#  CFheading Angle %5.2f   Gyro Angle %5.2f  Bias %5.2f  Mag %5.2f#" % (CF_heading, self.gyroZangle, self.biasz, tiltCompensatedHeading))
 
     def calc_avg_gyro(self):
-        avg_omega = 0
+        avg_omega = 0.0
         elements = 0
         for n in self.gyro_avg_data:
-            if n != GYRO_MAX:
+            if n != MAX_DATA:
                 avg_omega += n
                 elements += 1
         if elements:
             avg_omega = avg_omega/elements
         return avg_omega
-        
+    
+    def calc_avg_acc(self):
+        avg_acc = 0.0
+        elements = 0
+        for n in self.acc_avg_data:
+            if n != MAX_DATA:
+                avg_acc += n
+                elements += 1
+        if elements:
+            avg_acc = avg_acc/elements
+        return avg_acc
+    
+    def write_esp(self):
+        data = struct.pack('if',0,self.omega) #Sending 0 means that the data is gyro related
+        byte_list = list(data)
+        try:
+            self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
+        except:
+            self.get_logger().info("Failed to send value")
 
 
 def main(args=None):
