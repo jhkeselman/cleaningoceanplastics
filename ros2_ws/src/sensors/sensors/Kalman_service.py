@@ -46,8 +46,8 @@ class KalmanService(Node):
         self.dt = 0.1
         self.timer = self.create_timer(self.dt,self.calc_state)
 
-        R = 0.1 * np.ones((5,5)) #model noise
-        Q = 0.1 * np.ones((5,5)) #sensor noise
+        self.R = 0.1 * np.ones((5,5)) #model noise
+        self.Q = 0.1 * np.ones((5,5)) #sensor noise
         self.sensor_data = np.zeros((5,1))
         self.Tl = 0
         self.Tr = 0
