@@ -26,9 +26,9 @@ class KalmanService(Node):
         super().__init__('Kalman_service')
         self.srv = self.create_service(KalmanState, 'get_Kalman_state', self.return_state)
 
-        self.imu_sub = self.create_subscription(Imu,'IMU_data',self.imu_response_callback)
-        self.gps_sub = self.create_subscription(NavSatFix,'get_GPS',self.gps_response_callback)
-        self.motor_sub = self.create_subscription(Float64MultiArray, 'motor_speeds', self.motor_callback)
+        self.imu_sub = self.create_subscription(Imu,'IMU_data',self.imu_response_callback,10)
+        self.gps_sub = self.create_subscription(NavSatFix,'get_GPS',self.gps_response_callback,10)
+        self.motor_sub = self.create_subscription(Float64MultiArray, 'motor_speeds', self.motor_callback,10)
 
         self.emergency_stop = self.create_subscription(
             Bool,
