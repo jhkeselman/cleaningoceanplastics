@@ -92,6 +92,7 @@ class KalmanService(Node):
         self.Tr = msg.data[1]
 
     def imu_response_callback(self,msg):
+        print(type(msg.orientation))
         (roll,pitch,yaw) = euler_from_quaternion(msg.orientation)
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
