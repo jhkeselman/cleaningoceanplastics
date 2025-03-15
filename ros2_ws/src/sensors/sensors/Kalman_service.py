@@ -55,17 +55,15 @@ class KalmanService(Node):
     def calc_state(self):
         #NON-LINEAR STATE PREDICTION
         state_pred = np.zeros((5,1))
-        state_pred[0] = self.state[0] + self.state[2]*math.cos(self.state[3])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2]**2)*math.cos(self.state[3])*self.dt**2)/(2*MASS)
-        state_pred[1] = self.state[1] + self.state[2]*math.sin(self.state[3])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2]**2)*math.sin(self.state[3])*self.dt**2)/(2*MASS)
-        state_pred[2] = (self.Tl + self.Tr - (DRAG*self.state[2]**2)*self.dt)/MASS + self.state[2]
-        state_pred[3] = self.state[4]*self.dt + self.state[3]
-        state_pred[4] = (self.Tl + self.Tr - (1.25*DRAG*self.state[2]**2)*self.dt)/INERTIA + self.state[4] #drag increased by 25% for rotation
+        state_pred[0,0] = self.state[0,0] + self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)
+        state_pred[1,0] = self.state[1,0] + self.state[2,0]*math.sin(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)
+        state_pred[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2]**2)*self.dt)/MASS + self.state[2]
+        state_pred[3,0] = self.state[4]*self.dt + self.state[3]
+        state_pred[4,0] = (self.Tl + self.Tr - (1.25*DRAG*self.state[2]**2)*self.dt)/INERTIA + self.state[4] #drag increased by 25% for rotation
 
-        G1 = np.array([1,0,math.cos(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS,-self.state[2,0]*math.sin(self.state[3,0])*self.dt - (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.sin(self.state[3,0])*self.dt**2)/(2*MASS),0])
-        print(G1)
-        G = np.array([[1,0,(math.cos(self.state[3])*self.dt - (self.dt**2)*DRAG*self.state[2]*math.cos(self.state[3])/MASS),(-self.state[2]*math.sin(self.state[3])*self.dt - (self.Tl + self.Tr - (DRAG*self.state[2]**2)*math.sin(self.state[3])*self.dt**2)/(2*MASS)),0],
-                      [0,1,(math.sin(self.state[3])*self.dt - (self.dt**2)*DRAG*self.state[2]*math.sin(self.state[3])/MASS),(self.state[2]*math.cos(self.state[3])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2]**2)*math.cos(self.state[3])*self.dt**2)/(2*MASS)),0],
-                      [0,0,(-2*self.dt*DRAG*self.state[2]/MASS + 1),0,0],
+        G = np.array([[1,0,(math.cos(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS),(-self.state[2,0]*math.sin(self.state[3,0])*self.dt - (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)),0],
+                      [0,1,(math.sin(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
+                      [0,0,(-2*self.dt*DRAG*self.state[2,0]/MASS + 1),0,0],
                       [0,0,0,1,self.dt],
                       [0,0,0,0,1]])
         
@@ -74,13 +72,13 @@ class KalmanService(Node):
         #CORRECTION
         H = np.array([[1,0,0,0,0],
                       [0,1,0,0,0],
-                      [0,0,(self.Tl + self.Tr - (DRAG*self.state[2]**2))/MASS,0,0],
+                      [0,0,(self.Tl + self.Tr - (DRAG*self.state[2,0]**2))/MASS,0,0],
                       [0,0,0,1,0],
                       [0,0,0,0,1]])
         
         K = np.matmul(covariance_pred,np.matmul(H.T,np.inv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)))
         sensor_model = self.state
-        sensor_model[2] = (self.Tl + self.Tr - (DRAG*self.state[2]**2))/MASS
+        sensor_model[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2]**2))/MASS
         self.state = state_pred + np.matmul(K,(self.sensor_data - sensor_model))
         self.covariance = np.matmul((np.eye(5) - np.mapmul(K,H)),covariance_pred)
 
