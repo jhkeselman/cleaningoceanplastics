@@ -96,7 +96,6 @@ class KalmanService(Node):
         self.Tr = msg.data[1]
 
     def imu_response_callback(self,msg):
-        print(type(msg.orientation))
         (roll,pitch,yaw) = euler_from_quaternion([msg.orientation.x,msg.orientation.y,msg.orientation.z,msg.orientation.w])
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
@@ -105,27 +104,27 @@ class KalmanService(Node):
     def gps_response_callback(self,msg):
         fix_status = msg.status.status
         if fix_status >=0 :
-            self.get_logger().info('GPS Fix %d, Lat %5.8f, Long %5.8f:' %(fix_status, msg.fix.latitude, msg.fix.longitude))
-            self.get_logger().info('GPS Covariance Long %5.3f, Lat %5.2f' %(msg.fix.position_covariance[0], msg.fix.position_covariance[0]))
+            self.get_logger().info('GPS Fix %d, Lat %5.8f, Long %5.8f:' %(fix_status, msg.latitude, msg.longitude))
+            self.get_logger().info('GPS Covariance Long %5.3f, Lat %5.2f' %(msg.position_covariance[0], msg.position_covariance[0]))
             if self.avg_i < AVERAGE-1:
-                fix = [math.radians(msg.fix.latitude), math.radians(msg.fix.longitude)]
+                fix = [math.radians(msg.latitude), math.radians(msg.longitude)]
                 self.avg_pos[self.avg_i,:] = fix    
                 self.avg_i += 1               
             elif self.avg_i == AVERAGE-1:
-                fix = [math.radians(msg.fix.latitude), math.radians(msg.fix.longitude)]
+                fix = [math.radians(msg.latitude), math.radians(msg.longitude)]
                 self.avg_pos[self.avg_i,:] = fix
                 avg_lat = self.avg_pos[:,0].mean(axis=0)
                 avg_lon = self.avg_pos[:,1].mean(axis=0)
                 self.first_fix = [avg_lat,avg_lon,math.cos(avg_lat)]
-                self.covariance = self.calc_covariance(msg.fix)
+                self.covariance = self.calc_covariance(msg)
                 self.dx = 0
                 self.dy = 0
                 self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
                 self.avg_i += 1
                 self.gps_ready = True
             else:
-                [self.dx,self.dy] = self.calc_dist(msg.fix)
-                self.covariance = self.calc_covariance(msg.fix)
+                [self.dx,self.dy] = self.calc_dist(msg)
+                self.covariance = self.calc_covariance(msg)
                 self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
         else:
                 self.get_logger().info('No GPS Fix')
