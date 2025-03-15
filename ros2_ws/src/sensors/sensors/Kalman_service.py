@@ -76,7 +76,7 @@ class KalmanService(Node):
                       [0,0,0,1,0],
                       [0,0,0,0,1]])
         
-        K = np.matmul(covariance_pred,np.matmul(H.T,np.inv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)))
+        K = np.matmul(covariance_pred,np.matmul(H.T,np.linalg.inv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)))
         sensor_model = self.state
         sensor_model[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2]**2))/MASS
         self.state = state_pred + np.matmul(K,(self.sensor_data - sensor_model))
