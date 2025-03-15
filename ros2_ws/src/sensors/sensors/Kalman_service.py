@@ -61,7 +61,7 @@ class KalmanService(Node):
         state_pred[3] = self.state[4]*self.dt + self.state[3]
         state_pred[4] = (self.Tl + self.Tr - (1.25*DRAG*self.state[2]**2)*self.dt)/INERTIA + self.state[4] #drag increased by 25% for rotation
 
-        G1 = np.array([1,0,(math.cos(self.state[3])*self.dt - (self.dt**2)*DRAG*self.state[2]*math.cos(self.state[3])/MASS),(-self.state[2]*math.sin(self.state[3])*self.dt - (self.Tl + self.Tr - (DRAG*self.state[2]**2)*math.sin(self.state[3])*self.dt**2)/(2*MASS)),0])
+        G1 = np.array([1,0,math.cos(self.state[3])*self.dt - (self.dt**2)*DRAG*self.state[2]*math.cos(self.state[3])/MASS,-self.state[2]*math.sin(self.state[3])*self.dt - (self.Tl + self.Tr - (DRAG*self.state[2]**2)*math.sin(self.state[3])*self.dt**2)/(2*MASS),0])
         print(G1)
         G = np.array([[1,0,(math.cos(self.state[3])*self.dt - (self.dt**2)*DRAG*self.state[2]*math.cos(self.state[3])/MASS),(-self.state[2]*math.sin(self.state[3])*self.dt - (self.Tl + self.Tr - (DRAG*self.state[2]**2)*math.sin(self.state[3])*self.dt**2)/(2*MASS)),0],
                       [0,1,(math.sin(self.state[3])*self.dt - (self.dt**2)*DRAG*self.state[2]*math.sin(self.state[3])/MASS),(self.state[2]*math.cos(self.state[3])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2]**2)*math.cos(self.state[3])*self.dt**2)/(2*MASS)),0],
