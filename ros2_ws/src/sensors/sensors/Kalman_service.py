@@ -93,7 +93,7 @@ class KalmanService(Node):
 
     def imu_response_callback(self,msg):
         print(type(msg.orientation))
-        (roll,pitch,yaw) = euler_from_quaternion(msg.orientation)
+        (roll,pitch,yaw) = euler_from_quaternion([msg.orientation.x,msg.orientation.y,msg.orientation.z,msg.orientation.w])
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
         self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(yaw, acc, omega))
