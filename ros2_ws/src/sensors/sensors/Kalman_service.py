@@ -116,7 +116,7 @@ class KalmanService(Node):
                 avg_lat = self.avg_pos[:,0].mean(axis=0)
                 avg_lon = self.avg_pos[:,1].mean(axis=0)
                 self.first_fix = [avg_lat,avg_lon,math.cos(avg_lat)]
-                self.covariance = self.calc_covariance(msg)
+                self.gps_covariance = self.calc_covariance(msg)
                 self.dx = 0
                 self.dy = 0
                 self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
@@ -124,8 +124,8 @@ class KalmanService(Node):
                 self.gps_ready = True
             else:
                 [self.dx,self.dy] = self.calc_dist(msg)
-                self.covariance = self.calc_covariance(msg)
-                self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
+                self.gps_covariance = self.calc_covariance(msg)
+                self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.gps_covariance[0][0],self.dy,self.gps_covariance[1][1]))  
         else:
                 self.get_logger().info('No GPS Fix')
 
