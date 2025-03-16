@@ -21,7 +21,7 @@ RAD_TO_DEG = 57.29578
 M_PI = 3.14159265358979323846
 G_GAIN = 0.070  # [deg/s/LSB]  If you change the dps for gyro, you need to update this value accordingly
 AA =  0.40      # Complementary filter constant
-MAX_DATA = 32767
+MAX_DATA = 32767 
 
 class IMUPub(Node):
 
@@ -38,14 +38,12 @@ class IMUPub(Node):
 
         self.get_logger().info("IMU initialized...")
 
-        self.I2C_address = 0x55
+        self.I2C_address = 0x55 #I2C address of ESP32
         self.bus = smbus.SMBus(1)       
 
         self.heading = 0.0
 
         self.declination = -214.1/1000 * RAD_TO_DEG #calculated at Worcester (-214 milliradians)
-
-        #print((" magXmin  %i  magYmin  %i  magZmin  %i  ## magXmax  %i  magYmax  %i  magZmax %i  " %(self.magXmin,self.magYmin,self.magZmin,self.magXmax,self.magYmax,self.magZmax)))
 
         self.magXmin = -1261 #Previous Calibration values of magnetometer
         self.magYmin = -2286
@@ -73,7 +71,7 @@ class IMUPub(Node):
         super().destroy_node()
 
 
-    def calibrate_Mag(self):
+    def calibrate_Mag(self): #NOT USED, BUT TO CALIBRATE AGAINST HARD IRON DISTORTION
         for i in range(200):
             MAGx = readMAGx()
             MAGy = readMAGy()
@@ -109,15 +107,9 @@ class IMUPub(Node):
         MAGy = readMAGy()
         MAGz = readMAGz()
 
-        MAGx -= (self.magXmin + self.magXmax) /2
+        MAGx -= (self.magXmin + self.magXmax) /2 #SHIFT MAGNETOMETER BACK TO ORIGIN
         MAGy -= (self.magYmin + self.magYmax) /2
         MAGz -= (self.magZmin + self.magZmax) /2
-
-        ##Calculate loop Period(LP). How long between Gyro Reads
-        b = datetime.datetime.now() - self.a
-        self.a = datetime.datetime.now()
-        LP = b.microseconds/(1000000*1.0)
-        outputString = "Loop Time %5.2f " % ( LP )
 
         #Convert Gyro raw to degrees per second
         rate_gyr_x =  GYRx * G_GAIN
@@ -130,25 +122,6 @@ class IMUPub(Node):
         self.gyro_avg_data[0] = rate_gyr_x*M_PI/180
         self.omega= self.calc_avg_gyro()
 
-        #Calculate the angles from the gyro.
-        # self.gyroXangle+=rate_gyr_x*LP
-        # self.gyroYangle+=rate_gyr_y*LP
-        # self.gyroZangle+=rate_gyr_z*LP
-
-        #Convert Accelerometer values to degrees
-        AccXangle =  (math.atan2(ACCy,ACCz)*RAD_TO_DEG)
-        AccYangle =  (math.atan2(ACCz,ACCx)+M_PI)*RAD_TO_DEG
-
-        #convert the values to -180 and +180
-        if AccYangle > 90:
-            AccYangle -= 270.0
-        else:
-            AccYangle += 90.0
-
-        #Complementary filter used to combine the accelerometer and gyro values.
-        # self.CFangleX=AA*(self.CFangleX+rate_gyr_x*LP) +(1 - AA) * AccXangle
-        # self.CFangleY=AA*(self.CFangleY+rate_gyr_y*LP) +(1 - AA) * AccYangle
-
         #Calculate heading
         heading = 180 * math.atan2(MAGy,MAGz)/M_PI
         #heading += self.declination
@@ -160,32 +133,7 @@ class IMUPub(Node):
         self.acc_bias = 0.2 #experimentally found but should be updated #-0.2 for Z axis
         self.acc_avg_data[0] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias #conversion between raw accelerometer and m/s^s
         self.acceleration = self.calc_avg_acc()
-        ####################################################################
-        ###################Tilt compensated heading#########################
-        ####################################################################
-        #Normalize accelerometer raw values.
-        accXnorm = ACCx/math.sqrt(ACCx * ACCx + ACCy * ACCy + ACCz * ACCz)
-        accYnorm = ACCy/math.sqrt(ACCx * ACCx + ACCy * ACCy + ACCz * ACCz)
 
-        #Calculate pitch and roll
-        # pitch = math.asin(accXnorm)
-        # roll = -math.asin(accYnorm/math.cos(pitch))
-
-        #Calculate the new tilt compensated values
-        #X compensation
-        # magXcomp = MAGx*math.cos(pitch)+MAGz*math.sin(pitch)
-        # magYcomp = MAGx*math.sin(roll)*math.sin(pitch)+MAGy*math.cos(roll)-MAGz*math.sin(roll)*math.cos(pitch)
-
-        #Calculate tilt compensated heading
-        # tiltCompensatedHeading = 180 * math.atan2(magYcomp,magXcomp)/M_PI
-
-        # if tiltCompensatedHeading < 0:
-        #     tiltCompensatedHeading += 360
-
-
-        ##################### END Tilt Compensation ########################
-
-        # self.heading = math.radians(heading)
         imu_msg = Imu()
         imu_msg.header.frame_id = 'imu_pub'
         imu_msg.header.stamp = self.get_clock().now().to_msg()
@@ -200,8 +148,8 @@ class IMUPub(Node):
         imu_msg.linear_acceleration.x = self.acceleration
         imu_msg.linear_acceleration.y = (ACCx * 0.244/1000 * 9.81)
         imu_msg.linear_acceleration.z = (ACCz * 0.244/1000 * 9.81)
-        imu_msg.angular_velocity_covariance = [(70/1000)**2,0,0,0,0,0,0,0,0]
-        imu_msg.linear_acceleration_covariance = [(0.244/1000)**2,0,0,0,0,0,0,0,0]
+        imu_msg.angular_velocity_covariance = [(70/1000)**2,0,0,0,0,0,0,0,0] #covariance based on sensitivity of sensors from data sheet
+        imu_msg.linear_acceleration_covariance = [(0.244/1000*9.81)**2,0,0,0,0,0,0,0,0]
         imu_msg.orientation_covariance = [(0.1**2),0,0,0,0,0,0,0,0] #sort of a guess based in radians
         self.pub.publish(imu_msg)
         self.write_esp()

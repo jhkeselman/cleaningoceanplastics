@@ -13,9 +13,9 @@ from tf_transformations import euler_from_quaternion
 import math
 import numpy as np
 
-RADIUS = 6371000
-UERE = 4.0
-AVERAGE = 10
+RADIUS = 6371000 #radius of earth in m
+UERE = 4.0 #estimate in m based on other comercial gps units
+AVERAGE = 10 #Number of values for gps before beginning
 MASS = 23 #NEED VALUES
 DRAG = 0.5
 INERTIA = 200 
@@ -49,8 +49,8 @@ class KalmanService(Node):
         self.R = 0.1 * np.ones((5,5)) #model noise
         self.Q = 0.1 * np.ones((5,5)) #sensor noise
         self.sensor_data = np.zeros((5,1))
-        self.Tl = 0
-        self.Tr = 0
+        self.Tl = 0 #thrust left
+        self.Tr = 0 
     
     def calc_state(self):
         #NON-LINEAR STATE PREDICTION
@@ -110,33 +110,33 @@ class KalmanService(Node):
                 fix = [math.radians(msg.latitude), math.radians(msg.longitude)]
                 self.avg_pos[self.avg_i,:] = fix    
                 self.avg_i += 1               
-            elif self.avg_i == AVERAGE-1:
+            elif self.avg_i == AVERAGE-1: #if there hasn't been an origin established, keep averaging values
                 fix = [math.radians(msg.latitude), math.radians(msg.longitude)]
-                self.avg_pos[self.avg_i,:] = fix
+                self.avg_pos[self.avg_i,:] = fix #stores fixes to average thm
                 avg_lat = self.avg_pos[:,0].mean(axis=0)
                 avg_lon = self.avg_pos[:,1].mean(axis=0)
-                self.first_fix = [avg_lat,avg_lon,math.cos(avg_lat)]
+                self.first_fix = [avg_lat,avg_lon,math.cos(avg_lat)] #stores the average as the first position and origin
                 self.gps_covariance = self.calc_covariance(msg)
                 self.dx = 0
                 self.dy = 0
                 self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
                 self.avg_i += 1
                 self.gps_ready = True
-            else:
-                [self.dx,self.dy] = self.calc_dist(msg)
+            else: 
+                [self.dx,self.dy] = self.calc_dist(msg) #once an origin has been established begin calculating distance from origin
                 self.gps_covariance = self.calc_covariance(msg)
                 self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.gps_covariance[0][0],self.dy,self.gps_covariance[1][1]))  
         else:
                 self.get_logger().info('No GPS Fix')
 
     def calc_dist(self,fix):
-        dx = RADIUS*(math.radians(fix.longitude) - self.first_fix[1])*self.first_fix[2]
+        dx = RADIUS*(math.radians(fix.longitude) - self.first_fix[1])*self.first_fix[2] #Uses equirectangular projection to determine x,y distance from origin
         dy = RADIUS*(math.radians(fix.latitude) - self.first_fix[0])
         return [dx,dy]
     
     def calc_covariance(self,fix):
-        if fix.position_covariance_type == NavSatFix.COVARIANCE_TYPE_APPROXIMATED:
-            x_lon = fix.position_covariance[0]*UERE
+        if fix.position_covariance_type == NavSatFix.COVARIANCE_TYPE_APPROXIMATED: 
+            x_lon = fix.position_covariance[0]*UERE #DOP values must be mutliplied by User equivalent range error
             y_lat = fix.position_covariance[4]*UERE
         else:
             x_lon = fix.position_covariance[0]
