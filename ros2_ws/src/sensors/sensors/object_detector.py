@@ -8,7 +8,7 @@ class ObjectDetector(Node):
     def __init__(self):
         super().__init__('object_detector')
 
-        self.model = YOLO('ros2_ws/src/sensors/sensors/best.pt.pt')
+        self.model = YOLO('ros2_ws/src/sensors/sensors/best.pt')
         self.cap = cv2.VideoCapture(0)
         if not self.cap.isOpened():
             self.get_logger().error("Error: Could not open webcam.")
