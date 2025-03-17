@@ -214,6 +214,7 @@ class IMUService(Node):
         #     CF_heading -= 360
         # self.biasz += B*(CF_heading-self.gyroZangle)
         #self.heading = tiltCompensatedHeading
+        self.heading = heading
 #        print("#  CFheading Angle %5.2f   Gyro Angle %5.2f  Bias %5.2f  Mag %5.2f#" % (CF_heading, self.gyroZangle, self.biasz, tiltCompensatedHeading))
 
     def calc_avg_gyro(self):

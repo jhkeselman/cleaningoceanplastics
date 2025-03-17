@@ -42,6 +42,8 @@ class Ros2NMEADriver(Node):
         self.lat_std_dev = float("nan")
         self.alt_std_dev = float("nan")
 
+        self.fix = NavSatFix()
+
         """Format for this dictionary is the fix type from a GGA message as the key, with
         each entry containing a tuple consisting of a default estimated
         position error, a NavSatStatus value, and a NavSatFix covariance value."""
@@ -93,6 +95,7 @@ class Ros2NMEADriver(Node):
     # Returns True if we successfully did something with the passed in
     # nmea_string
     def add_sentence(self, nmea_string, frame_id, timestamp=None):
+        print('doing this')
         if not check_nmea_checksum(nmea_string):
             self.get_logger().warn("Received a sentence with an invalid checksum. " +
                                    "Sentence was: %s" % nmea_string)
@@ -121,6 +124,7 @@ class Ros2NMEADriver(Node):
                 current_time_ref.source = frame_id
 
         if not self.use_RMC and 'GGA' in parsed_sentence:
+            print("got here")
             current_fix.position_covariance_type = NavSatFix.COVARIANCE_TYPE_APPROXIMATED
 
             data = parsed_sentence['GGA']
@@ -139,8 +143,10 @@ class Ros2NMEADriver(Node):
             else:
                 self.valid_fix = False
 
+            #print(data)
             current_fix.status.service = NavSatStatus.SERVICE_GPS
             latitude = data['latitude']
+            
             if data['latitude_direction'] == 'S':
                 latitude = -latitude
             current_fix.latitude = latitude
@@ -150,6 +156,7 @@ class Ros2NMEADriver(Node):
                 longitude = -longitude
             current_fix.longitude = longitude
 
+            self.get_logger().debug("Lat %5.3f, Long %5.3f" % (latitude,longitude))
             # Altitude is above ellipsoid, so adjust for mean-sea-level
             altitude = data['altitude'] + data['mean_sea_level']
             current_fix.altitude = altitude
@@ -166,8 +173,10 @@ class Ros2NMEADriver(Node):
             current_fix.position_covariance[0] = (hdop * self.lon_std_dev) ** 2
             current_fix.position_covariance[4] = (hdop * self.lat_std_dev) ** 2
             current_fix.position_covariance[8] = (2 * hdop * self.alt_std_dev) ** 2  # FIXME
-
+            
+            print(current_fix)
             self.fix = current_fix
+            self.get_logger().info("Set new fix")
 
             if not (math.isnan(data['utc_time'][0]) or self.use_GNSS_time):
                 current_time_ref.time_ref = rclpy.time.Time(seconds=data['utc_time'][0], nanoseconds=data['utc_time'][1]).to_msg()
@@ -187,9 +196,9 @@ class Ros2NMEADriver(Node):
 
         elif 'RMC' in parsed_sentence:
             data = parsed_sentence['RMC']
-
             # Only publish a fix from RMC if the use_RMC flag is set.
             if self.use_RMC:
+                print("here")
                 if data['fix_valid']:
                     current_fix.status.status = NavSatStatus.STATUS_FIX
                 else:
@@ -211,7 +220,9 @@ class Ros2NMEADriver(Node):
                 current_fix.position_covariance_type = \
                     NavSatFix.COVARIANCE_TYPE_UNKNOWN
 
+                print(current_fix)
                 self.fix = current_fix
+                self.get_logger().info("Set new fix")
 
                 if not (math.isnan(data['utc_time'][0]) or self.use_GNSS_time):
                     current_time_ref.time_ref = rclpy.time.Time(seconds=data['utc_time'][0], nanoseconds=data['utc_time'][1]).to_msg()

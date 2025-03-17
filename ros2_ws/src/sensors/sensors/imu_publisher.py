@@ -1,14 +1,17 @@
 import rclpy
 from rclpy.node import Node
 
-from std_msgs.msg import Float64MultiArray
+
+from std_msgs.msg import String, Bool
+from sensor_msgs.msg import Imu
+from tf_transformations import quaternion_from_euler
+from geometry_msgs.msg import Quaternion
 
 import math
 import datetime
 import sys
 import time
-
-# sys.path.append('./test_input/test_input/')
+import numpy as np
 
 from .IMU_lib import *
 
@@ -16,20 +19,12 @@ RAD_TO_DEG = 57.29578
 M_PI = 3.14159265358979323846
 G_GAIN = 0.070  # [deg/s/LSB]  If you change the dps for gyro, you need to update this value accordingly
 AA =  0.40      # Complementary filter constant
+GYRO_MAX = 32767
 
-class IMU(Node):
+class IMUPub(Node):
 
     def __init__(self):
-        super().__init__('imu')
-        self.publisher_ = self.create_publisher(Float64MultiArray, 'imu', 10)
-        timer_period = 0.25  # seconds
-        self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.i = 0
-        self.gyroXangle = 0.0
-        self.gyroYangle = 0.0
-        self.gyroZangle = 0.0
-        self.CFangleX = 0.0
-        self.CFangleY = 0.0
+        super().__init__('IMU_publisher')
 
         # Initialize IMU
         detectIMU()     #Detect if BerryIMU is connected.
@@ -41,14 +36,62 @@ class IMU(Node):
 
         self.get_logger().info("IMU initialized...")
 
-        self.calibrate(500)
-        print(self.biasz)
+        self.heading = 0.0
 
-        init_magX = readMAGx()
-        init_magY = readMAGy()
-        self.prev_gyr_heading = 180 * math.atan2(init_magY,init_magX)/M_PI
-   
-    def get_data(self):
+        self.declination = -214.1/1000 * RAD_TO_DEG #calculated at Worcester (-214 milliradians)
+
+        #print((" magXmin  %i  magYmin  %i  magZmin  %i  ## magXmax  %i  magYmax  %i  magZmax %i  " %(self.magXmin,self.magYmin,self.magZmin,self.magXmax,self.magYmax,self.magZmax)))
+
+        self.magXmin = -1261 #Previous Calibration values of magnetometer
+        self.magYmin = -2286
+        self.magZmin = -2048
+        self.magXmax = 2465
+        self.magYmax = 1529
+        self.magZmax = 1822
+
+        self.gyro_avg_data = GYRO_MAX*np.ones(20)
+
+        self.emergency_stop = self.create_subscription(
+            Bool,
+            'emergency_stop',
+            self.destroy_node,
+            10
+        )
+
+        self.pub = self.create_publisher(Imu, 'IMU_data', 10)
+        timer_period = 0.02
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+
+    def destroy_node(self,msg):
+        time.sleep(0.1)
+        super().destroy_node()
+
+
+    def calibrate_Mag(self):
+        for i in range(200):
+            MAGx = readMAGx()
+            MAGy = readMAGy()
+            MAGz = readMAGz()
+
+            if MAGx > self.magXmax:
+                self.magXmax = MAGx
+            if MAGy > self.magYmax:
+                self.magYmax = MAGy
+            if MAGz > self.magZmax:
+                self.magZmax = MAGz
+
+            if MAGx < self.magXmin:
+                self.magXmin = MAGx
+            if MAGy < self.magYmin:
+                self.magYmin = MAGy
+            if MAGz < self.magZmin:
+                self.magZmin = MAGz
+
+            time.sleep(0.025)
+        
+
+
+    def timer_callback(self):
         #Read the accelerometer,gyroscope and magnetometer values
         ACCx = readACCx()
         ACCy = readACCy()
@@ -59,6 +102,10 @@ class IMU(Node):
         MAGx = readMAGx()
         MAGy = readMAGy()
         MAGz = readMAGz()
+
+        MAGx -= (self.magXmin + self.magXmax) /2
+        MAGy -= (self.magYmin + self.magYmax) /2
+        MAGz -= (self.magZmin + self.magZmax) /2
 
         ##Calculate loop Period(LP). How long between Gyro Reads
         b = datetime.datetime.now() - self.a
@@ -71,10 +118,16 @@ class IMU(Node):
         rate_gyr_y =  GYRy * G_GAIN
         rate_gyr_z =  GYRz * G_GAIN
 
+        #self.omega = rate_gyr_z*M_PI/180 #MAY NEED TO ACCOUNT FOR BIAS
+        
+        self.gyro_avg_data = np.roll(self.gyro_avg_data,1) #shift moving average data by one and then store current reading
+        self.gyro_avg_data[0] = rate_gyr_x*M_PI/180
+        self.omega = self.calc_avg_gyro()
+
         #Calculate the angles from the gyro.
-        self.gyroXangle+=rate_gyr_x*LP
-        self.gyroYangle+=rate_gyr_y*LP
-        self.gyroZangle+=rate_gyr_z*LP
+        # self.gyroXangle+=rate_gyr_x*LP
+        # self.gyroYangle+=rate_gyr_y*LP
+        # self.gyroZangle+=rate_gyr_z*LP
 
         #Convert Accelerometer values to degrees
         AccXangle =  (math.atan2(ACCy,ACCz)*RAD_TO_DEG)
@@ -87,16 +140,19 @@ class IMU(Node):
             AccYangle += 90.0
 
         #Complementary filter used to combine the accelerometer and gyro values.
-        self.CFangleX=AA*(self.CFangleX+rate_gyr_x*LP) +(1 - AA) * AccXangle
-        self.CFangleY=AA*(self.CFangleY+rate_gyr_y*LP) +(1 - AA) * AccYangle
+        # self.CFangleX=AA*(self.CFangleX+rate_gyr_x*LP) +(1 - AA) * AccXangle
+        # self.CFangleY=AA*(self.CFangleY+rate_gyr_y*LP) +(1 - AA) * AccYangle
 
         #Calculate heading
-        heading = 180 * math.atan2(MAGy,MAGx)/M_PI
+        heading = 180 * math.atan2(MAGy,MAGz)/M_PI
+        #heading += self.declination
 
         #Only have our heading between 0 and 360
         if heading < 0:
-            print("negative")
-            heading += 360
+            heading += 360.0
+
+        self.acc_bias = 0.2 #experimentally found but should be updated #-0.2 for Z axis
+        self.acceleration = (ACCy * 0.244/1000 * 9.81) + self.acc_bias #conversion between raw accelerometer and m/s^s
 
         ####################################################################
         ###################Tilt compensated heading#########################
@@ -106,89 +162,63 @@ class IMU(Node):
         accYnorm = ACCy/math.sqrt(ACCx * ACCx + ACCy * ACCy + ACCz * ACCz)
 
         #Calculate pitch and roll
-        pitch = math.asin(accXnorm)
-        roll = -math.asin(accYnorm/math.cos(pitch))
+        # pitch = math.asin(accXnorm)
+        # roll = -math.asin(accYnorm/math.cos(pitch))
 
         #Calculate the new tilt compensated values
         #X compensation
-        magXcomp = MAGx*math.cos(pitch)+MAGz*math.sin(pitch)
-        magYcomp = MAGx*math.sin(roll)*math.sin(pitch)+MAGy*math.cos(roll)-MAGz*math.sin(roll)*math.cos(pitch)
+        # magXcomp = MAGx*math.cos(pitch)+MAGz*math.sin(pitch)
+        # magYcomp = MAGx*math.sin(roll)*math.sin(pitch)+MAGy*math.cos(roll)-MAGz*math.sin(roll)*math.cos(pitch)
 
         #Calculate tilt compensated heading
-        tiltCompensatedHeading = 180 * math.atan2(magYcomp,magXcomp)/M_PI
+        # tiltCompensatedHeading = 180 * math.atan2(magYcomp,magXcomp)/M_PI
 
-        if tiltCompensatedHeading < 0:
-            tiltCompensatedHeading += 360
+        # if tiltCompensatedHeading < 0:
+        #     tiltCompensatedHeading += 360
 
 
         ##################### END Tilt Compensation ########################
 
-        '''
-        Fusing gyroscope and magnetometer data
-        '''
+        # self.heading = math.radians(heading)
+        imu_msg = Imu()
+        imu_msg.header.frame_id = 'imu_pub'
+        imu_msg.header.stamp = self.get_clock().now().to_msg()
+        imu_msg.angular_velocity.x = 0.0
+        imu_msg.angular_velocity.y = 0.0
+        imu_msg.angular_velocity.z = self.omega
+        q = quaternion_from_euler(0,0,math.radians(heading))
+        imu_msg.orientation.x = q[0]
+        imu_msg.orientation.y = q[1]
+        imu_msg.orientation.z = q[2]
+        imu_msg.orientation.w = q[3]
+        imu_msg.linear_acceleration.x = self.acceleration
+        imu_msg.linear_acceleration.y = (ACCx * 0.244/1000 * 9.81)
+        imu_msg.linear_acceleration.z = (ACCz * 0.244/1000 * 9.81)
+        imu_msg.angular_velocity_covariance = [(70/1000)**2,0,0,0,0,0,0,0,0]
+        imu_msg.linear_acceleration_covariance = [(0.244/1000)**2,0,0,0,0,0,0,0,0]
+        imu_msg.orientation_covariance = [(0.1**2),0,0,0,0,0,0,0,0] #sort of a guess
+        self.pub.publish(imu_msg)
+#        print("#  CFheading Angle %5.2f   Gyro Angle %5.2f  Bias %5.2f  Mag %5.2f#" % (CF_heading, self.gyroZangle, self.biasz, tiltCompensatedHeading))
 
-        gyr_heading = self.prev_gyr_heading + rate_gyr_z*LP
-        K = 0.9
-        B = 0.001
-        CF_heading = K*gyr_heading + (1-K)*heading
-        if CF_heading < 0:
-            CF_heading += 360
-        elif CF_heading > 360:
-            CF_heading -= 360
-        #self.biasz += B*(CF_heading-gyr_heading)/LP/G_GAIN
-        self.prev_gyr_heading = gyr_heading #should this update to the CF heading? or just always keep the gyro heading?
-
-
-        if 0:                       #Change to '0' to stop showing the angles from the accelerometer
-            outputString += "#  ACCX Angle %5.2f ACCY Angle %5.2f  #  " % (AccXangle, AccYangle)
-
-        if 0:                       #Change to '0' to stop  showing the angles from the gyro
-            outputString +="#  GYRX Rate %5.2f GYRY Rate %5.2f GYRZ Rate %5.2f Bias %5.2f# " % (rate_gyr_x, rate_gyr_y, rate_gyr_z, self.biasz*G_GAIN)
-
-        if 1:                       #Change to '0' to stop  showing the angles from the complementary filter
-            outputString +="\t#  CFangleX Angle %5.2f   CFangleY Angle %5.2f  #" % (self.CFangleX,self.CFangleY)
-
-        if 1:                       #Change to '0' to stop  showing the heading
-            outputString +="\t# HEADING %5.2f  tiltCompensatedHeading %5.2f #" % (heading,tiltCompensatedHeading)
-        if 1:                       #Change to '0' to stop  showing the heading
-            outputString +="\t# CFHeading %5.2f #" % (CF_heading)
-
-        self.get_logger().info(outputString)
-        # return outputString
-        return [self.CFangleX, self.CFangleY, heading]
-
-    def timer_callback(self):
-        msg = Float64MultiArray()
-        msg.data = self.get_data() 
-        self.publisher_.publish(msg)
-        #self.get_logger().info('Publishing: "%s"' % msg.data)
-        self.i += 1
-
-    def calibrate(self,readings):
-        biasx = 0
-        biasy = 0
-        biasz = 0
-        for i in range(readings):
-            biasx += readGYRx()
-            biasy += readGYRy()
-            biasz += readGYRz()
-            time.sleep(0.001)
+    def calc_avg_gyro(self):
+        avg_omega = 0
+        elements = 0
+        for n in self.gyro_avg_data:
+            if n != GYRO_MAX:
+                avg_omega += n
+                elements += 1
+        if elements:
+            avg_omega = avg_omega/elements
+        return avg_omega
         
-        self.biasx = biasx/readings
-        self.biasy = biasy/readings
-        self.biasz = biasz/readings
-
-
-        
-
 
 
 def main(args=None):
     rclpy.init(args=args)
 
-    imu = IMU()
+    imu_publisher = IMUPub()
 
-    rclpy.spin(imu)
+    rclpy.spin(imu_publisher)
 
     rclpy.shutdown()
 
