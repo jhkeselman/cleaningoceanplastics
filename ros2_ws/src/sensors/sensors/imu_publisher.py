@@ -131,8 +131,9 @@ class IMUPub(Node):
 
         #Calculate heading
         heading = 180 * math.atan2(MAGy,MAGz)/M_PI
+        
+        heading += self.declination
         print(heading)
-        #heading += self.declination
 
         # #Only have our heading between 0 and 360
         # if heading < 0:
