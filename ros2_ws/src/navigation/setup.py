@@ -13,7 +13,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob('launch/*.py')),
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools','smbus'],
     zip_safe=True,
     maintainer='pi2',
     maintainer_email='coop530@comcast.net',
