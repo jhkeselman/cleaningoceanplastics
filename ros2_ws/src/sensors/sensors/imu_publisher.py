@@ -140,7 +140,7 @@ class IMUPub(Node):
         imu_msg.header.frame_id = 'imu_pub'
         
         curr_time = self.get_clock().now()
-        dt = curr_time - self.prev_time
+        dt = curr_time.seconds_nanoseconds - self.prev_time.seconds_nanoseconds
         imu_msg.header.stamp = curr_time.to_msg()
         imu_msg.angular_velocity.x = 0.0
         imu_msg.angular_velocity.y = 0.0
