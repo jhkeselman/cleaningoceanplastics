@@ -65,6 +65,8 @@ class IMUPub(Node):
         self.pub = self.create_publisher(Imu, 'IMU_data', 10)
         timer_period = 0.02
         self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.prev_time = self.get_clock().now()
+        self.gyro_heading = 0
 
     def destroy_node(self,msg):
         time.sleep(0.1)
@@ -136,11 +138,17 @@ class IMUPub(Node):
 
         imu_msg = Imu()
         imu_msg.header.frame_id = 'imu_pub'
-        imu_msg.header.stamp = self.get_clock().now().to_msg()
+        
+        curr_time = self.get_clock().now()
+        dt = curr_time - self.prev_time
+        imu_msg.header.stamp = curr_time.to_msg()
         imu_msg.angular_velocity.x = 0.0
         imu_msg.angular_velocity.y = 0.0
         imu_msg.angular_velocity.z = self.omega
-        q = quaternion_from_euler(0,0,math.radians(heading))
+        #q = quaternion_from_euler(0,0,math.radians(heading))
+        self.gyro_heading = self.gyro_heading+ self.omega * dt
+        print(self.gyro_heading)
+        q = quaternion_from_euler(0,0,math.radians(self.gyro_heading))
         imu_msg.orientation.x = q[0]
         imu_msg.orientation.y = q[1]
         imu_msg.orientation.z = q[2]
@@ -153,6 +161,7 @@ class IMUPub(Node):
         imu_msg.orientation_covariance = [(0.1**2),0,0,0,0,0,0,0,0] #sort of a guess based in radians
         self.pub.publish(imu_msg)
         self.write_esp()
+        self.prev_time = curr_time
 #        print("#  CFheading Angle %5.2f   Gyro Angle %5.2f  Bias %5.2f  Mag %5.2f#" % (CF_heading, self.gyroZangle, self.biasz, tiltCompensatedHeading))
 
     def calc_avg_gyro(self):
@@ -178,7 +187,7 @@ class IMUPub(Node):
         return avg_acc
     
     def write_esp(self):
-        data = struct.pack('if',0,self.omega) #Sending 0 means that the data is gyro related
+        data = struct.pack('if',0,self.omega) #Sending 0 means that the data is gyro related, sends the angular vel in rad/s
         byte_list = list(data)
         try:
             self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
