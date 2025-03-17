@@ -45,12 +45,19 @@ class IMUPub(Node):
 
         self.declination = -214.1/1000 * RAD_TO_DEG #calculated at Worcester (-214 milliradians)
 
-        self.magXmin = -1261 #Previous Calibration values of magnetometer
-        self.magYmin = -2286
-        self.magZmin = -2048
-        self.magXmax = 2465
-        self.magYmax = 1529
-        self.magZmax = 1822
+        # self.magXmin = -1261 #Previous Calibration values of magnetometer at +/- 8 gauss
+        # self.magYmin = -2286
+        # self.magZmin = -2048
+        # self.magXmax = 2465
+        # self.magYmax = 1529
+        # self.magZmax = 1822
+
+        self.magXmin = -1089 #Previous Calibration values of magnetometer at +/- 8 gauss
+        self.magYmin = -1203
+        self.magZmin = -901
+        self.magXmax = 1279
+        self.magYmax = 498
+        self.magZmax = 808
 
         self.gyro_avg_data = MAX_DATA*np.ones(20)
         self.acc_avg_data = MAX_DATA*np.ones(20)
@@ -109,16 +116,14 @@ class IMUPub(Node):
         MAGy = readMAGy()
         MAGz = readMAGz()
 
-        MAGx -= (self.magXmin + self.magXmax) /2 #SHIFT MAGNETOMETER BACK TO ORIGIN
+        MAGx -= (self.magXmin + self.magXmax) /2 #SHIFT MAGNETOMETER BACK TO ORIGIN to componsate for hard iron distortion
         MAGy -= (self.magYmin + self.magYmax) /2
         MAGz -= (self.magZmin + self.magZmax) /2
 
         #Convert Gyro raw to degrees per second
-        rate_gyr_x =  GYRx * G_GAIN
+        rate_gyr_x =  -GYRx * G_GAIN #current gryoscope is mounted with yaw (x) downwards
         rate_gyr_y =  GYRy * G_GAIN
         rate_gyr_z =  GYRz * G_GAIN
-
-        #self.omega = rate_gyr_z*M_PI/180 #MAY NEED TO ACCOUNT FOR BIAS
         
         self.gyro_avg_data = np.roll(self.gyro_avg_data,1) #shift moving average data by one and then store current reading
         self.gyro_avg_data[0] = rate_gyr_x*M_PI/180
@@ -126,11 +131,12 @@ class IMUPub(Node):
 
         #Calculate heading
         heading = 180 * math.atan2(MAGy,MAGz)/M_PI
+        print(heading)
         #heading += self.declination
 
-        #Only have our heading between 0 and 360
-        if heading < 0:
-            heading += 360.0
+        # #Only have our heading between 0 and 360
+        # if heading < 0:
+        #     heading += 360.0
 
         self.acc_bias = 0.2 #experimentally found but should be updated #-0.2 for Z axis
         self.acc_avg_data[0] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias #conversion between raw accelerometer and m/s^s
@@ -138,17 +144,11 @@ class IMUPub(Node):
 
         imu_msg = Imu()
         imu_msg.header.frame_id = 'imu_pub'
-        
-        curr_time = self.get_clock().now()
-        dt = (curr_time.nanoseconds - self.prev_time.nanoseconds) * 10**-9
-        imu_msg.header.stamp = curr_time.to_msg()
+        imu_msg.header.stamp = self.get_clock().now().to_msg()
         imu_msg.angular_velocity.x = 0.0
         imu_msg.angular_velocity.y = 0.0
         imu_msg.angular_velocity.z = self.omega
-        #q = quaternion_from_euler(0,0,math.radians(heading))
-        self.gyro_heading = self.gyro_heading+ self.omega * dt
-        print(self.gyro_heading)
-        q = quaternion_from_euler(0,0,math.radians(self.gyro_heading))
+        q = quaternion_from_euler(0,0,math.radians(heading))
         imu_msg.orientation.x = q[0]
         imu_msg.orientation.y = q[1]
         imu_msg.orientation.z = q[2]
@@ -161,8 +161,6 @@ class IMUPub(Node):
         imu_msg.orientation_covariance = [(0.1**2),0,0,0,0,0,0,0,0] #sort of a guess based in radians
         self.pub.publish(imu_msg)
         self.write_esp()
-        self.prev_time = curr_time
-#        print("#  CFheading Angle %5.2f   Gyro Angle %5.2f  Bias %5.2f  Mag %5.2f#" % (CF_heading, self.gyroZangle, self.biasz, tiltCompensatedHeading))
 
     def calc_avg_gyro(self):
         avg_omega = 0.0
