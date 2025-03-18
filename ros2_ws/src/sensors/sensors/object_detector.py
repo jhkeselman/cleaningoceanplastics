@@ -28,8 +28,8 @@ class ObjectDetector(Node):
         
         self.detection_pub = self.create_publisher(String, 'object_detections', 10)
         
-        timer_period = 0.1  # seconds
-        self.timer = self.create_timer(timer_period, self.process_image)
+        self.timer_period = 0.1  # seconds
+        self.timer = self.create_timer(self.timer_period, self.process_image)
 
         self.prev_time = time.time()
 
