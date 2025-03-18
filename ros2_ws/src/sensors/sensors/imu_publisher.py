@@ -20,8 +20,8 @@ from .IMU_lib import *
 RAD_TO_DEG = 57.29578
 M_PI = 3.14159265358979323846
 G_GAIN = 0.070  # [deg/s/LSB]  If you change the dps for gyro, you need to update this value accordingly
-K =  0.95      # Complementary filter constant
-E = 0.001
+K =  0.95      # Complementary filter constant gain
+E = 0.001      # Complementary filter bias gain
 MAX_DATA = 32767 
 
 class IMUPub(Node):
@@ -140,7 +140,7 @@ class IMUPub(Node):
         #Calculate heading
         mag_heading = 180 * math.atan2(MAGy,MAGz)/M_PI
         
-        mag_heading += self.declination
+        # mag_heading += self.declination
         
         #Complementary filter using 
         if self.gyro_heading > 720:
