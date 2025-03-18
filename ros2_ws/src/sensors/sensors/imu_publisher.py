@@ -140,7 +140,7 @@ class IMUPub(Node):
         #Calculate heading
         mag_heading = 180 * math.atan2(MAGy,MAGz)/M_PI
         
-        # mag_heading += self.declination
+        mag_heading += self.declination
         
         #Complementary filter using 
         if self.gyro_heading > 720:
