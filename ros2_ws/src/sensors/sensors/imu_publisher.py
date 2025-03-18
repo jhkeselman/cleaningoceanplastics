@@ -61,6 +61,8 @@ class IMUPub(Node):
 
         self.gyro_avg_data = MAX_DATA*np.ones(20)
         self.acc_avg_data = MAX_DATA*np.ones(20)
+        self.mag_avg_data = MAX_DATA*np.ones(20)
+        self.avg_data = MAX_DATA*np.ones((20,3))
 
         self.emergency_stop = self.create_subscription(
             Bool,
@@ -126,14 +128,17 @@ class IMUPub(Node):
         rate_gyr_z =  GYRz * G_GAIN
         
         self.gyro_avg_data = np.roll(self.gyro_avg_data,1) #shift moving average data by one and then store current reading
+        self.avg_data = np.roll(self.avg_data[:,0],1)
         self.gyro_avg_data[0] = rate_gyr_x*M_PI/180
+        self.avg_data[0,0] = rate_gyr_x*M_PI/180
         self.omega= self.calc_avg_gyro()
 
         #Calculate heading
         heading = 180 * math.atan2(MAGy,MAGz)/M_PI
         
         heading += self.declination
-        print(heading)
+        self.avg_data = np.roll(self.avg_data[:,1],1)
+        self.avg_data[0,1] = heading
 
         # #Only have our heading between 0 and 360
         # if heading < 0:
@@ -142,6 +147,10 @@ class IMUPub(Node):
         self.acc_bias = 0.2 #experimentally found but should be updated #-0.2 for Z axis
         self.acc_avg_data[0] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias #conversion between raw accelerometer and m/s^s
         self.acceleration = self.calc_avg_acc()
+        self.avg_data = np.roll(self.avg_data[:,2],1)
+        self.avg_data[0,1] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
+
+        print(self.calc_avg())
 
         imu_msg = Imu()
         imu_msg.header.frame_id = 'imu_pub'
@@ -162,6 +171,18 @@ class IMUPub(Node):
         imu_msg.orientation_covariance = [(0.1**2),0,0,0,0,0,0,0,0] #sort of a guess based in radians
         self.pub.publish(imu_msg)
         #self.write_esp() #waiting until we have a plan to interpret
+
+    def calc_avg(self):
+        avg_data = np.zeros(3)
+        elements = np.zeros(3)
+        for i in range(3):
+            for n in self.avg_data[:,i]:
+                if n != MAX_DATA:
+                    avg_data[i] += n
+                    elements[i] += 1
+            if elements[i]:
+                avg_data[i] = avg_data[i]/elements[i]
+        return avg_data
 
     def calc_avg_gyro(self):
         avg_omega = 0.0
