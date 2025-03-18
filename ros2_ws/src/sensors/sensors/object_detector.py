@@ -3,6 +3,7 @@ from rclpy.node import Node
 from ultralytics import YOLO
 from std_msgs.msg import String
 import cv2
+import time
 
 class ObjectDetector(Node):
     def __init__(self):
@@ -15,6 +16,15 @@ class ObjectDetector(Node):
             self.get_logger().error("Error: Could not open webcam.")
             self.destroy_node()
             return
+
+        frame_width = int(self.cap.get(3))
+        frame_height = int(self.cap.get(4))
+        fps = int(self.cap.get(cv2.CAP_PROP_FPS) or 20)
+
+        timestamp = time.strftime("%Y%m%d_%H%M%S")
+        self.video_filename = f"detection_{timestamp}.mp4"
+        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+        self.out = cv2.VideoWriter(self.video_filename, fourcc, fps, (frame_width, frame_height))
         
         self.detection_pub = self.create_publisher(String, 'object_detections', 10)
         
@@ -27,6 +37,8 @@ class ObjectDetector(Node):
             frame = cv2.flip(frame, 0)
             results = self.model(frame, verbose=True)
             annotated_frame = results[0].plot()  # YOLO outputs annotated images with .plot()
+
+            self.out.write()
             cv2.imshow("Real-Time Detection w/ YOLO", annotated_frame)
             cv2.waitKey(1)
         
@@ -34,6 +46,7 @@ class ObjectDetector(Node):
     def destroy_node(self):
         if self.cap.isOpened():
             self.cap.release()
+            self.out.release()
             cv2.destroyAllWindows()
         super().destroy_node()
 
