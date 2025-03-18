@@ -19,7 +19,7 @@ class ObjectDetector(Node):
 
         frame_width = int(self.cap.get(3))
         frame_height = int(self.cap.get(4))
-        fps = int(self.cap.get(cv2.CAP_PROP_FPS) or 20)
+        fps = 10
 
         timestamp = time.strftime("%Y%m%d_%H%M%S")
         self.video_filename = f"detection_{timestamp}.mp4"
