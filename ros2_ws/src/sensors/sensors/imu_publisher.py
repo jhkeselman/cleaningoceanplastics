@@ -142,6 +142,7 @@ class IMUPub(Node):
         
         mag_heading += self.declination
         
+        #Complementary filter using 
         if self.gyro_heading > 720:
             self.gyro_heading = mag_heading
         self.gyro_heading += (self.omega*self.timer_period - self.gryo_bias)
