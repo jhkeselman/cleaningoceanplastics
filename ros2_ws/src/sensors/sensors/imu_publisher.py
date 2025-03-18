@@ -128,7 +128,7 @@ class IMUPub(Node):
         rate_gyr_z =  GYRz * G_GAIN
         
         self.gyro_avg_data = np.roll(self.gyro_avg_data,1) #shift moving average data by one and then store current reading
-        self.avg_data = np.roll(self.avg_data[:,0],1)
+        self.avg_data[:,0] = np.roll(self.avg_data[:,0],1)
         self.gyro_avg_data[0] = rate_gyr_x*M_PI/180
         self.avg_data[0,0] = rate_gyr_x*M_PI/180
         self.omega= self.calc_avg_gyro()
@@ -137,7 +137,7 @@ class IMUPub(Node):
         heading = 180 * math.atan2(MAGy,MAGz)/M_PI
         
         heading += self.declination
-        self.avg_data = np.roll(self.avg_data[:,1],1)
+        self.avg_data[:,1] = np.roll(self.avg_data[:,1],1)
         self.avg_data[0,1] = heading
 
         # #Only have our heading between 0 and 360
@@ -147,8 +147,8 @@ class IMUPub(Node):
         self.acc_bias = 0.2 #experimentally found but should be updated #-0.2 for Z axis
         self.acc_avg_data[0] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias #conversion between raw accelerometer and m/s^s
         self.acceleration = self.calc_avg_acc()
-        self.avg_data = np.roll(self.avg_data[:,2],1)
-        self.avg_data[0,1] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
+        self.avg_data[:,2] = np.roll(self.avg_data[:,2],1)
+        self.avg_data[0,2] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
 
         print(self.calc_avg())
 
