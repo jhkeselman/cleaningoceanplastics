@@ -20,7 +20,8 @@ from .IMU_lib import *
 RAD_TO_DEG = 57.29578
 M_PI = 3.14159265358979323846
 G_GAIN = 0.070  # [deg/s/LSB]  If you change the dps for gyro, you need to update this value accordingly
-AA =  0.40      # Complementary filter constant
+K =  0.40      # Complementary filter constant
+E = 0.001
 MAX_DATA = 32767 
 
 class IMUPub(Node):
@@ -72,10 +73,11 @@ class IMUPub(Node):
         )
 
         self.pub = self.create_publisher(Imu, 'IMU_data', 10)
-        timer_period = 0.02
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.timer_period = 0.02
+        self.timer = self.create_timer(self.timer_period, self.timer_callback)
         self.prev_time = self.get_clock().now()
-        self.gyro_heading = 0
+        self.gyro_heading = 720
+        self.gryo_bias = 0
 
     def destroy_node(self,msg):
         time.sleep(0.1)
@@ -132,14 +134,24 @@ class IMUPub(Node):
         self.gyro_avg_data[0] = rate_gyr_x*M_PI/180
         self.avg_data[0,0] = rate_gyr_x*M_PI/180
         self.omega= self.calc_avg_gyro()
+        
+
 
         #Calculate heading
-        heading = 180 * math.atan2(MAGy,MAGz)/M_PI
+        mag_heading = 180 * math.atan2(MAGy,MAGz)/M_PI
         
-        heading += self.declination
+        mag_heading += self.declination
+        
+        if self.gyro_heading > 720:
+            self.gyro_heading = mag_heading
+        self.gyro_heading += (self.omega*self.timer_period - self.gryo_bias)
+        innovation = mag_heading-self.gyro_heading
+        heading = self.gyro_heading + K(innovation)
+        self.gryo_bias -= E/self.timer_period*innovation
+
+        
         self.avg_data[:,1] = np.roll(self.avg_data[:,1],1)
         self.avg_data[0,1] = heading
-
         # #Only have our heading between 0 and 360
         # if heading < 0:
         #     heading += 360.0
