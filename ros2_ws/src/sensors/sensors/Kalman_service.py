@@ -4,8 +4,7 @@ import math
 
 import rclpy
 from rclpy.node import Node
-import smbus
-from std_msgs.msg import Float64, Bool, Float64MultiArray
+from std_msgs.msg import Float64, Bool, Float32MultiArray
 from sensor_msgs.msg import NavSatFix, Imu
 from services.srv import KalmanState
 from tf_transformations import euler_from_quaternion
@@ -13,12 +12,14 @@ from tf_transformations import euler_from_quaternion
 import math
 import numpy as np
 
-RADIUS = 6371000 #radius of earth in m
+W_RADIUS = 6371000 #radius of earth in m
 UERE = 4.0 #estimate in m based on other comercial gps units
 AVERAGE = 10 #Number of values for gps before beginning
 MASS = 23 #NEED VALUES
 DRAG = 0.5
 INERTIA = 200 
+R = 0.3048 #radius from center of robot to motor
+V_TO_N = 4.6025 #conversion from Volts to Newtons of thrust
 
 class KalmanService(Node):
 
@@ -28,6 +29,8 @@ class KalmanService(Node):
 
         self.imu_sub = self.create_subscription(Imu,'IMU_data',self.imu_response_callback,10)
         self.gps_sub = self.create_subscription(NavSatFix,'get_GPS',self.gps_response_callback,10)
+        self.duty_sub = self.create_subscription(Float32MultiArray,'set_duty_cycle',self.duty_cycle_callback,10)
+        self.motor_sub = self.create_subscription(Float32MultiArray,'set_motor_speeds',self.motor_speed_callback,10)
 
         self.emergency_stop = self.create_subscription(
             Bool,
@@ -35,9 +38,6 @@ class KalmanService(Node):
             self.destroy_node,
             10
         )
-
-        self.I2C_address = 0x55
-        self.bus = smbus.SMBus(1)
         
         self.avg_pos = np.zeros((AVERAGE,2))
         self.avg_i = 0
@@ -67,14 +67,14 @@ class KalmanService(Node):
                       [0,1,(math.sin(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,0,(-2*self.dt*DRAG*self.state[2,0]/MASS + 1),0,0],
                       [0,0,0,1,self.dt],
-                      [0,0,0,0,1]])
+                      [0,0,0,0,(-2*self.dt*1.25*DRAG*self.state[4,0]/MASS + 1)]])
         
         covariance_pred = np.matmul(G,np.matmul(self.covariance,G.T)) + self.R
 
         #CORRECTION
         H = np.array([[1,0,0,0,0],
                       [0,1,0,0,0],
-                      [0,0,(self.Tl + self.Tr - (DRAG*self.state[2,0]**2))/MASS,0,0],
+                      [0,0,(-2*DRAG*self.state[2,0])/MASS,0,0],
                       [0,0,0,1,0],
                       [0,0,0,0,1]])
         
@@ -94,10 +94,20 @@ class KalmanService(Node):
         self.get_logger().info('Incoming request')
         return response
     
-    def motor_callback(self):
-        motor_speeds = self.bus.read_block_data(self.I2C_address,0)
-        self.Tl = motor_speeds >> 8 #IDK IM JUST GUESSING HOW THIS WILL WORK
-        self.Tr = motor_speeds & 0xf0
+    def duty_cycle_callback(self,msg):
+        Vl = (msg.data[0]-7.5)/7.5*24
+        Vr = (msg.data[1]-7.5)/7.5*24
+        self.Tl = Vl * V_TO_N
+        self.Tr = Vr * V_TO_N
+
+    def motor_speed_callback(self,msg):
+        duty_l = 7.5 + 2.5*msg.data[0] #Center at 7.5 and capped at 5 and 10
+        duty_r = 7.5 + 2.5*msg.data[1]
+        Vl = (duty_l-7.5)/7.5*24
+        Vr = (duty_r-7.5)/7.5*24
+        self.Tl = Vl * V_TO_N
+        self.Tr = Vr * V_TO_N
+
 
     def imu_response_callback(self,msg):
         (roll,pitch,yaw) = euler_from_quaternion([msg.orientation.x,msg.orientation.y,msg.orientation.z,msg.orientation.w])
@@ -136,8 +146,8 @@ class KalmanService(Node):
                 self.get_logger().info('No GPS Fix')
 
     def calc_dist(self,fix):
-        dx = RADIUS*(math.radians(fix.longitude) - self.first_fix[1])*self.first_fix[2] #Uses equirectangular projection to determine x,y distance from origin
-        dy = RADIUS*(math.radians(fix.latitude) - self.first_fix[0])
+        dx = W_RADIUS*(math.radians(fix.longitude) - self.first_fix[1])*self.first_fix[2] #Uses equirectangular projection to determine x,y distance from origin
+        dy = W_RADIUS*(math.radians(fix.latitude) - self.first_fix[0])
         return [dx,dy]
     
     def calc_covariance(self,fix):
