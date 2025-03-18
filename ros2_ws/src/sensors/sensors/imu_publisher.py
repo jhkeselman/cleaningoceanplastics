@@ -147,7 +147,7 @@ class IMUPub(Node):
             self.gyro_heading = mag_heading
         self.gyro_heading += (self.omega*self.timer_period - self.gryo_bias)
         innovation = mag_heading-self.gyro_heading
-        heading = self.gyro_heading + K(innovation)
+        heading = self.gyro_heading + K*innovation
         self.gryo_bias -= E/self.timer_period*innovation
 
         
