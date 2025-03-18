@@ -23,7 +23,7 @@ class ObjectDetector(Node):
         timestamp = time.strftime("%Y%m%d_%H%M%S")
         self.video_filename = f"detection_{timestamp}.mp4"
         fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-        fps = 1
+        fps = 5
         self.out = cv2.VideoWriter(self.video_filename, fourcc, fps, (frame_width, frame_height))
         
         self.detection_pub = self.create_publisher(String, 'object_detections', 10)
