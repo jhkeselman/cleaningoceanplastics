@@ -150,7 +150,7 @@ class IMUPub(Node):
         self.avg_data[:,2] = np.roll(self.avg_data[:,2],1)
         self.avg_data[0,2] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
 
-        print(self.calc_avg())
+        print(self.calc_avg()[2])
 
         imu_msg = Imu()
         imu_msg.header.frame_id = 'imu_pub'
