@@ -4,7 +4,7 @@ import math
 
 import rclpy
 from rclpy.node import Node
-
+import smbus
 from std_msgs.msg import Float64, Bool, Float64MultiArray
 from sensor_msgs.msg import NavSatFix, Imu
 from services.srv import KalmanState
@@ -28,7 +28,6 @@ class KalmanService(Node):
 
         self.imu_sub = self.create_subscription(Imu,'IMU_data',self.imu_response_callback,10)
         self.gps_sub = self.create_subscription(NavSatFix,'get_GPS',self.gps_response_callback,10)
-        self.motor_sub = self.create_subscription(Float64MultiArray, 'motor_speeds', self.motor_callback,10)
 
         self.emergency_stop = self.create_subscription(
             Bool,
@@ -36,6 +35,9 @@ class KalmanService(Node):
             self.destroy_node,
             10
         )
+
+        self.I2C_address = 0x55
+        self.bus = smbus.SMBus(1)
         
         self.avg_pos = np.zeros((AVERAGE,2))
         self.avg_i = 0
@@ -83,6 +85,7 @@ class KalmanService(Node):
         K = np.matmul(covariance_pred,np.matmul(H.T,inv_part))
         sensor_model = self.state
         sensor_model[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2]**2))/MASS
+        self.motor_callback()
         self.state = state_pred + np.matmul(K,(self.sensor_data - sensor_model))
         self.covariance = np.matmul((np.eye(5) - np.matmul(K,H)),covariance_pred)
 
@@ -91,14 +94,16 @@ class KalmanService(Node):
         self.get_logger().info('Incoming request')
         return response
     
-    def motor_callback(self,msg):
-        self.Tl = msg.data[0]
-        self.Tr = msg.data[1]
+    def motor_callback(self):
+        motor_speeds = self.bus.read_block_data(self.I2C_address,0)
+        self.Tl = motor_speeds >> 8 #IDK IM JUST GUESSING HOW THIS WILL WORK
+        self.Tr = motor_speeds & 0xf0
 
     def imu_response_callback(self,msg):
         (roll,pitch,yaw) = euler_from_quaternion([msg.orientation.x,msg.orientation.y,msg.orientation.z,msg.orientation.w])
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
+        self.sensor_data[2:5,0] = [acc,yaw,omega]
         self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(yaw, acc, omega))
 
     def gps_response_callback(self,msg):
@@ -116,15 +121,16 @@ class KalmanService(Node):
                 avg_lat = self.avg_pos[:,0].mean(axis=0)
                 avg_lon = self.avg_pos[:,1].mean(axis=0)
                 self.first_fix = [avg_lat,avg_lon,math.cos(avg_lat)] #stores the average as the first position and origin
-                self.gps_covariance = self.calc_covariance(msg)
-                self.dx = 0
-                self.dy = 0
+                gps_covariance = self.calc_covariance(msg)
+                self.Q[0,0] = gps_covariance[0]
+                self.Q[1,1] = gps_covariance[1]
                 self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
                 self.avg_i += 1
                 self.gps_ready = True
             else: 
-                [self.dx,self.dy] = self.calc_dist(msg) #once an origin has been established begin calculating distance from origin
-                self.gps_covariance = self.calc_covariance(msg)
+                [dx,dy] = self.calc_dist(msg) #once an origin has been established begin calculating distance from origin
+                gps_covariance = self.calc_covariance(msg)
+                self.sensor_data[0:2,0] = [dx,dy]
                 self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.gps_covariance[0][0],self.dy,self.gps_covariance[1][1]))  
         else:
                 self.get_logger().info('No GPS Fix')
@@ -144,8 +150,7 @@ class KalmanService(Node):
         sigma_x = x_lon
         sigma_y = y_lat
 
-        covariance = np.array([[sigma_x**2,0],[0,sigma_y**2]])
-        return covariance
+        return [sigma_x**2,sigma_y**2]
 
     def destroy_node(self,msg):
         time.sleep(0.1)
