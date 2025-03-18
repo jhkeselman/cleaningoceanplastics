@@ -19,19 +19,17 @@ class ObjectDetector(Node):
 
         frame_width = int(self.cap.get(3))
         frame_height = int(self.cap.get(4))
-        fps = 10
 
+        timestamp = time.strftime("%Y%m%d_%H%M%S")
+        self.video_filename = f"detection_{timestamp}.mp4"
         fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-        self.fps = 10  # Match ROS2 timer rate
-        self.video_filename = f"/home/pi2/videos/detection_{int(time.time())}.mp4"
-        self.video_writer = cv2.VideoWriter(self.video_filename, fourcc, self.fps, (frame_width, frame_height))
+        fps = 1
+        self.out = cv2.VideoWriter(self.video_filename, fourcc, fps, (frame_width, frame_height))
         
         self.detection_pub = self.create_publisher(String, 'object_detections', 10)
         
-        self.timer_period = 0.1  # seconds
-        self.timer = self.create_timer(self.timer_period, self.process_image)
-
-        self.prev_time = time.time()
+        timer_period = 0.1  # seconds
+        self.timer = self.create_timer(timer_period, self.process_image)
 
     def process_image(self):
         ret, frame = self.cap.read()
@@ -40,12 +38,7 @@ class ObjectDetector(Node):
             results = self.model(frame, verbose=True)
             annotated_frame = results[0].plot()  # YOLO outputs annotated images with .plot()
 
-            elapsed_time = time.time() - self.prev_time
-            if elapsed_time < self.timer_period:
-                time.sleep(self.timer_period - elapsed_time)
-
-            self.video_writer.write(frame)
-
+            self.out.write()
             cv2.imshow("Real-Time Detection w/ YOLO", annotated_frame)
             cv2.waitKey(1)
         
@@ -53,7 +46,7 @@ class ObjectDetector(Node):
     def destroy_node(self):
         if self.cap.isOpened():
             self.cap.release()
-            self.video_writer.release()
+            self.out.release()
             cv2.destroyAllWindows()
         super().destroy_node()
 
