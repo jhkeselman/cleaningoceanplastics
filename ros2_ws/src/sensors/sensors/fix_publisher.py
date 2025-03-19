@@ -30,20 +30,20 @@ class GPSFixPub(Node):
         self.fix.header.frame_id = 'fix_pub'
     
     def parse_gpsd(self,report):
-        if report['class'] == 'TPV':
+        if report['class'] == 'TPV': #TIME POSITION VELOCITY REPORT
             fix = getattr(report,'mode',0)
             if fix > 1: self.fix.status.status = NavSatStatus.STATUS_FIX
             else: 
-                self.fix.status.status = NavSatStatus.STATUS_NO_FIX
+                self.fix.status.status = NavSatStatus.STATUS_NO_FIX #Will return if no fix found
                 self.fix.position_covariance_type = NavSatFix.COVARIANCE_TYPE_UNKNOWN
                 return
             self.fix.latitude = getattr(report,'lat',0.0)
             self.fix.longitude = getattr(report,'lon',0.0)
             current_time = self.get_clock().now().to_msg()
             self.fix.header.stamp = current_time
-            self.pub.publish(self.fix)
-        elif report['class'] == 'SKY':
-            if hasattr(report,'xdop') and hasattr(report, 'ydop'):
+            self.pub.publish(self.fix) #Only publishes when new lat,long data is sent
+        elif report['class'] == 'SKY': #SKY REPORT (contains dilution of precision data)
+            if hasattr(report,'xdop') and hasattr(report, 'ydop'): #sometimes x,y-dop aren't always present
                 xdop = getattr(report,'xdop')
                 ydop = getattr(report,'ydop')
                 self.fix.position_covariance[0] = xdop
@@ -53,7 +53,7 @@ class GPSFixPub(Node):
                 self.fix.position_covariance[0] = hdop
                 self.fix.position_covariance[4] = hdop
             self.fix.position_covariance_type = NavSatFix.COVARIANCE_TYPE_APPROXIMATED
-        elif report['class'] == 'GST':
+        elif report['class'] == 'GST': #GST gives std directly
             self.fix.position_covariance[0] = getattr(report,'lon',4.0)
             self.fix.position_covariance[4] = getattr(report,'lat',4.0)
             self.fix.position_covariance_type = NavSatFix.COVARIANCE_TYPE_DIAGONAL_KNOWN
