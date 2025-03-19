@@ -220,7 +220,7 @@ class IMUPub(Node):
         return avg_acc
     
     def write_esp(self):
-        data = struct.pack('if',0,self.heading) #Sending 0 means that the data is gyro related, sends the angular vel in rad/s
+        data = struct.pack('Bf',0,self.heading) #Sending 0 means that the data is gyro related, sends the angular vel in rad/s
         byte_list = list(data)
         try:
             self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
