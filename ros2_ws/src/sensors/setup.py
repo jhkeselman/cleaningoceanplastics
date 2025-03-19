@@ -13,7 +13,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob('launch/*.py')),
     ],
-    install_requires=['setuptools','numpy', 'gps'],
+    install_requires=['setuptools','numpy', 'gps','smbus'],
     zip_safe=True,
     maintainer='pi2',
     maintainer_email='pi2@todo.todo',
