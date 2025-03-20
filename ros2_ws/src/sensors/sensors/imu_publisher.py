@@ -145,7 +145,7 @@ class IMUPub(Node):
         innovation = mag_heading-self.gyro_heading
         heading = self.gyro_heading + K*innovation
         self.gyro_bias -= E/self.timer_period*innovation
-
+        
         
         # self.gyro_avg_data = np.roll(self.gyro_avg_data,1) #shift moving average data by one and then store current reading
         self.avg_data[:,0] = np.roll(self.avg_data[:,0],1)
@@ -164,7 +164,8 @@ class IMUPub(Node):
         self.avg_data[:,2] = np.roll(self.avg_data[:,2],1)
         self.avg_data[0,2] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
 
-        self.acceleration, self.heading, self.omega = self.calc_avg()
+        self.omega, self.heading, self.acceleration = self.calc_avg()
+        print(self.calc_avg())
 
         imu_msg = Imu()
         imu_msg.header.frame_id = 'imu_pub'
