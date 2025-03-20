@@ -21,7 +21,7 @@ RAD_TO_DEG = 57.29578
 M_PI = 3.14159265358979323846
 G_GAIN = 0.070  # [deg/s/LSB]  If you change the dps for gyro, you need to update this value accordingly
 K =  0.95      # Complementary filter constant gain
-E = 0.001     # Complementary filter bias gain
+E = 0.0005     # Complementary filter bias gain
 MAX_DATA = 32767 
 
 class IMUPub(Node):
@@ -78,7 +78,7 @@ class IMUPub(Node):
         self.timer = self.create_timer(self.timer_period, self.timer_callback)
         self.esp_timer = self.create_timer(self.esp_timer_period, self.write_esp)
         self.prev_time = self.get_clock().now()
-        self.gyro_heading = 720
+        self.gyro_heading = MAX_DATA
         self.gyro_bias = 0
 
     def destroy_node(self,msg):
@@ -135,11 +135,11 @@ class IMUPub(Node):
         ang_vel = rate_gyr_x- self.gyro_bias
 
         #Calculate heading
-        mag_heading = 180 * math.atan2(MAGy,MAGz)/M_PI
+        mag_heading = math.degrees(math.atan2(MAGy,MAGz))
         
         mag_heading += self.declination
 
-        if self.gyro_heading == 720:
+        if self.gyro_heading == MAX_DATA:
             self.gyro_heading = mag_heading #Initialize gyro to mag heading if not already
         
         #Complementary filter
