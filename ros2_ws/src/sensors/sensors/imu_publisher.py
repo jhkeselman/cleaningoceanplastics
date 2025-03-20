@@ -131,7 +131,7 @@ class IMUPub(Node):
         rate_gyr_y =  GYRy * G_GAIN
         rate_gyr_z =  GYRz * G_GAIN
         
-        ang_vel = rate_gyr_x*M_PI/180 - self.gyro_bias
+        ang_vel = rate_gyr_x- self.gyro_bias
 
         #Calculate heading
         mag_heading = 180 * math.atan2(MAGy,MAGz)/M_PI
@@ -141,6 +141,8 @@ class IMUPub(Node):
         #Complementary filter
         if self.gyro_heading == 720:
             self.gyro_heading = mag_heading
+        if ang_vel > 180: ang_vel -= 360
+        elif ang_vel < -180: ang_vel += 360
         self.gyro_heading += ang_vel*self.timer_period
         innovation = mag_heading-self.gyro_heading
         heading = self.gyro_heading + K*innovation
@@ -172,7 +174,7 @@ class IMUPub(Node):
         imu_msg.header.stamp = self.get_clock().now().to_msg()
         imu_msg.angular_velocity.x = 0.0
         imu_msg.angular_velocity.y = 0.0
-        imu_msg.angular_velocity.z = self.omega
+        imu_msg.angular_velocity.z = math.radians(self.omega)
         q = quaternion_from_euler(0,0,math.radians(heading))
         imu_msg.orientation.x = q[0]
         imu_msg.orientation.y = q[1]
