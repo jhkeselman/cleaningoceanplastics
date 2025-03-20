@@ -162,7 +162,7 @@ class IMUPub(Node):
 
         self.acceleration, self.omega, headingx, headingy = self.calc_avg()
         self.heading = math.degrees(math.atan2(headingy,headingx))
-        print(self.heading)
+        self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,self.heading))
 
         imu_msg = Imu()
         imu_msg.header.frame_id = 'imu_pub'
