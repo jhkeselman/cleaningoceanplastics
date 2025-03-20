@@ -171,6 +171,7 @@ class IMUPub(Node):
         elif self.i == 250:
             np.savetxt("Heading_data.csv",self.csv_data,delimiter = ',')
             print("got here")
+            self.i += 1
         self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,self.heading))
 
         imu_msg = Imu()
