@@ -20,7 +20,7 @@ from .IMU_lib import *
 RAD_TO_DEG = 57.29578
 M_PI = 3.14159265358979323846
 G_GAIN = 0.070  # [deg/s/LSB]  If you change the dps for gyro, you need to update this value accordingly
-K =  0.90      # Complementary filter constant gain
+K =  0.95      # Complementary filter constant gain
 E = 0.0005     # Complementary filter bias gain
 MAX_DATA = 32767 
 
@@ -64,6 +64,9 @@ class IMUPub(Node):
         self.acc_avg_data = MAX_DATA*np.ones(20)
         self.mag_avg_data = MAX_DATA*np.ones(20)
         self.avg_data = MAX_DATA*np.ones((30,4)) #Acc, Gyro, X-heading, Y-heading
+
+        self.csv_data = np.zeros((250,3))
+        self.i = 0
 
         self.emergency_stop = self.create_subscription(
             Bool,
@@ -162,6 +165,11 @@ class IMUPub(Node):
 
         self.acceleration, self.omega, headingx, headingy = self.calc_avg()
         self.heading = math.degrees(math.atan2(headingy,headingx))
+        if self.i < 250:
+            self.csv_data[self.i,:] = [self.gyro_heading,mag_heading,self.heading]
+            self.i += 1
+        elif self.i == 250:
+            np.savetxt("Heading_data.csv",self.csv_data,delimiter = ',')
         self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,self.heading))
 
         imu_msg = Imu()
