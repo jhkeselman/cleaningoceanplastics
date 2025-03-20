@@ -161,7 +161,7 @@ class IMUPub(Node):
         self.avg_data[0,3] = headingy
 
         self.acceleration, self.omega, headingx, headingy = self.calc_avg()
-        self.heading = math.atan2(headingx,headingy)
+        self.heading = math.atan2(headingy,headingx)
         print(self.heading)
 
         imu_msg = Imu()
