@@ -185,8 +185,8 @@ class IMUPub(Node):
         # self.write_esp() #waiting until we have a plan to interpret
 
     def calc_avg(self):
-        avg_data = np.zeros(3)
-        elements = np.zeros(3)
+        avg_data = np.zeros(4)
+        elements = np.zeros(4)
         for i in range(4):
             for n in self.avg_data[:,i]:
                 if n != MAX_DATA:
