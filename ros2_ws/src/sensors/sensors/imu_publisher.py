@@ -152,7 +152,7 @@ class IMUPub(Node):
         # self.gyro_avg_data = np.roll(self.gyro_avg_data,1) #shift moving average data by one and then store current reading
         self.avg_data[:,0] = np.roll(self.avg_data[:,0],1)
         # self.gyro_avg_data[0] = rate_gyr_x*M_PI/180
-        self.avg_data[0,0] = rate_gyr_x
+        self.avg_data[0,0] = ang_vel
         # self.omega= self.calc_avg_gyro()
         self.avg_data[:,1] = np.roll(self.avg_data[:,1],1)
         self.avg_data[0,1] = heading
