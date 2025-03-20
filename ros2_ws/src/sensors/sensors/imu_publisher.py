@@ -167,7 +167,7 @@ class IMUPub(Node):
         self.avg_data[0,2] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
 
         self.omega, self.heading, self.acceleration = self.calc_avg()
-        print(self.omega)
+        print(self.heading)
 
         imu_msg = Imu()
         imu_msg.header.frame_id = 'imu_pub'
