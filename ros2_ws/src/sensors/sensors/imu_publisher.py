@@ -79,7 +79,7 @@ class IMUPub(Node):
         self.esp_timer = self.create_timer(self.esp_timer_period, self.write_esp)
         self.prev_time = self.get_clock().now()
         self.gyro_heading = 720
-        self.gryo_bias = 0
+        self.gyro_bias = 0
 
     def destroy_node(self,msg):
         time.sleep(0.1)
@@ -144,7 +144,7 @@ class IMUPub(Node):
         self.gyro_heading += ang_vel*self.timer_period
         innovation = mag_heading-self.gyro_heading
         heading = self.gyro_heading + K*innovation
-        self.gryo_bias -= E/self.timer_period*innovation
+        self.gyro_bias -= E/self.timer_period*innovation
 
         
         # self.gyro_avg_data = np.roll(self.gyro_avg_data,1) #shift moving average data by one and then store current reading
