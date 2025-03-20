@@ -74,7 +74,9 @@ class IMUPub(Node):
 
         self.pub = self.create_publisher(Imu, 'IMU_data', 10)
         self.timer_period = 0.02
+        self.esp_timer_period = 0.2
         self.timer = self.create_timer(self.timer_period, self.timer_callback)
+        self.esp_timer = self.create_timer(self.esp_timer_period, self.write_esp)
         self.prev_time = self.get_clock().now()
         self.gyro_heading = 720
         self.gryo_bias = 0
@@ -163,7 +165,7 @@ class IMUPub(Node):
         self.avg_data[:,2] = np.roll(self.avg_data[:,2],1)
         self.avg_data[0,2] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
 
-        print(self.calc_avg()[1])
+        self.acceleration, self.heading, self.omega = self.calc_avg()
 
         imu_msg = Imu()
         imu_msg.header.frame_id = 'imu_pub'
@@ -183,7 +185,7 @@ class IMUPub(Node):
         imu_msg.linear_acceleration_covariance = [(0.244/1000*9.81)**2,0,0,0,0,0,0,0,0]
         imu_msg.orientation_covariance = [(0.1**2),0,0,0,0,0,0,0,0] #sort of a guess based in radians
         self.pub.publish(imu_msg)
-        #self.write_esp() #waiting until we have a plan to interpret
+        # self.write_esp() #waiting until we have a plan to interpret
 
     def calc_avg(self):
         avg_data = np.zeros(3)
@@ -220,7 +222,7 @@ class IMUPub(Node):
         return avg_acc
     
     def write_esp(self):
-        data = struct.pack('if',0,self.omega) #Sending 0 means that the data is gyro related, sends the angular vel in rad/s
+        data = struct.pack('Bf',0,self.heading) #Sending 0 means that the data is gyro related, sends the angular vel in rad/s
         byte_list = list(data)
         try:
             self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
