@@ -63,7 +63,7 @@ class IMUPub(Node):
         self.gyro_avg_data = MAX_DATA*np.ones(20)
         self.acc_avg_data = MAX_DATA*np.ones(20)
         self.mag_avg_data = MAX_DATA*np.ones(20)
-        self.avg_data = MAX_DATA*np.ones((30,3))
+        self.avg_data = MAX_DATA*np.ones((30,4)) #Acc, Gyro, X-heading, Y-heading
 
         self.emergency_stop = self.create_subscription(
             Bool,
@@ -121,6 +121,7 @@ class IMUPub(Node):
         MAGx = readMAGx()
         MAGy = readMAGy()
         MAGz = readMAGz()
+        
 
         MAGx -= (self.magXmin + self.magXmax) /2 #SHIFT MAGNETOMETER BACK TO ORIGIN to componsate for hard iron distortion
         MAGy -= (self.magYmin + self.magYmax) /2
@@ -137,36 +138,30 @@ class IMUPub(Node):
         mag_heading = 180 * math.atan2(MAGy,MAGz)/M_PI
         
         mag_heading += self.declination
+
+        if self.gyro_heading == 720:
+            self.gyro_heading = mag_heading #Initialize gyro to mag heading if not already
         
         #Complementary filter
-        if self.gyro_heading == 720:
-            self.gyro_heading = mag_heading
-        if ang_vel > 180: ang_vel -= 360
-        elif ang_vel < -180: ang_vel += 360
         self.gyro_heading += ang_vel*self.timer_period
+        if self.gyro_heading > 180: self.gyro_heading -= 360
+        elif self.gyro_heading < -180: self.gyro_heading += 360
+
         innovation = mag_heading-self.gyro_heading
         heading = self.gyro_heading + K*innovation
         self.gyro_bias -= E/self.timer_period*innovation
-        
-        
-        # self.gyro_avg_data = np.roll(self.gyro_avg_data,1) #shift moving average data by one and then store current reading
-        self.avg_data[:,0] = np.roll(self.avg_data[:,0],1)
-        # self.gyro_avg_data[0] = rate_gyr_x*M_PI/180
-        self.avg_data[0,0] = ang_vel
-        # self.omega= self.calc_avg_gyro()
-        self.avg_data[:,1] = np.roll(self.avg_data[:,1],1)
-        self.avg_data[0,1] = heading
-        # #Only have our heading between 0 and 360
-        # if heading < 0:
-        #     heading += 360.0
+        headingx = math.cos(heading) #split heading into unit vector to be averaged to prevent bounding errors
+        headingy = math.sin(heading)
 
         self.acc_bias = 0.2 #experimentally found but should be updated #-0.2 for Z axis
-        # self.acc_avg_data[0] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias #conversion between raw accelerometer and m/s^s
-        # self.acceleration = self.calc_avg_acc()
-        self.avg_data[:,2] = np.roll(self.avg_data[:,2],1)
-        self.avg_data[0,2] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
+        self.avg_data = np.roll(self.avg_data,axis=0,shift=1) #shift moving average data by one and then store current reading
+        self.avg_data[0,0] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
+        self.avg_data[0,1] = ang_vel
+        self.avg_data[0,2] = headingx
+        self.avg_data[0,2] = headingy
 
-        self.omega, self.heading, self.acceleration = self.calc_avg()
+        self.acceleration, self.omega, headingx, headingy = self.calc_avg()
+        self.heading = math.atan2(headingx,headingy)
         print(self.heading)
 
         imu_msg = Imu()
@@ -192,7 +187,7 @@ class IMUPub(Node):
     def calc_avg(self):
         avg_data = np.zeros(3)
         elements = np.zeros(3)
-        for i in range(3):
+        for i in range(4):
             for n in self.avg_data[:,i]:
                 if n != MAX_DATA:
                     avg_data[i] += n
