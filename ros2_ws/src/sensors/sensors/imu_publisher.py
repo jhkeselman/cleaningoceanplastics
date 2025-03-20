@@ -158,7 +158,7 @@ class IMUPub(Node):
         self.avg_data[0,0] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
         self.avg_data[0,1] = ang_vel
         self.avg_data[0,2] = headingx
-        self.avg_data[0,2] = headingy
+        self.avg_data[0,3] = headingy
 
         self.acceleration, self.omega, headingx, headingy = self.calc_avg()
         self.heading = math.atan2(headingx,headingy)
