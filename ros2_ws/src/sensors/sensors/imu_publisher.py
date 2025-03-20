@@ -148,7 +148,7 @@ class IMUPub(Node):
         elif self.gyro_heading < -180: self.gyro_heading += 360
 
         innovation = mag_heading-self.gyro_heading
-        heading = self.gyro_heading + K*innovation
+        heading = math.radians(self.gyro_heading + K*innovation)
         self.gyro_bias -= E/self.timer_period*innovation
         headingx = math.cos(heading) #split heading into unit vector to be averaged to prevent bounding errors
         headingy = math.sin(heading)
@@ -161,7 +161,7 @@ class IMUPub(Node):
         self.avg_data[0,3] = headingy
 
         self.acceleration, self.omega, headingx, headingy = self.calc_avg()
-        self.heading = math.atan2(headingy,headingx)
+        self.heading = math.degrees(math.atan2(headingy,headingx))
         print(self.heading)
 
         imu_msg = Imu()
