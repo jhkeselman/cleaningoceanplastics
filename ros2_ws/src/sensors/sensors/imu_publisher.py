@@ -63,7 +63,7 @@ class IMUPub(Node):
         self.gyro_avg_data = MAX_DATA*np.ones(20)
         self.acc_avg_data = MAX_DATA*np.ones(20)
         self.mag_avg_data = MAX_DATA*np.ones(20)
-        self.avg_data = MAX_DATA*np.ones((20,3))
+        self.avg_data = MAX_DATA*np.ones((30,3))
 
         self.emergency_stop = self.create_subscription(
             Bool,
@@ -131,28 +131,27 @@ class IMUPub(Node):
         rate_gyr_y =  GYRy * G_GAIN
         rate_gyr_z =  GYRz * G_GAIN
         
-        self.gyro_avg_data = np.roll(self.gyro_avg_data,1) #shift moving average data by one and then store current reading
-        self.avg_data[:,0] = np.roll(self.avg_data[:,0],1)
-        self.gyro_avg_data[0] = rate_gyr_x*M_PI/180
-        self.avg_data[0,0] = rate_gyr_x*M_PI/180
-        self.omega= self.calc_avg_gyro()
-        
-
+        ang_vel = rate_gyr_x*M_PI/180 - self.gyro_bias
 
         #Calculate heading
         mag_heading = 180 * math.atan2(MAGy,MAGz)/M_PI
         
         mag_heading += self.declination
         
-        #Complementary filter using 
-        if self.gyro_heading > 720:
+        #Complementary filter
+        if self.gyro_heading == 720:
             self.gyro_heading = mag_heading
-        self.gyro_heading += (self.omega*self.timer_period - self.gryo_bias)
+        self.gyro_heading += ang_vel*self.timer_period
         innovation = mag_heading-self.gyro_heading
         heading = self.gyro_heading + K*innovation
         self.gryo_bias -= E/self.timer_period*innovation
 
         
+        # self.gyro_avg_data = np.roll(self.gyro_avg_data,1) #shift moving average data by one and then store current reading
+        self.avg_data[:,0] = np.roll(self.avg_data[:,0],1)
+        # self.gyro_avg_data[0] = rate_gyr_x*M_PI/180
+        self.avg_data[0,0] = ang_vel
+        # self.omega= self.calc_avg_gyro()
         self.avg_data[:,1] = np.roll(self.avg_data[:,1],1)
         self.avg_data[0,1] = heading
         # #Only have our heading between 0 and 360
@@ -160,8 +159,8 @@ class IMUPub(Node):
         #     heading += 360.0
 
         self.acc_bias = 0.2 #experimentally found but should be updated #-0.2 for Z axis
-        self.acc_avg_data[0] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias #conversion between raw accelerometer and m/s^s
-        self.acceleration = self.calc_avg_acc()
+        # self.acc_avg_data[0] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias #conversion between raw accelerometer and m/s^s
+        # self.acceleration = self.calc_avg_acc()
         self.avg_data[:,2] = np.roll(self.avg_data[:,2],1)
         self.avg_data[0,2] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
 
