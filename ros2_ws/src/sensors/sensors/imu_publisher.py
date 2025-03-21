@@ -42,8 +42,6 @@ class IMUPub(Node):
         self.I2C_address = 0x55 #I2C address of ESP32
         self.bus = smbus.SMBus(1)       
 
-        self.heading = 0.0
-
         self.declination = -214.1/1000 * RAD_TO_DEG #calculated at Worcester (-214 milliradians)
 
         # self.magXmin = -1261 #Previous Calibration values of magnetometer at +/- 8 gauss
@@ -81,7 +79,7 @@ class IMUPub(Node):
         self.timer = self.create_timer(self.timer_period, self.timer_callback)
         self.esp_timer = self.create_timer(self.esp_timer_period, self.write_esp)
         self.prev_time = self.get_clock().now()
-        self.gyro_heading = MAX_DATA
+        self.heading = MAX_DATA
         self.gyro_bias = 0
 
     def destroy_node(self,msg):
@@ -142,8 +140,8 @@ class IMUPub(Node):
         
         mag_heading += self.declination
 
-        if self.gyro_heading == MAX_DATA:
-            self.gyro_heading = mag_heading #Initialize gyro to mag heading if not already
+        if self.heading == MAX_DATA:
+            self.heading = mag_heading #Initialize gyro to mag heading if not already
         
         #Complementary filter
         self.gyro_heading = self.heading + ang_vel*self.timer_period
