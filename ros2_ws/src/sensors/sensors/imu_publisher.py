@@ -63,9 +63,9 @@ class IMUPub(Node):
         self.gyro_avg_data = MAX_DATA*np.ones(20)
         self.acc_avg_data = MAX_DATA*np.ones(20)
         self.mag_avg_data = MAX_DATA*np.ones(20)
-        self.avg_data = MAX_DATA*np.ones((30,5)) #Acc, Gyro, X-heading, Y-heading
+        self.avg_data = MAX_DATA*np.ones((30,4)) #Acc, Gyro, X-heading, Y-heading
 
-        self.csv_data = np.zeros((1500,4))
+        self.csv_data = np.zeros((1500,5))
         self.i = 0
 
         self.emergency_stop = self.create_subscription(
