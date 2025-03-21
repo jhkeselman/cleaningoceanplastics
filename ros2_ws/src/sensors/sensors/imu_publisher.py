@@ -61,7 +61,7 @@ class IMUPub(Node):
         self.gyro_avg_data = MAX_DATA*np.ones(20)
         self.acc_avg_data = MAX_DATA*np.ones(20)
         self.mag_avg_data = MAX_DATA*np.ones(20)
-        self.avg_data = MAX_DATA*np.ones((30,4)) #Acc, Gyro, X-heading, Y-heading
+        self.avg_data = MAX_DATA*np.ones((20,4)) #Acc, Gyro, X-heading, Y-heading
 
         self.csv_data = np.zeros((1500,5))
         self.i = 0
@@ -171,7 +171,7 @@ class IMUPub(Node):
             np.savetxt("Heading_data.csv",self.csv_data,delimiter = ',')
             print("got here")
             self.i += 1
-        self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,self.heading))
+        self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,math.degrees(heading))
 
         imu_msg = Imu()
         imu_msg.header.frame_id = 'imu_pub'
