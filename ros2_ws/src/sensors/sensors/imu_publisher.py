@@ -143,7 +143,7 @@ class IMUPub(Node):
         if self.heading == MAX_DATA:
             prev_heading = mag_heading #Initialize gyro to mag heading if not already
         else:
-            prev_heading = math.atan2(self.avg_data[0,3],self.avg_data[0,2])
+            prev_heading = math.degrees(math.atan2(self.avg_data[0,3],self.avg_data[0,2]))
         #Complementary filter 
         self.gyro_heading = prev_heading + ang_vel*self.timer_period
         if self.gyro_heading > 180: self.gyro_heading -= 360
