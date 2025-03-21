@@ -65,7 +65,7 @@ class IMUPub(Node):
         self.mag_avg_data = MAX_DATA*np.ones(20)
         self.avg_data = MAX_DATA*np.ones((30,4)) #Acc, Gyro, X-heading, Y-heading
 
-        self.csv_data = np.zeros((1500,3))
+        self.csv_data = np.zeros((1500,4))
         self.i = 0
 
         self.emergency_stop = self.create_subscription(
@@ -166,7 +166,7 @@ class IMUPub(Node):
         self.acceleration, self.omega, headingx, headingy = self.calc_avg()
         self.heading = math.degrees(math.atan2(headingy,headingx))
         if self.i < 1500:
-            self.csv_data[self.i,:] = [self.gyro_heading,mag_heading,self.heading]
+            self.csv_data[self.i,:] = [self.gyro_heading,mag_heading,heading,self.heading]
             self.i += 1
         elif self.i == 1500:
             np.savetxt("Heading_data.csv",self.csv_data,delimiter = ',')
