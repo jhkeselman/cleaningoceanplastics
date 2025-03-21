@@ -172,7 +172,7 @@ class IMUPub(Node):
             print("got here")
             self.i += 1
         # self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,self.heading))
-        print(self.omega)
+        # print(self.omega)
 
         imu_msg = Imu()
         imu_msg.header.frame_id = 'imu_pub'
