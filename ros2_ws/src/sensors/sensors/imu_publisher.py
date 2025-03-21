@@ -166,7 +166,7 @@ class IMUPub(Node):
         self.acceleration, self.omega, headingx, headingy = self.calc_avg()
         self.heading = math.degrees(math.atan2(headingy,headingx))
         if self.i < 1500:
-            self.csv_data[self.i,:] = [self.gyro_heading,mag_heading,heading,self.heading]
+            self.csv_data[self.i,:] = [self.gyro_heading,mag_heading,math.degrees(heading),self.heading]
             self.i += 1
         elif self.i == 1500:
             np.savetxt("Heading_data.csv",self.csv_data,delimiter = ',')
