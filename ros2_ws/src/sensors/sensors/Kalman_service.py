@@ -26,6 +26,7 @@ class KalmanService(Node):
     def __init__(self):
         super().__init__('Kalman_service')
         self.srv = self.create_service(KalmanState, 'get_Kalman_state', self.return_state)
+        self.pub = self.create_publisher(Float32MultiArray,'get_state',10)
 
         self.imu_sub = self.create_subscription(Imu,'IMU_data',self.imu_response_callback,10)
         self.gps_sub = self.create_subscription(NavSatFix,'get_GPS',self.gps_response_callback,10)
@@ -87,6 +88,10 @@ class KalmanService(Node):
         sensor_model[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2]**2))/MASS
         self.state = state_pred + np.matmul(K,(self.sensor_data - sensor_model))
         self.covariance = np.matmul((np.eye(5) - np.matmul(K,H)),covariance_pred)
+
+        msg = Float32MultiArray()
+        msg.data = self.state.T
+        self.pub.publish(msg)
 
     def return_state(self, request, response):
         response.state.data = self.state.T
