@@ -91,7 +91,7 @@ class KalmanService(Node):
         print(K)
         sensor_model = self.state
         sensor_model[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2]**2))/MASS
-        self.state = state_pred + np.matmul(K,(self.sensor_data - sensor_model))
+        self.state = state_pred + K*(self.sensor_data - sensor_model)
         self.covariance = np.matmul((np.eye(5) - np.matmul(K,H)),covariance_pred)
 
         msg = Float64MultiArray()
