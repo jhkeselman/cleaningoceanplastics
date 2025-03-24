@@ -85,6 +85,7 @@ class KalmanService(Node):
         try:
             inv_part = np.linalg.inv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)
         except np.linalg.LinAlgError:
+            print("got here")
             inv_part = np.linalg.pinv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)
         K = np.matmul(covariance_pred,np.matmul(H.T,inv_part))
         sensor_model = self.state
