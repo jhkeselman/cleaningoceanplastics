@@ -18,7 +18,7 @@ AVERAGE = 10 #Number of values for gps before beginning
 MASS = 23 #NEED VALUES
 DRAG = 0.5 
 INERTIA = 200  #GET FROM SOLIDWORKS
-R = 0.3048 #radius from center of robot to motor
+R = 0.31875 #radius from center of robot to motor
 V_TO_N = 4.6025 #conversion from Volts to Newtons of thrust
 
 class KalmanService(Node):
@@ -60,8 +60,8 @@ class KalmanService(Node):
         state_pred = np.zeros((5,1))
         state_pred[0,0] = self.state[0,0] + self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)
         state_pred[1,0] = self.state[1,0] + self.state[2,0]*math.sin(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)
-        state_pred[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2]**2)*self.dt)/MASS + self.state[2]
-        state_pred[3,0] = self.state[4]*self.dt + self.state[3]
+        state_pred[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*self.dt)/MASS + self.state[2,0]
+        state_pred[3,0] = self.state[4]*self.dt + self.state[3,0]
         state_pred[4,0] = (self.Tl + self.Tr - (1.25*DRAG*self.state[2]**2)*self.dt)/INERTIA + self.state[4] #drag increased by 25% for rotation
 
         G = np.array([[1,0,(math.cos(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS),(-self.state[2,0]*math.sin(self.state[3,0])*self.dt - (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)),0],
