@@ -75,6 +75,9 @@ class KalmanService(Node):
         
         print("G")
         print(G)
+
+        print("Gt")
+        print(G.T)
         
         covariance_pred = np.matmul(G,np.matmul(self.covariance,G.T)) + self.R
         print(covariance_pred)
@@ -97,7 +100,9 @@ class KalmanService(Node):
 
         msg = Float64MultiArray()
         print("state")
-        print(self.state[2,0])
+        print(self.state)
+        print("covar")
+        print(self.covariance)
         msg.data = self.state
         self.pub.publish(msg)
 
