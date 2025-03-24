@@ -65,7 +65,7 @@ class KalmanService(Node):
         state_pred[4,0] = (self.Tl + self.Tr - (1.25*DRAG*self.state[2,0]**2)*self.dt)/INERTIA + self.state[4,0] #drag increased by 25% for rotation
 
         print("pred")
-        print(state_pred[2,0])
+        print(state_pred)
 
         G = np.array([[1,0,(math.cos(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS),(-self.state[2,0]*math.sin(self.state[3,0])*self.dt - (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,1,(math.sin(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
@@ -73,8 +73,11 @@ class KalmanService(Node):
                       [0,0,0,1,self.dt],
                       [0,0,0,0,(-2*self.dt*1.25*DRAG*self.state[4,0]/INERTIA + 1)]],np.float64)
         
+        print("G")
+        print(G)
+        
         covariance_pred = np.matmul(G,np.matmul(self.covariance,G.T)) + self.R
-
+        print(covariance_pred)
         #CORRECTION
         H = np.array([[1,0,0,0,0],
                       [0,1,0,0,0],
@@ -85,7 +88,6 @@ class KalmanService(Node):
         try:
             inv_part = np.linalg.inv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)
         except np.linalg.LinAlgError:
-            print("got here")
             inv_part = np.linalg.pinv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)
         K = np.matmul(covariance_pred,np.matmul(H.T,inv_part))
         sensor_model = self.state
