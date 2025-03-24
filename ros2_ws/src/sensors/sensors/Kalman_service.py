@@ -49,9 +49,9 @@ class KalmanService(Node):
         self.dt = 0.1
         self.timer = self.create_timer(self.dt,self.calc_state)
 
-        self.R = 0.1 * np.ones((5,5)) #model noise
-        self.Q = 0.1 * np.ones((5,5)) #sensor noise
-        self.sensor_data = np.zeros((5,1))
+        self.R = 0.1 * np.ones((5,5),np.float64) #model noise
+        self.Q = 0.1 * np.ones((5,5),np.float64) #sensor noise
+        self.sensor_data = np.zeros((5,1),np.float64)
         self.Tl = 0 #thrust left
         self.Tr = 0 
     
@@ -68,7 +68,7 @@ class KalmanService(Node):
                       [0,1,(math.sin(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,0,(-2*self.dt*DRAG*self.state[2,0]/MASS + 1),0,0],
                       [0,0,0,1,self.dt],
-                      [0,0,0,0,(-2*self.dt*1.25*DRAG*self.state[4,0]/INERTIA + 1)]])
+                      [0,0,0,0,(-2*self.dt*1.25*DRAG*self.state[4,0]/INERTIA + 1)]],np.float64)
         
         covariance_pred = np.matmul(G,np.matmul(self.covariance,G.T)) + self.R
 
@@ -77,7 +77,7 @@ class KalmanService(Node):
                       [0,1,0,0,0],
                       [0,0,(-2*DRAG*self.state[2,0])/MASS,0,0],
                       [0,0,0,1,0],
-                      [0,0,0,0,1]])
+                      [0,0,0,0,1]],np.float64)
         
         try:
             inv_part = np.linalg.inv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)
