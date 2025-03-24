@@ -62,7 +62,7 @@ class KalmanService(Node):
         state_pred[1,0] = self.state[1,0] + self.state[2,0]*math.sin(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)
         state_pred[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*self.dt)/MASS + self.state[2,0]
         state_pred[3,0] = self.state[4]*self.dt + self.state[3,0]
-        state_pred[4,0] = (self.Tl + self.Tr - (1.25*DRAG*self.state[2]**2)*self.dt)/INERTIA + self.state[4] #drag increased by 25% for rotation
+        state_pred[4,0] = (self.Tl + self.Tr - (1.25*DRAG*self.state[2,0]**2)*self.dt)/INERTIA + self.state[4,0] #drag increased by 25% for rotation
 
         G = np.array([[1,0,(math.cos(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS),(-self.state[2,0]*math.sin(self.state[3,0])*self.dt - (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,1,(math.sin(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
@@ -90,7 +90,7 @@ class KalmanService(Node):
         self.covariance = np.matmul((np.eye(5) - np.matmul(K,H)),covariance_pred)
 
         msg = Float64MultiArray()
-        print(self.state[3,0])
+        print(G)
         msg.data = self.state
         self.pub.publish(msg)
 
