@@ -58,12 +58,8 @@ class IMUPub(Node):
         self.magYmax = 498
         self.magZmax = 808
 
-        self.gyro_avg_data = MAX_DATA*np.ones(20)
-        self.acc_avg_data = MAX_DATA*np.ones(20)
-        self.mag_avg_data = MAX_DATA*np.ones(20)
         self.avg_data = MAX_DATA*np.ones((20,4)) #Acc, Gyro, X-heading, Y-heading
 
-        self.csv_data = np.zeros((1500,5))
         self.i = 0
 
         self.emergency_stop = self.create_subscription(
@@ -163,14 +159,8 @@ class IMUPub(Node):
         self.avg_data[0,3] = headingy
 
         self.acceleration, self.omega, headingx, headingy = self.calc_avg()
-        self.heading = math.degrees(math.atan2(headingy,headingx))
-        if self.i < 1500:
-            self.csv_data[self.i,:] = [ang_vel, self.gyro_heading,mag_heading,math.degrees(heading),self.heading]
-            self.i += 1
-        elif self.i == 1500:
-            np.savetxt("Heading_data.csv",self.csv_data,delimiter = ',')
-            print("got here")
-            self.i += 1
+        self.heading = math.atan2(headingy,headingx)
+
         # self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,self.heading))
         # print(self.omega)
 
@@ -180,7 +170,7 @@ class IMUPub(Node):
         imu_msg.angular_velocity.x = 0.0
         imu_msg.angular_velocity.y = 0.0
         imu_msg.angular_velocity.z = math.radians(self.omega)
-        q = quaternion_from_euler(0,0,math.radians(heading))
+        q = quaternion_from_euler(0,0,self.heading)
         imu_msg.orientation.x = q[0]
         imu_msg.orientation.y = q[1]
         imu_msg.orientation.z = q[2]
@@ -205,28 +195,6 @@ class IMUPub(Node):
             if elements[i]:
                 avg_data[i] = avg_data[i]/elements[i]
         return avg_data
-
-    def calc_avg_gyro(self):
-        avg_omega = 0.0
-        elements = 0
-        for n in self.gyro_avg_data:
-            if n != MAX_DATA:
-                avg_omega += n
-                elements += 1
-        if elements:
-            avg_omega = avg_omega/elements
-        return avg_omega
-    
-    def calc_avg_acc(self):
-        avg_acc = 0.0
-        elements = 0
-        for n in self.acc_avg_data:
-            if n != MAX_DATA:
-                avg_acc += n
-                elements += 1
-        if elements:
-            avg_acc = avg_acc/elements
-        return avg_acc
     
     def write_esp(self):
         data = struct.pack('Bf',0,self.heading) #Sending 0 means that the data is gyro related, sends the angular vel in rad/s

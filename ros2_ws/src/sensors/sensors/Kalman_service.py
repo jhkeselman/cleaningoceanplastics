@@ -13,11 +13,11 @@ import math
 import numpy as np
 
 W_RADIUS = 6371000 #radius of earth in m
-UERE = 4.0 #estimate in m based on other comercial gps units
+CEP = 2.5 #Circular error probable from Ozzmaker website
 AVERAGE = 10 #Number of values for gps before beginning
 MASS = 23 #NEED VALUES
-DRAG = 0.5
-INERTIA = 200 
+DRAG = 0.5 
+INERTIA = 200  #GET FROM SOLIDWORKS
 R = 0.3048 #radius from center of robot to motor
 V_TO_N = 4.6025 #conversion from Volts to Newtons of thrust
 
@@ -67,7 +67,7 @@ class KalmanService(Node):
                       [0,1,(math.sin(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,0,(-2*self.dt*DRAG*self.state[2,0]/MASS + 1),0,0],
                       [0,0,0,1,self.dt],
-                      [0,0,0,0,(-2*self.dt*1.25*DRAG*self.state[4,0]/MASS + 1)]])
+                      [0,0,0,0,(-2*self.dt*1.25*DRAG*self.state[4,0]/INERTIA + 1)]])
         
         covariance_pred = np.matmul(G,np.matmul(self.covariance,G.T)) + self.R
 
@@ -95,14 +95,14 @@ class KalmanService(Node):
         return response
     
     def duty_cycle_callback(self,msg):
-        Vl = (msg.data[0]-7.5)/7.5*24
-        Vr = (msg.data[1]-7.5)/7.5*24
+        Vl = (7.5-msg.data[0])/7.5*24
+        Vr = (7.5-msg.data[1])/7.5*24
         self.Tl = Vl * V_TO_N
         self.Tr = Vr * V_TO_N
 
     def motor_speed_callback(self,msg):
-        duty_l = 7.5 + 2.5*msg.data[0] #Center at 7.5 and capped at 5 and 10
-        duty_r = 7.5 + 2.5*msg.data[1]
+        duty_l = 7.5 - 2.5*msg.data[0] #Center at 7.5 and capped at 5 and 10
+        duty_r = 7.5 - 2.5*msg.data[1]
         Vl = (duty_l-7.5)/7.5*24
         Vr = (duty_r-7.5)/7.5*24
         self.Tl = Vl * V_TO_N
@@ -141,6 +141,8 @@ class KalmanService(Node):
                 [dx,dy] = self.calc_dist(msg) #once an origin has been established begin calculating distance from origin
                 gps_covariance = self.calc_covariance(msg)
                 self.sensor_data[0:2,0] = [dx,dy]
+                self.Q[0,0] = gps_covariance[0]
+                self.Q[1,1] = gps_covariance[1]
                 self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.gps_covariance[0][0],self.dy,self.gps_covariance[1][1]))  
         else:
                 self.get_logger().info('No GPS Fix')
@@ -152,14 +154,13 @@ class KalmanService(Node):
     
     def calc_covariance(self,fix):
         if fix.position_covariance_type == NavSatFix.COVARIANCE_TYPE_APPROXIMATED: 
-            x_lon = fix.position_covariance[0]*UERE #DOP values must be mutliplied by User equivalent range error
-            y_lat = fix.position_covariance[4]*UERE
+            x_lon = 1.2 * CEP
+            y_lat = 1.2 * CEP
         else:
             x_lon = fix.position_covariance[0]
             y_lat = fix.position_covariance[4]
         sigma_x = x_lon
         sigma_y = y_lat
-
         return [sigma_x**2,sigma_y**2]
 
     def destroy_node(self,msg):
