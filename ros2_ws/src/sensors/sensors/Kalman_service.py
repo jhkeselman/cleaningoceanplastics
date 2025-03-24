@@ -90,7 +90,7 @@ class KalmanService(Node):
         self.covariance = np.matmul((np.eye(5) - np.matmul(K,H)),covariance_pred)
 
         msg = Float32MultiArray()
-        msg.data = self.state.T
+        msg.data = self.state
         self.pub.publish(msg)
 
     def return_state(self, request, response):
