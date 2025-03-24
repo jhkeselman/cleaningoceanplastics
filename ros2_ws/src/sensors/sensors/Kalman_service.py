@@ -44,7 +44,7 @@ class KalmanService(Node):
         self.avg_i = 0
         self.gps_ready = False
         self.state = np.zeros((5,1),np.float64) #x,y,v,theta,omega
-        self.covariance = np.zeros((5,5),np.float64)
+        self.covariance = np.matmul(np.eye(5),[2.5,2.5,0.25,0.1,0.1])
         
         self.dt = 0.1
         self.timer = self.create_timer(self.dt,self.calc_state)
@@ -75,11 +75,9 @@ class KalmanService(Node):
         
         print("G")
         print(G)
-
-        print("Gt")
-        print(G.T)
         
         covariance_pred = np.matmul(G,np.matmul(self.covariance,G.T)) + self.R
+        print("covar pred")
         print(covariance_pred)
         #CORRECTION
         H = np.array([[1,0,0,0,0],
