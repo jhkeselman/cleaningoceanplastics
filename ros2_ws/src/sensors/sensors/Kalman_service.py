@@ -4,7 +4,7 @@ import math
 
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Float64, Bool, Float32MultiArray
+from std_msgs.msg import Float64, Bool, Float32MultiArray, Float64MultiArray
 from sensor_msgs.msg import NavSatFix, Imu
 from services.srv import KalmanState
 from tf_transformations import euler_from_quaternion
@@ -26,7 +26,7 @@ class KalmanService(Node):
     def __init__(self):
         super().__init__('Kalman_service')
         self.srv = self.create_service(KalmanState, 'get_Kalman_state', self.return_state)
-        self.pub = self.create_publisher(Float32MultiArray,'get_state',10)
+        self.pub = self.create_publisher(Float64MultiArray,'get_state',10)
 
         self.imu_sub = self.create_subscription(Imu,'IMU_data',self.imu_response_callback,10)
         self.gps_sub = self.create_subscription(NavSatFix,'get_GPS',self.gps_response_callback,10)
@@ -43,8 +43,8 @@ class KalmanService(Node):
         self.avg_pos = np.zeros((AVERAGE,2))
         self.avg_i = 0
         self.gps_ready = False
-        self.state = np.zeros((5,1),np.float32) #x,y,v,theta,omega
-        self.covariance = np.zeros((5,5))
+        self.state = np.zeros((5,1),np.float64) #x,y,v,theta,omega
+        self.covariance = np.zeros((5,5),np.float64)
         
         self.dt = 0.1
         self.timer = self.create_timer(self.dt,self.calc_state)
@@ -118,7 +118,7 @@ class KalmanService(Node):
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
         self.sensor_data[2:5,0] = [acc,yaw,omega]
-        self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(yaw, acc, omega))
+        # self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(yaw, acc, omega))
 
     def gps_response_callback(self,msg):
         fix_status = msg.status.status
@@ -147,7 +147,7 @@ class KalmanService(Node):
                 self.sensor_data[0:2,0] = [dx,dy]
                 self.Q[0,0] = gps_covariance[0]
                 self.Q[1,1] = gps_covariance[1]
-                self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.gps_covariance[0][0],self.dy,self.gps_covariance[1][1]))  
+                # self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.gps_covariance[0][0],self.dy,self.gps_covariance[1][1]))  
         else:
                 self.get_logger().info('No GPS Fix')
 
