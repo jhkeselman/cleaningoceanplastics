@@ -50,7 +50,7 @@ class KalmanService(Node):
         self.dt = 0.02
         self.timer = self.create_timer(self.dt,self.calc_state)
 
-        self.R = 0.5 * np.ones((5,5),np.float64) #model noise
+        self.R = 0.01 * np.ones((5,5),np.float64) #model noise
         self.Q = 0.5* np.ones((5,5),np.float64) #sensor noise
         self.sensor_data = np.zeros((5,1),np.float64)
         self.Tl = 0 #thrust left
@@ -84,9 +84,7 @@ class KalmanService(Node):
         K = np.matmul(covariance_pred,np.matmul(H.T,inv_part))
         sensor_model = self.state.copy()
         sensor_model[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2,0]**2))/MASS
-        change = np.matmul(K,(self.sensor_data - sensor_model))
-        print(change)  
-        self.state = state_pred + change 
+        self.state = state_pred + np.matmul(K,(self.sensor_data - sensor_model)) 
         self.covariance = np.matmul((np.eye(5) - np.matmul(K,H)),covariance_pred)
         msg = Float64MultiArray()
 
