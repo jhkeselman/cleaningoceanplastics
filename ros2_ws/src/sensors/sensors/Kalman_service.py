@@ -86,7 +86,7 @@ class KalmanService(Node):
         inv_part = np.linalg.pinv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)
         K = np.matmul(covariance_pred,np.matmul(H.T,inv_part))
         sensor_model = self.state.copy()
-        sensor_model[2,0] = (self.Tl + self.Tr - (drag_dir*DRAG*(self.state[2,0]**2)))/MASS
+        sensor_model[2,0] = (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2)))/MASS
 
         self.state = state_pred + np.matmul(K,(self.sensor_data - sensor_model)) 
         self.covariance = np.matmul((np.eye(5) - np.matmul(K,H)),covariance_pred)
