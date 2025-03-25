@@ -64,6 +64,7 @@ class KalmanService(Node):
         state_pred[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*self.dt)/MASS + self.state[2,0]
         state_pred[3,0] = self.state[4,0]*self.dt + self.state[3,0]
         state_pred[4,0] = (self.Tl + self.Tr - (1.25*DRAG*self.state[2,0]**2)*self.dt)/INERTIA + self.state[4,0] #drag increased by 25% for rotation
+        print(state_pred)
 
         G = np.array([[1,0,(math.cos(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS),(-self.state[2,0]*math.sin(self.state[3,0])*self.dt - (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,1,(math.sin(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
@@ -83,15 +84,12 @@ class KalmanService(Node):
         inv_part = np.linalg.pinv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)
         K = np.matmul(covariance_pred,np.matmul(H.T,inv_part))
         sensor_model = self.state.copy()
-        sensor_model[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2]**2))/MASS  
+        sensor_model[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2,0]**2))/MASS  
         self.state = state_pred + np.matmul(K,(self.sensor_data - sensor_model))
         self.covariance = np.matmul((np.eye(5) - np.matmul(K,H)),covariance_pred)
         msg = Float64MultiArray()
 
-        data = self.state.copy()
-        data[3,0] = math.degrees(data[3,0])
-        data[4,0] = math.degrees(data[4,0])
-        msg.data = data
+        msg.data = self.state.copy()
         self.pub.publish(msg)
         
 
@@ -121,7 +119,7 @@ class KalmanService(Node):
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
         self.sensor_data[2:5,0] = [acc,yaw,omega]
-        print(self.sensor_data)
+        # print(self.sensor_data)
         # self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(yaw, acc, omega))
 
     def gps_response_callback(self,msg):
