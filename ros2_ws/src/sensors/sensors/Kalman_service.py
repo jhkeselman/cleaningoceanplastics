@@ -7,8 +7,8 @@ from rclpy.node import Node
 from std_msgs.msg import Float64, Bool, Float32MultiArray, Float64MultiArray
 from sensor_msgs.msg import NavSatFix, Imu
 from services.srv import KalmanState
-#from tf_transformations import euler_from_quaternion
-import transforms3d
+from tf_transformations import euler_from_quaternion
+#import transforms3d
 
 import math
 import numpy as np
@@ -113,8 +113,8 @@ class KalmanService(Node):
 
 
     def imu_response_callback(self,msg):
-        #(roll,pitch,yaw) = euler_from_quaternion([msg.orientation.x,msg.orientation.y,msg.orientation.z,msg.orientation.w])
-        roll,pitch,yaw = transforms3d.euler.quat2euler([msg.orientation.w,msg.orientation.x,msg.orientation.y,msg.orientation.z],axes='sxyz')
+        (roll,pitch,yaw) = euler_from_quaternion([msg.orientation.x,msg.orientation.y,msg.orientation.z,msg.orientation.w])
+        #roll,pitch,yaw = transforms3d.euler.quat2euler([msg.orientation.w,msg.orientation.x,msg.orientation.y,msg.orientation.z],axes='sxyz')
         print(yaw)
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
