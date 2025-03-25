@@ -7,7 +7,8 @@ from rclpy.node import Node
 from std_msgs.msg import Float64, Bool, Float32MultiArray, Float64MultiArray
 from sensor_msgs.msg import NavSatFix, Imu
 from services.srv import KalmanState
-from tf_transformations import euler_from_quaternion
+#from tf_transformations import euler_from_quaternion
+import transforms3d
 
 import math
 import numpy as np
@@ -44,7 +45,7 @@ class KalmanService(Node):
         self.avg_i = 0
         self.gps_ready = False
         self.state = np.zeros((5,1),np.float64) #x,y,v,theta,omega
-        self.covariance = np.matmul(np.eye(5),[2.5,2.5,0.25,0.1,0.1])
+        self.covariance = np.diag([2.5,2.5,0.25,0.1,0.1])
         
         self.dt = 0.1
         self.timer = self.create_timer(self.dt,self.calc_state)
@@ -64,15 +65,12 @@ class KalmanService(Node):
         state_pred[3,0] = self.state[4]*self.dt + self.state[3,0]
         state_pred[4,0] = (self.Tl + self.Tr - (1.25*DRAG*self.state[2,0]**2)*self.dt)/INERTIA + self.state[4,0] #drag increased by 25% for rotation
 
-        print("pred")
-        print(state_pred)
-
         G = np.array([[1,0,(math.cos(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS),(-self.state[2,0]*math.sin(self.state[3,0])*self.dt - (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,1,(math.sin(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,0,(-2*self.dt*DRAG*self.state[2,0]/MASS + 1),0,0],
                       [0,0,0,1,self.dt],
                       [0,0,0,0,(-2*self.dt*1.25*DRAG*self.state[4,0]/INERTIA + 1)]],np.float64)
-        
+
         covariance_pred = np.matmul(G,np.matmul(self.covariance,G.T)) + self.R
 
         #CORRECTION
@@ -82,29 +80,17 @@ class KalmanService(Node):
                       [0,0,0,1,0],
                       [0,0,0,0,1]],np.float64)
         
-        try:
-            inv_part = np.linalg.inv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)
-            print('here')
-        except np.linalg.LinAlgError:
-            print('got here')
-            inv_part = np.linalg.pinv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)
+        inv_part = np.linalg.pinv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)
         K = np.matmul(covariance_pred,np.matmul(H.T,inv_part))
-        print('K')
-        print(K)
-        sensor_model = self.state
+        sensor_model = self.state.copy()
         sensor_model[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2]**2))/MASS
-        print("sensor_model")
-        print(sensor_model)
         self.state = state_pred + np.matmul(K,(self.sensor_data - sensor_model))
         self.covariance = np.matmul((np.eye(5) - np.matmul(K,H)),covariance_pred)
+        # msg = Float64MultiArray()
 
-        msg = Float64MultiArray()
-        print("state")
-        print(self.state)
-        print("covar")
-        print(self.covariance)
-        msg.data = self.state
-        self.pub.publish(msg)
+        # msg.data = self.state
+        # self.pub.publish(msg)
+        
 
     def return_state(self, request, response):
         response.state.data = self.state.T
@@ -127,7 +113,8 @@ class KalmanService(Node):
 
 
     def imu_response_callback(self,msg):
-        (roll,pitch,yaw) = euler_from_quaternion([msg.orientation.x,msg.orientation.y,msg.orientation.z,msg.orientation.w])
+        #(roll,pitch,yaw) = euler_from_quaternion([msg.orientation.x,msg.orientation.y,msg.orientation.z,msg.orientation.w])
+        roll,pitch,yaw = transforms3d.euler.quat2euler([msg.orientation.x,msg.orientation.y,msg.orientation.z,msg.orientation.w],axes='sxyz')
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
         self.sensor_data[2:5,0] = [acc,yaw,omega]
