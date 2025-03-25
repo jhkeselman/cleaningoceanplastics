@@ -65,18 +65,21 @@ class KalmanService(Node):
         state_pred[3,0] = self.state[4,0]*self.dt + self.state[3,0]
         state_pred[4,0] = (self.Tl + self.Tr - (1.25*DRAG*self.state[2,0]**2)*self.dt)/INERTIA + self.state[4,0] #drag increased by 25% for rotation
 
+        drag_dir = 1 if self.state[2,0] <= 0 else -1 #have to account for direction of linear and angular drag
+        rot_dir = 1 if self.state[4,0] <= 0 else -1
+
         G = np.array([[1,0,(math.cos(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS),(-self.state[2,0]*math.sin(self.state[3,0])*self.dt - (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,1,(math.sin(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
-                      [0,0,(-1*np.sign(self.state[2,0])*2*self.dt*DRAG*self.state[2,0]/MASS + 1),0,0],
+                      [0,0,(-drag_dir*2*self.dt*DRAG*self.state[2,0]/MASS + 1),0,0],
                       [0,0,0,1,self.dt],
-                      [0,0,0,0,(-1*np.sign(self.state[4,0])*2*self.dt*1.25*DRAG*(self.state[4,0]**2)/INERTIA + 1)]],np.float64)
+                      [0,0,0,0,(-rot_dir*2*self.dt*1.25*DRAG*(self.state[4,0]**2)/INERTIA + 1)]],np.float64)
 
         covariance_pred = np.matmul(G,np.matmul(self.covariance,G.T)) + self.R
 
         #CORRECTION
         H = np.array([[1,0,0,0,0],
                       [0,1,0,0,0],
-                      [0,0,(-1*np.sign(self.state[2,0])*2*DRAG*self.state[2,0])/MASS,0,0],
+                      [0,0,(-drag_dir*2*DRAG*self.state[2,0])/MASS,0,0],
                       [0,0,0,1,0],
                       [0,0,0,0,1]],np.float64)
         
@@ -84,6 +87,7 @@ class KalmanService(Node):
         K = np.matmul(covariance_pred,np.matmul(H.T,inv_part))
         sensor_model = self.state.copy()
         sensor_model[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2,0]**2))/MASS
+
         self.state = state_pred + np.matmul(K,(self.sensor_data - sensor_model)) 
         self.covariance = np.matmul((np.eye(5) - np.matmul(K,H)),covariance_pred)
         msg = Float64MultiArray()
