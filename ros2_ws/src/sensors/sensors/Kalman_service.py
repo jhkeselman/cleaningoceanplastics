@@ -91,7 +91,7 @@ class KalmanService(Node):
         data = self.state.copy()
         data[3,0] = math.degrees(data[3,0])
         data[4,0] = math.degrees(data[4,0])
-        msg.data = self.state
+        msg.data = data
         self.pub.publish(msg)
         
 
