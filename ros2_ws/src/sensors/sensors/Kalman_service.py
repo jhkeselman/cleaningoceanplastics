@@ -83,8 +83,10 @@ class KalmanService(Node):
         inv_part = np.linalg.pinv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)
         K = np.matmul(covariance_pred,np.matmul(H.T,inv_part))
         sensor_model = self.state.copy()
-        sensor_model[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2,0]**2))/MASS  
-        self.state = state_pred + np.matmul(K,(self.sensor_data - sensor_model))
+        sensor_model[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2,0]**2))/MASS
+        change = np.matmul(K,(self.sensor_data - sensor_model))
+        print(change)  
+        self.state = state_pred + change 
         self.covariance = np.matmul((np.eye(5) - np.matmul(K,H)),covariance_pred)
         msg = Float64MultiArray()
 
@@ -118,7 +120,7 @@ class KalmanService(Node):
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
         self.sensor_data[2:5,0] = [acc,yaw,omega]
-        print(self.sensor_data)
+        # print(self.sensor_data)
         # self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(yaw, acc, omega))
 
     def gps_response_callback(self,msg):
