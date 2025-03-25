@@ -45,12 +45,12 @@ class KalmanService(Node):
         self.avg_i = 0
         self.gps_ready = False
         self.state = np.zeros((5,1),np.float64) #x,y,v,theta,omega
-        self.covariance = np.diag([2.5,2.5,0.25,0.1,0.1])
+        self.covariance = np.diag([2.5,2.5,0.25,0.3,0.3])
         
         self.dt = 0.02
         self.timer = self.create_timer(self.dt,self.calc_state)
 
-        self.R = 0.01 * np.ones((5,5),np.float64) #model noise
+        self.R = 0.1 * np.ones((5,5),np.float64) #model noise
         self.Q = 0.01 * np.ones((5,5),np.float64) #sensor noise
         self.sensor_data = np.zeros((5,1),np.float64)
         self.Tl = 0 #thrust left
