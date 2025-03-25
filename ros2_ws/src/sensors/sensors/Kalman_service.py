@@ -64,7 +64,6 @@ class KalmanService(Node):
         state_pred[2,0] = (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*self.dt)/MASS + self.state[2,0]
         state_pred[3,0] = self.state[4,0]*self.dt + self.state[3,0]
         state_pred[4,0] = (self.Tl + self.Tr - (1.25*DRAG*self.state[2,0]**2)*self.dt)/INERTIA + self.state[4,0] #drag increased by 25% for rotation
-        print(state_pred)
 
         G = np.array([[1,0,(math.cos(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS),(-self.state[2,0]*math.sin(self.state[3,0])*self.dt - (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,1,(math.sin(self.state[3,0])*self.dt - (self.dt**2)*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr - (DRAG*self.state[2,0]**2)*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
@@ -119,7 +118,7 @@ class KalmanService(Node):
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
         self.sensor_data[2:5,0] = [acc,yaw,omega]
-        # print(self.sensor_data)
+        print(self.sensor_data)
         # self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(yaw, acc, omega))
 
     def gps_response_callback(self,msg):
