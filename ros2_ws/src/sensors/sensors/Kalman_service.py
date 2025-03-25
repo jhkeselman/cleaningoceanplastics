@@ -73,6 +73,8 @@ class KalmanService(Node):
                       [0,0,(drag_dir*2*self.dt*DRAG*self.state[2,0]/MASS + 1),0,0],
                       [0,0,0,1,self.dt],
                       [0,0,0,0,(rot_dir*2*self.dt*1.25*DRAG*(self.state[4,0]**2)/INERTIA + 1)]],np.float64)
+        
+        print(G)
 
         covariance_pred = np.matmul(G,np.matmul(self.covariance,G.T)) + self.R
 
