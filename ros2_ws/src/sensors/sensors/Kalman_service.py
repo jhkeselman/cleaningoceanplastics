@@ -106,6 +106,7 @@ class KalmanService(Node):
         Vr = (7.5-msg.data[1])/7.5*24
         self.Tl = Vl * V_TO_N
         self.Tr = Vr * V_TO_N
+        print(self.Tl,self.Tr)
 
     def motor_speed_callback(self,msg):
         duty_l = 7.5 - 2.5*msg.data[0] #Center at 7.5 and capped at 5 and 10
@@ -114,6 +115,7 @@ class KalmanService(Node):
         Vr = (duty_r-7.5)/7.5*24
         self.Tl = Vl * V_TO_N
         self.Tr = Vr * V_TO_N
+        print(self.Tl,self.Tr)
 
 
     def imu_response_callback(self,msg):
