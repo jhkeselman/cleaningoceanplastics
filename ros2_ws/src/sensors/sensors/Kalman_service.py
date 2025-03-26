@@ -18,6 +18,7 @@ CEP = 2.5 #Circular error probable from Ozzmaker website
 AVERAGE = 10 #Number of values for gps before beginning
 MASS = 23 #NEED VALUES
 DRAG = 10 #ESTIMATE
+ROT_DRAG = 50 #drag increased by 500% for rotation
 INERTIA = 5.35  #Inertia from Solidworks model in Kg/m^2
 R = 0.31875 #radius from center of robot to motor
 V_TO_N = 4.6025 #conversion from Volts to Newtons of thrust
@@ -66,13 +67,13 @@ class KalmanService(Node):
         state_pred[1,0] = self.state[1,0] + self.state[2,0]*math.sin(self.state[3,0])*self.dt + (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2))*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)
         state_pred[2,0] = (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2))*self.dt)/MASS + self.state[2,0]
         state_pred[3,0] = self.state[4,0]*self.dt + self.state[3,0]
-        state_pred[4,0] = (-R*self.Tl + R*self.Tr + (rot_dir*5*DRAG*(self.state[2,0]**2))*self.dt)/INERTIA + self.state[4,0] #drag increased by 500% for rotation
+        state_pred[4,0] = (-R*self.Tl + R*self.Tr + (rot_dir*ROT_DRAG*(self.state[2,0]**2))*self.dt)/INERTIA + self.state[4,0] 
 
         G = np.array([[1,0,(math.cos(self.state[3,0])*self.dt + (self.dt**2)*drag_dir*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS),(-self.state[2,0]*math.sin(self.state[3,0])*self.dt - (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2))*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,1,(math.sin(self.state[3,0])*self.dt + (self.dt**2)*drag_dir*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2))*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,0,(drag_dir*2*self.dt*DRAG*self.state[2,0]/MASS + 1),0,0],
                       [0,0,0,1,self.dt],
-                      [0,0,0,0,(rot_dir*2*self.dt*5*DRAG*(self.state[4,0]**2)/INERTIA + 1)]],np.float64)
+                      [0,0,0,0,(rot_dir*2*self.dt*ROT_DRAG(self.state[4,0]**2)/INERTIA + 1)]],np.float64)
 
         covariance_pred = np.matmul(G,np.matmul(self.covariance,G.T)) + self.R
 
