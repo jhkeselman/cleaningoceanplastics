@@ -52,7 +52,7 @@ class KalmanService(Node):
         self.timer = self.create_timer(self.dt,self.calc_state)
 
         self.R = np.diag([2.5,2.5,0.1,0.1,0.1]) + 0.01*np.ones((5,5))#model noise
-        self.Q = np.diag([0.75,0.75,0.75,0.5,0.5]) + 0.01*np.ones((5,5))#sensor noise
+        self.Q = np.diag([0.75,0.75,1.5,1,1]) + 0.01*np.ones((5,5))#sensor noise
         self.sensor_data = np.zeros((5,1),np.float64)
         self.Tl = 0 #thrust left
         self.Tr = 0 
