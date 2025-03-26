@@ -154,7 +154,7 @@ class IMUPub(Node):
         self.acc_bias = 0.27 #experimentally found but should be updated #-0.2 for Z axis
         self.avg_data = np.roll(self.avg_data,axis=0,shift=1) #shift moving average data by one and then store current reading
         self.avg_data[0,0] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
-        self.avg_data[0,1] = ang_vel
+        self.avg_data[0,1] = rate_gyr_x
         self.avg_data[0,2] = headingx
         self.avg_data[0,3] = headingy
 
