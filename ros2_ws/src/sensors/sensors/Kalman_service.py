@@ -80,11 +80,11 @@ class KalmanService(Node):
         #CORRECTION
         H = np.array([[1,0,0,0,0],
                       [0,1,0,0,0],
-                      [0,0,(drag_dir*2*DRAG*self.state[2,0])/MASS,0,0],
+                      [0,0,(drag_dir*2*DRAG*state_pred[2,0])/MASS,0,0],
                       [0,0,0,1,0],
                       [0,0,0,0,1]],np.float64)
         
-        inv_part = np.linalg.pinv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)
+        inv_part = np.linalg.pinv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q) #pseudoinverse is computed to prevent singularities
         K = np.matmul(covariance_pred,np.matmul(H.T,inv_part))
         sensor_model = state_pred.copy()
 
