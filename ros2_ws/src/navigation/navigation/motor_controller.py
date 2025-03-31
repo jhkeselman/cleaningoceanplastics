@@ -56,7 +56,7 @@ class MotorControllerNode(Node):
             self.send_value(msg.data[0], msg.data[1])
                 
     def send_value(self, left_value, right_value):
-        data = struct.pack('Bff',1, left_value, right_value) #sending 1 means the data is motor values
+        data = struct.pack('iff',1, left_value, right_value) #sending 1 means the data is motor values
         byte_list = list(data)
         try:
             self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
