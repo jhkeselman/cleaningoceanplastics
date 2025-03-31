@@ -14,6 +14,5 @@ def generate_launch_description():
 
     return LaunchDescription([
         IncludeLaunchDescription(PythonLaunchDescriptionSource(sensors_launch_path)),
-        Node(package='navigation', executable='teleop', output='screen'),
         Node(package='navigation', executable='motor_control', output='screen'),
     ])
