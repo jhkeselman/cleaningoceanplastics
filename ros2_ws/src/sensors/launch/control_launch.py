@@ -7,3 +7,4 @@ def generate_launch_description():
         Node(package='sensors', executable='imu_pub', output='screen'),
         Node(package='sensors', executable='object_detector', output='screen'),
     ])
+

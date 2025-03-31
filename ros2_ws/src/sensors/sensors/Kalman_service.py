@@ -17,7 +17,8 @@ W_RADIUS = 6371000 #radius of earth in m
 CEP = 2.5 #Circular error probable from Ozzmaker website
 AVERAGE = 10 #Number of values for gps before beginning
 MASS = 23 #NEED VALUES
-DRAG = 0.5 
+DRAG = 20 #ESTIMATE
+ROT_DRAG = 100 #drag increased by 500% for rotation
 INERTIA = 5.35  #Inertia from Solidworks model in Kg/m^2
 R = 0.31875 #radius from center of robot to motor
 V_TO_N = 4.6025 #conversion from Volts to Newtons of thrust
@@ -50,8 +51,8 @@ class KalmanService(Node):
         self.dt = 0.02
         self.timer = self.create_timer(self.dt,self.calc_state)
 
-        self.R = np.diag([2.5,2.5,0.5,0.1,0.1]) + 0.01*np.ones((5,5))#model noise
-        self.Q = np.diag([0.5,0.5,0.5,0.5,0.5]) + 0.01*np.ones((5,5))#sensor noise
+        self.R = np.diag([2.5,2.5,0.1,0.1,0.1]) + 0.01*np.ones((5,5))#model noise
+        self.Q = np.diag([0.75,0.75,1.5,1,1]) + 0.01*np.ones((5,5))#sensor noise
         self.sensor_data = np.zeros((5,1),np.float64)
         self.Tl = 0 #thrust left
         self.Tr = 0 
@@ -66,27 +67,29 @@ class KalmanService(Node):
         state_pred[1,0] = self.state[1,0] + self.state[2,0]*math.sin(self.state[3,0])*self.dt + (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2))*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)
         state_pred[2,0] = (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2))*self.dt)/MASS + self.state[2,0]
         state_pred[3,0] = self.state[4,0]*self.dt + self.state[3,0]
-        state_pred[4,0] = (self.Tl + self.Tr + (rot_dir*1.25*DRAG*(self.state[2,0]**2))*self.dt)/INERTIA + self.state[4,0] #drag increased by 25% for rotation
+        state_pred[4,0] = (-R*self.Tl + R*self.Tr + (rot_dir*ROT_DRAG*(self.state[4,0]**2))*self.dt)/INERTIA + self.state[4,0] 
 
         G = np.array([[1,0,(math.cos(self.state[3,0])*self.dt + (self.dt**2)*drag_dir*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS),(-self.state[2,0]*math.sin(self.state[3,0])*self.dt - (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2))*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,1,(math.sin(self.state[3,0])*self.dt + (self.dt**2)*drag_dir*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2))*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,0,(drag_dir*2*self.dt*DRAG*self.state[2,0]/MASS + 1),0,0],
                       [0,0,0,1,self.dt],
-                      [0,0,0,0,(rot_dir*2*self.dt*1.25*DRAG*(self.state[4,0]**2)/INERTIA + 1)]],np.float64)
+                      [0,0,0,0,(rot_dir*2*self.dt*ROT_DRAG*(self.state[4,0]**2)/INERTIA + 1)]],np.float64)
 
         covariance_pred = np.matmul(G,np.matmul(self.covariance,G.T)) + self.R
 
         #CORRECTION
         H = np.array([[1,0,0,0,0],
                       [0,1,0,0,0],
-                      [0,0,(drag_dir*2*DRAG*self.state[2,0])/MASS,0,0],
+                      [0,0,(drag_dir*2*DRAG*state_pred[2,0])/MASS,0,0],
                       [0,0,0,1,0],
                       [0,0,0,0,1]],np.float64)
         
-        inv_part = np.linalg.pinv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q)
+        inv_part = np.linalg.pinv(np.matmul(H,np.matmul(covariance_pred,H.T))+self.Q) #pseudoinverse is computed to prevent singularities
         K = np.matmul(covariance_pred,np.matmul(H.T,inv_part))
-        sensor_model = self.state.copy()
-        sensor_model[2,0] = (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2)))/MASS
+        sensor_model = state_pred.copy()
+
+        drag_dir = -1 if state_pred[2,0] >= 0 else 1
+        sensor_model[2,0] = (self.Tl + self.Tr + (drag_dir*DRAG*(state_pred[2,0]**2)))/MASS
 
         self.state = state_pred + np.matmul(K,(self.sensor_data - sensor_model)) 
         self.covariance = np.matmul((np.eye(5) - np.matmul(K,H)),covariance_pred)
@@ -110,8 +113,8 @@ class KalmanService(Node):
     def motor_speed_callback(self,msg):
         duty_l = 7.5 - 2.5*msg.data[0] #Center at 7.5 and capped at 5 and 10
         duty_r = 7.5 - 2.5*msg.data[1]
-        Vl = (duty_l-7.5)/7.5*24
-        Vr = (duty_r-7.5)/7.5*24
+        Vl = (7.5-duty_l)/7.5*24
+        Vr = (7.5-duty_r)/7.5*24
         self.Tl = Vl * V_TO_N
         self.Tr = Vr * V_TO_N
 
