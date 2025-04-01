@@ -204,7 +204,8 @@ class IMUPub(Node):
             self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
         except:
             self.get_logger().info("Failed to send value")
-        print(self.bus.read_i2c_block_data(self.I2C_address, 0, 5))
+        
+        data = self.bus.read_i2c_block_data(self.I2C_address, 0, 9)
 
 
 def main(args=None):
