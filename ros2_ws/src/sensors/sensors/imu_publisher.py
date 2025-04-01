@@ -127,8 +127,6 @@ class IMUPub(Node):
         
         ang_vel = rate_gyr_x - self.gyro_bias
 
-        print(MAGx,MAGy,MAGz)
-
         #Calculate heading
         mag_heading = math.degrees(math.atan2(MAGz,-MAGy))
         
@@ -158,7 +156,7 @@ class IMUPub(Node):
 
         self.acceleration, self.omega, headingx, headingy = self.calc_avg()
         self.heading = math.atan2(headingy,headingx)
-        # print(self.heading, math.radians(self.omega))
+        print(self.heading, math.radians(self.omega))
 
         # self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,self.heading))
         # print(self.omega)
