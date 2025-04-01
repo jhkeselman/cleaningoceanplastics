@@ -17,7 +17,7 @@ class ObjectDetector(Node):
             self.destroy_node()
             return
         
-        self.save_video = True # Set to False to disable video recording
+        self.save_video = False # Set to False to disable video recording
 
         if self.save_video:
             frame_width = int(self.cap.get(3))

@@ -2,3 +2,6 @@
 ros2_ws/log/
 ros2_ws/install/
 ros2_ws/build/
+
+# Ignore rosbag data and videos directory
+ros2_ws/rosbag_data
