@@ -3,6 +3,7 @@ from rclpy.node import Node
 from std_msgs.msg import String
 from resource.priority_queue import PriorityQueue
 from enum import Enum
+import numpy as np
 
 class State(Enum):
         SEARCHING = 1
@@ -29,20 +30,22 @@ class ObjectSelector(Node):
         data = msg.data
         objects = data.split(" $ ")
         self.get_logger().info("New detections")
-        # TEMP FOR TESTING
+        xCenters = []
+        yCenters = []
         for object in objects:
-            self.get_logger().info(f"{object}")
-        # FUTURE CODE
-        # if self.state == State.SEARCHING:
-        #     queue = PriorityQueue()
-        #     for object in objects:
-        #         object_info = object.split(",")
-        #         priority = self.rate_object(object_info[0], object_info[1], object_info[2], object_info[3], object_info[4], object_info[5])
-        #         queue.put(priority, object_info)
-        #     self.target = queue.get()
-        # elif self.state == State.MOVING:
-        #     # genuinely very little idea how this one will work rn, probably need to dig more into results formatting
-        #     pass
+            components = object.split(" ")
+            object_type = components[0]
+            confidence = components[1]
+            x1 = components[2]
+            y1 = components[3]
+            x2 = components[4]
+            y2 = components[5]
+            xCenters.append(np.mean([x1, x2]))
+            yCenters.append(np.mean([y1, y2]))
+
+        x = np.mean(xCenters)
+        y = np.mean(yCenters)
+        self.get_logger().info(f"Mass center: ({x}, {y})")
                 
 
 
