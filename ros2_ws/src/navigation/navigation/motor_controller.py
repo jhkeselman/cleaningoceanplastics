@@ -62,6 +62,8 @@ class MotorControllerNode(Node):
             self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
         except:
             self.get_logger().info("Failed to send value")
+        
+        test = self.bus.read_i2c_block_data(self.I2C_address, 0, 5)
 
     def stop_motors(self):
         self.send_value(7.5, 7.5)
