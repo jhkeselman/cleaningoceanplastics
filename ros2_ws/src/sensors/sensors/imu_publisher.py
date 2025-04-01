@@ -207,11 +207,13 @@ class IMUPub(Node):
             self.get_logger().info("Failed to send value")
         
         # Read the motor values
-        try:
-            currentLeft, currentRight = struct.unpack('ff', self.bus.read_i2c_block_data(self.I2C_address, 0, 8)) # 8 bytes of data (2 floats)
-            print(currentLeft, currentRight)
-        except:
-            self.get_logger().info("Failed to read value")
+        # try:
+        data = self.bus.read_i2c_block_data(self.I2C_address, 0, 8)
+        print(data)
+        currentLeft, currentRight = struct.unpack('ff', data) # 8 bytes of data (2 floats)
+        print(currentLeft, currentRight)
+        # except:
+        #     self.get_logger().info("Failed to read value")
 
 
 def main(args=None):
