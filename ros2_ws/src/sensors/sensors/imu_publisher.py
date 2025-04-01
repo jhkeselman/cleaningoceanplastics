@@ -8,7 +8,6 @@ from tf_transformations import quaternion_from_euler
 from geometry_msgs.msg import Quaternion
 
 import math
-import datetime
 import sys
 import time
 import struct
@@ -35,7 +34,6 @@ class IMUPub(Node):
             print(" No BerryIMU found... exiting ")
             sys.exit()
         initIMU()       #Initialise the accelerometer, gyroscope and compass
-        self.a = datetime.datetime.now()
 
         self.get_logger().info("IMU initialized...")
 
