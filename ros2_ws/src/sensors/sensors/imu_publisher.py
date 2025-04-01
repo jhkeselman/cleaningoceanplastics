@@ -14,6 +14,7 @@ import time
 import struct
 import numpy as np
 import smbus
+import struct
 
 from .IMU_lib import *
 
