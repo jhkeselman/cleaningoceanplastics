@@ -130,7 +130,7 @@ class IMUPub(Node):
         print(MAGx,MAGy,MAGz)
 
         #Calculate heading
-        mag_heading = math.degrees(math.atan2(-MAGz,MAGy))
+        mag_heading = math.degrees(math.atan2(MAGz,-MAGy))
         
         mag_heading += self.declination
 
