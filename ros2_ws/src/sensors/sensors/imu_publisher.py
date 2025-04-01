@@ -206,6 +206,7 @@ class IMUPub(Node):
             self.get_logger().info("Failed to send value")
         
         data = self.bus.read_i2c_block_data(self.I2C_address, 0, 9)
+        print(data)
 
 
 def main(args=None):
