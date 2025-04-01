@@ -183,7 +183,7 @@ class IMUPub(Node):
         imu_msg.linear_acceleration_covariance = [(0.244/1000*9.81)**2,0,0,0,0,0,0,0,0]
         imu_msg.orientation_covariance = [(0.1**2),0,0,0,0,0,0,0,0] #sort of a guess based in radians
         self.pub.publish(imu_msg)
-        # self.write_esp() #waiting until we have a plan to interpret
+        self.write_esp() #waiting until we have a plan to interpret
 
     def calc_avg(self):
         avg_data = np.zeros(4)

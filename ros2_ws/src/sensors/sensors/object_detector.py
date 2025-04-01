@@ -38,7 +38,7 @@ class ObjectDetector(Node):
         ret, frame = self.cap.read()
         if ret:
             frame = cv2.flip(frame, 0)
-            results = self.model(frame, verbose=True)
+            results = self.model(frame, verbose=False)
 
             if self.save_video:
                 annotated_frame = results[0].plot()  # YOLO outputs annotated images with .plot()
