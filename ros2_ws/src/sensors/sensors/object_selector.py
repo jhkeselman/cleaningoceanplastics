@@ -46,20 +46,6 @@ class ObjectSelector(Node):
         x = np.mean(xCenters)
         y = np.mean(yCenters)
         self.get_logger().info(f"Mass center: ({x}, {y})")
-                
-
-
-    def rate_object(self, object_type, confidence, x1, y1, x2, y2):
-        score = Waste[object_type.upper()]
-        score += ((x / 10)^2) / 10
-        center_X = (x1 + x2) / 2.0
-        center_Y = (y1 + y2) / 2.0
-        dist_from_center = self.dist(self.image_width - center_X, self.image_height - center_Y)
-        score += 10.0 / (dist_from_center / self.image_size)
-
-    def dist(self, x, y):
-        return (x^2 + y^2)^(0.5)
-        
 
 
 def main(args=None):
