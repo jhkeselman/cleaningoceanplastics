@@ -127,6 +127,8 @@ class IMUPub(Node):
         
         ang_vel = rate_gyr_x - self.gyro_bias
 
+        print(MAGx,MAGy,MAGz)
+
         #Calculate heading
         mag_heading = math.degrees(math.atan2(-MAGz,MAGy))
         
