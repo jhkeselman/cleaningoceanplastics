@@ -18,8 +18,7 @@ class PIDDebug(Node):
 
     def check_input(self):
         if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
-            print(key)
-            key = sys.stdin.read(1)
+            key = sys.stdin.read()
             key = key.strip()
             if key:
                 self.process_key(key)
