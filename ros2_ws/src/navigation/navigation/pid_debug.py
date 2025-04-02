@@ -34,7 +34,7 @@ class PIDDebug(Node):
         elif key[0] == 'd':
             data = struct.pack('if',4,key[1:])
         
-        
+        print(data)
         # Compile into byte list and send over
         byte_list = list(data)
         # try:
