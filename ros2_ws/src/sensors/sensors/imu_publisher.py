@@ -163,11 +163,12 @@ class IMUPub(Node):
         self.avg_data[0,2] = headingx
         self.avg_data[0,3] = headingy
 
+        print(self.calc_avg())
         self.acceleration, self.omega, headingx, headingy = self.calc_avg()
         self.heading = math.atan2(headingy,headingx)
         # print(self.heading, math.radians(self.omega))
 
-        self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,math.degrees(self.heading)))
+        # self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,math.degrees(self.heading)))
         # print(self.omega)
 
         imu_msg = Imu()
