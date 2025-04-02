@@ -8,7 +8,6 @@ from tf_transformations import quaternion_from_euler
 from geometry_msgs.msg import Quaternion
 
 import math
-import datetime
 import sys
 import time
 import struct
@@ -35,7 +34,6 @@ class IMUPub(Node):
             print(" No BerryIMU found... exiting ")
             sys.exit()
         initIMU()       #Initialise the accelerometer, gyroscope and compass
-        self.a = datetime.datetime.now()
 
         self.get_logger().info("IMU initialized...")
 
@@ -59,8 +57,6 @@ class IMUPub(Node):
         self.magZmax = 808
 
         self.avg_data = MAX_DATA*np.ones((20,4)) #Acc, Gyro, X-heading, Y-heading
-
-        self.i = 0
 
         self.emergency_stop = self.create_subscription(
             Bool,
@@ -132,7 +128,7 @@ class IMUPub(Node):
         ang_vel = rate_gyr_x - self.gyro_bias
 
         #Calculate heading
-        mag_heading = math.degrees(math.atan2(MAGy,MAGz))
+        mag_heading = math.degrees(math.atan2(MAGz,-MAGy))
         
         mag_heading += self.declination
 
