@@ -138,7 +138,6 @@ class IMUPub(Node):
 
         #Calculate heading
         mag_heading = math.degrees(math.atan2(MAGz,-MAGy))
-        print(MAGy, MAGz,mag_heading)
         mag_heading += self.declination
         
         
@@ -168,7 +167,7 @@ class IMUPub(Node):
         self.heading = math.atan2(headingy,headingx)
         # print(self.heading, math.radians(self.omega))
 
-        # self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,self.heading))
+        self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,self.heading))
         # print(self.omega)
 
         imu_msg = Imu()
