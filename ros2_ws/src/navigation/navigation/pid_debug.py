@@ -20,6 +20,7 @@ class PIDDebug(Node):
         if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
             key = sys.stdin.read()
             key = key.strip()
+            print(key)
             if key:
                 self.process_key(key)
 
