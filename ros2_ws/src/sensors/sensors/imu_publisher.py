@@ -13,6 +13,7 @@ import time
 import struct
 import numpy as np
 import smbus
+import struct
 
 from .IMU_lib import *
 
@@ -195,6 +196,8 @@ class IMUPub(Node):
         self.pub.publish(imu_msg)
         self.write_esp() #waiting until we have a plan to interpret
 
+        print(MAGx, MAGy, MAGz, self.heading)
+
     def calc_avg(self):
         avg_data = np.zeros(4)
         elements = np.zeros(4)
@@ -214,6 +217,17 @@ class IMUPub(Node):
             self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
         except:
             self.get_logger().info("Failed to send value")
+        
+        
+        
+        # NOTE DEBUG: Read the motor values
+        try:
+            data = self.bus.read_i2c_block_data(self.I2C_address, 0, 8)
+            currentLeft, currentRight = struct.unpack('ff', bytes(data)) # 8 bytes of data (2 floats)
+            currentLeft, currentRight = round(currentLeft, 2), round(currentRight, 2)
+            # print(currentLeft, currentRight, self.heading)
+        except:
+            self.get_logger().info("Failed to read value")
 
 
 def main(args=None):
