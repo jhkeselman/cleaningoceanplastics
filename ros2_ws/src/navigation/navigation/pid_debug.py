@@ -34,12 +34,13 @@ class PIDDebug(Node):
         elif key[0] == 'd':
             data = struct.pack('if',4,key[1:])
         
+        print(key[1:])
         # Compile into byte list and send over
-        byte_list = list(data)
-        try:
-            self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
-        except:
-            self.get_logger().info("Failed to send value")
+        # byte_list = list(data)
+        # try:
+        #     self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
+        # except:
+        #     self.get_logger().info("Failed to send value")
 
 
     def destroy_node(self):
