@@ -68,11 +68,12 @@ class IMUPub(Node):
         self.pub = self.create_publisher(Imu, 'IMU_data', 10)
         self.timer_period = 0.02
         self.esp_timer_period = 0.2
-        self.timer = self.create_timer(self.timer_period, self.timer_callback)
-        self.esp_timer = self.create_timer(self.esp_timer_period, self.write_esp)
+        # self.timer = self.create_timer(self.timer_period, self.timer_callback)
+        # self.esp_timer = self.create_timer(self.esp_timer_period, self.write_esp)
         self.prev_time = self.get_clock().now()
         self.heading = MAX_DATA
         self.gyro_bias = 0
+        self.calibrate_Mag()
 
     def destroy_node(self,msg):
         time.sleep(0.1)
@@ -80,7 +81,7 @@ class IMUPub(Node):
 
 
     def calibrate_Mag(self): #NOT USED, BUT TO CALIBRATE AGAINST HARD IRON DISTORTION
-        for i in range(200):
+        while True:
             MAGx = readMAGx()
             MAGy = readMAGy()
             MAGz = readMAGz()
@@ -99,6 +100,7 @@ class IMUPub(Node):
             if MAGz < self.magZmin:
                 self.magZmin = MAGz
 
+            print(self.magXmax,self.magYmax,self.magZmax,self.magXmin,self.magYmin,self.magZmin)
             time.sleep(0.025)
         
 
