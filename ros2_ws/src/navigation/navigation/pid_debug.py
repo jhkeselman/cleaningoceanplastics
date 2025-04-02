@@ -18,6 +18,7 @@ class PIDDebug(Node):
 
     def check_input(self):
         if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
+            print(key)
             key = sys.stdin.read(1)
             key = key.strip()
             if key:
@@ -25,7 +26,6 @@ class PIDDebug(Node):
 
     def process_key(self, key):
         data = 0
-        print(key, key[1:])
         # 2 is P, 3 is I, 4 is D
         if key[0] == 'p':
             data = struct.pack('if',2,key[1:])
