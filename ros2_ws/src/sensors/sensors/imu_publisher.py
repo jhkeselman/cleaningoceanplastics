@@ -73,6 +73,7 @@ class IMUPub(Node):
         self.prev_time = self.get_clock().now()
         self.heading = MAX_DATA
         self.gyro_bias = 0
+        self.mag_cal = np.zeros((2000,2))
         # self.calibrate_Mag()
 
     def destroy_node(self,msg):
@@ -138,9 +139,10 @@ class IMUPub(Node):
 
         #Calculate heading
         mag_heading = math.degrees(math.atan2(MAGz,-MAGy))
-        
-        mag_heading += self.declination
+        np.savetxt('mag_cal.csv',self.mag_cal)
         print(MAGy, MAGz,mag_heading)
+        mag_heading += self.declination
+        
         
         if self.heading == MAX_DATA:
             prev_heading = mag_heading #Initialize gyro to mag heading if not already
