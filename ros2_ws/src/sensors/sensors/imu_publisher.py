@@ -73,7 +73,7 @@ class IMUPub(Node):
         self.prev_time = self.get_clock().now()
         self.heading = MAX_DATA
         self.gyro_bias = 0
-        self.mag_cal = np.zeros((2000,2))
+        self.mag_cal = np.zeros((1000,2))
         self.i = 0
         # self.calibrate_Mag()
 
@@ -142,7 +142,7 @@ class IMUPub(Node):
         mag_heading = math.degrees(math.atan2(MAGz,-MAGy))
         self.mag_cal[self.i,:] = [MAGy,MAGz]
         self.i += 1
-        if self.i == 2000:
+        if self.i == 1000:
             np.savetxt('mag_cal.csv',self.mag_cal)
             print("done\n")
         print(MAGy, MAGz,mag_heading)
