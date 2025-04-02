@@ -1,7 +1,6 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
-from resource.priority_queue import PriorityQueue
 from enum import Enum
 import numpy as np
 
