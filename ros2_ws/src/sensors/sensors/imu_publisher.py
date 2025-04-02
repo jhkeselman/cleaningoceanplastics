@@ -208,7 +208,7 @@ class IMUPub(Node):
             data = self.bus.read_i2c_block_data(self.I2C_address, 0, 8)
             currentLeft, currentRight = struct.unpack('ff', bytes(data)) # 8 bytes of data (2 floats)
             currentLeft, currentRight = round(currentLeft, 2), round(currentRight, 2)
-            print(currentLeft, currentRight, self.heading)
+            # print(currentLeft, currentRight, self.heading)
         except:
             self.get_logger().info("Failed to read value")
 
