@@ -139,8 +139,8 @@ class IMUPub(Node):
         #Calculate heading
         mag_heading = math.degrees(math.atan2(MAGz,-MAGy))
         mag_heading += self.declination
-        if mag_heading > 180: mag_heading -= 360
-        elif mag_heading < -180: mag_heading += 360
+        # if mag_heading > 180: mag_heading -= 360
+        # elif mag_heading < -180: mag_heading += 360
         
         
         if self.heading == MAX_DATA:
@@ -149,16 +149,26 @@ class IMUPub(Node):
             prev_heading = math.degrees(math.atan2(self.avg_data[0,3],self.avg_data[0,2]))
         #Complementary filter 
         self.gyro_heading = prev_heading + ang_vel*self.timer_period
-        if self.gyro_heading > 180: self.gyro_heading -= 360
-        elif self.gyro_heading < -180: self.gyro_heading += 360
+        # if self.gyro_heading > 180: self.gyro_heading -= 360
+        # elif self.gyro_heading < -180: self.gyro_heading += 360
+
+        gyro_sin = math.sin(math.radians(self.gyro_heading))
+        gyro_cos = math.cos(math.radians(self.gyro_heading))
+        mag_sin = math.sin(math.radians(mag_heading))
+        mag_cos = math.cos(math.radians(mag_heading))
+
+        error = math.degrees(math.atan2((mag_sin-gyro_sin),(mag_cos-gyro_sin)))
 
         innovation = mag_heading-self.gyro_heading
+
+        print(error, innovation)
+
         heading = math.radians(self.gyro_heading + K*innovation)
         self.gyro_bias -= E/self.timer_period*innovation
         headingx = math.cos(heading) #split heading into unit vector to be averaged to prevent bounding errors
         headingy = math.sin(heading)
 
-        print(self.gyro_heading,mag_heading,math.degrees(heading))
+        # print(self.gyro_heading,mag_heading,math.degrees(heading))
 
         self.acc_bias = 0.27 #experimentally found but should be updated #-0.2 for Z axis
         self.avg_data = np.roll(self.avg_data,axis=0,shift=1) #shift moving average data by one and then store current reading
