@@ -43,19 +43,19 @@ class IMUPub(Node):
 
         self.declination = -214.1/1000 * RAD_TO_DEG #calculated at Worcester (-214 milliradians)
 
-        # self.magXmin = -1261 #Previous Calibration values of magnetometer at +/- 8 gauss
-        # self.magYmin = -2286
-        # self.magZmin = -2048
-        # self.magXmax = 2465
-        # self.magYmax = 1529
-        # self.magZmax = 1822
+        # self.magXmin = -1089 #Previous Calibration values of magnetometer at +/- 8 gauss
+        # self.magYmin = -1203
+        # self.magZmin = -901
+        # self.magXmax = 1279
+        # self.magYmax = 498
+        # self.magZmax = 808
 
-        self.magXmin = -1089 #Previous Calibration values of magnetometer at +/- 8 gauss
-        self.magYmin = -1203
-        self.magZmin = -901
-        self.magXmax = 1279
-        self.magYmax = 498
-        self.magZmax = 808
+        self.magXmin = -627 #Previous Calibration values of magnetometer at +/- 8 gauss
+        self.magYmin = -449
+        self.magZmin = -250
+        self.magXmax = -568
+        self.magYmax = -77
+        self.magZmax = 202
 
         self.avg_data = MAX_DATA*np.ones((20,4)) #Acc, Gyro, X-heading, Y-heading
 
@@ -74,6 +74,7 @@ class IMUPub(Node):
         self.prev_time = self.get_clock().now()
         self.heading = MAX_DATA
         self.gyro_bias = 0
+        # self.calibrate_Mag()
 
     def destroy_node(self,msg):
         time.sleep(0.1)
@@ -81,7 +82,14 @@ class IMUPub(Node):
 
 
     def calibrate_Mag(self): #NOT USED, BUT TO CALIBRATE AGAINST HARD IRON DISTORTION
-        for i in range(200):
+        self.magXmin = MAX_DATA #Resets calibrated values
+        self.magYmin = MAX_DATA
+        self.magZmin = MAX_DATA
+        self.magXmax = -MAX_DATA
+        self.magYmax = -MAX_DATA
+        self.magZmax = -MAX_DATA
+
+        while True:
             MAGx = readMAGx()
             MAGy = readMAGy()
             MAGz = readMAGz()
@@ -100,6 +108,7 @@ class IMUPub(Node):
             if MAGz < self.magZmin:
                 self.magZmin = MAGz
 
+            print(self.magXmax,self.magYmax,self.magZmax,self.magXmin,self.magYmin,self.magZmin)
             time.sleep(0.025)
         
 
@@ -129,20 +138,25 @@ class IMUPub(Node):
         ang_vel = rate_gyr_x - self.gyro_bias
 
         #Calculate heading
-        mag_heading = math.degrees(math.atan2(-MAGz,-MAGy))
-        
+        mag_heading = math.degrees(math.atan2(MAGz,-MAGy))
         mag_heading += self.declination
-
+        # if mag_heading > 180: mag_heading -= 360
+        # elif mag_heading < -180: mag_heading += 360
+        
+        
         if self.heading == MAX_DATA:
             prev_heading = mag_heading #Initialize gyro to mag heading if not already
         else:
             prev_heading = math.degrees(math.atan2(self.avg_data[0,3],self.avg_data[0,2]))
         #Complementary filter 
         self.gyro_heading = prev_heading + ang_vel*self.timer_period
-        if self.gyro_heading > 180: self.gyro_heading -= 360
-        elif self.gyro_heading < -180: self.gyro_heading += 360
+        # if self.gyro_heading > 180: self.gyro_heading -= 360
+        # elif self.gyro_heading < -180: self.gyro_heading += 360
 
         innovation = mag_heading-self.gyro_heading
+        if innovation > 180: innovation -= 360
+        elif innovation < -180: innovation += 360
+
         heading = math.radians(self.gyro_heading + K*innovation)
         self.gyro_bias -= E/self.timer_period*innovation
         headingx = math.cos(heading) #split heading into unit vector to be averaged to prevent bounding errors
@@ -159,7 +173,7 @@ class IMUPub(Node):
         self.heading = math.atan2(headingy,headingx)
         # print(self.heading, math.radians(self.omega))
 
-        # self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,self.heading))
+        # self.get_logger().info("Gyro: %5.3f  Mag: %5.3f  CF: %5.3f" %(self.gyro_heading,mag_heading,math.degrees(self.heading)))
         # print(self.omega)
 
         imu_msg = Imu()
