@@ -42,19 +42,19 @@ class IMUPub(Node):
 
         self.declination = -214.1/1000 * RAD_TO_DEG #calculated at Worcester (-214 milliradians)
 
-        self.magXmin = -1089 #Previous Calibration values of magnetometer at +/- 8 gauss
-        self.magYmin = -1203
-        self.magZmin = -901
-        self.magXmax = 1279
-        self.magYmax = 498
-        self.magZmax = 808
+        # self.magXmin = -1089 #Previous Calibration values of magnetometer at +/- 8 gauss
+        # self.magYmin = -1203
+        # self.magZmin = -901
+        # self.magXmax = 1279
+        # self.magYmax = 498
+        # self.magZmax = 808
 
         self.magXmin = -627 #Previous Calibration values of magnetometer at +/- 8 gauss
         self.magYmin = -449
-        self.magZmin = -230
+        self.magZmin = -250
         self.magXmax = -568
         self.magYmax = -77
-        self.magZmax = 194
+        self.magZmax = 202
 
         self.avg_data = MAX_DATA*np.ones((20,4)) #Acc, Gyro, X-heading, Y-heading
 
@@ -73,8 +73,6 @@ class IMUPub(Node):
         self.prev_time = self.get_clock().now()
         self.heading = MAX_DATA
         self.gyro_bias = 0
-        self.mag_cal = np.zeros((1000,2))
-        self.i = 0
         # self.calibrate_Mag()
 
     def destroy_node(self,msg):
@@ -140,13 +138,6 @@ class IMUPub(Node):
 
         #Calculate heading
         mag_heading = math.degrees(math.atan2(MAGz,-MAGy))
-        if self.i < 1000:
-            self.mag_cal[self.i,:] = [MAGy,MAGz]
-            self.i += 1
-        elif self.i == 1000:
-            np.savetxt('mag_cal.csv',self.mag_cal)
-            print("done\n")
-            self.i += 1
         print(MAGy, MAGz,mag_heading)
         mag_heading += self.declination
         
