@@ -20,7 +20,7 @@ class ObjectSelector(Node):
 
         self.image_width = 640
         self.image_height = 480
-        self.image_size = self.dist(self.image_width, self.image_height)
+        # self.image_size = self.dist(self.image_width, self.image_height)
 
         self.state = self.State.SEARCHING
         self.target = None
