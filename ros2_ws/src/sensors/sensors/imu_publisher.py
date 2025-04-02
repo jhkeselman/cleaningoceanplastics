@@ -129,7 +129,6 @@ class IMUPub(Node):
         ang_vel = rate_gyr_x - self.gyro_bias
 
         #Calculate heading
-        print(MAGx, MAGy, MAGz)
         mag_heading = math.degrees(math.atan2(-MAGz,-MAGy))
         
         mag_heading += self.declination
@@ -183,6 +182,8 @@ class IMUPub(Node):
         self.pub.publish(imu_msg)
         self.write_esp() #waiting until we have a plan to interpret
 
+        print(MAGx, MAGy, MAGz, self.heading)
+
     def calc_avg(self):
         avg_data = np.zeros(4)
         elements = np.zeros(4)
@@ -202,6 +203,8 @@ class IMUPub(Node):
             self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
         except:
             self.get_logger().info("Failed to send value")
+        
+        
         
         # NOTE DEBUG: Read the motor values
         try:
