@@ -25,7 +25,7 @@ class PIDDebug(Node):
 
     def process_key(self, key):
         data = 0
-        
+        print(key[1:])
         # 2 is P, 3 is I, 4 is D
         if key[0] == 'p':
             data = struct.pack('if',2,key[1:])
@@ -34,7 +34,7 @@ class PIDDebug(Node):
         elif key[0] == 'd':
             data = struct.pack('if',4,key[1:])
         
-        print(key[1:])
+        
         # Compile into byte list and send over
         # byte_list = list(data)
         # try:
