@@ -42,13 +42,6 @@ class IMUPub(Node):
 
         self.declination = -214.1/1000 * RAD_TO_DEG #calculated at Worcester (-214 milliradians)
 
-        # self.magXmin = -1261 #Previous Calibration values of magnetometer at +/- 8 gauss
-        # self.magYmin = -2286
-        # self.magZmin = -2048
-        # self.magXmax = 2465
-        # self.magYmax = 1529
-        # self.magZmax = 1822
-
         self.magXmin = -1089 #Previous Calibration values of magnetometer at +/- 8 gauss
         self.magYmin = -1203
         self.magZmin = -901
@@ -81,6 +74,13 @@ class IMUPub(Node):
 
 
     def calibrate_Mag(self): #NOT USED, BUT TO CALIBRATE AGAINST HARD IRON DISTORTION
+        self.magXmin = MAX_DATA #Resets calibrated values
+        self.magYmin = MAX_DATA
+        self.magZmin = MAX_DATA
+        self.magXmax = -MAX_DATA
+        self.magYmax = -MAX_DATA
+        self.magZmax = -MAX_DATA
+
         while True:
             MAGx = readMAGx()
             MAGy = readMAGy()
