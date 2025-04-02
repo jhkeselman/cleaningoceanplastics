@@ -140,11 +140,13 @@ class IMUPub(Node):
 
         #Calculate heading
         mag_heading = math.degrees(math.atan2(MAGz,-MAGy))
-        self.mag_cal[self.i,:] = [MAGy,MAGz]
-        self.i += 1
-        if self.i == 1000:
+        if self.i < 1000:
+            self.mag_cal[self.i,:] = [MAGy,MAGz]
+            self.i += 1
+        elif self.i == 1000:
             np.savetxt('mag_cal.csv',self.mag_cal)
             print("done\n")
+            self.i += 1
         print(MAGy, MAGz,mag_heading)
         mag_heading += self.declination
         
