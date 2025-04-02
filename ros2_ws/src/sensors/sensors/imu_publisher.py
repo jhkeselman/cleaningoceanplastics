@@ -49,6 +49,13 @@ class IMUPub(Node):
         self.magYmax = 498
         self.magZmax = 808
 
+        self.magXmin = -627 #Previous Calibration values of magnetometer at +/- 8 gauss
+        self.magYmin = -449
+        self.magZmin = -230
+        self.magXmax = -568
+        self.magYmax = -77
+        self.magZmax = 194
+
         self.avg_data = MAX_DATA*np.ones((20,4)) #Acc, Gyro, X-heading, Y-heading
 
         self.emergency_stop = self.create_subscription(
