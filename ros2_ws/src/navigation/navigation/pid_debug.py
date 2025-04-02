@@ -25,7 +25,7 @@ class PIDDebug(Node):
 
     def process_key(self, key):
         data = 0
-        print(key[1:])
+        print(key, key[1:])
         # 2 is P, 3 is I, 4 is D
         if key[0] == 'p':
             data = struct.pack('if',2,key[1:])
