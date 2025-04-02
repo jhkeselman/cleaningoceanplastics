@@ -157,7 +157,7 @@ class IMUPub(Node):
         mag_sin = math.sin(math.radians(mag_heading))
         mag_cos = math.cos(math.radians(mag_heading))
 
-        error = math.degrees(math.atan2((mag_sin-gyro_sin),(mag_cos-gyro_sin)))
+        error = math.degrees(math.atan2((mag_sin-gyro_sin),(mag_cos-gyro_cos)))
 
         innovation = mag_heading-self.gyro_heading
 
