@@ -129,9 +129,10 @@ class IMUPub(Node):
 
         #Calculate heading
         mag_heading = math.degrees(math.atan2(MAGz,-MAGy))
-        
+        print(MAGy, MAGz,mag_heading)
         mag_heading += self.declination
 
+        
         if self.heading == MAX_DATA:
             prev_heading = mag_heading #Initialize gyro to mag heading if not already
         else:
