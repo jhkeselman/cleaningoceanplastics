@@ -156,6 +156,8 @@ class IMUPub(Node):
         headingx = math.cos(heading) #split heading into unit vector to be averaged to prevent bounding errors
         headingy = math.sin(heading)
 
+        print(self.gyro_heading,mag_heading,math.degrees(heading))
+
         self.acc_bias = 0.27 #experimentally found but should be updated #-0.2 for Z axis
         self.avg_data = np.roll(self.avg_data,axis=0,shift=1) #shift moving average data by one and then store current reading
         self.avg_data[0,0] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
@@ -163,7 +165,7 @@ class IMUPub(Node):
         self.avg_data[0,2] = headingx
         self.avg_data[0,3] = headingy
 
-        print(self.calc_avg(),mag_heading)
+        # print(self.calc_avg(),mag_heading)
         self.acceleration, self.omega, headingx, headingy = self.calc_avg()
         self.heading = math.atan2(headingy,headingx)
         # print(self.heading, math.radians(self.omega))
