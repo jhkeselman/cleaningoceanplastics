@@ -139,6 +139,8 @@ class IMUPub(Node):
         #Calculate heading
         mag_heading = math.degrees(math.atan2(MAGz,-MAGy))
         mag_heading += self.declination
+        if mag_heading > 180: mag_heading -= 360
+        elif mag_heading < -180: mag_heading += 360
         
         
         if self.heading == MAX_DATA:
