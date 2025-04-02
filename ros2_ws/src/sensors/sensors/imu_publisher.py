@@ -74,6 +74,7 @@ class IMUPub(Node):
         self.heading = MAX_DATA
         self.gyro_bias = 0
         self.mag_cal = np.zeros((2000,2))
+        self.i = 0
         # self.calibrate_Mag()
 
     def destroy_node(self,msg):
@@ -126,9 +127,9 @@ class IMUPub(Node):
         MAGz = readMAGz()
         
 
-        MAGx -= (self.magXmin + self.magXmax) /2 #SHIFT MAGNETOMETER BACK TO ORIGIN to componsate for hard iron distortion
-        MAGy -= (self.magYmin + self.magYmax) /2
-        MAGz -= (self.magZmin + self.magZmax) /2
+        # MAGx -= (self.magXmin + self.magXmax) /2 #SHIFT MAGNETOMETER BACK TO ORIGIN to componsate for hard iron distortion
+        # MAGy -= (self.magYmin + self.magYmax) /2
+        # MAGz -= (self.magZmin + self.magZmax) /2
 
         #Convert Gyro raw to degrees per second
         rate_gyr_x =  -GYRx * G_GAIN #current gryoscope is mounted with yaw (x) downwards
@@ -139,7 +140,11 @@ class IMUPub(Node):
 
         #Calculate heading
         mag_heading = math.degrees(math.atan2(MAGz,-MAGy))
-        np.savetxt('mag_cal.csv',self.mag_cal)
+        self.mag_cal[self.i,:] = [MAGy,MAGz]
+        self.i += 1
+        if self.i == 2000:
+            np.savetxt('mag_cal.csv',self.mag_cal)
+            print("done\n")
         print(MAGy, MAGz,mag_heading)
         mag_heading += self.declination
         
