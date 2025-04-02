@@ -125,9 +125,9 @@ class IMUPub(Node):
         MAGz = readMAGz()
         
 
-        # MAGx -= (self.magXmin + self.magXmax) /2 #SHIFT MAGNETOMETER BACK TO ORIGIN to componsate for hard iron distortion
-        # MAGy -= (self.magYmin + self.magYmax) /2
-        # MAGz -= (self.magZmin + self.magZmax) /2
+        MAGx -= (self.magXmin + self.magXmax) /2 #SHIFT MAGNETOMETER BACK TO ORIGIN to componsate for hard iron distortion
+        MAGy -= (self.magYmin + self.magYmax) /2
+        MAGz -= (self.magZmin + self.magZmax) /2
 
         #Convert Gyro raw to degrees per second
         rate_gyr_x =  -GYRx * G_GAIN #current gryoscope is mounted with yaw (x) downwards
