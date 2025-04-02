@@ -25,7 +25,7 @@ class PIDDebug(Node):
                 self.process_key(key)
 
     def process_key(self, key):
-        data = 0
+        data = None
         # 2 is P, 3 is I, 4 is D
         if key[0] == 'p':
             data = struct.pack('if',2,float(key[1:]))
@@ -34,14 +34,12 @@ class PIDDebug(Node):
         elif key[0] == 'd':
             data = struct.pack('if',4,float(key[1:]))
         
-        print(data)
-        
-        # try:
-        # Compile into byte list and send over
-        byte_list = list(data)
-        self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
-        # except:
-        #     self.get_logger().info("Failed to send value")
+        try:
+            # Compile into byte list and send over
+            byte_list = list(data)
+            self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
+        except:
+            self.get_logger().info("Failed to send value")
 
 
     def destroy_node(self):
