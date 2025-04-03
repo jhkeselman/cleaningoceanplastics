@@ -21,9 +21,8 @@ class ObjectSelector(Node):
         xCenters = []
         yCenters = []
         for object in objects:
-            print(object)
-            # components = object.split(" ")
-            # print(components)
+            components = object.split(", ")
+            print(components)
             # object_type = components[0]
             # confidence = components[1]
             # x1 = components[2]
