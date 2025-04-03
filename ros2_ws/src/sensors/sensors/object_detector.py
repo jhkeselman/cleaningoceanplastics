@@ -17,7 +17,7 @@ class ObjectDetector(Node):
             self.destroy_node()
             return
         
-        self.save_video = True # Set to False to disable video recording
+        self.save_video = False # Set to False to disable video recording
 
         if self.save_video:
             frame_width = int(self.cap.get(3))
@@ -41,7 +41,7 @@ class ObjectDetector(Node):
         ret, frame = self.cap.read()
         if ret:
             frame = cv2.flip(frame, 0)
-            results = self.model(frame, verbose=True)
+            results = self.model(frame, verbose=False)
 
             publishString = String()
             objectStrings = ""
