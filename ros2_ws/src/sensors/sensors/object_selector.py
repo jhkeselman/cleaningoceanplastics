@@ -21,7 +21,7 @@ class ObjectSelector(Node):
         xCenters = []
         yCenters = []
         print(f"Objects: {objects}")
-        if len(objects) > 0:
+        if objects != ['']:
             for object in objects:
                 components = object.split(", ")
                 print(components)
