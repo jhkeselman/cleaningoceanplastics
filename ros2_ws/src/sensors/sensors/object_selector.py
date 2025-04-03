@@ -26,15 +26,19 @@ class ObjectSelector(Node):
                 object_type = components[0]
                 confidence = components[1]
                 x1 = components[2]
+                print(x1)
                 y1 = components[3]
+                print(y1)
                 x2 = components[4]
+                print(x2)
                 y2 = components[5]
-                xCenters.append(np.mean(np.array([x1, x2])))
-                yCenters.append(np.mean(np.array([y1, y2])))
+                print(y2)
+                # xCenters.append(np.mean(np.array([x1, x2])))
+                # yCenters.append(np.mean(np.array([y1, y2])))
 
-            x = np.mean(np.array(xCenters))
-            y = np.mean(np.array(yCenters))
-            print(f"Mass center: ({x}, {y})")
+            # x = np.mean(np.array(xCenters))
+            # y = np.mean(np.array(yCenters))
+            # print(f"Mass center: ({x}, {y})")
 
 
 def main(args=None):
