@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from ultralytics import YOLO
-from std_msgs.msg import String
+from std_msgs.msg import String, Float64MultiArray
 import cv2
 import time
 
@@ -34,16 +34,14 @@ class ObjectDetector(Node):
         timer_period = 0.1  # seconds
         self.timer = self.create_timer(timer_period, self.process_image)
 
+        self.centroid_listener = self.create_subscription(Float64MultiArray, 'centroid', self.publish_centroid, 10)
+        self.centroid = [320, 240]
+
     def process_image(self):
         ret, frame = self.cap.read()
         if ret:
             frame = cv2.flip(frame, 0)
             results = self.model(frame, verbose=True)
-
-            if self.save_video:
-                annotated_frame = results[0].plot()  # YOLO outputs annotated images with .plot()
-                self.out.write(frame)
-                cv2.imshow("Real-Time Detection w/ YOLO", annotated_frame)
 
             publishString = String()
             objectStrings = ""
@@ -62,7 +60,17 @@ class ObjectDetector(Node):
             if objectStrings != "":
                 publishString.data = objectStrings
             self.detection_pub.publish(publishString)
+
+            if self.save_video:
+                annotated_frame = results[0].plot()  # YOLO outputs annotated images with .plot()
+                self.out.write(frame)
+                cv2.circle(annotated_frame, self.centroid, 5, (0, 0, 255), -1)
+                cv2.imshow("Real-Time Detection w/ YOLO", annotated_frame)
+            
             cv2.waitKey(1)
+
+    def publish_centroid(self, msg):
+        self.centroid = msg.data
         
 
     def destroy_node(self):

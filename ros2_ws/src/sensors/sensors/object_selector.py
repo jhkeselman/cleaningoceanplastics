@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import String
+from std_msgs.msg import String, Float64MultiArray
 from enum import Enum
 import statistics
 
@@ -12,7 +12,8 @@ class ObjectSelector(Node):
 
         self.image_width = 640
         self.image_height = 480
-        # self.image_size = self.dist(self.image_width, self.image_height)
+
+        self.centroid_publisher = self.create_publisher(Float64MultiArray, 'centroid', 10)
 
     def listener_callback(self, msg):
         data = msg.data
@@ -34,7 +35,11 @@ class ObjectSelector(Node):
 
             x = statistics.mean(xCenters)
             y = statistics.mean(yCenters)
-            print(f"Mass center: ({x}, {y})")
+
+            msg = Float64MultiArray()
+            msg.data = [x, y]
+            self.centroid_publisher.publish(msg)
+            self.get_logger().info(f"Centroid: {x}, {y}")
 
 
 def main(args=None):
