@@ -2,7 +2,7 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
 from enum import Enum
-import numpy as np
+import statistics
 
 class ObjectSelector(Node):
     def __init__(self):
@@ -26,15 +26,11 @@ class ObjectSelector(Node):
                 object_type = components[0]
                 confidence = components[1]
                 x1 = components[2]
-                print(x1)
                 y1 = components[3]
-                print(y1)
                 x2 = components[4]
-                print(x2)
                 y2 = components[5]
-                print(y2)
-                # xCenters.append(np.mean(np.array([x1, x2])))
-                # yCenters.append(np.mean(np.array([y1, y2])))
+                xCenters.append(statistics.mean([x1, x2]))
+                yCenters.append(statistics.mean([y1, y2]))
 
             # x = np.mean(np.array(xCenters))
             # y = np.mean(np.array(yCenters))
