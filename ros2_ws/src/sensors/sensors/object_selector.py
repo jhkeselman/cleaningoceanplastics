@@ -4,14 +4,6 @@ from std_msgs.msg import String
 from enum import Enum
 import numpy as np
 
-class State(Enum):
-        SEARCHING = 1
-        MOVING = 2
-
-class Waste(Enum):
-    BOTTLE = 10
-    BAG = 9
-
 class ObjectSelector(Node):
     def __init__(self):
         super().__init__('object_selector')
@@ -21,9 +13,6 @@ class ObjectSelector(Node):
         self.image_width = 640
         self.image_height = 480
         # self.image_size = self.dist(self.image_width, self.image_height)
-
-        self.state = self.State.SEARCHING
-        self.target = None
 
     def listener_callback(self, msg):
         data = msg.data
@@ -44,7 +33,7 @@ class ObjectSelector(Node):
 
         x = np.mean(xCenters)
         y = np.mean(yCenters)
-        self.get_logger().info(f"Mass center: ({x}, {y})")
+        print(f"Mass center: ({x}, {y})")
 
 
 def main(args=None):
