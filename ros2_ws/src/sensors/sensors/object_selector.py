@@ -20,17 +20,18 @@ class ObjectSelector(Node):
         self.get_logger().info("New detections")
         xCenters = []
         yCenters = []
-        for object in objects:
-            components = object.split(", ")
-            print(components)
-            # object_type = components[0]
-            # confidence = components[1]
-            # x1 = components[2]
-            # y1 = components[3]
-            # x2 = components[4]
-            # y2 = components[5]
-            # xCenters.append(np.mean([x1, x2]))
-            # yCenters.append(np.mean([y1, y2]))
+        if len(objects) != None:
+            for object in objects:
+                components = object.split(", ")
+                print(components)
+                object_type = components[0]
+                confidence = components[1]
+                # x1 = components[2]
+                # y1 = components[3]
+                # x2 = components[4]
+                # y2 = components[5]
+                # xCenters.append(np.mean([x1, x2]))
+                # yCenters.append(np.mean([y1, y2]))
 
         # x = np.mean(xCenters)
         # y = np.mean(yCenters)
