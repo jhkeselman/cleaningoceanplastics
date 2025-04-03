@@ -32,9 +32,9 @@ class ObjectSelector(Node):
                 xCenters.append(np.mean([x1, x2]))
                 yCenters.append(np.mean([y1, y2]))
 
-        x = np.mean(xCenters)
-        y = np.mean(yCenters)
-        print(f"Mass center: ({x}, {y})")
+            x = np.mean(xCenters)
+            y = np.mean(yCenters)
+            print(f"Mass center: ({x}, {y})")
 
 
 def main(args=None):
