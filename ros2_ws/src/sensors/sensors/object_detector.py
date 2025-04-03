@@ -64,7 +64,8 @@ class ObjectDetector(Node):
             if self.save_video:
                 annotated_frame = results[0].plot()  # YOLO outputs annotated images with .plot()
                 self.out.write(frame)
-                cv2.circle(annotated_frame, self.centroid, 5, (0, 0, 255), -1)
+                cx, cy = map(int, self.centroid)
+                cv2.circle(annotated_frame, (cx, cy), 5, (0,0,255), -1)
                 cv2.imshow("Real-Time Detection w/ YOLO", annotated_frame)
             
             cv2.waitKey(1)
