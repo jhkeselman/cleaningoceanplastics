@@ -108,7 +108,6 @@ class IMUPub(Node):
             if MAGz < self.magZmin:
                 self.magZmin = MAGz
 
-            print(self.magXmax,self.magYmax,self.magZmax,self.magXmin,self.magYmin,self.magZmin)
             time.sleep(0.025)
         
 
@@ -221,13 +220,13 @@ class IMUPub(Node):
         
         
         # NOTE DEBUG: Read the motor values
-        try:
-            data = self.bus.read_i2c_block_data(self.I2C_address, 0, 8)
-            currentLeft, currentRight = struct.unpack('ff', bytes(data)) # 8 bytes of data (2 floats)
-            currentLeft, currentRight = round(currentLeft, 2), round(currentRight, 2)
-            # print(currentLeft, currentRight, self.heading)
-        except:
-            self.get_logger().info("Failed to read value")
+        # try:
+        #     data = self.bus.read_i2c_block_data(self.I2C_address, 0, 8)
+        #     currentLeft, currentRight = struct.unpack('ff', bytes(data)) # 8 bytes of data (2 floats)
+        #     currentLeft, currentRight = round(currentLeft, 2), round(currentRight, 2)
+        #     # print(currentLeft, currentRight, self.heading)
+        # except:
+        #     self.get_logger().info("Failed to read value")
 
 
 def main(args=None):
