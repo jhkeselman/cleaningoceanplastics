@@ -29,8 +29,8 @@ class ObjectSelector(Node):
                 y1 = components[3]
                 x2 = components[4]
                 y2 = components[5]
-                xCenters.append(statistics.mean([x1, x2]))
-                yCenters.append(statistics.mean([y1, y2]))
+                xCenters.append(statistics.mean([float(x1), float(x2)]))
+                yCenters.append(statistics.mean([float(y1), float(y2)]))
 
             # x = np.mean(np.array(xCenters))
             # y = np.mean(np.array(yCenters))
