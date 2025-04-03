@@ -20,7 +20,8 @@ class ObjectSelector(Node):
         self.get_logger().info("New detections")
         xCenters = []
         yCenters = []
-        if len(objects) != None:
+        print(f"Objects: {objects}")
+        if len(objects) > 0:
             for object in objects:
                 components = object.split(", ")
                 print(components)
