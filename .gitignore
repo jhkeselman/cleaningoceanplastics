@@ -5,3 +5,4 @@ ros2_ws/build/
 
 # Ignore rosbag data and videos directory
 ros2_ws/rosbag_data
+*.mp4
