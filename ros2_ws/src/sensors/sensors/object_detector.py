@@ -11,7 +11,7 @@ class ObjectDetector(Node):
 
         # Path on Pi
         self.model = YOLO('/home/pi2/cleaningoceanplastics/ros2_ws/src/sensors/resource/bestv12.pt')
-        self.cap = cv2.VideoCapture(1)
+        self.cap = cv2.VideoCapture(0)
         if not self.cap.isOpened():
             self.get_logger().error("Error: Could not open webcam.")
             self.destroy_node()
