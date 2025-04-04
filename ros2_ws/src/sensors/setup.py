@@ -28,11 +28,7 @@ setup(
             'imu_pub = sensors.imu_publisher:main',
             'object_detector = sensors.object_detector:main',
             'object_selector = sensors.object_selector:main',
-            'imu_srv = sensors.imu_service:main',
-            'imu_cli = sensors.imu_client:main',
             'kalman = sensors.Kalman_service:main',
-            'gps_srv = sensors.fix_service:main',
-            'gps_cli = sensors.gps_client:main',
             'gps_pub = sensors.fix_publisher:main'
         ],
     },
