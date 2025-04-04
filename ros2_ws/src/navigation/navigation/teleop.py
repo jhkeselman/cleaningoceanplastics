@@ -73,7 +73,7 @@ class Teleop(Node):
         self.speed_publisher.publish(msg)
     
 
-    def destroy_node(self):
+    def destroy_node(self,msg):
         time.sleep(0.1)
         super().destroy_node()
 
