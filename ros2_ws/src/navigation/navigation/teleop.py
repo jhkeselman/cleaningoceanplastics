@@ -18,6 +18,13 @@ class Teleop(Node):
         self.left_value = 0
         self.right_value = 0
 
+        self.emergency_stop = self.create_subscription(
+            Bool,
+            'emergency_stop',
+            self.destroy_node,
+            10
+        )
+
     def check_input(self):
         if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
             key = sys.stdin.read(1)
