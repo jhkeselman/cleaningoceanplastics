@@ -19,9 +19,6 @@ setup(
     maintainer_email='pi2@todo.todo',
     description='TODO: Package description',
     license='Apache-2.0',
-    py_modules=[
-        'sensors.IMU_lib',  # Path to IMU_lib.py
-    ],
     entry_points={
         'console_scripts': [
             'water_sensor = sensors.water_sensor:main',
