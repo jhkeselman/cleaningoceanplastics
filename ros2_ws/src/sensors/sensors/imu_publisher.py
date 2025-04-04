@@ -195,7 +195,7 @@ class IMUPub(Node):
         self.pub.publish(imu_msg)
         self.write_esp() #waiting until we have a plan to interpret
 
-        print(MAGx, MAGy, MAGz, self.heading)
+        # print(MAGx, MAGy, MAGz, self.heading)
 
     def calc_avg(self):
         avg_data = np.zeros(4)
