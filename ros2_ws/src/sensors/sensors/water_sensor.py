@@ -5,6 +5,8 @@ from std_msgs.msg import Bool
 
 from gpiozero import DigitalInputDevice
 
+import os, time
+
 class WaterSensor(Node):
 
     def __init__(self):
@@ -41,6 +43,11 @@ class WaterSensor(Node):
             self.get_logger().info('Publishing: "%s"' % msg.data)
             self.i += 1
             self.prev = status
+
+            time.sleep(1)
+            os.system('sudo shutdown -h now')
+
+
 
 
 def main(args=None):

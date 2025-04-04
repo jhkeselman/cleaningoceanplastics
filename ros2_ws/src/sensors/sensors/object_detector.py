@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from ultralytics import YOLO
-from std_msgs.msg import String, Float64MultiArray
+from std_msgs.msg import String, Float64MultiArray, Bool
 import cv2
 import time
 
@@ -36,6 +36,13 @@ class ObjectDetector(Node):
 
         self.centroid_listener = self.create_subscription(Float64MultiArray, 'centroid', self.publish_centroid, 10)
         self.centroid = [320, 240]
+
+        self.emergency_stop = self.create_subscription(
+            Bool,
+            'emergency_stop',
+            self.destroy_node,
+            10
+        )
 
     def process_image(self):
         ret, frame = self.cap.read()
@@ -74,7 +81,7 @@ class ObjectDetector(Node):
         self.centroid = msg.data
         
 
-    def destroy_node(self):
+    def destroy_node(self,msg):
         if self.cap.isOpened():
             self.cap.release()
             if self.save_video:
