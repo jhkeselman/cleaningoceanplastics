@@ -1,11 +1,13 @@
-import rclpy
+import rclpy, os, time
 from rclpy.node import Node
-
 from std_msgs.msg import Bool
 
 from gpiozero import DigitalInputDevice
 
-import os, time
+# This node interfaces with the water sensor on the robot.
+# It listens for a HIGH signal detecting water and publishes an emergency stop signal to all nodes.
+# Publishers: 'emergency_stop'
+# Subscribers: ''
 
 class WaterSensor(Node):
 
