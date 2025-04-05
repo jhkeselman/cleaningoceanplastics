@@ -23,9 +23,20 @@ class Autonomous(Node):
             10
         )
 
+        self.no_centroid_timer = None
+        self.no_centroid_timer = self.reset_timer()
+
+    def reset_timer(self):
+        if self.missing_centroid_timer:
+            self.missing_centroid_timer.cancel()
+
+        self.missing_centroid_timer = self.create_timer(5.0, self.handle_missing_centroid)
+
     def update_heading(self, msg):
         x = msg.data[0]
         y = msg.data[1]
+
+        self.reset_timer()
 
         x_error = x - self.x_center
         y_error = self.y_max - y
@@ -41,6 +52,9 @@ class Autonomous(Node):
 
         self.publish_speed(left_speed, right_speed)
 
+    def handle_missing_centroid(self):
+        self.publish_speed(0.1, -0.1)
+
 
     def publish_speed(self, left_value, right_value):
         msg = Float32MultiArray()
@@ -48,6 +62,7 @@ class Autonomous(Node):
         self.speed_publisher.publish(msg)
     
     def destroy_node(self, msg):
+        self.publish_speed(0, 0)
         time.sleep(0.1)
         super().destroy_node()
 
