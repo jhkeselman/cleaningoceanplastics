@@ -24,9 +24,17 @@ class ObjectDetector(Node):
             self.destroy_node()
             return
         
+        # Flag to control displaying the video
+        # Set to True to enable video display
+        self.show_video = True
+
         # Flag to control saving the video to a file
         # Set to True to enable video recording
-        self.save_video = False # Set to False to disable video recording
+        self.save_video = False
+
+        # Flag to control saving annotated vs. unannotated video
+        # Set to True to save the annotated video
+        self.save_annotated = False
 
         # If video recording is enabled, set up the video writer
         # The video will be saved in the current directory labeled with the current timestamp as an .mp4 file (ignored by .gitignore)
@@ -99,12 +107,19 @@ class ObjectDetector(Node):
                 publishString.data = objectStrings
                 self.detection_pub.publish(publishString)
 
+
+            # Annotate the frame with bounding boxes and labels
+            annotated_frame = results[0].plot()
             # If video recording is enabled, write the frame to the video file
             if self.save_video:
-                # YOLO outputs annotated images with .plot()
-                annotated_frame = results[0].plot()  
-                # Save the annotated frame to the video file
-                self.out.write(frame)
+                if self.save_annotated:
+                    # Save the annotated frame to the video file
+                    self.out.write(annotated_frame)
+                else:
+                    # Save the raw frame to the video file
+                    self.out.write(frame)
+            # If video display is enabled, show the annotated frame
+            if self.show_video:
                 # Display the annotated frame (with labeled bounding boxes) and the centroid of the detected items
                 cx, cy = map(int, self.centroid)
                 cv2.circle(annotated_frame, (cx, cy), 5, (0,0,255), -1)
