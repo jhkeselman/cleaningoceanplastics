@@ -27,7 +27,7 @@ class Teleop(Node):
         self.right_value = 0
 
         # Subscription to emergency stop topic
-        # If emergency stop is triggered, the node will be destroyed and both motors will be stopped
+        # If emergency stop is triggered, the node will be destroyed
         self.emergency_stop = self.create_subscription(
             Bool,
             'emergency_stop',
