@@ -14,7 +14,9 @@ import select
 class Teleop(Node):
     def __init__(self):
         super().__init__('teleop')
+
         # Publisher for motor speeds
+        # Message type: Float32MultiArray
         self.speed_publisher = self.create_publisher(Float32MultiArray, 'set_motor_speeds', 10)
         
         # Timer to check for keyboard inputs every 0.1 seconds
@@ -105,7 +107,6 @@ class Teleop(Node):
     # Publish the motor speed values to the 'set_motor_speeds' topic
     # The message contains two float values representing the left and right motor speeds
     # The values are in the range -1 to 1, where 0 is stop, positive values are forward, and negative values are backward
-    # The message type is Float32MultiArray
     def publish_speed(self):
         msg = Float32MultiArray()
         msg.data = [self.left_value, self.right_value]
