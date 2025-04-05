@@ -1,5 +1,0 @@
-#IMU_data.srv
----
-float64 heading
-float64 acceleration
-float64 omega

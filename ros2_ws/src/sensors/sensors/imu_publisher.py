@@ -15,7 +15,7 @@ import numpy as np
 import smbus
 import struct
 
-from .IMU_lib import *
+from .utils.IMU_lib import *
 
 RAD_TO_DEG = 57.29578
 M_PI = 3.14159265358979323846
@@ -195,7 +195,7 @@ class IMUPub(Node):
         self.pub.publish(imu_msg)
         self.write_esp() #waiting until we have a plan to interpret
 
-        print(MAGx, MAGy, MAGz, self.heading)
+        # print(MAGx, MAGy, MAGz, self.heading)
 
     def calc_avg(self):
         avg_data = np.zeros(4)
