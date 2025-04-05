@@ -9,7 +9,7 @@ import sys
 import time
 
 
-class MotorControllerNode(Node):
+class MotorController(Node):
     def __init__(self):
         super().__init__('motor_controller')
 
@@ -75,7 +75,7 @@ class MotorControllerNode(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    motor_controller = MotorControllerNode()
+    motor_controller = MotorController()
     try:
         rclpy.spin(motor_controller)
     except KeyboardInterrupt:
