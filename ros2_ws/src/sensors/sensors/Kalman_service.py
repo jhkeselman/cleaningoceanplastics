@@ -17,7 +17,7 @@ W_RADIUS = 6371000 #radius of earth in m
 CEP = 2.5 #Circular error probable from Ozzmaker website
 AVERAGE = 10 #Number of values for gps before beginning
 MASS = 23 #NEED VALUES
-DRAG = 20 #ESTIMATE
+DRAG = 100 #ESTIMATE
 ROT_DRAG = 100 #drag increased by 500% for rotation
 INERTIA = 5.35  #Inertia from Solidworks model in Kg/m^2
 R = 0.31875 #radius from center of robot to motor
@@ -173,7 +173,7 @@ class KalmanService(Node):
 
     def calc_dist(self,fix):
         dx = W_RADIUS*(math.radians(fix.longitude) - self.first_fix[1])*self.first_fix[2] #Uses equirectangular projection to determine x,y distance from origin
-        dy = W_RADIUS*(math.radians(fix.latitude) - self.first_fix[0])
+        dy = W_RADIUS*(-math.radians(fix.latitude) + self.first_fix[0]) #dy is flipped because we want y axis to point west
         return [dx,dy]
     
     def calc_covariance(self,fix):
