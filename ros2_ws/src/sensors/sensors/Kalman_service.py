@@ -133,9 +133,9 @@ class KalmanService(Node):
             if elements:
                 self.acc_bias = self.acc_bias/elements
             self.bias_i = AVERAGE + 1
-            print(self.acc_bias)
+            # print(self.acc_bias)
         acc -= self.acc_bias
-        print(self.acc_bias, acc)
+        # print(self.acc_bias, acc)
         self.sensor_data[2:5,0] = [acc,yaw,omega]
         # print(self.sensor_data)
         # self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(yaw, acc, omega))
@@ -158,7 +158,7 @@ class KalmanService(Node):
                 gps_covariance = self.calc_covariance(msg)
                 self.Q[0,0] = gps_covariance[0]
                 self.Q[1,1] = gps_covariance[1]
-                self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
+                # self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
                 self.avg_i += 1
                 self.gps_ready = True
             else: 
