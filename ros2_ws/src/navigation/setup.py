@@ -21,9 +21,9 @@ setup(
     license='TODO: License declaration',
     entry_points={
         'console_scripts': [
-            'control = navigation.control:main',
             'motor_control = navigation.motor_controller:main',
-            'teleop = navigation.teleop:main'
+            'teleop = navigation.teleop:main',
+            'pid_debug = navigation.pid_debug:main'
         ],
     },
 )
