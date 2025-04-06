@@ -1,0 +1,45 @@
+running egg_info
+creating ../build/navigation/navigation.egg-info
+writing ../build/navigation/navigation.egg-info/PKG-INFO
+writing dependency_links to ../build/navigation/navigation.egg-info/dependency_links.txt
+writing entry points to ../build/navigation/navigation.egg-info/entry_points.txt
+writing requirements to ../build/navigation/navigation.egg-info/requires.txt
+writing top-level names to ../build/navigation/navigation.egg-info/top_level.txt
+writing manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'
+reading manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'
+writing manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build
+creating /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib
+creating /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation
+copying navigation/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation
+copying navigation/pid_debug.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation
+copying navigation/motor_controller.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation
+copying navigation/teleop.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation
+running install
+running install_lib
+creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation
+copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation
+copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation/pid_debug.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation
+copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation/motor_controller.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation
+copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation/teleop.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation
+byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation/pid_debug.py to pid_debug.cpython-312.pyc
+byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation/motor_controller.py to motor_controller.cpython-312.pyc
+byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation/teleop.py to teleop.cpython-312.pyc
+running install_data
+creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/ament_index
+creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/ament_index/resource_index
+creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/ament_index/resource_index/packages
+copying resource/navigation -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/ament_index/resource_index/packages
+copying package.xml -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/navigation
+creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/navigation/launch
+copying launch/teleop_launch.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/navigation/launch
+running install_egg_info
+Copying ../build/navigation/navigation.egg-info to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation-0.0.0-py3.12.egg-info
+running install_scripts
+Installing motor_control script to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/navigation
+Installing pid_debug script to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/navigation
+Installing teleop script to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/navigation
+writing list of installed files to '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/install.log'

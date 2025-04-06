@@ -1,0 +1,691 @@
+[0.000000] (-) TimerEvent: {}
+[0.002233] (navigation) JobQueued: {'identifier': 'navigation', 'dependencies': OrderedDict()}
+[0.002363] (sensors) JobQueued: {'identifier': 'sensors', 'dependencies': OrderedDict()}
+[0.002407] (services) JobQueued: {'identifier': 'services', 'dependencies': OrderedDict()}
+[0.002443] (navigation) JobStarted: {'identifier': 'navigation'}
+[0.037959] (sensors) JobStarted: {'identifier': 'sensors'}
+[0.051858] (services) JobStarted: {'identifier': 'services'}
+[0.101904] (-) TimerEvent: {}
+[0.202424] (-) TimerEvent: {}
+[0.303059] (-) TimerEvent: {}
+[0.403532] (-) TimerEvent: {}
+[0.503999] (-) TimerEvent: {}
+[0.605264] (-) TimerEvent: {}
+[0.705714] (-) TimerEvent: {}
+[0.806905] (-) TimerEvent: {}
+[0.907602] (-) TimerEvent: {}
+[1.008513] (-) TimerEvent: {}
+[1.109160] (-) TimerEvent: {}
+[1.209551] (-) TimerEvent: {}
+[1.311961] (-) TimerEvent: {}
+[1.365365] (services) JobProgress: {'identifier': 'services', 'progress': 'cmake'}
+[1.366680] (services) Command: {'cmd': ['/usr/bin/cmake', '/home/pi2/cleaningoceanplastics/ros2_ws/src/services', '-DCMAKE_INSTALL_PREFIX=/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services'], 'cwd': '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/services', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pi2', 'SSH_CLIENT': '192.168.1.2 54524 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/pi2', 'OLDPWD': '/home/pi2/cleaningoceanplastics/ros2_ws/src/sensors', 'SSH_TTY': '/dev/pts/3', 'ROS_PYTHON_VERSION': '3', 'PS1': '\\u@\\h \\[\\033[32m\\]\\w\\[\\033[33m\\]$(parse_git_branch)\\[\\033[00m\\] $', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1002/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'pi2', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '6', 'PATH': '/home/pi2/.local/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1002', 'DISPLAY': 'localhost:13.0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services:/home/pi2/cleaningoceanplastics/ros2_ws/install/sensors:/home/pi2/cleaningoceanplastics/ros2_ws/install/navigation:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/services', 'SSH_CONNECTION': '192.168.1.2 54524 192.168.1.3 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services/lib/python3.12/site-packages:/home/pi2/cleaningoceanplastics/ros2_ws/install/sensors/lib/python3.12/site-packages:/home/pi2/cleaningoceanplastics/ros2_ws/install/navigation/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/pi2/cleaningoceanplastics/ros2_ws/install/sensors:/home/pi2/cleaningoceanplastics/ros2_ws/install/navigation:/opt/ros/jazzy'}), 'shell': False}
+[1.412232] (-) TimerEvent: {}
+[1.514734] (-) TimerEvent: {}
+[1.615241] (-) TimerEvent: {}
+[1.716322] (-) TimerEvent: {}
+[1.816890] (-) TimerEvent: {}
+[1.919887] (-) TimerEvent: {}
+[2.020678] (-) TimerEvent: {}
+[2.121253] (-) TimerEvent: {}
+[2.221673] (-) TimerEvent: {}
+[2.294143] (services) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[2.321819] (-) TimerEvent: {}
+[2.423432] (-) TimerEvent: {}
+[2.524437] (-) TimerEvent: {}
+[2.624831] (-) TimerEvent: {}
+[2.726453] (-) TimerEvent: {}
+[2.827112] (-) TimerEvent: {}
+[2.913988] (services) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[2.927238] (-) TimerEvent: {}
+[2.996646] (services) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[3.027426] (-) TimerEvent: {}
+[3.127899] (-) TimerEvent: {}
+[3.229934] (-) TimerEvent: {}
+[3.316176] (services) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[3.330054] (-) TimerEvent: {}
+[3.343169] (services) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[3.350949] (services) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[3.353351] (services) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[3.398169] (services) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[3.430180] (-) TimerEvent: {}
+[3.532291] (-) TimerEvent: {}
+[3.634290] (-) TimerEvent: {}
+[3.736213] (-) TimerEvent: {}
+[3.776182] (services) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[3.802864] (services) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[3.804565] (services) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[3.805615] (services) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[3.820638] (services) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.3 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[3.836343] (-) TimerEvent: {}
+[3.939884] (-) TimerEvent: {}
+[4.024098] (sensors) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/sensors', 'build', '--build-base', '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build', 'install', '--record', '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/pi2/cleaningoceanplastics/ros2_ws/src/sensors', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pi2', 'SSH_CLIENT': '192.168.1.2 54524 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/pi2', 'OLDPWD': '/home/pi2/cleaningoceanplastics/ros2_ws/src/sensors', 'SSH_TTY': '/dev/pts/3', 'ROS_PYTHON_VERSION': '3', 'PS1': '\\u@\\h \\[\\033[32m\\]\\w\\[\\033[33m\\]$(parse_git_branch)\\[\\033[00m\\] $', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1002/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'pi2', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '6', 'PATH': '/home/pi2/.local/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1002', 'DISPLAY': 'localhost:13.0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services:/home/pi2/cleaningoceanplastics/ros2_ws/install/sensors:/home/pi2/cleaningoceanplastics/ros2_ws/install/navigation:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors', 'SSH_CONNECTION': '192.168.1.2 54524 192.168.1.3 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages:/home/pi2/cleaningoceanplastics/ros2_ws/install/services/lib/python3.12/site-packages:/home/pi2/cleaningoceanplastics/ros2_ws/install/sensors/lib/python3.12/site-packages:/home/pi2/cleaningoceanplastics/ros2_ws/install/navigation/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[4.041434] (-) TimerEvent: {}
+[4.065686] (navigation) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/navigation', 'build', '--build-base', '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build', 'install', '--record', '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/pi2/cleaningoceanplastics/ros2_ws/src/navigation', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pi2', 'SSH_CLIENT': '192.168.1.2 54524 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/pi2', 'OLDPWD': '/home/pi2/cleaningoceanplastics/ros2_ws/src/sensors', 'SSH_TTY': '/dev/pts/3', 'ROS_PYTHON_VERSION': '3', 'PS1': '\\u@\\h \\[\\033[32m\\]\\w\\[\\033[33m\\]$(parse_git_branch)\\[\\033[00m\\] $', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1002/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'pi2', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '6', 'PATH': '/home/pi2/.local/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1002', 'DISPLAY': 'localhost:13.0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services:/home/pi2/cleaningoceanplastics/ros2_ws/install/sensors:/home/pi2/cleaningoceanplastics/ros2_ws/install/navigation:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation', 'SSH_CONNECTION': '192.168.1.2 54524 192.168.1.3 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages:/home/pi2/cleaningoceanplastics/ros2_ws/install/services/lib/python3.12/site-packages:/home/pi2/cleaningoceanplastics/ros2_ws/install/sensors/lib/python3.12/site-packages:/home/pi2/cleaningoceanplastics/ros2_ws/install/navigation/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[4.141896] (-) TimerEvent: {}
+[4.244103] (-) TimerEvent: {}
+[4.321934] (services) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[4.344224] (-) TimerEvent: {}
+[4.444873] (-) TimerEvent: {}
+[4.547054] (-) TimerEvent: {}
+[4.648235] (-) TimerEvent: {}
+[4.749681] (services) StdoutLine: {'line': b'-- Found geometry_msgs: 5.3.5 (/opt/ros/jazzy/share/geometry_msgs/cmake)\n'}
+[4.750144] (-) TimerEvent: {}
+[4.850611] (-) TimerEvent: {}
+[4.867723] (navigation) StdoutLine: {'line': b'running egg_info\n'}
+[4.870903] (navigation) StdoutLine: {'line': b'creating ../build/navigation/navigation.egg-info\n'}
+[4.919095] (sensors) StdoutLine: {'line': b'running egg_info\n'}
+[4.919982] (sensors) StdoutLine: {'line': b'creating ../build/sensors/sensors.egg-info\n'}
+[4.941989] (navigation) StdoutLine: {'line': b'writing ../build/navigation/navigation.egg-info/PKG-INFO\n'}
+[4.943750] (navigation) StdoutLine: {'line': b'writing dependency_links to ../build/navigation/navigation.egg-info/dependency_links.txt\n'}
+[4.944080] (navigation) StdoutLine: {'line': b'writing entry points to ../build/navigation/navigation.egg-info/entry_points.txt\n'}
+[4.945054] (navigation) StdoutLine: {'line': b'writing requirements to ../build/navigation/navigation.egg-info/requires.txt\n'}
+[4.945312] (navigation) StdoutLine: {'line': b'writing top-level names to ../build/navigation/navigation.egg-info/top_level.txt\n'}
+[4.947892] (navigation) StdoutLine: {'line': b"writing manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'\n"}
+[4.950731] (-) TimerEvent: {}
+[4.986897] (sensors) StdoutLine: {'line': b'writing ../build/sensors/sensors.egg-info/PKG-INFO\n'}
+[4.987704] (sensors) StdoutLine: {'line': b'writing dependency_links to ../build/sensors/sensors.egg-info/dependency_links.txt\n'}
+[4.988518] (sensors) StdoutLine: {'line': b'writing entry points to ../build/sensors/sensors.egg-info/entry_points.txt\n'}
+[4.989095] (sensors) StdoutLine: {'line': b'writing requirements to ../build/sensors/sensors.egg-info/requires.txt\n'}
+[4.991146] (sensors) StdoutLine: {'line': b'writing top-level names to ../build/sensors/sensors.egg-info/top_level.txt\n'}
+[4.991358] (sensors) StdoutLine: {'line': b"writing manifest file '../build/sensors/sensors.egg-info/SOURCES.txt'\n"}
+[5.003524] (services) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[5.050876] (-) TimerEvent: {}
+[5.062541] (navigation) StdoutLine: {'line': b"reading manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'\n"}
+[5.065511] (navigation) StdoutLine: {'line': b"writing manifest file '../build/navigation/navigation.egg-info/SOURCES.txt'\n"}
+[5.067050] (navigation) StdoutLine: {'line': b'running build\n'}
+[5.068769] (navigation) StdoutLine: {'line': b'running build_py\n'}
+[5.069706] (navigation) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build\n'}
+[5.069877] (navigation) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib\n'}
+[5.070043] (navigation) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation\n'}
+[5.070873] (navigation) StdoutLine: {'line': b'copying navigation/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation\n'}
+[5.071122] (navigation) StdoutLine: {'line': b'copying navigation/pid_debug.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation\n'}
+[5.074802] (navigation) StdoutLine: {'line': b'copying navigation/motor_controller.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation\n'}
+[5.084814] (navigation) StdoutLine: {'line': b'copying navigation/teleop.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation\n'}
+[5.092560] (navigation) StdoutLine: {'line': b'running install\n'}
+[5.110090] (navigation) StdoutLine: {'line': b'running install_lib\n'}
+[5.132879] (sensors) StdoutLine: {'line': b"reading manifest file '../build/sensors/sensors.egg-info/SOURCES.txt'\n"}
+[5.133249] (sensors) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[5.133504] (sensors) StdoutLine: {'line': b"writing manifest file '../build/sensors/sensors.egg-info/SOURCES.txt'\n"}
+[5.133674] (sensors) StdoutLine: {'line': b'running build\n'}
+[5.133824] (sensors) StdoutLine: {'line': b'running build_py\n'}
+[5.133976] (sensors) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build\n'}
+[5.134189] (sensors) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib\n'}
+[5.134344] (sensors) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[5.134493] (sensors) StdoutLine: {'line': b'copying sensors/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[5.134679] (sensors) StdoutLine: {'line': b'copying sensors/object_detector.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[5.136555] (sensors) StdoutLine: {'line': b'copying sensors/water_sensor.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[5.137561] (services) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[5.138256] (sensors) StdoutLine: {'line': b'copying sensors/fix_publisher.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[5.143931] (sensors) StdoutLine: {'line': b'copying sensors/Kalman_service.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[5.144239] (sensors) StdoutLine: {'line': b'copying sensors/object_selector.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[5.144459] (sensors) StdoutLine: {'line': b'copying sensors/imu_publisher.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors\n'}
+[5.145508] (sensors) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/utils\n'}
+[5.146384] (sensors) StdoutLine: {'line': b'copying sensors/utils/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/utils\n'}
+[5.150024] (sensors) StdoutLine: {'line': b'copying sensors/utils/LSM6DSL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/utils\n'}
+[5.150381] (sensors) StdoutLine: {'line': b'copying sensors/utils/IMU_lib.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/utils\n'}
+[5.152006] (-) TimerEvent: {}
+[5.152495] (sensors) StdoutLine: {'line': b'copying sensors/utils/LIS3MDL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/utils\n'}
+[5.154567] (sensors) StdoutLine: {'line': b'running install\n'}
+[5.159855] (navigation) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation\n'}
+[5.160447] (navigation) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation\n'}
+[5.161565] (navigation) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation/pid_debug.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation\n'}
+[5.162077] (navigation) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation/motor_controller.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation\n'}
+[5.163750] (navigation) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/build/lib/navigation/teleop.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation\n'}
+[5.164743] (navigation) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation/__init__.py to __init__.cpython-312.pyc\n'}
+[5.165064] (navigation) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation/pid_debug.py to pid_debug.cpython-312.pyc\n'}
+[5.165244] (navigation) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation/motor_controller.py to motor_controller.cpython-312.pyc\n'}
+[5.167102] (navigation) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation/teleop.py to teleop.cpython-312.pyc\n'}
+[5.169293] (navigation) StdoutLine: {'line': b'running install_data\n'}
+[5.170314] (navigation) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/ament_index\n'}
+[5.171021] (navigation) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/ament_index/resource_index\n'}
+[5.171215] (navigation) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/ament_index/resource_index/packages\n'}
+[5.171342] (navigation) StdoutLine: {'line': b'copying resource/navigation -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/ament_index/resource_index/packages\n'}
+[5.171474] (navigation) StdoutLine: {'line': b'copying package.xml -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/navigation\n'}
+[5.171591] (navigation) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/navigation/launch\n'}
+[5.171706] (navigation) StdoutLine: {'line': b'copying launch/teleop_launch.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/share/navigation/launch\n'}
+[5.173643] (navigation) StdoutLine: {'line': b'running install_egg_info\n'}
+[5.179878] (sensors) StdoutLine: {'line': b'running install_lib\n'}
+[5.224649] (navigation) StdoutLine: {'line': b'Copying ../build/navigation/navigation.egg-info to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/python3.12/site-packages/navigation-0.0.0-py3.12.egg-info\n'}
+[5.227377] (navigation) StdoutLine: {'line': b'running install_scripts\n'}
+[5.240304] (services) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[5.241313] (sensors) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors\n'}
+[5.242231] (sensors) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors\n'}
+[5.243552] (sensors) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/object_detector.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors\n'}
+[5.244468] (sensors) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/water_sensor.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors\n'}
+[5.245006] (sensors) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/fix_publisher.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors\n'}
+[5.246766] (sensors) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/Kalman_service.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors\n'}
+[5.247206] (sensors) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/object_selector.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors\n'}
+[5.249436] (sensors) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/imu_publisher.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors\n'}
+[5.249828] (sensors) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/utils\n'}
+[5.250438] (sensors) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/utils/__init__.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/utils\n'}
+[5.251191] (sensors) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/utils/LSM6DSL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/utils\n'}
+[5.251878] (sensors) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/utils/IMU_lib.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/utils\n'}
+[5.252084] (-) TimerEvent: {}
+[5.253065] (sensors) StdoutLine: {'line': b'copying /home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/build/lib/sensors/utils/LIS3MDL.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/utils\n'}
+[5.255759] (sensors) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/__init__.py to __init__.cpython-312.pyc\n'}
+[5.256084] (sensors) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/object_detector.py to object_detector.cpython-312.pyc\n'}
+[5.260253] (sensors) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/water_sensor.py to water_sensor.cpython-312.pyc\n'}
+[5.262844] (sensors) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/fix_publisher.py to fix_publisher.cpython-312.pyc\n'}
+[5.265992] (sensors) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/Kalman_service.py to Kalman_service.cpython-312.pyc\n'}
+[5.277251] (sensors) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/object_selector.py to object_selector.cpython-312.pyc\n'}
+[5.277866] (sensors) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/imu_publisher.py to imu_publisher.cpython-312.pyc\n'}
+[5.284869] (sensors) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/utils/__init__.py to __init__.cpython-312.pyc\n'}
+[5.286062] (sensors) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/utils/LSM6DSL.py to LSM6DSL.cpython-312.pyc\n'}
+[5.288356] (sensors) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/utils/IMU_lib.py to IMU_lib.cpython-312.pyc\n'}
+[5.294404] (sensors) StdoutLine: {'line': b'byte-compiling /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors/utils/LIS3MDL.py to LIS3MDL.cpython-312.pyc\n'}
+[5.295829] (sensors) StdoutLine: {'line': b'running install_data\n'}
+[5.296213] (sensors) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/share/ament_index\n'}
+[5.297425] (sensors) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/share/ament_index/resource_index\n'}
+[5.297755] (sensors) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/share/ament_index/resource_index/packages\n'}
+[5.299937] (sensors) StdoutLine: {'line': b'copying resource/sensors -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/share/ament_index/resource_index/packages\n'}
+[5.301270] (sensors) StdoutLine: {'line': b'copying package.xml -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/share/sensors\n'}
+[5.302886] (sensors) StdoutLine: {'line': b'creating /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/share/sensors/launch\n'}
+[5.303713] (sensors) StdoutLine: {'line': b'copying launch/sensors.launch.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/share/sensors/launch\n'}
+[5.304731] (sensors) StdoutLine: {'line': b'copying launch/control_launch.py -> /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/share/sensors/launch\n'}
+[5.308338] (sensors) StdoutLine: {'line': b'running install_egg_info\n'}
+[5.334871] (services) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[5.352218] (-) TimerEvent: {}
+[5.366415] (sensors) StdoutLine: {'line': b'Copying ../build/sensors/sensors.egg-info to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/python3.12/site-packages/sensors-0.0.0-py3.12.egg-info\n'}
+[5.372698] (sensors) StdoutLine: {'line': b'running install_scripts\n'}
+[5.452870] (-) TimerEvent: {}
+[5.556433] (-) TimerEvent: {}
+[5.561355] (services) StdoutLine: {'line': b'-- Found sensor_msgs: 5.3.5 (/opt/ros/jazzy/share/sensor_msgs/cmake)\n'}
+[5.608541] (navigation) StdoutLine: {'line': b'Installing motor_control script to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/navigation\n'}
+[5.609756] (navigation) StdoutLine: {'line': b'Installing pid_debug script to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/navigation\n'}
+[5.611402] (navigation) StdoutLine: {'line': b'Installing teleop script to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/navigation/lib/navigation\n'}
+[5.611706] (navigation) StdoutLine: {'line': b"writing list of installed files to '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/navigation/install.log'\n"}
+[5.656882] (-) TimerEvent: {}
+[5.733977] (navigation) CommandEnded: {'returncode': 0}
+[5.759244] (-) TimerEvent: {}
+[5.770498] (services) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)\n'}
+[5.799966] (navigation) JobEnded: {'identifier': 'navigation', 'rc': 0}
+[5.826789] (sensors) StdoutLine: {'line': b'Installing gps_pub script to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[5.827237] (sensors) StdoutLine: {'line': b'Installing imu_pub script to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[5.827519] (sensors) StdoutLine: {'line': b'Installing kalman script to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[5.827910] (sensors) StdoutLine: {'line': b'Installing object_detector script to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[5.828152] (sensors) StdoutLine: {'line': b'Installing object_selector script to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[5.828367] (sensors) StdoutLine: {'line': b'Installing water_sensor script to /home/pi2/cleaningoceanplastics/ros2_ws/src/install/sensors/lib/sensors\n'}
+[5.829382] (sensors) StdoutLine: {'line': b"writing list of installed files to '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/sensors/install.log'\n"}
+[5.830930] (services) StdoutLine: {'line': b'-- Found rosidl_adapter: 4.6.5 (/opt/ros/jazzy/share/rosidl_adapter/cmake)\n'}
+[5.859532] (-) TimerEvent: {}
+[5.961883] (-) TimerEvent: {}
+[5.965242] (sensors) CommandEnded: {'returncode': 0}
+[5.977723] (sensors) JobEnded: {'identifier': 'sensors', 'rc': 0}
+[6.062146] (-) TimerEvent: {}
+[6.163566] (-) TimerEvent: {}
+[6.264252] (-) TimerEvent: {}
+[6.364947] (-) TimerEvent: {}
+[6.465894] (-) TimerEvent: {}
+[6.567183] (-) TimerEvent: {}
+[6.669273] (-) TimerEvent: {}
+[6.769959] (-) TimerEvent: {}
+[6.870443] (-) TimerEvent: {}
+[6.971175] (-) TimerEvent: {}
+[7.073422] (-) TimerEvent: {}
+[7.176923] (-) TimerEvent: {}
+[7.277483] (-) TimerEvent: {}
+[7.378968] (-) TimerEvent: {}
+[7.479454] (-) TimerEvent: {}
+[7.580495] (-) TimerEvent: {}
+[7.681086] (-) TimerEvent: {}
+[7.781728] (-) TimerEvent: {}
+[7.847443] (services) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)\n'}
+[7.882179] (-) TimerEvent: {}
+[7.983058] (-) TimerEvent: {}
+[8.083467] (-) TimerEvent: {}
+[8.186921] (-) TimerEvent: {}
+[8.287427] (-) TimerEvent: {}
+[8.387905] (-) TimerEvent: {}
+[8.488451] (-) TimerEvent: {}
+[8.588878] (-) TimerEvent: {}
+[8.689490] (-) TimerEvent: {}
+[8.791935] (-) TimerEvent: {}
+[8.892594] (-) TimerEvent: {}
+[8.993737] (-) TimerEvent: {}
+[9.094187] (-) TimerEvent: {}
+[9.195433] (-) TimerEvent: {}
+[9.299043] (-) TimerEvent: {}
+[9.399500] (-) TimerEvent: {}
+[9.500754] (-) TimerEvent: {}
+[9.601359] (-) TimerEvent: {}
+[9.702976] (-) TimerEvent: {}
+[9.804171] (-) TimerEvent: {}
+[9.906604] (-) TimerEvent: {}
+[10.010878] (-) TimerEvent: {}
+[10.111943] (-) TimerEvent: {}
+[10.212349] (-) TimerEvent: {}
+[10.314071] (-) TimerEvent: {}
+[10.415447] (-) TimerEvent: {}
+[10.516866] (-) TimerEvent: {}
+[10.617436] (-) TimerEvent: {}
+[10.634983] (services) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[10.717579] (-) TimerEvent: {}
+[10.818069] (-) TimerEvent: {}
+[10.919039] (-) TimerEvent: {}
+[11.020498] (-) TimerEvent: {}
+[11.121578] (-) TimerEvent: {}
+[11.223217] (-) TimerEvent: {}
+[11.325966] (-) TimerEvent: {}
+[11.426427] (-) TimerEvent: {}
+[11.529105] (-) TimerEvent: {}
+[11.629659] (-) TimerEvent: {}
+[11.730727] (-) TimerEvent: {}
+[11.739911] (services) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[11.753094] (services) StdoutLine: {'line': b'-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)\n'}
+[11.830882] (-) TimerEvent: {}
+[11.931609] (-) TimerEvent: {}
+[12.032374] (-) TimerEvent: {}
+[12.138047] (-) TimerEvent: {}
+[12.167992] (services) StdoutLine: {'line': b'-- Found PythonExtra: /usr/bin/python3  \n'}
+[12.238201] (-) TimerEvent: {}
+[12.339842] (-) TimerEvent: {}
+[12.441538] (-) TimerEvent: {}
+[12.544963] (-) TimerEvent: {}
+[12.645434] (-) TimerEvent: {}
+[12.747092] (-) TimerEvent: {}
+[12.847753] (-) TimerEvent: {}
+[12.948627] (-) TimerEvent: {}
+[13.049987] (-) TimerEvent: {}
+[13.150399] (-) TimerEvent: {}
+[13.250973] (-) TimerEvent: {}
+[13.352751] (-) TimerEvent: {}
+[13.454061] (-) TimerEvent: {}
+[13.543611] (services) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed \n'}
+[13.555912] (-) TimerEvent: {}
+[13.656410] (-) TimerEvent: {}
+[13.757152] (-) TimerEvent: {}
+[13.764239] (services) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.1 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[13.857334] (-) TimerEvent: {}
+[13.868475] (services) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[13.873566] (services) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[13.884247] (services) StdoutLine: {'line': b'-- Configuring done (12.3s)\n'}
+[13.957493] (-) TimerEvent: {}
+[14.012108] (services) StdoutLine: {'line': b'-- Generating done (0.1s)\n'}
+[14.051374] (services) StdoutLine: {'line': b'-- Build files have been written to: /home/pi2/cleaningoceanplastics/ros2_ws/src/build/services\n'}
+[14.057642] (-) TimerEvent: {}
+[14.084826] (services) CommandEnded: {'returncode': 0}
+[14.088733] (services) JobProgress: {'identifier': 'services', 'progress': 'build'}
+[14.089009] (services) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/services', '--', '-j4', '-l4'], 'cwd': '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/services', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pi2', 'SSH_CLIENT': '192.168.1.2 54524 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/pi2', 'OLDPWD': '/home/pi2/cleaningoceanplastics/ros2_ws/src/sensors', 'SSH_TTY': '/dev/pts/3', 'ROS_PYTHON_VERSION': '3', 'PS1': '\\u@\\h \\[\\033[32m\\]\\w\\[\\033[33m\\]$(parse_git_branch)\\[\\033[00m\\] $', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1002/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'pi2', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '6', 'PATH': '/home/pi2/.local/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1002', 'DISPLAY': 'localhost:13.0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services:/home/pi2/cleaningoceanplastics/ros2_ws/install/sensors:/home/pi2/cleaningoceanplastics/ros2_ws/install/navigation:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/services', 'SSH_CONNECTION': '192.168.1.2 54524 192.168.1.3 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services/lib/python3.12/site-packages:/home/pi2/cleaningoceanplastics/ros2_ws/install/sensors/lib/python3.12/site-packages:/home/pi2/cleaningoceanplastics/ros2_ws/install/navigation/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/pi2/cleaningoceanplastics/ros2_ws/install/sensors:/home/pi2/cleaningoceanplastics/ros2_ws/install/navigation:/opt/ros/jazzy'}), 'shell': False}
+[14.157778] (-) TimerEvent: {}
+[14.238767] (services) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating type hashes for ROS interfaces\x1b[0m\n'}
+[14.259881] (-) TimerEvent: {}
+[14.360639] (-) TimerEvent: {}
+[14.462106] (-) TimerEvent: {}
+[14.562728] (-) TimerEvent: {}
+[14.663998] (-) TimerEvent: {}
+[14.764417] (-) TimerEvent: {}
+[14.803289] (services) StdoutLine: {'line': b'[  2%] Built target services__rosidl_generator_type_description\n'}
+[14.864551] (-) TimerEvent: {}
+[14.902901] (services) StdoutLine: {'line': b'[  2%] Built target ament_cmake_python_copy_services\n'}
+[14.936070] (services) StdoutLine: {'line': b'[  5%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[14.964773] (-) TimerEvent: {}
+[15.065614] (-) TimerEvent: {}
+[15.182768] (-) TimerEvent: {}
+[15.283943] (-) TimerEvent: {}
+[15.384648] (-) TimerEvent: {}
+[15.485383] (-) TimerEvent: {}
+[15.587186] (-) TimerEvent: {}
+[15.688721] (-) TimerEvent: {}
+[15.789744] (-) TimerEvent: {}
+[15.892889] (-) TimerEvent: {}
+[15.920986] (services) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_generator_c.dir/rosidl_generator_c/services/srv/detail/kalman_state__description.c.o\x1b[0m\n'}
+[15.993014] (-) TimerEvent: {}
+[16.093438] (-) TimerEvent: {}
+[16.194031] (-) TimerEvent: {}
+[16.217325] (services) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_generator_c.dir/rosidl_generator_c/services/srv/detail/kalman_state__functions.c.o\x1b[0m\n'}
+[16.294582] (-) TimerEvent: {}
+[16.395124] (-) TimerEvent: {}
+[16.478025] (services) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_generator_c.dir/rosidl_generator_c/services/srv/detail/kalman_state__type_support.c.o\x1b[0m\n'}
+[16.495254] (-) TimerEvent: {}
+[16.595749] (-) TimerEvent: {}
+[16.622040] (services) StdoutLine: {'line': b'[ 17%] \x1b[32m\x1b[1mLinking C shared library libservices__rosidl_generator_c.so\x1b[0m\n'}
+[16.697914] (-) TimerEvent: {}
+[16.749522] (services) StdoutLine: {'line': b'[ 17%] Built target services__rosidl_generator_c\n'}
+[16.798044] (-) TimerEvent: {}
+[16.899138] (-) TimerEvent: {}
+[17.000127] (-) TimerEvent: {}
+[17.100884] (-) TimerEvent: {}
+[17.201537] (-) TimerEvent: {}
+[17.305078] (-) TimerEvent: {}
+[17.405650] (-) TimerEvent: {}
+[17.426005] (services) StdoutLine: {'line': b'running egg_info\n'}
+[17.429942] (services) StdoutLine: {'line': b'creating services.egg-info\n'}
+[17.489517] (services) StdoutLine: {'line': b'writing services.egg-info/PKG-INFO\n'}
+[17.490692] (services) StdoutLine: {'line': b'writing dependency_links to services.egg-info/dependency_links.txt\n'}
+[17.491904] (services) StdoutLine: {'line': b'writing top-level names to services.egg-info/top_level.txt\n'}
+[17.492088] (services) StdoutLine: {'line': b"writing manifest file 'services.egg-info/SOURCES.txt'\n"}
+[17.506084] (-) TimerEvent: {}
+[17.607193] (-) TimerEvent: {}
+[17.641087] (services) StdoutLine: {'line': b"reading manifest file 'services.egg-info/SOURCES.txt'\n"}
+[17.641408] (services) StdoutLine: {'line': b"writing manifest file 'services.egg-info/SOURCES.txt'\n"}
+[17.707458] (-) TimerEvent: {}
+[17.785247] (services) StdoutLine: {'line': b'[ 17%] Built target ament_cmake_python_build_services_egg\n'}
+[17.807561] (-) TimerEvent: {}
+[17.826971] (services) StdoutLine: {'line': b'[ 20%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[17.907682] (-) TimerEvent: {}
+[18.010288] (-) TimerEvent: {}
+[18.111123] (-) TimerEvent: {}
+[18.213451] (-) TimerEvent: {}
+[18.313953] (-) TimerEvent: {}
+[18.417935] (-) TimerEvent: {}
+[18.445942] (services) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_c.dir/rosidl_typesupport_c/services/srv/kalman_state__type_support.cpp.o\x1b[0m\n'}
+[18.518064] (-) TimerEvent: {}
+[18.618593] (-) TimerEvent: {}
+[18.642086] (services) StdoutLine: {'line': b'[ 26%] \x1b[32m\x1b[1mLinking CXX shared library libservices__rosidl_typesupport_c.so\x1b[0m\n'}
+[18.718730] (-) TimerEvent: {}
+[18.768381] (services) StdoutLine: {'line': b'[ 26%] Built target services__rosidl_typesupport_c\n'}
+[18.812314] (services) StdoutLine: {'line': b'[ 29%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[18.820901] (-) TimerEvent: {}
+[18.921421] (-) TimerEvent: {}
+[19.021886] (-) TimerEvent: {}
+[19.122483] (-) TimerEvent: {}
+[19.222896] (-) TimerEvent: {}
+[19.323543] (-) TimerEvent: {}
+[19.424880] (-) TimerEvent: {}
+[19.525780] (-) TimerEvent: {}
+[19.626505] (-) TimerEvent: {}
+[19.727868] (-) TimerEvent: {}
+[19.814401] (services) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/services/srv/detail/kalman_state__type_support_c.cpp.o\x1b[0m\n'}
+[19.828947] (-) TimerEvent: {}
+[19.929907] (-) TimerEvent: {}
+[20.030373] (-) TimerEvent: {}
+[20.132239] (-) TimerEvent: {}
+[20.233369] (-) TimerEvent: {}
+[20.335420] (-) TimerEvent: {}
+[20.436223] (-) TimerEvent: {}
+[20.536894] (-) TimerEvent: {}
+[20.637975] (-) TimerEvent: {}
+[20.739556] (-) TimerEvent: {}
+[20.841748] (-) TimerEvent: {}
+[20.942417] (-) TimerEvent: {}
+[21.044560] (-) TimerEvent: {}
+[21.146014] (-) TimerEvent: {}
+[21.246829] (-) TimerEvent: {}
+[21.348027] (-) TimerEvent: {}
+[21.448928] (-) TimerEvent: {}
+[21.465011] (services) StdoutLine: {'line': b'[ 35%] \x1b[32m\x1b[1mLinking CXX shared library libservices__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[21.549537] (-) TimerEvent: {}
+[21.613729] (services) StdoutLine: {'line': b'[ 35%] Built target services__rosidl_typesupport_fastrtps_c\n'}
+[21.644057] (services) StdoutLine: {'line': b'[ 38%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[21.651896] (-) TimerEvent: {}
+[21.686533] (services) StdoutLine: {'line': b'[ 41%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[21.752477] (-) TimerEvent: {}
+[21.854614] (-) TimerEvent: {}
+[21.955479] (-) TimerEvent: {}
+[22.058110] (-) TimerEvent: {}
+[22.158606] (-) TimerEvent: {}
+[22.259229] (-) TimerEvent: {}
+[22.360700] (-) TimerEvent: {}
+[22.391980] (services) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/services/srv/detail/kalman_state__type_support.c.o\x1b[0m\n'}
+[22.461525] (-) TimerEvent: {}
+[22.531043] (services) StdoutLine: {'line': b'[ 44%] Built target services__cpp\n'}
+[22.546379] (services) StdoutLine: {'line': b'[ 47%] \x1b[32m\x1b[1mLinking C shared library libservices__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[22.561883] (-) TimerEvent: {}
+[22.565980] (services) StdoutLine: {'line': b'[ 50%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[22.643029] (services) StdoutLine: {'line': b'[ 50%] Built target services__rosidl_typesupport_introspection_c\n'}
+[22.663121] (-) TimerEvent: {}
+[22.673153] (services) StdoutLine: {'line': b'[ 52%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[22.763761] (-) TimerEvent: {}
+[22.864755] (-) TimerEvent: {}
+[22.965143] (-) TimerEvent: {}
+[23.066871] (-) TimerEvent: {}
+[23.168912] (-) TimerEvent: {}
+[23.269614] (-) TimerEvent: {}
+[23.284027] (services) StdoutLine: {'line': b'[ 55%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/services/srv/kalman_state__type_support.cpp.o\x1b[0m\n'}
+[23.359886] (services) StdoutLine: {'line': b'[ 58%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/services/srv/detail/dds_fastrtps/kalman_state__type_support.cpp.o\x1b[0m\n'}
+[23.369765] (-) TimerEvent: {}
+[23.470245] (-) TimerEvent: {}
+[23.570974] (-) TimerEvent: {}
+[23.673931] (-) TimerEvent: {}
+[23.775151] (-) TimerEvent: {}
+[23.878170] (-) TimerEvent: {}
+[23.979446] (-) TimerEvent: {}
+[24.081417] (-) TimerEvent: {}
+[24.182542] (-) TimerEvent: {}
+[24.283091] (-) TimerEvent: {}
+[24.384468] (-) TimerEvent: {}
+[24.485231] (-) TimerEvent: {}
+[24.548279] (services) StdoutLine: {'line': b'[ 61%] \x1b[32m\x1b[1mLinking CXX shared library libservices__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[24.587059] (-) TimerEvent: {}
+[24.687599] (-) TimerEvent: {}
+[24.790301] (-) TimerEvent: {}
+[24.806892] (services) StdoutLine: {'line': b'[ 61%] Built target services__rosidl_typesupport_cpp\n'}
+[24.890429] (-) TimerEvent: {}
+[24.991488] (-) TimerEvent: {}
+[25.096002] (-) TimerEvent: {}
+[25.196545] (-) TimerEvent: {}
+[25.278954] (services) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking CXX shared library libservices__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[25.296694] (-) TimerEvent: {}
+[25.397551] (-) TimerEvent: {}
+[25.498670] (-) TimerEvent: {}
+[25.565981] (services) StdoutLine: {'line': b'[ 64%] Built target services__rosidl_typesupport_fastrtps_cpp\n'}
+[25.598817] (-) TimerEvent: {}
+[25.605981] (services) StdoutLine: {'line': b'[ 67%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[25.698972] (-) TimerEvent: {}
+[25.799930] (-) TimerEvent: {}
+[25.903894] (-) TimerEvent: {}
+[26.004363] (-) TimerEvent: {}
+[26.105887] (-) TimerEvent: {}
+[26.206356] (-) TimerEvent: {}
+[26.306878] (-) TimerEvent: {}
+[26.407746] (-) TimerEvent: {}
+[26.416755] (services) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/services__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/services/srv/detail/kalman_state__type_support.cpp.o\x1b[0m\n'}
+[26.507854] (-) TimerEvent: {}
+[26.608439] (-) TimerEvent: {}
+[26.709231] (-) TimerEvent: {}
+[26.809829] (-) TimerEvent: {}
+[26.910526] (-) TimerEvent: {}
+[27.012263] (-) TimerEvent: {}
+[27.113087] (-) TimerEvent: {}
+[27.214060] (-) TimerEvent: {}
+[27.315317] (-) TimerEvent: {}
+[27.418061] (-) TimerEvent: {}
+[27.518621] (-) TimerEvent: {}
+[27.620937] (-) TimerEvent: {}
+[27.721441] (-) TimerEvent: {}
+[27.821944] (-) TimerEvent: {}
+[27.923504] (-) TimerEvent: {}
+[27.942738] (services) StdoutLine: {'line': b'[ 73%] \x1b[32m\x1b[1mLinking CXX shared library libservices__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[28.023642] (-) TimerEvent: {}
+[28.124193] (-) TimerEvent: {}
+[28.209226] (services) StdoutLine: {'line': b'[ 73%] Built target services__rosidl_typesupport_introspection_cpp\n'}
+[28.224413] (-) TimerEvent: {}
+[28.282549] (services) StdoutLine: {'line': b'[ 73%] Built target services\n'}
+[28.324508] (-) TimerEvent: {}
+[28.352999] (services) StdoutLine: {'line': b'[ 76%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[28.426069] (-) TimerEvent: {}
+[28.526700] (-) TimerEvent: {}
+[28.628898] (-) TimerEvent: {}
+[28.729457] (-) TimerEvent: {}
+[28.830705] (-) TimerEvent: {}
+[28.931415] (-) TimerEvent: {}
+[29.032371] (-) TimerEvent: {}
+[29.133451] (-) TimerEvent: {}
+[29.233888] (-) TimerEvent: {}
+[29.336445] (-) TimerEvent: {}
+[29.435042] (services) StdoutLine: {'line': b'[ 76%] Built target services__py\n'}
+[29.439050] (-) TimerEvent: {}
+[29.502128] (services) StdoutLine: {'line': b'[ 79%] \x1b[32mBuilding C object CMakeFiles/services__rosidl_generator_py.dir/rosidl_generator_py/services/srv/_kalman_state_s.c.o\x1b[0m\n'}
+[29.539378] (-) TimerEvent: {}
+[29.642908] (-) TimerEvent: {}
+[29.743623] (-) TimerEvent: {}
+[29.844124] (-) TimerEvent: {}
+[29.944984] (-) TimerEvent: {}
+[30.045424] (-) TimerEvent: {}
+[30.095171] (services) StdoutLine: {'line': b'[ 82%] \x1b[32m\x1b[1mLinking C shared library libservices__rosidl_generator_py.so\x1b[0m\n'}
+[30.145603] (-) TimerEvent: {}
+[30.246101] (-) TimerEvent: {}
+[30.252867] (services) StdoutLine: {'line': b'[ 82%] Built target services__rosidl_generator_py\n'}
+[30.307168] (services) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding C object CMakeFiles/services_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/services/_services_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[30.346262] (-) TimerEvent: {}
+[30.448910] (-) TimerEvent: {}
+[30.549481] (-) TimerEvent: {}
+[30.611092] (services) StdoutLine: {'line': b'[ 88%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/services/services_s__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[30.650943] (-) TimerEvent: {}
+[30.751382] (-) TimerEvent: {}
+[30.757866] (services) StdoutLine: {'line': b'[ 88%] Built target services_s__rosidl_typesupport_fastrtps_c\n'}
+[30.831911] (services) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding C object CMakeFiles/services_s__rosidl_typesupport_c.dir/rosidl_generator_py/services/_services_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[30.851509] (-) TimerEvent: {}
+[30.951988] (-) TimerEvent: {}
+[31.052888] (-) TimerEvent: {}
+[31.147556] (services) StdoutLine: {'line': b'[ 94%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/services/services_s__rosidl_typesupport_c.so\x1b[0m\n'}
+[31.153017] (-) TimerEvent: {}
+[31.249762] (services) StdoutLine: {'line': b'[ 94%] Built target services_s__rosidl_typesupport_c\n'}
+[31.253158] (-) TimerEvent: {}
+[31.315859] (services) StdoutLine: {'line': b'[ 97%] \x1b[32mBuilding C object CMakeFiles/services_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/services/_services_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[31.354583] (-) TimerEvent: {}
+[31.455306] (-) TimerEvent: {}
+[31.557897] (-) TimerEvent: {}
+[31.660932] (-) TimerEvent: {}
+[31.663534] (services) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/services/services_s__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[31.761068] (-) TimerEvent: {}
+[31.772598] (services) StdoutLine: {'line': b'[100%] Built target services_s__rosidl_typesupport_introspection_c\n'}
+[31.809655] (services) CommandEnded: {'returncode': 0}
+[31.811021] (services) JobProgress: {'identifier': 'services', 'progress': 'install'}
+[31.842731] (services) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/services'], 'cwd': '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/services', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pi2', 'SSH_CLIENT': '192.168.1.2 54524 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/pi2', 'OLDPWD': '/home/pi2/cleaningoceanplastics/ros2_ws/src/sensors', 'SSH_TTY': '/dev/pts/3', 'ROS_PYTHON_VERSION': '3', 'PS1': '\\u@\\h \\[\\033[32m\\]\\w\\[\\033[33m\\]$(parse_git_branch)\\[\\033[00m\\] $', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1002/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'pi2', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '6', 'PATH': '/home/pi2/.local/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1002', 'DISPLAY': 'localhost:13.0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services:/home/pi2/cleaningoceanplastics/ros2_ws/install/sensors:/home/pi2/cleaningoceanplastics/ros2_ws/install/navigation:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/pi2/cleaningoceanplastics/ros2_ws/src/build/services', 'SSH_CONNECTION': '192.168.1.2 54524 192.168.1.3 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services/lib/python3.12/site-packages:/home/pi2/cleaningoceanplastics/ros2_ws/install/sensors/lib/python3.12/site-packages:/home/pi2/cleaningoceanplastics/ros2_ws/install/navigation/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/pi2/cleaningoceanplastics/ros2_ws/install/services:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/pi2/cleaningoceanplastics/ros2_ws/install/sensors:/home/pi2/cleaningoceanplastics/ros2_ws/install/navigation:/opt/ros/jazzy'}), 'shell': False}
+[31.861351] (-) TimerEvent: {}
+[31.873442] (services) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[31.874086] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/ament_index/resource_index/rosidl_interfaces/services\n'}
+[31.874809] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/KalmanState.json\n'}
+[31.875272] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services\n'}
+[31.875609] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg\n'}
+[31.875857] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg/rosidl_generator_c__visibility_control.h\n'}
+[31.876158] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv\n'}
+[31.878973] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail\n'}
+[31.879379] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__type_support.h\n'}
+[31.879555] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__description.c\n'}
+[31.879708] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__functions.c\n'}
+[31.879868] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__type_support.c\n'}
+[31.880024] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__struct.h\n'}
+[31.880164] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__functions.h\n'}
+[31.880290] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/kalman_state.h\n'}
+[31.880529] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/library_path.sh\n'}
+[31.880748] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/library_path.dsv\n'}
+[31.880952] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_generator_c.so\n'}
+[31.881208] (services) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_generator_c.so" to ""\n'}
+[31.881448] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services\n'}
+[31.881700] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg\n'}
+[31.881903] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[31.882173] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv\n'}
+[31.882425] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail\n'}
+[31.882576] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__rosidl_typesupport_fastrtps_c.h\n'}
+[31.882807] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_fastrtps_c.so\n'}
+[31.887043] (services) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[31.887439] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services\n'}
+[31.887606] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg\n'}
+[31.887745] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[31.887920] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv\n'}
+[31.888086] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/kalman_state.hpp\n'}
+[31.888228] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail\n'}
+[31.888352] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__builder.hpp\n'}
+[31.888477] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__type_support.hpp\n'}
+[31.888598] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__traits.hpp\n'}
+[31.888720] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__struct.hpp\n'}
+[31.888903] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services\n'}
+[31.889075] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg\n'}
+[31.889251] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[31.889549] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv\n'}
+[31.889704] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail\n'}
+[31.890033] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/dds_fastrtps\n'}
+[31.890290] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[31.890426] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_fastrtps_cpp.so\n'}
+[31.890609] (services) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[31.890874] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services\n'}
+[31.891074] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg\n'}
+[31.891227] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[31.891411] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv\n'}
+[31.891551] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail\n'}
+[31.891812] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__type_support.c\n'}
+[31.891979] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__rosidl_typesupport_introspection_c.h\n'}
+[31.892107] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_introspection_c.so\n'}
+[31.893047] (services) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_introspection_c.so" to ""\n'}
+[31.893367] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_c.so\n'}
+[31.894391] (services) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_c.so" to ""\n'}
+[31.896456] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services\n'}
+[31.896822] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv\n'}
+[31.896991] (services) StdoutLine: {'line': b'-- Up-to-date: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail\n'}
+[31.897137] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__type_support.cpp\n'}
+[31.897292] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/include/services/services/srv/detail/kalman_state__rosidl_typesupport_introspection_cpp.hpp\n'}
+[31.897429] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_introspection_cpp.so\n'}
+[31.897750] (services) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[31.898000] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_cpp.so\n'}
+[31.898477] (services) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_typesupport_cpp.so" to ""\n'}
+[31.898847] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/pythonpath.sh\n'}
+[31.899203] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/pythonpath.dsv\n'}
+[31.899588] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services-0.0.0-py3.12.egg-info\n'}
+[31.899927] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services-0.0.0-py3.12.egg-info/SOURCES.txt\n'}
+[31.900318] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services-0.0.0-py3.12.egg-info/top_level.txt\n'}
+[31.900663] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services-0.0.0-py3.12.egg-info/PKG-INFO\n'}
+[31.901085] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services-0.0.0-py3.12.egg-info/dependency_links.txt\n'}
+[31.901304] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services\n'}
+[31.901643] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/_services_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[31.901782] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/__init__.py\n'}
+[31.902088] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/_services_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[31.902413] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/services_s__rosidl_typesupport_c.so\n'}
+[31.902664] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/srv\n'}
+[31.903004] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/srv/_kalman_state.py\n'}
+[31.903320] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/srv/__init__.py\n'}
+[31.903463] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/srv/_kalman_state_s.c\n'}
+[31.903837] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/services_s__rosidl_typesupport_fastrtps_c.so\n'}
+[31.904073] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/_services_s.ep.rosidl_typesupport_c.c\n'}
+[31.904359] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/services_s__rosidl_typesupport_introspection_c.so\n'}
+[31.962719] (-) TimerEvent: {}
+[32.035099] (services) StdoutLine: {'line': b"Listing '/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services'...\n"}
+[32.035578] (services) StdoutLine: {'line': b"Compiling '/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/__init__.py'...\n"}
+[32.035776] (services) StdoutLine: {'line': b"Listing '/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/srv'...\n"}
+[32.035986] (services) StdoutLine: {'line': b"Compiling '/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/srv/__init__.py'...\n"}
+[32.036143] (services) StdoutLine: {'line': b"Compiling '/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/srv/_kalman_state.py'...\n"}
+[32.058064] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/services_s__rosidl_typesupport_fastrtps_c.so\n'}
+[32.058498] (services) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/services_s__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[32.058984] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/services_s__rosidl_typesupport_introspection_c.so\n'}
+[32.059665] (services) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/services_s__rosidl_typesupport_introspection_c.so" to ""\n'}
+[32.060133] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/services_s__rosidl_typesupport_c.so\n'}
+[32.060818] (services) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/python3.12/site-packages/services/services_s__rosidl_typesupport_c.so" to ""\n'}
+[32.061062] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_generator_py.so\n'}
+[32.061690] (services) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/lib/libservices__rosidl_generator_py.so" to ""\n'}
+[32.062019] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/KalmanState.idl\n'}
+[32.062641] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/srv/KalmanState.srv\n'}
+[32.062861] (-) TimerEvent: {}
+[32.063085] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/ament_index/resource_index/package_run_dependencies/services\n'}
+[32.063242] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/ament_index/resource_index/parent_prefix_path/services\n'}
+[32.063448] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/ament_prefix_path.sh\n'}
+[32.063611] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/ament_prefix_path.dsv\n'}
+[32.063877] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/path.sh\n'}
+[32.064115] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/environment/path.dsv\n'}
+[32.065213] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/local_setup.bash\n'}
+[32.065511] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/local_setup.sh\n'}
+[32.065627] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/local_setup.zsh\n'}
+[32.065714] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/local_setup.dsv\n'}
+[32.066259] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/package.dsv\n'}
+[32.066404] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/ament_index/resource_index/packages/services\n'}
+[32.066622] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_generator_cExport.cmake\n'}
+[32.066724] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_generator_cExport-noconfig.cmake\n'}
+[32.067298] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[32.067454] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[32.067658] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_generator_cppExport.cmake\n'}
+[32.067786] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[32.068368] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[32.068629] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_introspection_cExport.cmake\n'}
+[32.068745] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[32.069374] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_cExport.cmake\n'}
+[32.069555] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[32.069730] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[32.071211] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[32.073456] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_cppExport.cmake\n'}
+[32.073684] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/services__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[32.073838] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_generator_pyExport.cmake\n'}
+[32.074024] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/export_services__rosidl_generator_pyExport-noconfig.cmake\n'}
+[32.074132] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/rosidl_cmake-extras.cmake\n'}
+[32.074220] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[32.075135] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[32.075771] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[32.077150] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[32.077478] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[32.077660] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[32.077882] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/servicesConfig.cmake\n'}
+[32.078049] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/cmake/servicesConfig-version.cmake\n'}
+[32.080883] (services) StdoutLine: {'line': b'-- Installing: /home/pi2/cleaningoceanplastics/ros2_ws/src/install/services/share/services/package.xml\n'}
+[32.083007] (services) CommandEnded: {'returncode': 0}
+[32.145998] (services) JobEnded: {'identifier': 'services', 'rc': 0}
+[32.149190] (-) EventReactorShutdown: {}
