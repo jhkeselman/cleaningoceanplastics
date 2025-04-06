@@ -41,7 +41,7 @@ class IMUPub(Node):
         self.I2C_address = 0x55 #I2C address of ESP32
         self.bus = smbus.SMBus(1)       
 
-        self.declination = -214.1/1000 * RAD_TO_DEG #calculated at Worcester (-214 milliradians)
+        self.declination = math.degrees(-214.1/1000) #calculated at Worcester (-214 milliradians)
 
         # self.magXmin = -1089 #Previous Calibration values of magnetometer at +/- 8 gauss
         # self.magYmin = -1203
@@ -161,9 +161,9 @@ class IMUPub(Node):
         headingx = math.cos(heading) #split heading into unit vector to be averaged to prevent bounding errors
         headingy = math.sin(heading)
 
-        self.acc_bias = 0.27 #experimentally found but should be updated #-0.2 for Z axis
+        #self.acc_bias = 0.27 #experimentally found but should be updated #-0.2 for Z axis
         self.avg_data = np.roll(self.avg_data,axis=0,shift=1) #shift moving average data by one and then store current reading
-        self.avg_data[0,0] = (ACCy * 0.244/1000 * 9.81) + self.acc_bias
+        self.avg_data[0,0] = (ACCy * 0.244/1000 * 9.81) #+ self.acc_bias
         self.avg_data[0,1] = rate_gyr_x
         self.avg_data[0,2] = headingx
         self.avg_data[0,3] = headingy
@@ -210,7 +210,7 @@ class IMUPub(Node):
         return avg_data
     
     def write_esp(self):
-        data = struct.pack('if',0,self.heading) #Sending 0 means that the data is gyro related, sends the angular vel in rad/s
+        data = struct.pack('if',0,self.heading) #Sending 0 means that the data is gyro related, sends the heading in rad
         byte_list = list(data)
         try:
             self.bus.write_i2c_block_data(self.I2C_address, 0, byte_list)
