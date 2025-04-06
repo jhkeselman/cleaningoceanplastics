@@ -130,9 +130,10 @@ class KalmanService(Node):
                 elements += 1
             if elements:
                 self.acc_bias = self.acc_bias/elements
+            self.bias_i = AVERAGE + 1
             print(self.acc_bias)
         acc -= self.acc_bias
-        
+        print(self.acc_bias, acc)
         self.sensor_data[2:5,0] = [acc,yaw,omega]
         # print(self.sensor_data)
         # self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(yaw, acc, omega))
