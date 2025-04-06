@@ -131,9 +131,9 @@ class KalmanService(Node):
             if elements:
                 self.acc_bias = self.acc_bias/elements
             self.bias_i = AVERAGE + 1
-            print(self.acc_bias)
+           # print(self.acc_bias)
         acc -= self.acc_bias
-        print(self.acc_bias, acc)
+        #print(self.acc_bias, acc)
         self.sensor_data[2:5,0] = [acc,yaw,omega]
         # print(self.sensor_data)
         # self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(yaw, acc, omega))
@@ -141,8 +141,8 @@ class KalmanService(Node):
     def gps_response_callback(self,msg):
         fix_status = msg.status.status
         if fix_status >=0 :
-            self.get_logger().info('GPS Fix %d, Lat %5.8f, Long %5.8f:' %(fix_status, msg.latitude, msg.longitude))
-            self.get_logger().info('GPS Covariance Long %5.3f, Lat %5.2f' %(msg.position_covariance[0], msg.position_covariance[0]))
+            #self.get_logger().info('GPS Fix %d, Lat %5.8f, Long %5.8f:' %(fix_status, msg.latitude, msg.longitude))
+            #self.get_logger().info('GPS Covariance Long %5.3f, Lat %5.2f' %(msg.position_covariance[0], msg.position_covariance[0]))
             if self.avg_i < AVERAGE-1:
                 fix = [math.radians(msg.latitude), math.radians(msg.longitude)]
                 self.avg_pos[self.avg_i,:] = fix    
@@ -156,7 +156,7 @@ class KalmanService(Node):
                 gps_covariance = self.calc_covariance(msg)
                 self.Q[0,0] = gps_covariance[0]
                 self.Q[1,1] = gps_covariance[1]
-                self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
+                #self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
                 self.avg_i += 1
                 self.gps_ready = True
             else: 
