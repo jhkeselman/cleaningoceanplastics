@@ -120,7 +120,7 @@ class KalmanService(Node):
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
 
-        if self.Tl == 0 and self.Tr == 0:
+        if self.Tl == 0 and self.Tr == 0 and self.bias_i < AVERAGE:
             self.acc_bias_data[self.bias_i] = acc
             self.bias_i += 1
         elif ((self.Tl != 0 or self.Tr != 0) and self.bias_i < AVERAGE) or self.bias_i == AVERAGE:
