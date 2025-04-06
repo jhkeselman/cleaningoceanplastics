@@ -71,7 +71,7 @@ class KalmanService(Node):
         state_pred[3,0] = self.state[4,0]*self.dt + self.state[3,0]
         state_pred[4,0] = (-R*self.Tl + R*self.Tr + (rot_dir*ROT_DRAG*(self.state[4,0]**2))*self.dt)/INERTIA + self.state[4,0] 
 
-        print(state_pred)
+        print(((self.Tl + self.Tr + drag_dir*DRAG*(self.state[2,0]**2))*math.cos(self.state[3,0])*self.dt**2)/(2*MASS), ((self.Tl + self.Tr + drag_dir*DRAG*(self.state[2,0]**2))*math.sin(self.state[3,0])*self.dt**2)/(2*MASS))
 
         G = np.array([[1,0,(math.cos(self.state[3,0])*self.dt + (self.dt**2)*drag_dir*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS),(-self.state[2,0]*math.sin(self.state[3,0])*self.dt - ((self.Tl + self.Tr + drag_dir*DRAG*(self.state[2,0]**2))*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,1,(math.sin(self.state[3,0])*self.dt + (self.dt**2)*drag_dir*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + ((self.Tl + self.Tr + drag_dir*DRAG*(self.state[2,0]**2))*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
