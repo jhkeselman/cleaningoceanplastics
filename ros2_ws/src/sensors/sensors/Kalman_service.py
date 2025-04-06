@@ -44,6 +44,9 @@ class KalmanService(Node):
         
         self.avg_pos = np.zeros((AVERAGE,2))
         self.avg_i = 0
+        self.acc_bias_data = np.zeros(AVERAGE)
+        self.bias_i = 0
+        self.acc_bias = 0
         self.gps_ready = False
         self.state = np.zeros((5,1),np.float64) #x,y,v,theta,omega
         self.covariance = np.diag([2.5,2.5,1,1,1])
@@ -124,6 +127,19 @@ class KalmanService(Node):
         #roll,pitch,yaw = transforms3d.euler.quat2euler([msg.orientation.w,msg.orientation.x,msg.orientation.y,msg.orientation.z],axes='sxyz')
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
+
+        if self.Tl == 0 and self.Tr == 0:
+            self.acc_bias_data[self.bias_i] = acc
+            self.bias_i += 1
+        elif ((self.Tl != 0 or self.Tr != 0) and self.bias_i < AVERAGE) or self.bias_i == AVERAGE:
+            elements = 0
+            for e in self.acc_bias_data:
+                self.acc_bias += e
+                elements += 1
+            if elements:
+                self.acc_bias = self.acc_bias/elements
+        acc -= self.acc_bias
+        
         self.sensor_data[2:5,0] = [acc,yaw,omega]
         # print(self.sensor_data)
         # self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(yaw, acc, omega))
