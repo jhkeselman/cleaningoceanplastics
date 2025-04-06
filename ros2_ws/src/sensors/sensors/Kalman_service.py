@@ -32,7 +32,6 @@ class KalmanService(Node):
 
         self.imu_sub = self.create_subscription(Imu,'IMU_data',self.imu_response_callback,10)
         self.gps_sub = self.create_subscription(NavSatFix,'get_GPS',self.gps_response_callback,10)
-        self.duty_sub = self.create_subscription(Float32MultiArray,'set_duty_cycle',self.duty_cycle_callback,10)
         self.motor_sub = self.create_subscription(Float32MultiArray,'set_motor_speeds',self.motor_speed_callback,10)
 
         self.emergency_stop = self.create_subscription(
@@ -106,12 +105,6 @@ class KalmanService(Node):
         response.state.data = self.state.T
         self.get_logger().info('Incoming request')
         return response
-    
-    def duty_cycle_callback(self,msg):
-        Vl = (7.5-msg.data[0])/7.5*24
-        Vr = (7.5-msg.data[1])/7.5*24
-        self.Tl = Vl * V_TO_N
-        self.Tr = Vr * V_TO_N
 
     def motor_speed_callback(self,msg):
         duty_l = 7.5 - 2.5*msg.data[0] #Center at 7.5 and capped at 5 and 10
@@ -124,7 +117,6 @@ class KalmanService(Node):
 
     def imu_response_callback(self,msg):
         (roll,pitch,yaw) = euler_from_quaternion([msg.orientation.x,msg.orientation.y,msg.orientation.z,msg.orientation.w])
-        #roll,pitch,yaw = transforms3d.euler.quat2euler([msg.orientation.w,msg.orientation.x,msg.orientation.y,msg.orientation.z],axes='sxyz')
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
 
@@ -138,6 +130,7 @@ class KalmanService(Node):
                 elements += 1
             if elements:
                 self.acc_bias = self.acc_bias/elements
+            print(self.acc_bias)
         acc -= self.acc_bias
         
         self.sensor_data[2:5,0] = [acc,yaw,omega]
