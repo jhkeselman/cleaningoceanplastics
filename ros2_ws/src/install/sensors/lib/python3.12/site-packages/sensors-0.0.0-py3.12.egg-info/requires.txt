@@ -1,5 +1,0 @@
-gps
-numpy
-setuptools
-smbus
-transforms3d
