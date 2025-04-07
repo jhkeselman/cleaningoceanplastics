@@ -59,21 +59,28 @@ class ObjectSelector(Node):
                 x2 = components[4]
                 # y2: bottom right y coordinate
                 y2 = components[5]
+
+                # Get average of the x and y coordinates to get the center of the object
                 x = (float(x1) + float(x2)) / 2
                 y = (float(y1) + float(y2)) / 2
 
+                # Add the weighted x and y coordinates to the total
+                # The weight is the confidence of the detection
                 x_weighted += x * float(confidence)
                 y_weighted += y * float(confidence)
+                
+                # Add the confidence to the total weight
                 total_weight += float(confidence)
         
+        # If there are detected objects, calculate the centroid (prevents division by zero)
         if total_weight > 0:
-            # Calculate the centroid by averaging the x and y coordinates of all detected objects
+            # Calculate the centroid by averaging the x and y coordinates of all detected objects using weighted average
             x = x_weighted / total_weight
             y = y_weighted / total_weight
             
+            # Publish the centroid message to 'centroid'
             msg = Float64MultiArray()
             msg.data = [x, y]
-            # Publish the centroid message to 'centroid'
             self.centroid_publisher.publish(msg)
             self.get_logger().info(f"Centroid: {x}, {y}")
         
