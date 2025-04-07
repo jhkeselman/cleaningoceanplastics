@@ -14,26 +14,43 @@ import math
 import numpy as np
 
 W_RADIUS = 6371000 #radius of earth in m
-CEP = 2.5 #Circular error probable from Ozzmaker website
+CEP = 2.5 #Circular error probable in m from Ozzmaker website
 AVERAGE = 10 #Number of values for gps before beginning
-MASS = 23 #NEED VALUES
-DRAG = 100 #ESTIMATE
-ROT_DRAG = 100 #drag increased by 500% for rotation
+MASS = 23 # Mass of robot in kg
+DRAG = 128 # Linear drag estimate (all constants lumped) in Kg/m
+ROT_DRAG = 8.3 # Rotational drag estimate (all constants lumped) in Kg*m/rad^2
 INERTIA = 5.35  #Inertia from Solidworks model in Kg/m^2
-R = 0.31875 #radius from center of robot to motor
+R = 0.31875 #radius from center of robot to motor in m
 V_TO_N = 4.6025 #conversion from Volts to Newtons of thrust
+
+
+# This node reads and publishes GPS information for the robot.
+# Using GPSD, the node interprets lat,long, and uncertainty data and publishes
+# Publishers: 'get_state'
+# Services: 'get_Kalman_state'
+# Subscribers: 'IMU_data', 'get_GPS', 'set_motor_speeds', 'emergency_stop'
 
 class KalmanService(Node):
 
     def __init__(self):
         super().__init__('Kalman_service')
+
+        # Service for robot state
+        # Request type: Null
+        # Response type: KalmanState
         self.srv = self.create_service(KalmanState, 'get_Kalman_state', self.return_state)
+
+        # Publisher for robot state
+        # Message type: Float64MultiArray
         self.pub = self.create_publisher(Float64MultiArray,'get_state',10)
 
+        # Subscription to IMU, GPS, and motor data. Each has its own callback to process and store values
         self.imu_sub = self.create_subscription(Imu,'IMU_data',self.imu_response_callback,10)
         self.gps_sub = self.create_subscription(NavSatFix,'get_GPS',self.gps_response_callback,10)
         self.motor_sub = self.create_subscription(Float32MultiArray,'set_motor_speeds',self.motor_speed_callback,10)
 
+        # Subscription to emergency stop topic
+        # If emergency stop is triggered, the node will be destroyed
         self.emergency_stop = self.create_subscription(
             Bool,
             'emergency_stop',
