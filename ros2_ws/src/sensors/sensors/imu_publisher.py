@@ -15,33 +15,44 @@ import numpy as np
 import smbus
 import struct
 
-from .utils.IMU_lib import *
+from .utils.IMU_lib import * #BerryIMU library containing configuration of acc, gryo, and mag chips
 
 RAD_TO_DEG = 57.29578
 M_PI = 3.14159265358979323846
 G_GAIN = 0.070  # [deg/s/LSB]  If you change the dps for gyro, you need to update this value accordingly
 K =  0.35     # Complementary filter constant gain
 E = 0.0001     # Complementary filter bias gain
-MAX_DATA = 32767 
+MAX_DATA = 32767 # Arbitrary value to ignore when calculating average
 
+
+# This node reads linear acceleration, angular velocity, and heading from the onboard IMU
+# Heading data is processed to calibrate for hard iron distortion along with a complementary filter with gyro
+# All data is run through moving average of previous 20 values to reduce random noise
+# Heading data is sent to ESP for motor drift control over I2C
+# Publishers: 'IMU_data'
+# Subscribers: 'emergency_stop'
 class IMUPub(Node):
 
     def __init__(self):
         super().__init__('IMU_publisher')
 
         # Initialize IMU
-        detectIMU()     #Detect if BerryIMU is connected.
+        detectIMU()     
+        # Detect if BerryIMU is connected.
         if(BerryIMUversion == 99):
             print(" No BerryIMU found... exiting ")
             sys.exit()
-        initIMU()       #Initialise the accelerometer, gyroscope and compass
+        # Initialise the accelerometer, gyroscope and magnetometer
+        initIMU()       
 
         self.get_logger().info("IMU initialized...")
 
-        self.I2C_address = 0x55 #I2C address of ESP32
+        # I2C address of ESP32
+        self.I2C_address = 0x55 
         self.bus = smbus.SMBus(1)       
 
-        self.declination = math.degrees(-214.1/1000) #calculated at Worcester (-214 milliradians)
+        # Magnetic declination calculated at Worcester (-214 milliradians)
+        self.declination = math.degrees(-214.1/1000) 
 
         # self.magXmin = -1089 #Previous Calibration values of magnetometer at +/- 8 gauss
         # self.magYmin = -1203
@@ -50,15 +61,20 @@ class IMUPub(Node):
         # self.magYmax = 498
         # self.magZmax = 808
 
-        self.magXmin = -627 #Previous Calibration values of magnetometer at +/- 8 gauss
+
+        # Calibration values of magnetometer at +/- 16 gauss
+        self.magXmin = -627 
         self.magYmin = -449
         self.magZmin = -250
         self.magXmax = -568
         self.magYmax = -77
         self.magZmax = 202
 
-        self.avg_data = MAX_DATA*np.ones((20,4)) #Acc, Gyro, X-heading, Y-heading
+        # Moving average data of Acc, Gyro, X-heading, Y-heading
+        self.avg_data = MAX_DATA*np.ones((20,4)) 
 
+        # Subscription to emergency stop topic
+        # If emergency stop is triggered, the node will be destroyed
         self.emergency_stop = self.create_subscription(
             Bool,
             'emergency_stop',
@@ -66,16 +82,28 @@ class IMUPub(Node):
             10
         )
 
-        self.pub = self.create_publisher(Imu, 'IMU_data', 10)
+        # Timer to check IMU data at 50 Hz
         self.timer_period = 0.02
-        self.esp_timer_period = 0.2
         self.timer = self.create_timer(self.timer_period, self.timer_callback)
+
+        # Publisher for IMU data
+        # Message type: Imu
+        self.pub = self.create_publisher(Imu, 'IMU_data', 10)
+        
+        # Timer to send heading data to ESP at 50 Hz
+        self.esp_timer_period = 0.02
         self.esp_timer = self.create_timer(self.esp_timer_period, self.write_esp)
-        self.prev_time = self.get_clock().now()
+
+        # Flag heading to be updated upon first run
         self.heading = MAX_DATA
+
+        # Initialize gyro bias to be 0 at beginning
         self.gyro_bias = 0
+
+
         # self.calibrate_Mag()
 
+    # Destroy the node when the emergency stop is triggered
     def destroy_node(self,msg):
         time.sleep(0.1)
         super().destroy_node()
