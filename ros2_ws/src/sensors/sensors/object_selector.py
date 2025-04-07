@@ -40,7 +40,6 @@ class ObjectSelector(Node):
         data = msg.data
         # Splits the string into individual object detections
         objects = data.split(" $ ")
-        self.get_logger().info("New detections")
         # Initializes lists to store the x and y coordinates of the centers of the detected objects
         x_weighted = 0
         y_weighted = 0
@@ -77,8 +76,6 @@ class ObjectSelector(Node):
             # Publish the centroid message to 'centroid'
             self.centroid_publisher.publish(msg)
             self.get_logger().info(f"Centroid: {x}, {y}")
-        else:
-            self.get_logger().info("No objects detected")
         
 
     # Destroy the node when the emergency stop is triggered
