@@ -173,11 +173,7 @@ class KalmanService(Node):
                 gps_covariance = self.calc_covariance(msg)
                 self.Q[0,0] = gps_covariance[0]
                 self.Q[1,1] = gps_covariance[1]
-<<<<<<< HEAD
                 # self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
-=======
-                #self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
->>>>>>> main
                 self.avg_i += 1
                 self.gps_ready = True
             else: 
