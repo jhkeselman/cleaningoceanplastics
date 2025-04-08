@@ -30,7 +30,7 @@ class ObjectDetector(Node):
 
         # Flag to control saving the video to a file
         # Set to True to enable video recording
-        self.save_video = False
+        self.save_video = True
 
         # Flag to control saving annotated vs. unannotated video
         # Set to True to save the annotated video
