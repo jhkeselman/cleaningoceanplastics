@@ -69,11 +69,13 @@ class Autonomous(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    auto = Autonomous()
+    autonomous = Autonomous()
     try:
-        rclpy.spin(auto)
+        rclpy.spin(autonomous)
+    except KeyboardInterrupt:
+        autonomous.get_logger().info("Stopping motors")
     finally:
-        auto.destroy_node()
+        autonomous.destroy_node()
         rclpy.shutdown()
 
 if __name__ == '__main__':
