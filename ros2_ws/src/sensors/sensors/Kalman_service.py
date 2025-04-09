@@ -14,27 +14,43 @@ import math
 import numpy as np
 
 W_RADIUS = 6371000 #radius of earth in m
-CEP = 2.5 #Circular error probable from Ozzmaker website
+CEP = 2.5 #Circular error probable in m from Ozzmaker website
 AVERAGE = 10 #Number of values for gps before beginning
-MASS = 23 #NEED VALUES
-DRAG = 20 #ESTIMATE
-ROT_DRAG = 100 #drag increased by 500% for rotation
+MASS = 23 # Mass of robot in kg
+DRAG = 128 # Linear drag estimate (all constants lumped) in Kg/m
+ROT_DRAG = 8.3 # Rotational drag estimate (all constants lumped) in Kg*m/rad^2
 INERTIA = 5.35  #Inertia from Solidworks model in Kg/m^2
-R = 0.31875 #radius from center of robot to motor
+R = 0.31875 #radius from center of robot to motor in m
 V_TO_N = 4.6025 #conversion from Volts to Newtons of thrust
+
+
+# This node reads and publishes GPS information for the robot.
+# Using GPSD, the node interprets lat,long, and uncertainty data and publishes
+# Publishers: 'get_state'
+# Services: 'get_Kalman_state'
+# Subscribers: 'IMU_data', 'get_GPS', 'set_motor_speeds', 'emergency_stop'
 
 class KalmanService(Node):
 
     def __init__(self):
         super().__init__('Kalman_service')
+
+        # Service for robot state
+        # Request type: Null
+        # Response type: KalmanState
         self.srv = self.create_service(KalmanState, 'get_Kalman_state', self.return_state)
+
+        # Publisher for robot state
+        # Message type: Float64MultiArray
         self.pub = self.create_publisher(Float64MultiArray,'get_state',10)
 
+        # Subscription to IMU, GPS, and motor data. Each has its own callback to process and store values
         self.imu_sub = self.create_subscription(Imu,'IMU_data',self.imu_response_callback,10)
         self.gps_sub = self.create_subscription(NavSatFix,'get_GPS',self.gps_response_callback,10)
-        self.duty_sub = self.create_subscription(Float32MultiArray,'set_duty_cycle',self.duty_cycle_callback,10)
         self.motor_sub = self.create_subscription(Float32MultiArray,'set_motor_speeds',self.motor_speed_callback,10)
 
+        # Subscription to emergency stop topic
+        # If emergency stop is triggered, the node will be destroyed
         self.emergency_stop = self.create_subscription(
             Bool,
             'emergency_stop',
@@ -44,6 +60,9 @@ class KalmanService(Node):
         
         self.avg_pos = np.zeros((AVERAGE,2))
         self.avg_i = 0
+        self.acc_bias_data = np.zeros(AVERAGE)
+        self.bias_i = 0
+        self.acc_bias = 0
         self.gps_ready = False
         self.state = np.zeros((5,1),np.float64) #x,y,v,theta,omega
         self.covariance = np.diag([2.5,2.5,1,1,1])
@@ -63,14 +82,14 @@ class KalmanService(Node):
         rot_dir = -1 if self.state[4,0] >= 0 else 1
 
         state_pred = np.zeros((5,1))
-        state_pred[0,0] = self.state[0,0] + self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2))*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)
-        state_pred[1,0] = self.state[1,0] + self.state[2,0]*math.sin(self.state[3,0])*self.dt + (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2))*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)
+        state_pred[0,0] = self.state[0,0] + self.state[2,0]*math.cos(self.state[3,0])*self.dt + ((self.Tl + self.Tr + drag_dir*DRAG*(self.state[2,0]**2))*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)
+        state_pred[1,0] = self.state[1,0] + self.state[2,0]*math.sin(self.state[3,0])*self.dt + ((self.Tl + self.Tr + drag_dir*DRAG*(self.state[2,0]**2))*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)
         state_pred[2,0] = (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2))*self.dt)/MASS + self.state[2,0]
         state_pred[3,0] = self.state[4,0]*self.dt + self.state[3,0]
         state_pred[4,0] = (-R*self.Tl + R*self.Tr + (rot_dir*ROT_DRAG*(self.state[4,0]**2))*self.dt)/INERTIA + self.state[4,0] 
 
-        G = np.array([[1,0,(math.cos(self.state[3,0])*self.dt + (self.dt**2)*drag_dir*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS),(-self.state[2,0]*math.sin(self.state[3,0])*self.dt - (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2))*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)),0],
-                      [0,1,(math.sin(self.state[3,0])*self.dt + (self.dt**2)*drag_dir*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + (self.Tl + self.Tr + (drag_dir*DRAG*(self.state[2,0]**2))*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
+        G = np.array([[1,0,(math.cos(self.state[3,0])*self.dt + (self.dt**2)*drag_dir*DRAG*self.state[2,0]*math.cos(self.state[3,0])/MASS),(-self.state[2,0]*math.sin(self.state[3,0])*self.dt - ((self.Tl + self.Tr + drag_dir*DRAG*(self.state[2,0]**2))*math.sin(self.state[3,0])*self.dt**2)/(2*MASS)),0],
+                      [0,1,(math.sin(self.state[3,0])*self.dt + (self.dt**2)*drag_dir*DRAG*self.state[2,0]*math.sin(self.state[3,0])/MASS),(self.state[2,0]*math.cos(self.state[3,0])*self.dt + ((self.Tl + self.Tr + drag_dir*DRAG*(self.state[2,0]**2))*math.cos(self.state[3,0])*self.dt**2)/(2*MASS)),0],
                       [0,0,(drag_dir*2*self.dt*DRAG*self.state[2,0]/MASS + 1),0,0],
                       [0,0,0,1,self.dt],
                       [0,0,0,0,(rot_dir*2*self.dt*ROT_DRAG*(self.state[4,0]**2)/INERTIA + 1)]],np.float64)
@@ -103,12 +122,6 @@ class KalmanService(Node):
         response.state.data = self.state.T
         self.get_logger().info('Incoming request')
         return response
-    
-    def duty_cycle_callback(self,msg):
-        Vl = (7.5-msg.data[0])/7.5*24
-        Vr = (7.5-msg.data[1])/7.5*24
-        self.Tl = Vl * V_TO_N
-        self.Tr = Vr * V_TO_N
 
     def motor_speed_callback(self,msg):
         duty_l = 7.5 - 2.5*msg.data[0] #Center at 7.5 and capped at 5 and 10
@@ -121,9 +134,23 @@ class KalmanService(Node):
 
     def imu_response_callback(self,msg):
         (roll,pitch,yaw) = euler_from_quaternion([msg.orientation.x,msg.orientation.y,msg.orientation.z,msg.orientation.w])
-        #roll,pitch,yaw = transforms3d.euler.quat2euler([msg.orientation.w,msg.orientation.x,msg.orientation.y,msg.orientation.z],axes='sxyz')
         acc = msg.linear_acceleration.x
         omega = msg.angular_velocity.z
+
+        if self.Tl == 0 and self.Tr == 0 and self.bias_i < AVERAGE:
+            self.acc_bias_data[self.bias_i] = acc
+            self.bias_i += 1
+        elif ((self.Tl != 0 or self.Tr != 0) and self.bias_i < AVERAGE) or self.bias_i == AVERAGE:
+            elements = 0
+            for e in self.acc_bias_data:
+                self.acc_bias += e
+                elements += 1
+            if elements:
+                self.acc_bias = self.acc_bias/elements
+            self.bias_i = AVERAGE + 1
+            # print(self.acc_bias)
+        acc -= self.acc_bias
+        # print(self.acc_bias, acc)
         self.sensor_data[2:5,0] = [acc,yaw,omega]
         # print(self.sensor_data)
         # self.get_logger().info('IMU Heading %5.3f, Acc %5.3f, Omega %5.3f:' %(yaw, acc, omega))
@@ -131,8 +158,8 @@ class KalmanService(Node):
     def gps_response_callback(self,msg):
         fix_status = msg.status.status
         if fix_status >=0 :
-            self.get_logger().info('GPS Fix %d, Lat %5.8f, Long %5.8f:' %(fix_status, msg.latitude, msg.longitude))
-            self.get_logger().info('GPS Covariance Long %5.3f, Lat %5.2f' %(msg.position_covariance[0], msg.position_covariance[0]))
+            #self.get_logger().info('GPS Fix %d, Lat %5.8f, Long %5.8f:' %(fix_status, msg.latitude, msg.longitude))
+            #self.get_logger().info('GPS Covariance Long %5.3f, Lat %5.2f' %(msg.position_covariance[0], msg.position_covariance[0]))
             if self.avg_i < AVERAGE-1:
                 fix = [math.radians(msg.latitude), math.radians(msg.longitude)]
                 self.avg_pos[self.avg_i,:] = fix    
@@ -146,7 +173,7 @@ class KalmanService(Node):
                 gps_covariance = self.calc_covariance(msg)
                 self.Q[0,0] = gps_covariance[0]
                 self.Q[1,1] = gps_covariance[1]
-                self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
+                # self.get_logger().info('Position (X,Y): (%5.3f +/- %5.3f, %5.3f +/- %5.3f)' %(self.dx,self.covariance[0][0],self.dy,self.covariance[1][1]))  
                 self.avg_i += 1
                 self.gps_ready = True
             else: 
@@ -161,7 +188,7 @@ class KalmanService(Node):
 
     def calc_dist(self,fix):
         dx = W_RADIUS*(math.radians(fix.longitude) - self.first_fix[1])*self.first_fix[2] #Uses equirectangular projection to determine x,y distance from origin
-        dy = W_RADIUS*(math.radians(fix.latitude) - self.first_fix[0])
+        dy = W_RADIUS*(-math.radians(fix.latitude) + self.first_fix[0]) #dy is flipped because we want y axis to point west
         return [dx,dy]
     
     def calc_covariance(self,fix):
