@@ -86,7 +86,7 @@ class MotorControllerNode(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    motor_controller = MotorController()
+    motor_controller = MotorControllerNode()
     try:
         rclpy.spin(motor_controller)
     except KeyboardInterrupt:
