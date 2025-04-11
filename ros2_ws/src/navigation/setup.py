@@ -24,7 +24,7 @@ setup(
             'motor_control = navigation.motor_controller:main',
             'teleop = navigation.teleop:main',
             'pid_debug = navigation.pid_debug:main',
-            'autonomous = navigation.autonomous:main',
+            'autonomous = navigation.auto:main',
         ],
     },
 )
