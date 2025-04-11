@@ -27,10 +27,10 @@ class Autonomous(Node):
         self.no_centroid_timer = self.reset_timer()
 
     def reset_timer(self):
-        if self.missing_centroid_timer:
-            self.missing_centroid_timer.cancel()
+        if self.no_centroid_timer:
+            self.no_centroid_timer.cancel()
 
-        self.missing_centroid_timer = self.create_timer(5.0, self.handle_missing_centroid)
+        self.no_centroid_timer = self.create_timer(5.0, self.handle_missing_centroid)
 
     def update_heading(self, msg):
         x = msg.data[0]
