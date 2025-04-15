@@ -34,7 +34,7 @@ class ObjectDetector(Node):
 
         # Flag to control saving annotated vs. unannotated video
         # Set to True to save the annotated video
-        self.save_annotated = False
+        self.save_annotated = True
 
         # If video recording is enabled, set up the video writer
         # The video will be saved in the current directory labeled with the current timestamp as an .mp4 file (ignored by .gitignore)
@@ -108,8 +108,12 @@ class ObjectDetector(Node):
                 self.detection_pub.publish(publishString)
 
 
-            # Annotate the frame with bounding boxes and labels
-            annotated_frame = results[0].plot()
+            if self.save_video or self.show_video:
+                # Annotate the frame with bounding boxes and labels
+                annotated_frame = results[0].plot()
+                # Draw the centroid on the annotated frame
+                cx, cy = map(int, self.centroid)
+                cv2.circle(annotated_frame, (cx, cy), 5, (0,0,255), -1)
             # If video recording is enabled, write the frame to the video file
             if self.save_video:
                 if self.save_annotated:
@@ -120,9 +124,7 @@ class ObjectDetector(Node):
                     self.out.write(frame)
             # If video display is enabled, show the annotated frame
             if self.show_video:
-                # Display the annotated frame (with labeled bounding boxes) and the centroid of the detected items
-                cx, cy = map(int, self.centroid)
-                cv2.circle(annotated_frame, (cx, cy), 5, (0,0,255), -1)
+                # Display the annotated frame
                 cv2.imshow("Real-Time Detection w/ YOLO", annotated_frame)
             
             # 1 ms delay to allow for smoother video playback, helps prevent issues with lag due to detection speed

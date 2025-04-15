@@ -49,7 +49,7 @@ class ObjectSelector(Node):
             # Split each object string into its components
             components = object.split(", ")
             object_type = components[0]
-            if object_type == "Bottle":
+            if object_type == "Bottle" or object_type == "Can":
                 confidence = components[1]
                 # x1: top left x coordinate
                 x1 = components[2]
