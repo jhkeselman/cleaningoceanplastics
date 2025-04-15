@@ -13,7 +13,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob('launch/*.py')),
     ],
-    install_requires=['setuptools','numpy', 'gps','smbus','transforms3d'],
+    install_requires=['setuptools','numpy', 'gps','smbus'],
     zip_safe=True,
     maintainer='pi2',
     maintainer_email='pi2@todo.todo',
@@ -25,7 +25,7 @@ setup(
             'imu_pub = sensors.imu_publisher:main',
             'object_detector = sensors.object_detector:main',
             'object_selector = sensors.object_selector:main',
-            'kalman = sensors.Kalman_service:main',
+            'kalman = sensors.kalman_state:main',
             'gps_pub = sensors.fix_publisher:main'
         ],
     },
