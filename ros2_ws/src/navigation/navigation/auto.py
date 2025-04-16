@@ -47,8 +47,8 @@ class Autonomous(Node):
         left_speed = forward_speed + turn_speed
         right_speed = forward_speed - turn_speed
 
-        left_speed = max(-1, min(1, left_speed))
-        right_speed = max(-1, min(1, right_speed))
+        left_speed = max(-0.5, min(0.5, left_speed))
+        right_speed = max(-0.5, min(0.5, right_speed))
 
         self.publish_speed(left_speed, right_speed)
 
