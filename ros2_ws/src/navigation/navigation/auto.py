@@ -13,8 +13,8 @@ class Autonomous(Node):
         self.x_center = 320
         self.y_max = 480
 
-        self.kp_x = 0.2
-        self.kp_y = 0.05
+        self.kp_x = 0.001
+        self.kp_y = 0.005
 
         self.emergency_stop = self.create_subscription(
             Bool,
