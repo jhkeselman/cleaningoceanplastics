@@ -44,7 +44,8 @@ class Autonomous(Node):
         turn_speed = self.kp_x * x_error
         forward_speed = self.kp_y * y_error
 
-        self.get_logger().info(turn_speed, forward_speed)
+        self.get_logger().info(turn_speed)
+        self.get_logger().info(forward_speed)
 
         left_speed = forward_speed + turn_speed
         right_speed = forward_speed - turn_speed
