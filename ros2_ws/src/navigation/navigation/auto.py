@@ -13,7 +13,7 @@ class Autonomous(Node):
         self.x_center = 320
         self.y_max = 480
 
-        self.kp_x = 0.001
+        self.kp_x = 0.0005
         self.kp_y = 0.0005
 
         self.emergency_stop = self.create_subscription(
@@ -55,7 +55,7 @@ class Autonomous(Node):
         self.publish_speed(left_speed, right_speed)
 
     def handle_missing_centroid(self):
-        self.publish_speed(0.1, -0.1)
+        self.publish_speed(0.15, -0.15)
 
 
     def publish_speed(self, left_value, right_value):
