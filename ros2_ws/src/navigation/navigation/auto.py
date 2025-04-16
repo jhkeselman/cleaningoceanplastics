@@ -38,7 +38,7 @@ class Autonomous(Node):
 
         self.reset_timer()
 
-        x_error = x - self.x_center
+        x_error = self.x_center - x
         y_error = self.y_max - y
 
         turn_speed = self.kp_x * x_error
