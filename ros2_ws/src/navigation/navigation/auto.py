@@ -53,7 +53,7 @@ class Autonomous(Node):
         self.publish_speed(left_speed, right_speed)
 
     def handle_missing_centroid(self):
-        self.publish_speed(0.2, -0.2)
+        self.publish_speed(0.1, -0.1)
 
 
     def publish_speed(self, left_value, right_value):
