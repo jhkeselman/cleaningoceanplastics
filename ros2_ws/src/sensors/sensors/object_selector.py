@@ -51,7 +51,7 @@ class ObjectSelector(Node):
             object_type = components[0]
             if object_type == "Bottle" or object_type == "Can":
                 confidence = components[1]
-                if confidence < 0.5:
+                if confidence < 30:
                     continue
                 # x1: top left x coordinate
                 x1 = components[2]
