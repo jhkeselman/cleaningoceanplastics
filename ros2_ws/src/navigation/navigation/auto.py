@@ -30,7 +30,7 @@ class Autonomous(Node):
         if self.no_centroid_timer:
             self.no_centroid_timer.cancel()
 
-        self.no_centroid_timer = self.create_timer(5.0, self.handle_missing_centroid)
+        self.no_centroid_timer = self.create_timer(3.0, self.handle_missing_centroid)
 
     def update_heading(self, msg):
         x = msg.data[0]
@@ -53,7 +53,7 @@ class Autonomous(Node):
         self.publish_speed(left_speed, right_speed)
 
     def handle_missing_centroid(self):
-        self.publish_speed(0.1, -0.1)
+        self.publish_speed(0.2, -0.2)
 
 
     def publish_speed(self, left_value, right_value):
