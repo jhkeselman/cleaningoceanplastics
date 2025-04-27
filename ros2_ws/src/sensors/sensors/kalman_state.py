@@ -15,11 +15,12 @@ W_RADIUS = 6371000 #radius of earth in m
 CEP = 2.5 #Circular error probable in m from Ozzmaker website
 AVERAGE = 10 #Number of values for gps before beginning
 MASS = 23 # Mass of robot in kg
-DRAG = 128 # Linear drag estimate (all constants lumped) in Kg/m
-ROT_DRAG = 8.3 # Rotational drag estimate (all constants lumped) in Kg*m/rad^2
+DRAG = 160.65 # Linear drag estimate (all constants lumped) in Kg/m
+ROT_DRAG = 8.44 # Rotational drag estimate (all constants lumped) in Kg*m/rad^2
 INERTIA = 5.35  #Inertia from Solidworks model in Kg/m^2
 R = 0.31875 #radius from center of robot to motor in m
 V_TO_N = 4.6025 #conversion from Volts to Newtons of thrust
+V_OFFSET = -19.67 #Intercept from supplier motor graph
 
 
 # This node reads and publishes GPS information for the robot.
@@ -131,15 +132,13 @@ class KalmanState(Node):
     # Receives motor speed data and coverts into left and right thrust
     # Motor data is value between -1 and 1
     def motor_speed_callback(self,msg):
+        Vl = msg.data[0]*22.4
+        Vr = msg.data[1]*22.4
 
-        # duty_l = 7.5 - 2.5*msg.data[0] #Center at 7.5 and capped at 5 and 10
-        # duty_r = 7.5 - 2.5*msg.data[1]
-        # Vl = (7.5-duty_l)/7.5*24
-        # Vr = (7.5-duty_r)/7.5*24
-        Vl = msg.data[0]*24
-        Vr = msg.data[1]*24
-        self.Tl = Vl * V_TO_N
-        self.Tr = Vr * V_TO_N
+        # Calculates thrust using linear relationship from manufacturer
+        # Assumes thrust output is same forwards or backwards
+        self.Tl = Vl * V_TO_N - np.sign(Vl)*V_OFFSET 
+        self.Tr = Vr * V_TO_N - np.sign(Vr)*V_OFFSET
 
     # Receives IMU data and saves it to sensor data vector
     # When initialized, will calculate accelerometer bias

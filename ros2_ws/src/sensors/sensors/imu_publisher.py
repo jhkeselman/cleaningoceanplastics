@@ -89,8 +89,8 @@ class IMUPub(Node):
         # Message type: Imu
         self.pub = self.create_publisher(Imu, 'IMU_data', 10)
         
-        # Timer to send heading data to ESP at 50 Hz
-        self.esp_timer_period = 0.02
+        # Timer to send heading data to ESP at 20 Hz
+        self.esp_timer_period = 0.05
         self.esp_timer = self.create_timer(self.esp_timer_period, self.write_esp)
 
         # Flag heading to be updated upon first run
