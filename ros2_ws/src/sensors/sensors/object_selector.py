@@ -51,26 +51,27 @@ class ObjectSelector(Node):
             object_type = components[0]
             if object_type == "Bottle" or object_type == "Can":
                 confidence = components[1]
-                # x1: top left x coordinate
-                x1 = components[2]
-                # y1: top left y coordinate
-                y1 = components[3]
-                # x2: bottom right x coordinate
-                x2 = components[4]
-                # y2: bottom right y coordinate
-                y2 = components[5]
+                if float(confidence) > 30.0: 
+                    # x1: top left x coordinate
+                    x1 = components[2]
+                    # y1: top left y coordinate
+                    y1 = components[3]
+                    # x2: bottom right x coordinate
+                    x2 = components[4]
+                    # y2: bottom right y coordinate
+                    y2 = components[5]
 
-                # Get average of the x and y coordinates to get the center of the object
-                x = (float(x1) + float(x2)) / 2
-                y = (float(y1) + float(y2)) / 2
+                    # Get average of the x and y coordinates to get the center of the object
+                    x = (float(x1) + float(x2)) / 2
+                    y = (float(y1) + float(y2)) / 2
 
-                # Add the weighted x and y coordinates to the total
-                # The weight is the confidence of the detection
-                x_weighted += x * float(confidence)
-                y_weighted += y * float(confidence)
-                
-                # Add the confidence to the total weight
-                total_weight += float(confidence)
+                    # Add the weighted x and y coordinates to the total
+                    # The weight is the confidence of the detection
+                    x_weighted += x * float(confidence)
+                    y_weighted += y * float(confidence)
+                    
+                    # Add the confidence to the total weight
+                    total_weight += float(confidence)
         
         # If there are detected objects, calculate the centroid (prevents division by zero)
         if total_weight > 0:
